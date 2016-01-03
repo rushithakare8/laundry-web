@@ -1,12 +1,12 @@
-# react-hapi-starter
+# laundry-web
 
-Starter kit for react app with hapi as a server and api
+Laundry web for Cesar's business
 
 ## Installation
 
 ```bash
-$ git clone git@github.com:interactivelabs/react-hapi-starter.git
-$ cd react-hapi-starter
+$ git clone git@github.com:interactivelabs/laundry-web.git
+$ cd laundry-web
 $ npm run build
 $ npm start
 ```
