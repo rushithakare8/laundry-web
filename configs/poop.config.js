@@ -2,5 +2,6 @@
 let Path = require('path')
 
 module.exports = {
-	logPath: Path.join(__dirname, 'poop.log')
+	logPath: Path.join(__dirname, '../logs/poop.log'),
+	heapdumpFolder: Path.join(__dirname, '../logs/')
 }

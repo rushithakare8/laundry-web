@@ -14,3 +14,5 @@ composer(function(err, server) {
     console.log('Started the plot device on port ' + server.info.port)
   })
 })
+
+module.exports = composer

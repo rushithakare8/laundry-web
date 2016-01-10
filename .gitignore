@@ -6,4 +6,6 @@ jsconfig.json
 typings/
 public/
 heapdump*
+logs/
 configs/vault.json
+npm-debug.log

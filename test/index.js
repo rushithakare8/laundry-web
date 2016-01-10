@@ -2,7 +2,7 @@
 
 let Lab = require('lab')
 let Code = require('code')
-let composer = require('../index')
+let composer = require('../server.js')
 let lab = exports.lab = Lab.script()
 
 

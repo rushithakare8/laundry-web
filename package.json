@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "test": "./node_modules/lab/bin/lab",
+    "test": "./node_modules/lab/bin/lab -l",
     "build": "./node_modules/gulp/bin/gulp.js"
   },
   "keywords": [
@@ -16,6 +16,10 @@
   ],
   "author": "Luis Gonzalez <luismgonzalezb@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": "5.4.0",
+    "npm": "3.3.12"
+  },
   "dependencies": {
     "babel-core": "6.x.x",
     "bell": "6.x.x",
@@ -23,20 +27,21 @@
     "glue": "3.x.x",
     "good": "6.x.x",
     "good-console": "5.x.x",
-    "hapi": "11.x.x",
-    "hapi-auth-cookie": "3.x.x",
+    "hapi": "12.x.x",
+    "hapi-auth-cookie": "5.x.x",
     "history": "1.x.x",
     "inert": "3.x.x",
     "jade": "1.x.x",
     "joi": "7.x.x",
     "lodash": "3.x.x",
+    "opbeat": "3.x.x",
     "poop": "2.x.x",
     "react": "0.x.x",
     "react-dom": "0.x.x",
     "react-redux": "4.x.x",
     "react-router": "1.x.x",
     "redux": "3.x.x",
-    "redux-router": "1.0.0-beta6",
+    "redux-router": "1.0.0-beta7",
     "redux-thunk": "1.x.x",
     "scooter": "2.x.x",
     "vision": "4.x.x"

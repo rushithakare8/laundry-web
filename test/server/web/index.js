@@ -2,10 +2,7 @@
 
 var Lab = require('lab')
 var Code = require('code')
-var Config = require('../../../configs/server.config.js')
-var Hapi = require('hapi')
-var HomePlugin = require('../../../server.js')
-
+var composer = require('../../../server.js')
 
 var lab = exports.lab = Lab.script()
 var request, server
@@ -13,21 +10,16 @@ var request, server
 
 lab.beforeEach(function (done) {
 
-    var plugins = [ HomePlugin ]
-    server = new Hapi.Server()
-    server.connection({ port: Config.get('/port/web') })
-    server.views({
-        engines: { jade: require('jade') },
-        path: './server/web'
-    })
-    server.register(plugins, function (err) {
+  composer(function(err, composedServer) {
 
-        if (err) {
-            return done(err)
-        }
+    if (err) {
+      throw err
+    }
 
-        done()
-    })
+    server = composedServer
+
+    done()
+  })
 })
 
 
@@ -48,7 +40,7 @@ lab.experiment('Home Page View', function () {
 
         server.inject(request, function (response) {
 
-            Code.expect(response.result).to.match(/activate the plot device/i)
+            Code.expect(response.result).to.match(/Web Laundry - Interactive Labs/i)
             Code.expect(response.statusCode).to.equal(200)
 
             done()

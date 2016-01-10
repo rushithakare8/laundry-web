@@ -30,9 +30,11 @@ module.exports = {
   },
   externals: {
     'react-router': 'ReactRouter',
+    'react-redux': 'ReactRedux',
     'react-dom': 'ReactDOM',
     'jquery': 'jQuery',
     'react': 'React',
+    'redux': 'Redux',
     'lodash': '_',
   },
   debug: true
