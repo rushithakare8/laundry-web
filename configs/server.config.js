@@ -10,8 +10,8 @@ let config = {
     web: {
       $filter: 'env',
       test: 9090,
-      production: 80,
-      $default: 3000,
+      dev: 3000,
+      $default: 80,
     },
   },
 }
