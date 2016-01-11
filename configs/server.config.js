@@ -3,6 +3,7 @@ let Confidence = require('confidence')
 let criteria = {
   env: process.env.NODE_ENV,
 }
+console.log(process.env.NODE_ENV)
 let config = {
   $meta: 'This file configures the plot device.',
   projectName: 'il-laundry-consumer-web',
