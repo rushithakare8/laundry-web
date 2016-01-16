@@ -4,7 +4,6 @@ let port = process.env.PORT || 3000
 let criteria = {
   env: process.env.NODE_ENV,
 }
-console.log(port)
 let config = {
   $meta: 'This file configures the plot device.',
   projectName: 'il-laundry-consumer-web',

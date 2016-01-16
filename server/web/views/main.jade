@@ -1,0 +1,12 @@
+extends shared/layout
+
+block styles
+  link(rel='stylesheet', href='/public/css/index#{minAssets}.css')
+
+block content
+  #container
+  
+  a(href='/auth/facebook')#facebook Login with Facebook
+
+block scripts
+  script(src='public/app/build/main#{minAssets}.js')  
