@@ -1,0 +1,170 @@
+@import "bourbon";
+@import "common";
+@import "vars";
+@import "getters";
+
+strong, b {
+	color: _palette(fg-bold);
+	font-weight: _font(weight-bold);
+}
+
+em, i {
+	font-style: italic;
+}
+
+p {
+	margin: 0 0 _size(element-margin) 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: _palette(fg-bold);
+	font-weight: _font(weight-extrabold);
+	letter-spacing: _size(letter-spacing-alt);
+	line-height: 1em;
+	margin: 0 0 (_size(element-margin) * 0.5) 0;
+	text-transform: uppercase;
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+h2 {
+	font-size: 1.35em;
+	line-height: 1.75em;
+}
+
+h3 {
+	font-size: 1.15em;
+	line-height: 1.75em;
+}
+
+h4 {
+	font-size: 1em;
+	line-height: 1.5em;
+}
+
+h5 {
+	font-size: 0.8em;
+	line-height: 1.5em;
+}
+
+h6 {
+	font-size: 0.7em;
+	line-height: 1.5em;
+}
+
+sub {
+	font-size: 0.8em;
+	position: relative;
+	top: 0.5em;
+}
+
+sup {
+	font-size: 0.8em;
+	position: relative;
+	top: -0.5em;
+}
+
+hr {
+	border: 0;
+	border-bottom: solid 2px _palette(border);
+	margin: (_size(element-margin) * 1.5) 0;
+
+	&.major {
+		margin: (_size(element-margin) * 2.25) 0;
+	}
+}
+
+blockquote {
+	border-left: solid 4px _palette(border);
+	font-style: italic;
+	margin: 0 0 _size(element-margin) 0;
+	padding: 0.5em 0 0.5em 2em;
+}
+
+#page-wrapper {
+	@include background-image(linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../img/laundry1.jpg"));
+	background-attachment: fixed;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding-top: 0;
+	color: _palette(fg);
+}
+
+#banner {
+	@include align-items(stretch);
+  @include display(flex);
+  @include flex-direction(column);
+  @include justify-content(center);
+	cursor: default;
+	height: 100vh;
+	min-height: 35em;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+}
+
+.more {
+	@include transition-property(transform);
+	@include transition-property(opacity);
+	@include transition-property(translateY(0));
+	@include transition-duration(0.75s);
+	@include transition-timing-function(ease-in);
+	@include transition-delay(3.5s);
+	border: none;
+	bottom: 0;
+	color: inherit;
+	font-size: 0.8em;
+	height: 8.5em;
+	left: 50%;
+	letter-spacing: _size(letter-spacing-alt);
+	margin-left: -8.5em;
+	opacity: 1;
+	outline: 0;
+	padding-left: _size(letter-spacing-alt);
+	position: absolute;
+	text-align: center;
+	text-transform: uppercase;
+	width: 16em;
+	z-index: 1;
+
+	&:after {
+		background-image: url('../img/arrow.svg');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		bottom: 4em;
+		content: '';
+		display: block;
+		height: 1.5em;
+		left: 50%;
+		margin: 0 0 0 -0.75em;
+		position: absolute;
+		width: 1.5em;
+	}
+}
+
+#shorts {
+	text-align: center;
+	background-color: _palette(accent1, bg);
+}
+
+#features {
+	background-color: _palette(bg);
+	.f1 {
+		background-color: rgba(0,0,0,0.5);
+	}
+	.f2 {
+		background-color: rgba(0,0,0,0.3);
+	}
+	.f3 {
+		background-color: rgba(0,0,0,0.4);
+	}
+}
+
+#pricing {
+	background-color: _palette(accent1, bg);
+	text-align: center;
+}
