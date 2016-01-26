@@ -7,13 +7,12 @@ var header = require('gulp-header')
 var changed = require('gulp-changed')
 var filesize = require('gulp-filesize')
 var minifyCss = require('gulp-cssnano')
+var bourbon = require('node-bourbon')
 var banner = require('../configs/banner')
 var paths = require('../configs/paths.json')
 var sassOptions = {
     style: 'compressed',
-    includePaths: [
-        'node_modules/compass-mixins/lib'
-    ]
+    includePaths: bourbon.includePaths
 }
 
 module.exports = {

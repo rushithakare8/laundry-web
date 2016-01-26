@@ -21,12 +21,14 @@ gulp.task('react', reactTasks.react)
 
 gulp.task('img', imgTasks.img)
 
+gulp.task('svg', imgTasks.svg)
+
 // Rerun the task when a file changes
 gulp.task('watch', function () {
     gulp.watch(paths.js.src, ['scripts', 'devscripts'])
     gulp.watch(paths.css.src, ['styles', 'devstyles'])
     gulp.watch(paths.react.src, ['react'])
-    gulp.watch(paths.img.src, ['img'])
+    gulp.watch(paths.img.src, ['img', 'svg'])
 })
 
-gulp.task('default', ['watch', 'scripts', 'devscripts', 'styles', 'devstyles', 'react', 'img'])
+gulp.task('default', ['watch', 'scripts', 'devscripts', 'styles', 'devstyles', 'react', 'img', 'svg'])

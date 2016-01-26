@@ -1,19 +1,26 @@
 {
-    "js": {
-        "src": "src/static/js/*.js",
-        "dest": "public/js/"
-    },
-    "css": {
-        "src": "src/static/scss/*.scss",
-        "dest": "public/css/"
-    },
-    "img": {
-        "src": "src/static/img/*",
-        "dest": "public/img/"
-    },
-    "react": {
-        "src": "./src/app/**/*",
-        "main": "./src/app/main.jsx",
-        "dest": "public/app/build/"
-    }
+  "js": {
+    "src": "src/static/js/*.js",
+    "dest": "public/js/"
+  },
+  "css": {
+    "src": "src/static/scss/*.scss",
+    "dest": "public/css/"
+  },
+  "img": {
+    "src": [
+      "src/static/img/**/*.jpg",
+      "src/static/img/**/*.png",
+      "src/static/img/**/*.ico"
+    ],
+    "dest": "public/img/"
+  },
+  "svg": {
+    "src": "src/static/img/**/*.svg"
+  },
+  "react": {
+    "src": "./src/app/**/*",
+    "main": "./src/app/main.jsx",
+    "dest": "public/app/build/"
+  }
 }
