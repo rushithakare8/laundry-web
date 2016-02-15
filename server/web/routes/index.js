@@ -9,5 +9,6 @@ module.exports = [
   { method: ['GET', 'POST'], path: '/auth/facebook', config: Auth.login },
   { method: 'GET', path: '/favicon.ico', handler: { file: Path.join(__dirname, 'public/img/favicon.ico') } },
   { method: 'GET', path: '/apple-touch-icon-precomposed.png', handler: { file: Path.join(__dirname, 'public/img//apple-touch-icon-precomposed.png') } },
-  { method: 'GET', path: '/apple-touch-icon.png', handler: { file: Path.join(__dirname, 'public/img/apple-touch-icon.png') } }
+  { method: 'GET', path: '/apple-touch-icon.png', handler: { file: Path.join(__dirname, 'public/img/apple-touch-icon.png') } },
+  { method: 'GET', path: '/main', config: Main.index }
 ]

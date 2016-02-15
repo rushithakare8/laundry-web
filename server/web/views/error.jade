@@ -1,10 +1,12 @@
-extends shared/layout
+extends home/layout
 
 block styles
   link(rel='stylesheet', href='/public/css/index#{minAssets}.css')
 
 block content
   #container
+    h1 Something horrible it's going on...
+    img(src='https://http.cat/#{error.code}')
 
 block scripts
   script(src='public/app/build/main#{minAssets}.js')  

@@ -42,6 +42,30 @@ exports.register = function(server, options, next) {
 
     let auth
 
+    // ERROR HANDLIGN
+    server.ext('onPreResponse', (request, reply) => {
+      const response = request.response;
+      if (!response.isBoom) {
+        // everything good, move on...
+        return reply.continue();
+      }
+      // Error happened, do something
+      const error = response;
+      const baseData = {
+        minAssets: '.min',
+        error: {
+          code: error.output.statusCode,
+          message: (error.output.statusCode === 404 ? 'page not found' : 'something went wrong')
+        }
+      }
+      server.log(error);
+      if (request.path === '/auth/facebook' && error.message === 'App was rejected') {
+        baseData.error.loginError = true;
+        return reply.view('home', baseData)
+      }
+      return reply.view('error', baseData)
+    })
+
     server.on('log', (event, tags) => {
       if (tags.error) {
         console.log('Server error: ' + (event.data || 'unspecified'))
@@ -50,7 +74,7 @@ exports.register = function(server, options, next) {
 
     server.app.vault = vault;
     if (typeof vault === 'string') {
-        server.app.vault = JSON.parse(vault);
+      server.app.vault = JSON.parse(vault);
     }
 
     auth = server.app.vault.auth

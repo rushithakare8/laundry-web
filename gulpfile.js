@@ -13,6 +13,10 @@ gulp.task('scripts', jsTasks.scripts)
 
 gulp.task('devscripts', jsTasks.devscripts)
 
+gulp.task('devAtomicCSS', sassTasks.devatomic)
+
+gulp.task('atomicCSS', sassTasks.atomic)
+
 gulp.task('styles', sassTasks.styles)
 
 gulp.task('devstyles', sassTasks.devstyles)
@@ -25,10 +29,11 @@ gulp.task('svg', imgTasks.svg)
 
 // Rerun the task when a file changes
 gulp.task('watch', function () {
-    gulp.watch(paths.js.src, ['scripts', 'devscripts'])
-    gulp.watch(paths.css.src, ['styles', 'devstyles'])
-    gulp.watch(paths.react.src, ['react'])
-    gulp.watch(paths.img.src, ['img', 'svg'])
+  gulp.watch(paths.acss.src, ['devAtomicCSS', 'atomicCSS'])
+  gulp.watch(paths.js.src, ['scripts', 'devscripts'])
+  gulp.watch(paths.css.src, ['styles', 'devstyles'])
+  gulp.watch(paths.react.src, ['react'])
+  gulp.watch(paths.img.src, ['img', 'svg'])
 })
 
-gulp.task('default', ['watch', 'scripts', 'devscripts', 'styles', 'devstyles', 'react', 'img', 'svg'])
+gulp.task('default', ['watch', 'scripts', 'devscripts', 'devAtomicCSS', 'atomicCSS', 'styles', 'devstyles', 'react', 'img', 'svg'])

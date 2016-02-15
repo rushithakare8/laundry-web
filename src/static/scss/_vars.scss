@@ -8,7 +8,7 @@
 	$misc: (
 		max-spotlights:		10,
 		max-features:		10,
-		z-index-base:		10000
+		z-index-base:		99
 	);
 
 // Duration.
@@ -22,8 +22,10 @@
 	$size: (
 		element-height:		2.75em,
 		element-margin:		2em,
+		element-tall:			3.5em,
 		letter-spacing:		0.075em,
-		letter-spacing-alt:	0.225em
+		letter-spacing-alt:	0.225em,
+		gutter-large: 32px
 	);
 
 // Font.

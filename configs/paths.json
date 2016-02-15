@@ -7,6 +7,10 @@
     "src": "src/static/scss/*.scss",
     "dest": "public/css/"
   },
+  "acss": {
+    "src": "server/web/views/**/*.jade",
+    "dest": "public/css/"
+  },
   "img": {
     "src": [
       "src/static/img/**/*.jpg",

@@ -5,6 +5,29 @@ block styles
 
 block content
   #page-wrapper
+    header#header.alt
+      nav#nav
+        ul
+          li.special
+            a(href='#menu').menuToggle
+              span Menu
+          #menu.hide
+            ul
+              li
+                a(href='/') Home
+              li
+                a(href='#shorts') About
+              li
+                a(href='#features') Features
+              li
+                a(href='#pricing') Pricing
+              li
+                a(href='#contact') Contact
+              li
+                a(href='#signup', data-open='signup-modal') Sign Up
+              li
+                a(href='#login', data-open='login-modal') Log In
+            a(href='#menu').close.menuToggle
     #banner
       .row
         .columns.medium-12
@@ -12,9 +35,9 @@ block content
         .columns.medium-12
           h2 Get your laundry off the list, done deal.
         .columns.medium-12
-          a(href="#one").more.scrolly Learn More
+          a(href='#shorts').more.scrolly Learn More
     #shorts
-      .row
+      .row(class='Py(40px)')
         .columns.medium-8.medium-offset-2
           h2 ARCU ALIQUET VEL LOBORTIS ATA NISL EGET AUGUE AMET ALIQUET NISL CEP DONEC
           hr
@@ -29,7 +52,7 @@ block content
               i.fa.fa-mobile
     #features
       .row.expanded.f1
-        .columns.medium-4
+        .columns.medium-4(class='P(0)')
           img(src='/public/img/ganchos.jpg')
         .columns.medium-8
           h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
@@ -38,16 +61,16 @@ block content
         .columns.medium-8
           h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
           p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
-        .columns.medium-4
+        .columns.medium-4(class='P(0)')
           img(src='/public/img/mac_feet.jpg')
       .row.expanded.f3
-        .columns.medium-4
+        .columns.medium-4(class='P(0)')
           img(src='/public/img/lady_phone.jpg')
         .columns.medium-8
           h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
           p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
     #pricing
-      .columns.row
+      .row(class='Py(40px)')
         .columns.medium-8.medium-offset-2
           h2 ARCU ALIQUET VEL LOBORTIS ATA NISL EGET AUGUE AMET ALIQUET NISL CEP DONEC
           hr
@@ -63,6 +86,35 @@ block content
             .columns.medium-6
               i.fa.fa-mobile
     #contact
+      .row.expanded
+        .columns.medium-6
+        .columns.medium-6(class='P(0)')
     footer
-      .callout.large
-        a(href='/auth/facebook')#facebook Login with Facebook
+  #login-modal.reveal(data-reveal)
+    h3.subheader Login
+    .row(class='Ta(c)')
+      .medium-12.medium-center
+        a.button.facebook(href='/auth/facebook')
+          i.fa.fa-facebook-official
+          span(class='Mstart(10px)') |
+          span(class='Mstart(10px)') Login with Facebook
+    .hr
+    form(action='/auth/basic', method='POST')
+      .row
+        label(class='W(100%)')
+          | Email
+          input(placeholder='Email', type='text', name='login-email')
+      .row
+        label(class='W(100%)')
+          | Password
+          input(placeholder='Password', type='text', name='login-pass')
+      .row
+        button.button Login
+    button.close-button(data-close) &times;
+  #signup-modal.reveal(data-reveal)
+    h2 Signup
+    button.close-button(data-close) &times;
+
+block scripts
+  script.
+    var LW = { PAGE: { home: { view: { error: !{JSON.stringify(error).replace(/<\//g, "<\\/")} } } } }

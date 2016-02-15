@@ -15,11 +15,12 @@ exports.logout = {
 exports.login = {
 	auth: 'facebook',
 	handler(request, reply) {
-    let user = {}
-    let credentials = request.auth.credentials
+    let user
+    let credentials
 		if (!request.auth.isAuthenticated) {
-      return reply('Authentication failed due to: ' + request.auth.error.message);
+      return reply('Authentication failed due to: ' + request.auth.error.message)
     }
+		credentials = request.auth.credentials
     return reply.redirect('/')
   }
 }

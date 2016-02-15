@@ -70,10 +70,14 @@ hr {
 	border: 0;
 	border-bottom: solid 2px _palette(border);
 	margin: (_size(element-margin) * 1.5) 0;
-
 	&.major {
 		margin: (_size(element-margin) * 2.25) 0;
 	}
+}
+
+.hr {
+	border-bottom: solid 2px #000;
+	margin: 10px 0;
 }
 
 blockquote {
@@ -83,27 +87,49 @@ blockquote {
 	padding: 0.5em 0 0.5em 2em;
 }
 
-#page-wrapper {
-	@include background-image(linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../img/laundry1.jpg"));
-	background-attachment: fixed;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	padding-top: 0;
-	color: _palette(fg);
-}
-
-#banner {
-	@include align-items(stretch);
-  @include display(flex);
-  @include flex-direction(column);
-  @include justify-content(center);
-	cursor: default;
-	height: 100vh;
-	min-height: 35em;
-	overflow: hidden;
-	position: relative;
-	text-align: center;
+nav {
+	height: inherit;
+	line-height: inherit;
+	position: absolute;
+	right: 0;
+	top: 0;
+	> ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		white-space: nowrap;
+		> li {
+			display: inline-block;
+			padding: 0;
+			> a {
+				border: 0;
+				color: _palette(fg-bold);
+				display: block;
+				font-size: 0.8em;
+				letter-spacing: _size(letter-spacing-alt);
+				padding: 0 1.5em;
+				text-transform: uppercase;
+				&.menuToggle {
+					outline: 0;
+					position: relative;
+					line-height: _size(element-tall);
+					&:after {
+						background-image: url('../img/bars.svg');
+						background-position: right center;
+						background-repeat: no-repeat;
+						content: '';
+						display: inline-block;
+						height: 3.75em;
+						vertical-align: top;
+						width: 2em;
+					}
+				}
+			}
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+	}
 }
 
 .more {
@@ -146,6 +172,105 @@ blockquote {
 	}
 }
 
+#header {
+	@include transition-property(background-color);
+	@include transition-duration(_duration(transitions));
+	background: _palette(bg);
+	height: 3em;
+	left: 0;
+	line-height: 3em;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: _misc(z-index-base);
+	&.alt {
+		background: transparent;
+	}
+}
+
+#page-wrapper {
+	@include background-image(linear-gradient(top, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("../img/laundry1.jpg"));
+	background-attachment: fixed;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding-top: 0;
+	color: _palette(fg);
+}
+
+#banner {
+	@include align-items(stretch);
+  @include display(flex);
+  @include flex-direction(column);
+  @include justify-content(center);
+	cursor: default;
+	height: 100vh;
+	min-height: 35em;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+}
+
+#menu {
+	@include transition-property(transform);
+	@include transition-property(opacity);
+	@include transition-property(translateX(20em));
+	@include transition-duration(0.75s);
+	@include transition-timing-function(ease-in);
+	@include transition-delay(3.5s);
+	-webkit-overflow-scrolling: touch;
+	background: _palette(accent1, bg);
+	color: _palette(accent1, fg-bold);
+	height: 100%;
+	max-width: 80%;
+	overflow-y: auto;
+	padding: 3em 2em;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 20em;
+	z-index: _misc(z-index-base) + 2;
+	ul {
+		list-style: none;
+		padding: 0;
+		> li {
+			border-top: solid 1px _palette(accent1, border);
+			margin: 0.5em 0 0 0;
+			padding: 0.5em 0 0 0;
+			&:first-child {
+				border-top: 0 !important;
+				margin-top: 0 !important;
+				padding-top: 0 !important;
+			}
+			> a {
+				border: 0;
+				color: inherit;
+				display: block;
+				font-size: 0.8em;
+				letter-spacing: _size(letter-spacing-alt);
+				outline: 0;
+				text-decoration: none;
+				text-transform: uppercase;
+			}
+		}
+	}
+
+	.close {
+		background-image: url('../img/close.svg');
+		background-position: 4.85em 1em;
+		background-repeat: no-repeat;
+		border: 0;
+		cursor: pointer;
+		display: block;
+		height: 3em;
+		position: absolute;
+		right: 0;
+		top: 0;
+		vertical-align: middle;
+		width: 7em;
+	}
+}
+
 #shorts {
 	text-align: center;
 	background-color: _palette(accent1, bg);
@@ -167,4 +292,8 @@ blockquote {
 #pricing {
 	background-color: _palette(accent1, bg);
 	text-align: center;
+}
+
+.button.facebook {
+	background-color: #3b5998;
 }
