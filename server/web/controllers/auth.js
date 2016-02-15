@@ -6,7 +6,7 @@ let Boom = require('boom')
 exports.logout = {
 	auth: 'facebook',
 	handler(request, reply) {
-	    request.auth.session.clear()
+			request.cookieAuth.clear()
 	    return reply.redirect('/')
 	}
 }
@@ -20,7 +20,7 @@ exports.login = {
 		if (!request.auth.isAuthenticated) {
       return reply('Authentication failed due to: ' + request.auth.error.message)
     }
-		credentials = request.auth.credentials
-    return reply.redirect('/')
+		request.cookieAuth.set({ user: request.auth.credentials })
+    return reply.redirect('/main')
   }
 }

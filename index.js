@@ -59,6 +59,7 @@ exports.register = function(server, options, next) {
         }
       }
       server.log(error);
+      console.log(error);
       if (request.path === '/auth/facebook' && error.message === 'App was rejected') {
         baseData.error.loginError = true;
         return reply.view('home', baseData)

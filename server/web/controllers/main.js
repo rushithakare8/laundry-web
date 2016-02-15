@@ -8,14 +8,13 @@ let ViewData = require('../helpers/ViewData')
 // let Route = require('react-router').Route
 
 exports.index = {
-	auth: {
-		mode: 'required'
-	},
+	auth: 'session',
 	handler(request, reply) {
 		let baseData = ViewData.getBaseData()
 		// let html = ReactDOMServer.renderToString(<MyJobs />)
 		// baseData.appHtml = html
 		// console.log(html)
-		return reply.view('index', baseData)
+		console.log(request.auth.credentials);
+		return reply.view('main', baseData)
 	}
 }
