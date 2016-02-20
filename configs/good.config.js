@@ -1,4 +1,5 @@
 'use strict'
+
 let Console = require('good-console')
 
 module.exports = {

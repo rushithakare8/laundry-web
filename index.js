@@ -1,4 +1,5 @@
 'use strict'
+
 require("babel-core/register")
 let Path = require('path')
 let Jade = require('jade')
@@ -59,6 +60,7 @@ exports.register = function(server, options, next) {
         }
       }
       server.log(error);
+      console.log(request.path);
       console.log(error);
       if (request.path === '/auth/facebook' && error.message === 'App was rejected') {
         baseData.error.loginError = true;

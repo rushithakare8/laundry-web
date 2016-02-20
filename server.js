@@ -1,4 +1,5 @@
 'use strict'
+
 let Glue = require('glue')
 let Manifest = require('./manifest')
 let composeOptions = {

@@ -1,4 +1,5 @@
 'use strict'
+
 let Confidence = require('confidence')
 let Config = require('./configs/server.config')
 let criteria = {

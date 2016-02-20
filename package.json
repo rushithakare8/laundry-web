@@ -34,7 +34,7 @@
     "history": "2.x.x",
     "inert": "3.x.x",
     "jade": "1.x.x",
-    "joi": "7.x.x",
+    "joi": "8.x.x",
     "lodash": "4.x.x",
     "opbeat": "3.x.x",
     "poop": "2.x.x",
@@ -42,8 +42,8 @@
     "react-dom": "0.x.x",
     "react-redux": "4.x.x",
     "react-router": "2.x.x",
+    "react-router-redux": "v4.0.0-rc.2",
     "redux": "3.x.x",
-    "redux-router": "1.0.0-beta7",
     "redux-thunk": "1.x.x",
     "scooter": "2.x.x",
     "vision": "4.x.x"

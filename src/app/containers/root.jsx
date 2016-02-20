@@ -1,25 +1,25 @@
 'use strict'
-// **************************************************************************************
-// Boiler plate code to connect the redux-router to the actual routes and the store.
-// **************************************************************************************
 
-import React, { Component, PropTypes } from 'react'
+import { Component, PropTypes } from 'react'
 import { Provider } from 'react-redux'
-import { ReduxRouter } from 'redux-router'
+import { Router } from 'react-router'
 
 class Root extends Component {
-  render() {
-    const { store } = this.props
+  render () {
     return (
-      <Provider store={ store }>
-        <ReduxRouter />
+      <Provider store={this.props.store}>
+        <Router history={this.props.history}>
+          {this.props.routes}
+        </Router>
       </Provider>
     )
   }
 }
 
 Root.propTypes = {
+  history: PropTypes.object.isRequired,
+  routes: PropTypes.element.isRequired,
   store: PropTypes.object.isRequired
 }
 
-module.exports = Root
+export default Root

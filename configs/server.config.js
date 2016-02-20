@@ -1,4 +1,5 @@
 'use strict'
+
 let Confidence = require('confidence')
 let port = process.env.PORT || 3000
 let criteria = {

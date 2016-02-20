@@ -34,7 +34,6 @@ module.exports = {
 	},
   atomic: function() {
     return gulp.src(paths.acss.src)
-      .pipe(changed(paths.acss.src))
       .pipe(atomicss())
       .pipe(rename({suffix: '.min'}))
 			.pipe(minifyCss())
@@ -44,7 +43,6 @@ module.exports = {
   },
   devatomic: function() {
     return gulp.src(paths.acss.src)
-      .pipe(changed(paths.acss.src))
       .pipe(atomicss())
       .pipe(gulp.dest(paths.acss.dest))
   }

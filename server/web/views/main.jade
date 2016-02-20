@@ -3,8 +3,14 @@ extends main/layout
 block styles
 
 block content
-  #container
+  #site-wapper
+    .row.medium-8.large-7.columns
+      #container
+        | !{html}
+      footer#footer
+        a(href='#') Home
 
 block scripts
+  script(src='/public/app/build/main#{minAssets}.js')
   script.
     var LW = { PAGE: { home: { view: { error: !{JSON.stringify(error).replace(/<\//g, "<\\/")} } } } }

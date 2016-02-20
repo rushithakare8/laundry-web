@@ -1,13 +1,27 @@
 'use strict'
 
 import React from 'react'
-import { render } from 'react-dom'
-import Root from './containers/root.jsx'
-import configureStore from './stores/mainConfigStore.js'
+import ReactDOM from 'react-dom'
+import createBrowserHistory from 'history/lib/createBrowserHistory'
+import { useRouterHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
 
-const store = configureStore()
+import makeRoutes from './routes'
+import Root from './containers/Root'
+import configureStore from './redux/configureStore'
 
-render(
-  <Root store={store} />,
+const initialState = { counter: 2 }
+const store = configureStore(initialState)
+const browserHistory = useRouterHistory(createBrowserHistory)({
+  basename: ('')
+})
+const history = syncHistoryWithStore(browserHistory, store, {
+  selectLocationState: (state) => state.router
+})
+
+const routes = makeRoutes(store)
+
+ReactDOM.render(
+  <Root history={history} routes={routes} store={store} />,
   document.getElementById('container')
 )

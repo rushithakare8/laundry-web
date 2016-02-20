@@ -8,7 +8,10 @@
     "dest": "public/css/"
   },
   "acss": {
-    "src": "server/web/views/**/*.jade",
+    "src": [
+      "server/web/views/**/*.jade",
+      "src/app/**/*.jsx"
+    ],
     "dest": "public/css/"
   },
   "img": {
