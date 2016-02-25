@@ -1,19 +1,21 @@
 'use strict'
 
-const ViewData = require('../helpers/ViewData')
-const AppRender = require('../helpers/appRender')
+import ViewData from '../helpers/ViewData'
+import appRender from '../helpers/appRender'
+import { getState } from '../helpers/stateCreator'
 
 exports.index = {
 	auth: 'session',
 	handler(request, reply) {
 		let baseData = ViewData.getBaseData()
-		AppRender(request.path, { counter: 2 }).then((html) => {
-			// console.log(request.auth.credentials);
+		let state = getState(request)
+		appRender(request.path, state).then(function(html) {
+			baseData.state = state;
 			baseData.html = html;
 			return reply.view('main', baseData)
-		}, (err) => {
-			server.log(err);
-			throw err
+		}).catch(function(error) {
+			console.log('AppRender Error: ', error)
+			return reply.view('main', baseData)
 		})
 	}
 }

@@ -4,13 +4,17 @@ block styles
 
 block content
   #site-wapper
-    .row.medium-8.large-7.columns
-      #container
-        | !{html}
-      footer#footer
-        a(href='#') Home
+    #container.row.medium-8.large-7.columns
+      | !{html}
+    footer#footer
+      a(href='/') Home
+      span /
+      a(href='/main') Main
+      span /
+      a(href='/profile') Profile
 
-block scripts
+block scripts2
   script(src='/public/app/build/main#{minAssets}.js')
   script.
-    var LW = { PAGE: { home: { view: { error: !{JSON.stringify(error).replace(/<\//g, "<\\/")} } } } }
+    var initialState = !{JSON.stringify(state).replace(/<\//g, "<\\/")}
+    var error = !{JSON.stringify(error).replace(/<\//g, "<\\/")}

@@ -3,5 +3,5 @@
 
 $(document).foundation();
 $(document).ready(() => {
-  const errors = LW.PAGE.home.view.error;
+  const errors = error;
 })

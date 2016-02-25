@@ -1,6 +1,7 @@
 'use strict'
 
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 
 import Header from '../../components/Header'
 import Menu from '../../components/Menu'
@@ -24,9 +25,9 @@ class CoreLayout extends React.Component {
     const { children } = this.props
     const title = routeToTitle[this.props.route.path]
     return (
-      <div>
+      <div className='W(100%)'>
         <Header title={ title } openMenu={ this.openMenu } />
-        <Menu opened={ this.state.openedMenu } />
+        <Menu opened={ this.state.openedMenu } openMenu={ this.openMenu } />
         {children}
       </div>
     )
@@ -34,7 +35,14 @@ class CoreLayout extends React.Component {
 }
 
 CoreLayout.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.element.isRequired,
+  user: PropTypes.object.isRequired
 }
 
 export default CoreLayout
+
+const mapStateToProps = (state) => ({
+  user: state.user
+})
+
+export default connect(mapStateToProps)(CoreLayout)

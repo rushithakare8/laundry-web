@@ -1,25 +1,30 @@
 'use strict'
 
-import { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
+import classnames from 'classnames'
 
-class Menu extends Component {
+class Menu extends React.Component {
 	render() {
+		let sideClass = classnames(
+			'sidebar', { 'active': this.props.opened }
+		)
 		return(
-      <div className='sidebar'>
-        <div className='sidebar-overlay'></div>
+      <div className={sideClass}>
+        <div className='sidebar-overlay' onClick={ this.props.openMenu }></div>
         <div className='sidebar-content'>
           <div className='top-head'>
             <div className='name'>Luis Gonzalez</div>
             <div className='email'>luis@test.com</div>
           </div>
           <nav className='nav-left'>
-            <a href='#home'><span className='ion-ios-home-outline'></span> Home</a>
-            <a href='#alarm'><span className='ion-ios-list-outline'></span> Alarm</a>
-            <a href='#compose'><span className='ion-ios-compose-outline'></span> Compose</a>
-            <a href='#chats'><span className='ion-ios-chatboxes-outline'></span> Chats</a>
-            <a href='#profile'><span className='ion-ios-person-outline'></span> Profile</a>
-            <a href='#settings'><span className='ion-ios-gear-outline'></span> Settings</a>
-            <a href='#credits'><span className='ion-ios-information-outline'></span> Credits</a>
+            <a href='#home'><i className='fa fa-home'></i><span>Home</span></a>
+            <a href='#alarm'><i className='fa fa-bell'></i><span>Alarm</span></a>
+            <a href='#compose'><i className='fa fa-pencil'></i><span>Compose</span></a>
+            <a href='#chats'><i className='fa fa-comments'></i><span>Chats</span></a>
+            <a href='#profile'><i className='fa fa-user'></i><span>Profile</span></a>
+            <a href='#settings'><i className='fa fa-cog'></i><span>Settings</span></a>
+            <a href='#credits'><i className='fa fa-list'></i><span>Credits</span></a>
+						<a href='#close' onClick={ this.props.openMenu }><i className='fa fa-times'></i><span>Close</span></a>
           </nav>
         </div>
       </div>

@@ -1,10 +1,10 @@
 'use strict'
 
-import { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { increment, doubleAsync } from '../../redux/modules/counter'
 
-export class HomeView extends Component {
+export class HomeView extends React.Component {
   render () {
     return (
       <div className='container text-center'>

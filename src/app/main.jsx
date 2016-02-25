@@ -1,4 +1,5 @@
 'use strict'
+/*global window*/
 
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -10,7 +11,8 @@ import makeRoutes from './routes'
 import Root from './containers/Root'
 import configureStore from './redux/configureStore'
 
-const initialState = { counter: 2 }
+const initialState = window.initialState
+console.log(initialState)
 const store = configureStore(initialState)
 const browserHistory = useRouterHistory(createBrowserHistory)({
   basename: ('')

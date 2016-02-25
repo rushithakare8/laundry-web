@@ -1,18 +1,17 @@
 'use strict'
 
-import { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 
-class Header extends Component {
+class Header extends React.Component {
 	render() {
 		return(
-			<header className='header row Py(15px)'>
+			<header className='header row P(15px)'>
         <div className='Mend(25px)'>
-					<a onClick={ this.props.openMenu }>
+					<a className='C(#000)' onClick={ this.props.openMenu }>
           	<i className='fa fa-bars Mend(10px)'></i>
         		<span>Menu</span>
 					</a>
         </div>
-        <div>{ this.props.title }</div>
 			</header>
 		)
 	}
