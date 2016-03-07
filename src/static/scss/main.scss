@@ -1,9 +1,12 @@
 @import "bourbon";
 @import "common";
+@import "radial-progress";
+@import "vars";
+@import "getters";
 
 #container {
   position: relative;
-  background-color: #FDFFFC;
+  background-color: _main(colors, background);
   box-shadow: 0px 1px 5px #888;
   overflow-x: hidden;
   min-height: 700px;
@@ -77,6 +80,16 @@
               transform: scale(1);
     }
   }
+}
+
+.radial-progress {
+  @include radial-progress($inset-color: _main(colors, background), $circle-color: #50d2c2, $shadow: none, $percentage-color: inherit, $circle-background: rgba(25,25,25,0.3));
+  margin: 0 auto;
+}
+
+.banner {
+  @include clearfix();
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 #footer {

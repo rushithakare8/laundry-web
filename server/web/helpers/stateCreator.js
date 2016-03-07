@@ -1,11 +1,15 @@
 'use strict'
 
 let getUser = (req) => {
-  return req.auth.credentials.user.profile;
+  const user = Object.assign({}, req.auth.credentials.user.profile, {
+    pointsMissing: 1500,
+    pointsCompleted: 70
+  })
+  return user;
 }
 let getState = (req) => {
   return {
-    counter: 0,
+    orders: [],
     user: getUser(req)
   }
 }

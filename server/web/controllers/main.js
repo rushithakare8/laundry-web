@@ -9,9 +9,9 @@ exports.index = {
 	handler(request, reply) {
 		let baseData = ViewData.getBaseData()
 		let state = getState(request)
+		baseData.state = state
 		appRender(request.path, state).then(function(html) {
-			baseData.state = state;
-			baseData.html = html;
+			baseData.html = html
 			return reply.view('main', baseData)
 		}).catch(function(error) {
 			console.log('AppRender Error: ', error)

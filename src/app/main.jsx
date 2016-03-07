@@ -12,7 +12,6 @@ import Root from './containers/Root'
 import configureStore from './redux/configureStore'
 
 const initialState = window.initialState
-console.log(initialState)
 const store = configureStore(initialState)
 const browserHistory = useRouterHistory(createBrowserHistory)({
   basename: ('')

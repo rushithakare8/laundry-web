@@ -1,5 +1,5 @@
 'use strict'
-/*global LW*/
+/*global error*/
 
 $(document).foundation();
 $(document).ready(() => {

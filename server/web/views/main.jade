@@ -4,7 +4,7 @@ block styles
 
 block content
   #site-wapper
-    #container.row.medium-8.large-7.columns
+    #container.row.medium-8.large-7
       | !{html}
     footer#footer
       a(href='/') Home
@@ -13,8 +13,8 @@ block content
       span /
       a(href='/profile') Profile
 
-block scripts2
-  script(src='/public/app/build/main#{minAssets}.js')
+block scripts
   script.
     var initialState = !{JSON.stringify(state).replace(/<\//g, "<\\/")}
     var error = !{JSON.stringify(error).replace(/<\//g, "<\\/")}
+  script(src='/public/app/build/main#{minAssets}.js')

@@ -47,3 +47,9 @@
 @function _size($keys...) {
 	@return val($size, $keys...);
 }
+
+/// @param {string} $keys Key(s).
+/// @return {string} Value.
+@function _main($keys...) {
+	@return val($main, $keys...);
+}

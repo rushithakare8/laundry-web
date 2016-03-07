@@ -7,7 +7,7 @@ import Header from '../../components/Header'
 import Menu from '../../components/Menu'
 
 const routeToTitle = {
-  '/main' : 'HOME'
+  '/main' : 'Overview'
 }
 
 class CoreLayout extends React.Component {
@@ -26,8 +26,8 @@ class CoreLayout extends React.Component {
     const title = routeToTitle[this.props.route.path]
     return (
       <div className='W(100%)'>
-        <Header title={ title } openMenu={ this.openMenu } />
-        <Menu opened={ this.state.openedMenu } openMenu={ this.openMenu } />
+        <Header title={ title } openMenu={ this.openMenu } user={ this.props.user } />
+        <Menu opened={ this.state.openedMenu } openMenu={ this.openMenu } user={ this.props.user } />
         {children}
       </div>
     )

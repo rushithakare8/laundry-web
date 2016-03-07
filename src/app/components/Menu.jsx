@@ -5,6 +5,7 @@ import classnames from 'classnames'
 
 class Menu extends React.Component {
 	render() {
+		const user = this.props.user
 		let sideClass = classnames(
 			'sidebar', { 'active': this.props.opened }
 		)
@@ -13,11 +14,11 @@ class Menu extends React.Component {
         <div className='sidebar-overlay' onClick={ this.props.openMenu }></div>
         <div className='sidebar-content'>
           <div className='top-head'>
-            <div className='name'>Luis Gonzalez</div>
-            <div className='email'>luis@test.com</div>
+            <div className='name'>{user.displayName}</div>
+            <div className='email'>{user.email}</div>
           </div>
           <nav className='nav-left'>
-            <a href='#home'><i className='fa fa-home'></i><span>Home</span></a>
+            <a href='#home'><i className='fa fa-home'></i><span>Overview</span></a>
             <a href='#alarm'><i className='fa fa-bell'></i><span>Alarm</span></a>
             <a href='#compose'><i className='fa fa-pencil'></i><span>Compose</span></a>
             <a href='#chats'><i className='fa fa-comments'></i><span>Chats</span></a>
@@ -33,7 +34,8 @@ class Menu extends React.Component {
 }
 
 Menu.propTypes = {
-  opened: PropTypes.bool.isRequired
+  opened: PropTypes.bool.isRequired,
+	user: PropTypes.object.isRequired
 }
 
 module.exports = Menu

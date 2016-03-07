@@ -5,11 +5,11 @@ import React, { PropTypes } from 'react'
 class Header extends React.Component {
 	render() {
 		return(
-			<header className='header row P(15px)'>
-        <div className='Mend(25px)'>
-					<a className='C(#000)' onClick={ this.props.openMenu }>
-          	<i className='fa fa-bars Mend(10px)'></i>
-        		<span>Menu</span>
+			<header className='header row align-justify P(15px)'>
+        <div className='column'>
+					<a className='C(#000) D(b) Ta(c)' onClick={ this.props.openMenu }>
+						<i className='fa fa-bars float-left'></i>
+						<span>{ this.props.title }</span>
 					</a>
         </div>
 			</header>
@@ -19,7 +19,8 @@ class Header extends React.Component {
 
 Header.propTypes = {
   title: PropTypes.string.isRequired,
-  openMenu: PropTypes.func.isRequired
+  openMenu: PropTypes.func.isRequired,
+	user: PropTypes.object.isRequired
 }
 
 module.exports = Header

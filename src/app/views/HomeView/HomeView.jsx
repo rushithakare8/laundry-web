@@ -2,34 +2,35 @@
 
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { increment, doubleAsync } from '../../redux/modules/counter'
+
+import { getCurrentOrders } from '../../redux/reducers/orders'
+import RadialProgress from '../../components/RadialProgress'
 
 export class HomeView extends React.Component {
   render () {
     return (
       <div className='container text-center'>
-        <div>
-          Sample Counter:
-          <span>{this.props.counter}</span>
+        <div className='banner Py(15px)'>
+          <RadialProgress progress={ this.props.user.pointsCompleted } />
+          <div className='Mt(15px)'>Points to next reward: { this.props.user.pointsMissing }</div>
         </div>
-        <button className='button' onClick={this.props.increment}>Increment</button>
-        <button className='button' onClick={this.props.doubleAsync}>Double (Async)</button>
+        <button className='button' onClick={this.props.getCurrentOrders}>Get Current Orders</button>
       </div>
     )
   }
 }
 
 HomeView.propTypes = {
-  counter: PropTypes.number.isRequired,
-  doubleAsync: PropTypes.func.isRequired,
-  increment: PropTypes.func.isRequired
+  getCurrentOrders: PropTypes.func.isRequired,
+  orders: PropTypes.array.isRequired,
+  user: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-  counter: state.counter
+  orders: state.orders,
+  user: state.user
 })
 
 export default connect((mapStateToProps), {
-  increment: () => increment(1),
-  doubleAsync
+  getCurrentOrders
 })(HomeView)
