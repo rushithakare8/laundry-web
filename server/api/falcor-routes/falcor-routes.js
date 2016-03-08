@@ -11,18 +11,23 @@ class RouterBase extends Router.createClass([
     }
   },
   {
-    route: 'myorders[{ranges:indexRanges}].city',
+    route: 'myorders[{ranges:indexRanges}][{keys:props}]',
     get(pathSet) {
       return Observable.from(pathSet.indexRanges)
-      .map((range) => {
-        let myorders = getNOrders(range.to)
-        return myorders.map((order, idx) => {
-          return {
-            path: ['myorders', idx, 'city'],
-            value: order.pickupAddress.city
-          }
-        })
-      })
+      .flatMap(range => Observable.fromPromise(getNOrders(range.to))
+        .flatMap(orders => Observable.from(pathSet.props)
+          .flatMap(prop => {
+            let pathValues = orders.
+              map((order, idx) => {
+                return {
+                  path: ['myorders',idx, prop],
+                  value: order.pickupAddress[prop]
+                }
+              })
+            return pathValues
+          })
+        )
+      )
     }
   }
 ]) {

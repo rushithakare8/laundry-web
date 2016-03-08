@@ -9,7 +9,7 @@ let getUser = (req) => {
 }
 let getState = (req) => {
   return {
-    orders: [],
+    orders: null,
     user: getUser(req)
   }
 }

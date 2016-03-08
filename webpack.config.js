@@ -31,8 +31,8 @@ module.exports = {
   externals: {
     'react-router': 'ReactRouter',
     'react-redux': 'ReactRedux',
+    'immutable': 'Immutable',
     'react-dom': 'ReactDOM',
-    'jquery': 'jQuery',
     'falcor': 'falcor',
     'react': 'React',
     'redux': 'Redux',

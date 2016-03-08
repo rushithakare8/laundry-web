@@ -41,11 +41,13 @@ const getFakeOrder = () => {
 }
 
 const getNOrders = (n) => {
-  let results = []
-  for (var i = 0; i < n; i++) {
-    results.push(getFakeOrder())
-  }
-  return results
+  return new Promise((resolve, reject) => {
+    let results = []
+    for (var i = 0; i < n; i++) {
+      results.push(getFakeOrder())
+    }
+    resolve(results)
+  })
 }
 
 module.exports = {

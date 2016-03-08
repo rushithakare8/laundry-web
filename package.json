@@ -17,7 +17,7 @@
   "author": "Luis Gonzalez <luismgonzalezb@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "5.7.0",
+    "node": "5.7.1",
     "npm": "3.6.0"
   },
   "dependencies": {
@@ -37,6 +37,7 @@
     "hapi": "13.x.x",
     "hapi-auth-cookie": "6.x.x",
     "history": "2.x.x",
+    "immutable": "3.x.x",
     "inert": "3.x.x",
     "jade": "1.x.x",
     "joi": "8.x.x",
@@ -73,6 +74,8 @@
     "gulp-rework": "*",
     "gulp-sass": "*",
     "gulp-uglify": "*",
+    "imagemin-jpegtran": "*",
+    "imagemin-optipng": "*",
     "install": "*",
     "jshint": "*",
     "jshint-stylish": "*",

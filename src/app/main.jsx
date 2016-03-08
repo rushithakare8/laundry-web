@@ -1,6 +1,7 @@
 'use strict'
 /*global window*/
 
+import falcor from 'falcor'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import createBrowserHistory from 'history/lib/createBrowserHistory'
@@ -11,7 +12,11 @@ import makeRoutes from './routes'
 import Root from './containers/Root'
 import configureStore from './redux/configureStore'
 
-const initialState = window.initialState
+let model = new falcor.Model({
+  source: new falcor.HttpDataSource('/model.json')
+})
+
+const initialState = Object.assign({}, window.initialState, { falcor : model })
 const store = configureStore(initialState)
 const browserHistory = useRouterHistory(createBrowserHistory)({
   basename: ('')

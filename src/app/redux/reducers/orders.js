@@ -1,24 +1,23 @@
 'use strict'
 
-import jquery from 'jQuery'
-import falcor from 'falcor'
+import { Map } from 'immutable'
 
-import { getOrders } from './actions'
-import { GET_CURRENT_ORDERS } from './constants'
-import { currentOrdersReducer } from './reducers'
+export const GET_CURRENT_ORDERS = 'GET_CURRENT_ORDERS'
+
+export const getOrders = (orders) => ({
+  type: GET_CURRENT_ORDERS,
+  payload: orders
+})
+
+export const currentOrdersReducer = (state, action) => {
+  return action.payload
+}
 
 export const getCurrentOrders = () => {
   return (dispatch, getState) => {
-    let ordersModel = new falcor.Model({
-      source: new falcor.HttpDataSource('/model.json')
-    })
-
-    ordersModel.get(['myorders', { from: 0, to: 3 }, 'city']).then((value) => {
-      console.log(value)
-    })
-
-    jquery.get('/api/v1/getcurrentorders', (data) => {
-      dispatch(getOrders(data.orders))
+    const falcor = getState().falcor
+    falcor.get(['myorders', { from: 0, to: 3 }, ['city', 'streetAddress']]).then((value) => {
+      dispatch(getOrders(Map(value.json.myorders)))
     })
   }
 }
