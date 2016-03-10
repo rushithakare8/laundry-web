@@ -1,7 +1,6 @@
-'use strict'
-/*global error*/
+/* global $, error */
 
 $(document).foundation();
 $(document).ready(() => {
-  const errors = error;
-})
+  // const errors = error;
+});

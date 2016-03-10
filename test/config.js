@@ -1,25 +1,16 @@
-'use strict'
+const Lab = require('lab');
+const Code = require('code');
+const Config = require('../configs/server.config.js');
+const lab = exports.lab = Lab.script();
 
-let Lab = require('lab')
-let Code = require('code')
-let Config = require('../configs/server.config.js')
-let lab = exports.lab = Lab.script()
+lab.experiment('Config', () => {
+  lab.test('it gets config data', (done) => {
+    Code.expect(Config.get('/')).to.be.an.object();
+    done();
+  });
 
-
-lab.experiment('Config', function () {
-
-    lab.test('it gets config data', function (done) {
-
-        Code.expect(Config.get('/')).to.be.an.object()
-
-        done()
-    })
-
-
-    lab.test('it gets config meta data', function (done) {
-
-        Code.expect(Config.meta('/')).to.match(/this file configures the plot device/i)
-
-        done()
-    })
-})
+  lab.test('it gets config meta data', (done) => {
+    Code.expect(Config.meta('/')).to.match(/this file configures the plot device/i);
+    done();
+  });
+});

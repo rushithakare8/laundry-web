@@ -1,10 +1,11 @@
-'use strict'
 
-let Confidence = require('confidence')
-let Config = require('./configs/server.config')
+
+let Confidence = require('confidence');
+let Config = require('./configs/server.config');
 let criteria = {
   env: process.env.NODE_ENV,
-}
+};
+
 let manifest = {
   $meta: 'This file compioses the server and the plugins [external servers] to be added to the server.',
   connections: [
@@ -23,9 +24,10 @@ let manifest = {
     }
 
   ]
-}
-let store = new Confidence.Store(manifest)
+};
 
-exports.get = key => store.get(key, criteria)
+let store = new Confidence.Store(manifest);
 
-exports.meta = key => store.meta(key, criteria)
+exports.get = key => store.get(key, criteria);
+
+exports.meta = key => store.meta(key, criteria);

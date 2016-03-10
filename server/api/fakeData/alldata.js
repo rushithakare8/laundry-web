@@ -1,7 +1,7 @@
-import faker from 'faker'
+import faker from 'faker';
 
-let getAllData = function() {
-  faker.locale = 'en_US'
+const getAllData = () => {
+  faker.locale = 'en_US';
   return {
     address: {
       city: faker.address.city(),
@@ -12,7 +12,7 @@ let getAllData = function() {
       countryCode: faker.address.countryCode(),
       state: faker.address.state(),
       stateAbbr: faker.address.stateAbbr(),
-      zipCode: faker.address.zipCode()
+      zipCode: faker.address.zipCode(),
     },
     finance: {
       account: faker.finance.account(),
@@ -22,7 +22,7 @@ let getAllData = function() {
       transactionType: faker.finance.transactionType(),
       currencyCode: faker.finance.currencyCode(),
       currencyName: faker.finance.currencyName(),
-      currencySymbol: faker.finance.currencySymbol()
+      currencySymbol: faker.finance.currencySymbol(),
     },
     commerce: {
       color: faker.commerce.color(),
@@ -31,7 +31,7 @@ let getAllData = function() {
       price: faker.commerce.price(),
       productAdjective: faker.commerce.productAdjective(),
       productMaterial: faker.commerce.productMaterial(),
-      product: faker.commerce.product()
+      product: faker.commerce.product(),
     },
     company: {
       bs: faker.company.bs(),
@@ -44,7 +44,7 @@ let getAllData = function() {
       catchPhraseNoun: faker.company.catchPhraseNoun(),
       bsAdjective: faker.company.bsAdjective(),
       bsBuzz: faker.company.bsBuzz(),
-      bsNoun: faker.company.bsNoun()
+      bsNoun: faker.company.bsNoun(),
     },
     date: {
       past: faker.date.past(),
@@ -52,7 +52,7 @@ let getAllData = function() {
       between: faker.date.between(),
       recent: faker.date.recent(),
       month: faker.date.month(),
-      weekday: faker.date.weekday()
+      weekday: faker.date.weekday(),
     },
     hacker: {
       abbreviation: faker.hacker.abbreviation(),
@@ -60,7 +60,7 @@ let getAllData = function() {
       noun: faker.hacker.noun(),
       verb: faker.hacker.verb(),
       ingverb: faker.hacker.ingverb(),
-      phrase: faker.hacker.phrase()
+      phrase: faker.hacker.phrase(),
     },
     helpers: {
       randomize: faker.helpers.randomize(),
@@ -72,7 +72,7 @@ let getAllData = function() {
       createCard: faker.helpers.createCard(),
       contextualCard: faker.helpers.contextualCard(),
       userCard: faker.helpers.userCard(),
-      createTransaction: faker.helpers.createTransaction()
+      createTransaction: faker.helpers.createTransaction(),
     },
     image: {
       image: faker.image.image(),
@@ -90,7 +90,7 @@ let getAllData = function() {
       nature: faker.image.nature(),
       sports: faker.image.sports(),
       technics: faker.image.technics(),
-      transport: faker.image.transport()
+      transport: faker.image.transport(),
     },
     internet: {
       avatar: faker.internet.avatar(),
@@ -105,14 +105,14 @@ let getAllData = function() {
       userAgent: faker.internet.userAgent(),
       color: faker.internet.color(),
       mac: faker.internet.mac(),
-      password: faker.internet.password()
+      password: faker.internet.password(),
     },
     lorem: {
       words: faker.lorem.words(),
       sentence: faker.lorem.sentence(),
       sentences: faker.lorem.sentences(),
       paragraph: faker.lorem.paragraph(),
-      paragraphs: faker.lorem.paragraphs()
+      paragraphs: faker.lorem.paragraphs(),
     },
     name: {
       jobDescriptor: faker.name.jobDescriptor(),
@@ -124,23 +124,23 @@ let getAllData = function() {
       suffix: faker.name.suffix(),
       title: faker.name.title(),
       jobArea: faker.name.jobArea(),
-      jobType: faker.name.jobType()
+      jobType: faker.name.jobType(),
     },
     phone: {
       phoneNumber: faker.phone.phoneNumber(),
       phoneNumberFormat: faker.phone.phoneNumberFormat(),
-      phoneFormats: faker.phone.phoneFormats()
+      phoneFormats: faker.phone.phoneFormats(),
     },
     random: {
       number: faker.random.number(),
       arrayElement: faker.random.arrayElement(),
       objectElement: faker.random.objectElement(),
       uuid: faker.random.uuid(),
-      boolean: faker.random.boolean()
-    }
-  }
-}
+      boolean: faker.random.boolean(),
+    },
+  };
+};
 
 module.exports = {
-  getAllData: getAllData
-}
+  getAllData,
+};

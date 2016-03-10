@@ -4,6 +4,7 @@
   "description": "Laundry consumer wesite",
   "main": "index.js",
   "scripts": {
+    "lint": "./node_modules/eslint/bin/eslint.js --quiet --ext .jsx,.js **/*",
     "start": "node server.js",
     "test": "./node_modules/lab/bin/lab -l",
     "build": "./node_modules/gulp/bin/gulp.js"
@@ -42,7 +43,6 @@
     "jade": "1.x.x",
     "joi": "8.x.x",
     "jquery": "^2.2.1",
-    "lodash": "4.x.x",
     "opbeat": "3.x.x",
     "poop": "2.x.x",
     "react": "0.x.x",
@@ -58,6 +58,10 @@
   },
   "devDependencies": {
     "code": "*",
+    "eslint": "*",
+    "eslint-config-airbnb": "^6.1.0",
+    "eslint-plugin-babel": "^3.1.0",
+    "eslint-plugin-react": "^4.2.1",
     "gulp": "*",
     "gulp-atomizer": "*",
     "gulp-babel": "*",

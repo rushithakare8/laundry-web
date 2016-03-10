@@ -1,8 +1,6 @@
-'use strict'
-
-let Path = require('path')
+const Path = require('path');
 
 module.exports = {
-	logPath: Path.join(__dirname, '../logs/poop.log'),
-	heapdumpFolder: Path.join(__dirname, '../logs/')
-}
+  logPath: Path.join(__dirname, '../logs/poop.log'),
+  heapdumpFolder: Path.join(__dirname, '../logs/'),
+};

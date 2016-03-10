@@ -1,25 +1,22 @@
-'use strict'
-
-require("babel-core/register")
-let Path = require('path')
-let Jade = require('jade')
-let Bell = require('bell')
-let Good = require('good')
-let Poop = require('poop')
-let Inert = require('inert')
-let Vision = require('vision')
-let Scooter = require('scooter')
-let Session = require('hapi-auth-cookie')
-let webRoutes = require('./server/web/routes')
-let apiRoutes = require('./server/api/routes')
-let goodConfig = require('./configs/good.config')
-let poopConfig = require('./configs/poop.config')
-let vault = process.env.VAULT || require('./configs/vault')
+let Path = require('path');
+let Jade = require('jade');
+let Bell = require('bell');
+let Good = require('good');
+let Poop = require('poop');
+let Inert = require('inert');
+let Vision = require('vision');
+let Scooter = require('scooter');
+let Session = require('hapi-auth-cookie');
+let webRoutes = require('./server/web/routes');
+let apiRoutes = require('./server/api/routes');
+let goodConfig = require('./configs/good.config');
+let poopConfig = require('./configs/poop.config');
+let vault = process.env.VAULT || require('./configs/vault');
 let opbeat = require('opbeat').start({
   appId: 'a6e428e550',
   organizationId: '2556f6e3f5c34d968c5a2e46f6c8eea5',
   secretToken: 'c74d95c618e4ee667677b30971b97943cab78e03'
-})
+});
 
 exports.register = function(server, options, next) {
   server.register([
@@ -38,10 +35,10 @@ exports.register = function(server, options, next) {
     Bell
   ], function(err) {
     if (err) {
-      throw err
+      throw err;
     }
 
-    let auth
+    let auth;
 
     // ERROR HANDLIGN
     // server.ext('onPreResponse', (request, reply) => {
@@ -71,16 +68,16 @@ exports.register = function(server, options, next) {
 
     server.on('log', (event, tags) => {
       if (tags.error) {
-        console.log('Server error: ' + (event.data || 'unspecified'))
+        console.log('Server error: ' + (event.data || 'unspecified'));
       }
-    })
+    });
 
     server.app.vault = vault;
     if (typeof vault === 'string') {
       server.app.vault = JSON.parse(vault);
     }
 
-    auth = server.app.vault.auth
+    auth = server.app.vault.auth;
 
     server.auth.strategy('session', 'cookie', 'try', {
       password: server.app.vault.password,
@@ -101,8 +98,8 @@ exports.register = function(server, options, next) {
       engines: {
         jade: Jade,
       },
-      path: Path.join(__dirname, 'server/web/views'),
-    })
+      path: Path.join(__dirname, 'server/web/views')
+    });
 
     // Static Assets Routes
     server.route({
@@ -114,14 +111,14 @@ exports.register = function(server, options, next) {
           listing: true
         }
       }
-    })
+    });
 
-    server.route(webRoutes)
-    server.route(apiRoutes)
+    server.route(webRoutes);
+    server.route(apiRoutes);
   })
-  next()
-}
+  next();
+};
 
 exports.register.attributes = {
   name: 'il-laundry-consumer-web'
-}
+};

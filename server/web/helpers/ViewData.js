@@ -1,10 +1,6 @@
-'use strict'
+// const env = process.env.NODE_ENV || 'development';
 
-let env = process.env.NODE_ENV || 'development'
-
-exports.getBaseData = function () {
-	return {
-		minAssets: process.env.NODE_ENV === 'production' ? '.min' : '',
-		error: null
-	}
-}
+exports.getBaseData = () => ({
+  minAssets: process.env.NODE_ENV === 'production' ? '.min' : '',
+  error: null,
+});

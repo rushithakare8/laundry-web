@@ -1,26 +1,28 @@
-'use strict'
-/*global LW*/
+/* global $, noty, LW */
 
-let menu = $('#menu');
-let header = $('#header');
-let menuToggle = $('.menuToggle')
-let headerWaypoint = $('#shorts').waypoint({
+const menu = $('#menu');
+const header = $('#header');
+const menuToggle = $('.menuToggle');
+const templateTxt = '<div class="noty_message">' +
+                 '<span class="noty_text"></span><div class="noty_close"></div></div>';
+
+$('#shorts').waypoint({
   handler(direction) {
     if (direction === 'down') {
-      header.removeClass('alt')
+      header.removeClass('alt');
     } else {
-      header.addClass('alt')
+      header.addClass('alt');
     }
-  }
-})
+  },
+});
 
 menuToggle.click(() => {
-  menu.toggleClass('hide')
-})
+  menu.toggleClass('hide');
+});
 
 $.noty.defaults = {
-  layout: 'top'
-}
+  layout: 'top',
+};
 
 $.noty.defaults = {
   layout: 'top',
@@ -28,7 +30,7 @@ $.noty.defaults = {
   type: 'alert',
   text: '', // can be html or string
   dismissQueue: true, // If you want to use queue feature set this true
-  template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>',
+  template: templateTxt,
   animation: {
     open: 'animated bounceInLeft', // Animate.css class names
     close: 'animated bounceOutLeft', // Animate.css class names
@@ -38,23 +40,24 @@ $.noty.defaults = {
   modal: false,
   maxVisible: 5, // you can set max visible notification for dismissQueue true option,
   killer: false, // for close all notifications before show
-  // closeWith: ['click', 'button', 'hover', 'backdrop'] // backdrop click will close all notifications
+  // backdrop click will close all notifications
+  // closeWith: ['click', 'button', 'hover', 'backdrop']
   callback: {
-    onShow: function() {},
-    afterShow: function() {},
-    onClose: function() {},
-    afterClose: function() {},
-    onCloseClick: function() {},
-  }
-}
+    onShow: () => {},
+    afterShow: () => {},
+    onClose: () => {},
+    afterClose: () => {},
+    onCloseClick: () => {},
+  },
+};
 
 $(document).foundation();
 $(document).ready(() => {
   const errors = LW.PAGE.home.view.error;
   if (errors && errors.loginError) {
-    let notification = noty({
+    noty({
       text: 'There was an errror when login in, please try again',
-      type: 'error'
-    })
+      type: 'error',
+    });
   }
-})
+});

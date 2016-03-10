@@ -1,7 +1,7 @@
-import faker from 'faker'
+import faker from 'faker';
 
 const getFakeOrder = () => {
-  faker.locale = 'en_US'
+  faker.locale = 'en_US';
   return {
     pickupAddress: {
       city: faker.address.city(),
@@ -12,7 +12,7 @@ const getFakeOrder = () => {
       countryCode: faker.address.countryCode(),
       state: faker.address.state(),
       stateAbbr: faker.address.stateAbbr(),
-      zipCode: faker.address.zipCode()
+      zipCode: faker.address.zipCode(),
     },
     deliveryAddress: {
       city: faker.address.city(),
@@ -23,7 +23,7 @@ const getFakeOrder = () => {
       countryCode: faker.address.countryCode(),
       state: faker.address.state(),
       stateAbbr: faker.address.stateAbbr(),
-      zipCode: faker.address.zipCode()
+      zipCode: faker.address.zipCode(),
     },
     serviceDetails: {
       description: faker.commerce.productName(),
@@ -31,26 +31,24 @@ const getFakeOrder = () => {
       serviceType: faker.commerce.department(),
       orderDate: faker.date.recent(),
       estimateDate: faker.date.future(),
-      contactPhone: faker.phone.phoneNumber()
+      contactPhone: faker.phone.phoneNumber(),
     },
     paymentDetails: {
       transactionId: faker.finance.account(),
-      last4digits: faker.finance.mask()
-    }
-  }
-}
+      last4digits: faker.finance.mask(),
+    },
+  };
+};
 
-const getNOrders = (n) => {
-  return new Promise((resolve, reject) => {
-    let results = []
-    for (var i = 0; i < n; i++) {
-      results.push(getFakeOrder())
-    }
-    resolve(results)
-  })
-}
+const getNOrders = (n) => new Promise((resolve) => {
+  const results = [];
+  for (let i = 0; i < n; i++) {
+    results.push(getFakeOrder());
+  }
+  resolve(results);
+});
 
 module.exports = {
-  getFakeOrder: getFakeOrder,
-  getNOrders: getNOrders
-}
+  getFakeOrder,
+  getNOrders,
+};

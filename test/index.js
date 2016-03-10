@@ -1,20 +1,13 @@
-'use strict'
+const Lab = require('lab');
+const Code = require('code');
+const composer = require('../server.js');
+const lab = exports.lab = Lab.script();
 
-let Lab = require('lab')
-let Code = require('code')
-let composer = require('../server.js')
-let lab = exports.lab = Lab.script()
-
-
-lab.experiment('App', function () {
-
-    lab.test('it composes a server', function (done) {
-
-        composer(function (err, composedServer) {
-
-            Code.expect(composedServer).to.be.an.object()
-
-            done(err)
-        })
-    })
-})
+lab.experiment('App', () => {
+  lab.test('it composes a server', (done) => {
+    composer((err, composedServer) => {
+      Code.expect(composedServer).to.be.an.object();
+      done(err);
+    });
+  });
+});

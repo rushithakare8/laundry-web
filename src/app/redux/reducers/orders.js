@@ -1,43 +1,37 @@
-'use strict'
+import { Map } from 'immutable';
 
-import { Map } from 'immutable'
-
-export const GET_CURRENT_ORDERS = 'GET_CURRENT_ORDERS'
+export const GET_CURRENT_ORDERS = 'GET_CURRENT_ORDERS';
 
 export const getOrders = (orders) => ({
   type: GET_CURRENT_ORDERS,
-  payload: orders
-})
+  payload: orders,
+});
 
-export const currentOrdersReducer = (state, action) => {
-  return action.payload
-}
+export const currentOrdersReducer = (state, action) => action.payload;
 
-export const getCurrentOrders = () => {
-  return (dispatch, getState) => {
-    const falcor = getState().falcor
-    falcor.get(['myorders', { from: 0, to: 3 }, ['city', 'streetAddress']]).then((value) => {
-      dispatch(getOrders(Map(value.json.myorders)))
-    })
-  }
-}
+export const getCurrentOrders = () => (dispatch, getState) => {
+  const falcor = getState().falcor;
+  falcor.get(['myorders', { from: 0, to: 3 }, ['city', 'streetAddress']]).then((value) => {
+    dispatch(getOrders(new Map(value.json.myorders)));
+  });
+};
 
 export const actions = {
-  getCurrentOrders
-}
+  getCurrentOrders,
+};
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [GET_CURRENT_ORDERS]: currentOrdersReducer
-}
+  [GET_CURRENT_ORDERS]: currentOrdersReducer,
+};
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = {}
-export default function ordersReducer (state = initialState, action) {
-  const handler = ACTION_HANDLERS[action.type]
-  return handler ? handler(state, action) : state
+const initialState = {};
+export default function ordersReducer(state = initialState, action) {
+  const handler = ACTION_HANDLERS[action.type];
+  return handler ? handler(state, action) : state;
 }

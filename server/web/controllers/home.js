@@ -1,10 +1,8 @@
-'use strict'
-
-let ViewData = require('../helpers/ViewData')
+import ViewData from '../helpers/ViewData';
 
 exports.index = {
-	handler(request, reply) {
-		let baseData = ViewData.getBaseData()
-		return reply.view('home', baseData)
-	}
-}
+  handler(request, reply) {
+    const baseData = ViewData.getBaseData();
+    return reply.view('home', baseData);
+  },
+};

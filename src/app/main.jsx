@@ -1,33 +1,28 @@
-'use strict'
-/*global window*/
+import falcor from 'falcor';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import createBrowserHistory from 'history/lib/createBrowserHistory';
+import { useRouterHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+import makeRoutes from './routes';
+import Root from './containers/Root';
+import configureStore from './redux/configureStore';
 
-import falcor from 'falcor'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import createBrowserHistory from 'history/lib/createBrowserHistory'
-import { useRouterHistory } from 'react-router'
-import { syncHistoryWithStore } from 'react-router-redux'
-
-import makeRoutes from './routes'
-import Root from './containers/Root'
-import configureStore from './redux/configureStore'
-
-let model = new falcor.Model({
-  source: new falcor.HttpDataSource('/model.json')
-})
-
-const initialState = Object.assign({}, window.initialState, { falcor : model })
-const store = configureStore(initialState)
+const model = new falcor.Model({
+  source: new falcor.HttpDataSource('/model.json'),
+});
+const initialState = Object.assign({}, window.initialState, { falcor: model });
+const store = configureStore(initialState);
 const browserHistory = useRouterHistory(createBrowserHistory)({
-  basename: ('')
-})
+  basename: (''),
+});
 const history = syncHistoryWithStore(browserHistory, store, {
-  selectLocationState: (state) => state.router
-})
+  selectLocationState: (state) => state.router,
+});
 
-const routes = makeRoutes(store)
+const routes = makeRoutes(store);
 
 ReactDOM.render(
   <Root history={history} routes={routes} store={store} />,
   document.getElementById('container')
-)
+);

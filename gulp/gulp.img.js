@@ -1,22 +1,17 @@
-'use strict'
-
-var gulp = require('gulp')
-var imagemin = require('gulp-imagemin')
-var imageminOptipng = require('imagemin-optipng')
-var imageminJpegtran = require('imagemin-jpegtran')
-var paths = require('../configs/paths.json')
+const gulp = require('gulp');
+const imagemin = require('gulp-imagemin');
+const imageminJpegtran = require('imagemin-jpegtran');
+const imageminOptipng = require('imagemin-optipng');
+const paths = require('../configs/paths.json');
 
 module.exports = {
-	img: function() {
-		return gulp.src(paths.img.src)
-      .pipe(imagemin({
-          progressive: true,
-          use: [ imageminOptipng(), imageminJpegtran() ]
-      }))
-      .pipe(gulp.dest(paths.img.dest))
-	},
-	svg: function() {
-		return gulp.src(paths.svg.src)
-      .pipe(gulp.dest(paths.img.dest))
-	}
-}
+  img() {
+    return gulp.src(paths.img.src).pipe(imagemin({ progressive: true, use: [
+      imageminOptipng(),
+      imageminJpegtran(),
+    ] })).pipe(gulp.dest(paths.img.dest));
+  },
+  svg() {
+    return gulp.src(paths.svg.src).pipe(gulp.dest(paths.img.dest));
+  },
+};

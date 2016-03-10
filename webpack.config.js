@@ -1,6 +1,6 @@
-'use strict'
 
-let paths = require('./configs/paths.json')
+
+const paths = require('./configs/paths.json');
 
 module.exports = {
   context: __dirname,
@@ -36,7 +36,6 @@ module.exports = {
     'falcor': 'falcor',
     'react': 'React',
     'redux': 'Redux',
-    'lodash': '_',
   },
   debug: true
-}
+};
