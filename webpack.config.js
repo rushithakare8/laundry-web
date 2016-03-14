@@ -33,6 +33,7 @@ module.exports = {
     'react-redux': 'ReactRedux',
     'immutable': 'Immutable',
     'react-dom': 'ReactDOM',
+    'jquery': 'jQuery',
     'falcor': 'falcor',
     'react': 'React',
     'redux': 'Redux',

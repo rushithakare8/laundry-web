@@ -17,10 +17,13 @@ class RouterBase extends Router.createClass([
       .flatMap(range => Observable.fromPromise(getNOrders(range.to))
       .flatMap(orders => Observable.from(pathSet.props)
       .flatMap(prop => {
+        console.log('#########################', prop);
+        console.log('#########################', range);
+
         const pathValues = orders.
         map((order, idx) => ({
           path: ['myorders', idx, prop],
-          value: order.pickupAddress[prop],
+          value: order[prop],
         }));
         return pathValues;
       })));

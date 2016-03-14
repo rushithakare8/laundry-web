@@ -9,9 +9,11 @@ export const HomeView = ({ orders, user, getCurrentOrders }) => {
   )) : null;
   return (
     <div className="container text-center">
-      <div className="banner Py(15px)">
-        <RadialProgress progress={ user.pointsCompleted } />
-        <div className="Mt(15px)">Points to next reward: { user.pointsMissing }</div>
+      <div className="banner row align-middle Py(15px)">
+        <div className="columns Ta(end)">Points to next reward: { user.pointsMissing }</div>
+        <div className="columns">
+          <RadialProgress progress={ user.pointsCompleted } />
+        </div>
       </div>
       { orderChilds }
       <button className="button" onClick={ getCurrentOrders }>Get Current Orders</button>

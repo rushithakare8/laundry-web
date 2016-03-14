@@ -8,10 +8,7 @@ import makeRoutes from './routes';
 import Root from './containers/Root';
 import configureStore from './redux/configureStore';
 
-const model = new falcor.Model({
-  source: new falcor.HttpDataSource('/model.json'),
-});
-const initialState = Object.assign({}, window.initialState, { falcor: model });
+const initialState = window.initialState;
 const store = configureStore(initialState);
 const browserHistory = useRouterHistory(createBrowserHistory)({
   basename: (''),

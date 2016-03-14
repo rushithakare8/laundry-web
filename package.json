@@ -9,6 +9,10 @@
     "test": "./node_modules/lab/bin/lab -l",
     "build": "./node_modules/gulp/bin/gulp.js"
   },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/interactivelabs/laundry-web.git"
+  },
   "keywords": [
     "React",
     "Flux",
@@ -59,9 +63,9 @@
   "devDependencies": {
     "code": "*",
     "eslint": "*",
-    "eslint-config-airbnb": "^6.1.0",
-    "eslint-plugin-babel": "^3.1.0",
-    "eslint-plugin-react": "^4.2.1",
+    "eslint-config-airbnb": "*",
+    "eslint-plugin-babel": "*",
+    "eslint-plugin-react": "*",
     "gulp": "*",
     "gulp-atomizer": "*",
     "gulp-babel": "*",

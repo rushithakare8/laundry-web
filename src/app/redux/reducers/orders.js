@@ -10,10 +10,7 @@ export const getOrders = (orders) => ({
 export const currentOrdersReducer = (state, action) => action.payload;
 
 export const getCurrentOrders = () => (dispatch, getState) => {
-  const falcor = getState().falcor;
-  falcor.get(['myorders', { from: 0, to: 3 }, ['city', 'streetAddress']]).then((value) => {
-    dispatch(getOrders(new Map(value.json.myorders)));
-  });
+  
 };
 
 export const actions = {
