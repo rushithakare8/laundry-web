@@ -1,7 +1,7 @@
 import Router from 'falcor-router';
 import { Observable } from 'rx';
 // import { ref as $ref, error as $error } from 'falcor-json-graph';
-import { getNOrders } from '../fakeData/order';
+import { getOrder } from '../fakeData/order';
 
 class RouterBase extends Router.createClass([
   {
@@ -14,12 +14,9 @@ class RouterBase extends Router.createClass([
     route: 'myorders[{ranges:indexRanges}][{keys:props}]',
     get(pathSet) {
       return Observable.from(pathSet.indexRanges)
-      .flatMap(range => Observable.fromPromise(getNOrders(range.to))
+      .flatMap(range => Observable.fromPromise(getOrder(range.to))
       .flatMap(orders => Observable.from(pathSet.props)
       .flatMap(prop => {
-        console.log('#########################', prop);
-        console.log('#########################', range);
-
         const pathValues = orders.
         map((order, idx) => ({
           path: ['myorders', idx, prop],

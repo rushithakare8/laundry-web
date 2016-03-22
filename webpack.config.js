@@ -6,37 +6,39 @@ module.exports = {
   context: __dirname,
   entry: paths.react.main,
   output: {
-    filename: 'main.js'
+    filename: 'main.js',
   },
   module: {
     loaders: [
       {
         test: /\.json$/,
         exclude: /node_modules/,
-        loader: 'json'
+        loader: 'json',
       },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-          presets: ['es2015', 'react']
-        }
-      }
-    ]
+          presets: ['es2015', 'react'],
+        },
+      },
+    ],
   },
   resolve: {
-    extensions: ['', '.webpack.js', '.jsx', '.js', '.json']
+    extensions: ['', '.webpack.js', '.jsx', '.js', '.json'],
   },
   externals: {
     'react-router': 'ReactRouter',
     'react-redux': 'ReactRedux',
-    'immutable': 'Immutable',
+    'redux-thunk': 'ReduxThunk',
+    'redux-form': 'ReduxForm',
     'react-dom': 'ReactDOM',
-    'jquery': 'jQuery',
-    'falcor': 'falcor',
-    'react': 'React',
-    'redux': 'Redux',
+    immutable: 'Immutable',
+    jquery: 'jQuery',
+    falcor: 'falcor',
+    react: 'React',
+    redux: 'Redux',
   },
-  debug: true
+  debug: true,
 };

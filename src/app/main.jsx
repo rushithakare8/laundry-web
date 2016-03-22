@@ -1,11 +1,10 @@
-import falcor from 'falcor';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import { useRouterHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import makeRoutes from './routes';
-import Root from './containers/Root';
+import Root from './routes/Root';
 import configureStore from './redux/configureStore';
 
 const initialState = window.initialState;

@@ -5,7 +5,7 @@ import AppFalcorRouter from '../falcor/falcorRoutes';
 
 module.exports = [
   { method: 'GET', path: '/api/v1/getdata/{id}', config: Main.getData },
-  { method: 'GET', path: '/api/v1/getcurrentorders', config: Orders.getCurrentOrders },
+  { method: 'GET', path: '/api/v1/getcurrentorders/{count}', config: Orders.getCurrentOrders },
   {
     method: ['GET', 'POST'],
     path: '/model.json',

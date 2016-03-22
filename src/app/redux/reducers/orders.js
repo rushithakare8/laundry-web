@@ -1,16 +1,19 @@
-import { Map } from 'immutable';
+import { get } from 'jquery';
 
 export const GET_CURRENT_ORDERS = 'GET_CURRENT_ORDERS';
 
-export const getOrders = (orders) => ({
+export const getOrdersAction = (orders) => ({
   type: GET_CURRENT_ORDERS,
   payload: orders,
 });
 
-export const currentOrdersReducer = (state, action) => action.payload;
+export const getCurrentOrdersReducer = (state, action) => action.payload;
 
-export const getCurrentOrders = () => (dispatch, getState) => {
-  
+export const getCurrentOrders = () => (dispatch) => {
+  console.log(dispatch);
+  get('/api/v1/getcurrentorders/2', (data) => {
+    dispatch(getOrdersAction(data.orders));
+  });
 };
 
 export const actions = {
@@ -21,7 +24,7 @@ export const actions = {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [GET_CURRENT_ORDERS]: currentOrdersReducer,
+  [GET_CURRENT_ORDERS]: getCurrentOrdersReducer,
 };
 
 // ------------------------------------

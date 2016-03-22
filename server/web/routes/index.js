@@ -17,4 +17,5 @@ module.exports = [
     handler: { file: 'public/img/apple-touch-icon.png' },
   },
   { method: 'GET', path: '/main', config: Main.index },
+  { method: 'GET', path: '/main/{path*}', config: Main.index },
 ];

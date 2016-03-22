@@ -1,44 +1,48 @@
-let Path = require('path');
-let Jade = require('jade');
-let Bell = require('bell');
-let Good = require('good');
-let Poop = require('poop');
-let Inert = require('inert');
-let Vision = require('vision');
-let Scooter = require('scooter');
-let Session = require('hapi-auth-cookie');
-let webRoutes = require('./server/web/routes');
-let apiRoutes = require('./server/api/routes');
-let goodConfig = require('./configs/good.config');
-let poopConfig = require('./configs/poop.config');
+require('babel-core/register');
+
+const Path = require('path');
+const Jade = require('jade');
+const Bell = require('bell');
+const Good = require('good');
+const Poop = require('poop');
+const Inert = require('inert');
+const Vision = require('vision');
+const Scooter = require('scooter');
+const Session = require('hapi-auth-cookie');
+const webRoutes = require('./server/web/routes');
+const apiRoutes = require('./server/api/routes');
+const goodConfig = require('./configs/good.config');
+const poopConfig = require('./configs/poop.config');
 let vault = process.env.VAULT || require('./configs/vault');
-let opbeat = require('opbeat').start({
+require('opbeat').start({
   appId: 'a6e428e550',
   organizationId: '2556f6e3f5c34d968c5a2e46f6c8eea5',
-  secretToken: 'c74d95c618e4ee667677b30971b97943cab78e03'
+  secretToken: 'c74d95c618e4ee667677b30971b97943cab78e03',
 });
 
-exports.register = function(server, options, next) {
+exports.register = (server, options, next) => {
   server.register([
     {
       register: Good,
-      options: goodConfig
+      options: goodConfig,
     },
     {
       register: Poop,
-      options: poopConfig
+      options: poopConfig,
     },
     Session,
     Scooter,
     Vision,
     Inert,
-    Bell
-  ], function(err) {
+    Bell,
+  ], (err) => {
     if (err) {
       throw err;
     }
-
-    let auth;
+    if (typeof vault === 'string') {
+      vault = JSON.parse(vault);
+    }
+    const auth = vault.auth;
 
     // ERROR HANDLIGN
     // server.ext('onPreResponse', (request, reply) => {
@@ -68,29 +72,22 @@ exports.register = function(server, options, next) {
 
     server.on('log', (event, tags) => {
       if (tags.error) {
-        console.log('Server error: ' + (event.data || 'unspecified'));
+        console.log(`Server error: ${(event.data || 'unspecified')}`);
       }
     });
 
-    server.app.vault = vault;
-    if (typeof vault === 'string') {
-      server.app.vault = JSON.parse(vault);
-    }
-
-    auth = server.app.vault.auth;
-
     server.auth.strategy('session', 'cookie', 'try', {
-      password: server.app.vault.password,
+      password: vault.password,
       cookie: 'il_laundry_web',
       isSecure: false,
-      ttl: 365 * 24 * 60 * 60 * 1000 // 1 Year
+      ttl: 365 * 24 * 60 * 60 * 1000,  // 1 Year
     });
     server.auth.strategy('facebook', 'bell', {
       provider: 'facebook',
-      password: server.app.vault.password,
+      password: vault.password,
       clientId: auth.facebook.clientId,
       clientSecret: auth.facebook.clientSecret,
-      isSecure: false // Terrible idea but required if not using HTTPS especially if developing locally
+      isSecure: false, // Terrible idea but required if not using HTTPS
     });
 
     // Register templates views engine
@@ -98,7 +95,7 @@ exports.register = function(server, options, next) {
       engines: {
         jade: Jade,
       },
-      path: Path.join(__dirname, 'server/web/views')
+      path: Path.join(__dirname, 'server/web/views'),
     });
 
     // Static Assets Routes
@@ -108,17 +105,17 @@ exports.register = function(server, options, next) {
       handler: {
         directory: {
           path: Path.join(__dirname, 'public/'),
-          listing: true
-        }
-      }
+          listing: true,
+        },
+      },
     });
 
     server.route(webRoutes);
     server.route(apiRoutes);
-  })
+  });
   next();
 };
 
 exports.register.attributes = {
-  name: 'il-laundry-consumer-web'
+  name: 'il-laundry-consumer-web',
 };

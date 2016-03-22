@@ -1,5 +1,7 @@
 node_modules
 test/artifacts/*
+.sass-lint.yml
+.csscomb.json
 .vscode
 tsd.json
 jsconfig.json

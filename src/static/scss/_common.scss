@@ -1,7 +1,9 @@
-@import "vars";
-@import url(https://fonts.googleapis.com/css?family=Roboto|Open+Sans);
+@import 'vars';
+@import 'getters';
+@import url('https://fonts.googleapis.com/css?family=Roboto|Open+Sans');
 
 body {
-  background-color: #FFFFFF;
+  background-color: _palette(il-white);
   font-family: 'Roboto', sans-serif;
+  color: _palette(il-font);
 }
