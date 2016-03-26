@@ -1,3 +1,4 @@
+import Boom from 'boom';
 import ViewData from '../helpers/ViewData';
 import appRender from '../helpers/appRender';
 import { getState } from '../helpers/stateCreator';
@@ -11,10 +12,7 @@ exports.index = {
       appRender(request.path, state).then((html) => {
         baseData.html = html;
         return reply.view('main', baseData);
-      }).catch((error) => {
-        console.log(error);
-        throw error;
-      });
+      }).catch((err) => reply(new Boom(err)));
     });
   },
 };

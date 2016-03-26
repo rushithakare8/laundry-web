@@ -12,6 +12,9 @@ class NewOrderView extends React.Component {
     this.cancelHandler = this.cancelHandler.bind(this);
     this.openAddressForm = this.openAddressForm.bind(this);
   }
+  onSubmit(values, dispatch) {
+    return addUserAddress(values, dispatch).then(() => this.setState({ addingAddress: false }));
+  }
   cancelHandler() {
     this.setState({
       addingAddress: false,
@@ -45,7 +48,7 @@ class NewOrderView extends React.Component {
       </div>
     ) : null;
     const addingAddress = this.state.addingAddress ? (
-      <EditAddressForm cancelHandler={ this.cancelHandler } />
+      <EditAddressForm cancelHandler={ this.cancelHandler } onSubmit={ this.onSubmit } />
     ) : null;
     return (
       <div>

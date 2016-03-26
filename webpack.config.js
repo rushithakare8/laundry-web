@@ -36,7 +36,6 @@ module.exports = {
     'react-dom': 'ReactDOM',
     immutable: 'Immutable',
     jquery: 'jQuery',
-    falcor: 'falcor',
     react: 'React',
     redux: 'Redux',
   },

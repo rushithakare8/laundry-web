@@ -1,22 +1,26 @@
 {
   "dev": {
-    "port":3000,
-    "host": "localhost",
-    "protocol": "http"
+    "port":8080,
+    "host": "www.cleandeliver.com",
+    "protocol": "http",
+    "version": "api"
   },
   "qa": {
-    "port":8443,
-    "host": "localhost",
-    "protocol": "https"
+    "port":8080,
+    "host": "www.cleandeliver.com",
+    "protocol": "http",
+    "version": "api"
   },
   "stage": {
-    "port":8443,
-    "host": "localhost",
-    "protocol": "https"
+    "port":8080,
+    "host": "www.cleandeliver.com",
+    "protocol": "http",
+    "version": "api"
   },
-  "prod": {
-    "port":8443,
-    "host": "localhost",
-    "protocol": "https"
+  "production": {
+    "port":8080,
+    "host": "www.cleandeliver.com",
+    "protocol": "http",
+    "version": "api"
   }
 }

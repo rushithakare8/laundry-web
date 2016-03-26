@@ -6,6 +6,7 @@ import Menu from '../../components/Menu';
 
 const routeTitle = {
   '/main': 'Overview',
+  '/main/': 'Overview',
   '/main/neworder': 'New Order',
 };
 

@@ -14,6 +14,7 @@ class NewOrderView extends React.Component {
   componentDidMount() {
   }
   render() {
+    console.log(this.props.user);
     return (
       <div className="ui container">
         <NewOrderSummary />

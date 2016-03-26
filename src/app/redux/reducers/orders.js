@@ -10,14 +10,13 @@ export const getOrdersAction = (orders) => ({
 export const getCurrentOrdersReducer = (state, action) => action.payload;
 
 export const getCurrentOrders = () => (dispatch) => {
-  console.log(dispatch);
   get('/api/v1/getcurrentorders/2', (data) => {
     dispatch(getOrdersAction(data.orders));
   });
 };
 
 export const actions = {
-  getCurrentOrders,
+  getOrdersAction,
 };
 
 // ------------------------------------

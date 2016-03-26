@@ -13,23 +13,26 @@ export const addUserAddressAction = (address) => ({
   payload: address,
 });
 
-export const updateUserReducer = (state, action) => action.payload;
+export const updateUserReducer = (user, action) => action.payload;
 
-export const addUserAddressReducer = (state, action) => {
-  console.log(state);
-  console.log(action);
-  return action.payload;
+export const addUserAddressReducer = (user, action) => {
+  const addresses = user.addresses || [];
+  addresses.push(action.payload);
+  return Object.assign({}, user, {
+    addresses,
+  });
 };
 
-export const addUserAddress = (values) => (dispatch) => {
-  // TODO: Add post call to middleware
-  // dispatch(addUserAddress(values));
-  console.log(values);
-  console.log(dispatch);
-};
+export const addUserAddress = (values, dispatch) => new Promise(resolve => {
+  setTimeout(() => {
+    dispatch(addUserAddressAction(values));
+    resolve(values);
+  }, 500);
+});
 
 export const actions = {
   updateUserAction,
+  addUserAddressAction,
 };
 
 // ------------------------------------

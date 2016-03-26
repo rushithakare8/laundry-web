@@ -13,7 +13,7 @@ const webRoutes = require('./server/web/routes');
 const apiRoutes = require('./server/api/routes');
 const goodConfig = require('./configs/good.config');
 const poopConfig = require('./configs/poop.config');
-let vault = process.env.VAULT || require('./configs/vault');
+const vault = require('./configs/getEnviroment').getVault();
 require('opbeat').start({
   appId: 'a6e428e550',
   organizationId: '2556f6e3f5c34d968c5a2e46f6c8eea5',
@@ -38,9 +38,6 @@ exports.register = (server, options, next) => {
   ], (err) => {
     if (err) {
       throw err;
-    }
-    if (typeof vault === 'string') {
-      vault = JSON.parse(vault);
     }
     const auth = vault.auth;
 
