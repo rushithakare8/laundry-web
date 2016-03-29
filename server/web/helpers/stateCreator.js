@@ -1,6 +1,6 @@
-import { getUserById } from '../../awsApi/awsUsers';
-import { getServiceTypes } from '../../awsApi/awsServiceTypes';
-import { getCurrentOrders } from '../../awsApi/awsOrders';
+import { getUserById } from 'il-middleware-services/server/beApi/beUsers';
+import { getServiceTypes } from 'il-middleware-services/server/beApi/beServiceTypes';
+import { getCurrentOrders } from 'il-middleware-services/server/beApi/beOrders';
 
 const getUser = (request) => new Promise((resolve, reject) => {
   const signedInUser = request.auth.credentials.user;

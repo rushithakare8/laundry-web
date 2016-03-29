@@ -9,10 +9,17 @@ exports.index = {
     const baseData = ViewData.getBaseData();
     getState(request).then((state) => {
       baseData.state = state;
+      console.log(state);
       appRender(request.path, state).then((html) => {
         baseData.html = html;
         return reply.view('main', baseData);
-      }).catch((err) => reply(new Boom(err)));
+      }).catch((err) => {
+        console.log(err);
+        reply(new Boom(err));
+      });
+    }).catch((err) => {
+      console.log(err);
+      reply(new Boom(err));
     });
   },
 };

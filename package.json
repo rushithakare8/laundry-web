@@ -58,7 +58,8 @@
     "request": "2.x.x",
     "rx": "4.x.x",
     "scooter": "2.x.x",
-    "vision": "4.x.x"
+    "vision": "4.x.x",
+    "il-middleware-services": "cesaregb/middleware-services"
   },
   "devDependencies": {
     "code": "*",

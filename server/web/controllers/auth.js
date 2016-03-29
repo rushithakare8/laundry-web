@@ -2,7 +2,7 @@ import Boom from 'boom';
 import {
   createUser,
   getUsersByEmail,
-} from '../../awsApi/awsUsers';
+} from 'il-middleware-services/server/beApi/beUsers';
 
 // Logout
 exports.logout = {
