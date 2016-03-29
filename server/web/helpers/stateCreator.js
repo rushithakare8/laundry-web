@@ -1,4 +1,6 @@
 import { getUserById } from '../../awsApi/awsUsers';
+import { getServiceTypes } from '../../awsApi/awsServiceTypes';
+import { getCurrentOrders } from '../../awsApi/awsOrders';
 
 const getUser = (request) => new Promise((resolve, reject) => {
   const signedInUser = request.auth.credentials.user;
@@ -17,10 +19,9 @@ const getState = (request) => new Promise((resolve, reject) => {
     return getServiceTypes();
   }).then((serviceTypes) => {
     state.serviceTypes = serviceTypes;
-    return getCurrentOrders();
+    return getCurrentOrders(state.user.idClient);
   }).then((orders) => {
     state.orders = orders;
-    // console.log(orders);
     resolve(state);
   }).catch(err => reject(err));
 });

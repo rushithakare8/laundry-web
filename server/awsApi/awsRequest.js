@@ -1,4 +1,3 @@
-
 import r from 'request';
 import env from '../../configs/getEnviroment';
 const host = env.getApiHost();

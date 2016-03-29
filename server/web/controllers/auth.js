@@ -22,8 +22,8 @@ exports.login = {
       return reply(`Authentication failed due to: ${request.auth.error.message}`);
     }
     return getUsersByEmail(profile.email)
-      .then((usersByEmail) => {
-        if (!usersByEmail || usersByEmail.length < 1) {
+      .then((user) => {
+        if (!user || user.idClient === 0) {
           const userPayload = {
             email: profile.email,
             lastName: profile.name.last,
@@ -37,7 +37,7 @@ exports.login = {
             })
             .catch((err) => reply(new Boom(err)));
         }
-        const userCookie = Object.assign({}, profile, { idClient: usersByEmail[0].idClient });
+        const userCookie = Object.assign({}, profile, { idClient: user.idClient });
         request.cookieAuth.set({ user: userCookie });
         return reply.redirect('/main');
       })

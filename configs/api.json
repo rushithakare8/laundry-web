@@ -1,7 +1,7 @@
 {
   "dev": {
     "port":8080,
-    "host": "www.cleandeliver.com",
+    "host": "localhost",
     "protocol": "http",
     "version": "api"
   },

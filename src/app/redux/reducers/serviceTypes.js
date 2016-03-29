@@ -1,4 +1,3 @@
-// import { Map } from 'immutable';
 import { get } from 'jquery';
 
 export const GET_SERVICE_TYPES = 'GET_SERVICE_TYPES';

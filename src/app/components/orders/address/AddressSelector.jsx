@@ -13,9 +13,10 @@ class AddressSelector extends React.Component {
     ));
     return (
       <section>
-        <div className="ui dropdown">
-          <input type="hidden" name="gender" />
+        <div className="ui selection dropdown">
+          <input type="hidden" name="idAddress" />
           <div className="default text">Address</div>
+          <i className="dropdown icon"></i>
           <div className="menu">
             { dropDownAddresses }
           </div>
