@@ -1,4 +1,4 @@
-import Boom from 'boom';
+import boom from 'boom';
 import {
   createUser,
   getUsersByEmail,
@@ -34,13 +34,15 @@ exports.login = {
               const userCookie = Object.assign({}, profile, { idClient: newUser.idClient });
               request.cookieAuth.set({ user: userCookie });
               return reply.redirect('/main');
-            })
-            .catch((err) => reply(new Boom(err)));
+            });
         }
         const userCookie = Object.assign({}, profile, { idClient: user.idClient });
         request.cookieAuth.set({ user: userCookie });
         return reply.redirect('/main');
       })
-      .catch((err) => reply(new Boom(err)));
+      .catch((err) => {
+        console.error(err);
+        return reply(boom.badImplementation('Internal Server Error'));
+      });
   },
 };
