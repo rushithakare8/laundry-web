@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import CoreLayout from '../layouts/CoreLayout/CoreLayout';
+import CoreLayout from '../layouts/CoreLayout';
 import HomeView from '../views/HomeView';
 import NewOrderView from '../views/NewOrderView';
 

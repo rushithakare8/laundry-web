@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { getServiceTypes as getServiceTypesFunc } from '../redux/reducers/orders';
 
-class PaymentsForm extends React.Component {
+class NewOrderPayments extends React.Component {
   componentDidMount() {
   }
   render() {
@@ -22,7 +22,7 @@ class PaymentsForm extends React.Component {
   }
 }
 
-PaymentsForm.propTypes = {
+NewOrderPayments.propTypes = {
   user: PropTypes.object.isRequired,
 };
 
@@ -32,4 +32,4 @@ const mapStateToProps = (state) => ({
 
 export default connect((mapStateToProps), {
   getServiceTypes: getServiceTypesFunc,
-})(PaymentsForm);
+})(NewOrderPayments);

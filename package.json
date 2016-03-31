@@ -22,8 +22,7 @@
   "author": "Luis Gonzalez <luismgonzalezb@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "5.9.0",
-    "npm": "3.7.3"
+    "node": "5.9.1"
   },
   "dependencies": {
     "babel-loader": "6.x.x",
@@ -56,7 +55,6 @@
     "redux-form": "4.x.x",
     "redux-thunk": "2.x.x",
     "request": "2.x.x",
-    "rx": "4.x.x",
     "scooter": "2.x.x",
     "vision": "4.x.x",
     "il-middleware-services": "cesaregb/middleware-services"

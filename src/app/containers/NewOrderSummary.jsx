@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { getServiceTypes as getServiceTypesFunc } from '../redux/reducers/orders';
 
-class ServiceSelector extends React.Component {
+class NewOrderSummary extends React.Component {
   componentDidMount() {
   }
   render() {
@@ -25,7 +25,7 @@ class ServiceSelector extends React.Component {
   }
 }
 
-ServiceSelector.propTypes = {
+NewOrderSummary.propTypes = {
   serviceTypes: PropTypes.array.isRequired,
 };
 
@@ -35,4 +35,4 @@ const mapStateToProps = (state) => ({
 
 export default connect((mapStateToProps), {
   getServiceTypes: getServiceTypesFunc,
-})(ServiceSelector);
+})(NewOrderSummary);

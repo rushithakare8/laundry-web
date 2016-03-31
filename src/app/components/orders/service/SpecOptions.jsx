@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-const SpecOption = ({ spec }) => (
+const SpecOptions = ({ spec }) => (
   <div className="three column row">
     <div className="column">
       { spec.description }
@@ -15,8 +15,8 @@ const SpecOption = ({ spec }) => (
   </div>
 );
 
-SpecOption.propTypes = {
+SpecOptions.propTypes = {
   spec: PropTypes.object,
 };
 
-export default SpecOption;
+export default SpecOptions;

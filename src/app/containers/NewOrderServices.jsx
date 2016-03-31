@@ -2,10 +2,10 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getServiceTypes as getServiceTypesFunc } from '../redux/reducers/orders';
+import { getServiceTypes } from '../redux/reducers/orders';
 import ServiceCategory from '../components/orders/service/ServiceCategory';
 
-class ServiceSelector extends React.Component {
+class NewOrderServices extends React.Component {
   componentDidMount() {
     $('.accordionServices').accordion();
   }
@@ -24,7 +24,8 @@ class ServiceSelector extends React.Component {
   }
 }
 
-ServiceSelector.propTypes = {
+NewOrderServices.propTypes = {
+  getServiceTypes: PropTypes.func.isRequired,
   serviceTypes: PropTypes.array.isRequired,
 };
 
@@ -33,5 +34,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect((mapStateToProps), {
-  getServiceTypes: getServiceTypesFunc,
-})(ServiceSelector);
+  getServiceTypes,
+})(NewOrderServices);

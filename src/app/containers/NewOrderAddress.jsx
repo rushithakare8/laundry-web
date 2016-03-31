@@ -4,7 +4,7 @@ import { addUserAddress } from '../redux/reducers/user';
 import AddressSelector from '../components/orders/address/AddressSelector';
 import EditAddressForm from '../components/orders/address/EditAddressForm';
 
-class NewOrderView extends React.Component {
+class NewOrderAddress extends React.Component {
   constructor(props) {
     super(props);
     this.state = { addingAddress: false };
@@ -59,7 +59,7 @@ class NewOrderView extends React.Component {
   }
 }
 
-NewOrderView.propTypes = {
+NewOrderAddress.propTypes = {
   addUserAddress: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
 };
@@ -70,4 +70,4 @@ const mapStateToProps = (state) => ({
 
 export default connect((mapStateToProps), {
   addUserAddress,
-})(NewOrderView);
+})(NewOrderAddress);
