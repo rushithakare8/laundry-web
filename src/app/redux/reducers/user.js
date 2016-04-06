@@ -1,19 +1,26 @@
 // import { post } from 'jquery';
 
+// ------------------------------------
+// UPDATE USER REDUCER
+// ------------------------------------
 export const UPDATE_USER = 'UPDATE_USER';
-export const ADD_ADDRESS = 'ADD_ADDRESS';
 
 export const updateUserAction = (user) => ({
   type: UPDATE_USER,
   payload: user,
 });
 
+export const updateUserReducer = (user, action) => action.payload;
+
+// ------------------------------------
+// ADD ADDRESS REDUCER
+// ------------------------------------
+export const ADD_ADDRESS = 'ADD_ADDRESS';
+
 export const addUserAddressAction = (address) => ({
   type: ADD_ADDRESS,
   payload: address,
 });
-
-export const updateUserReducer = (user, action) => action.payload;
 
 export const addUserAddressReducer = (user, action) => {
   const addresses = user.addresses || [];
@@ -29,11 +36,6 @@ export const addUserAddress = (values, dispatch) => new Promise(resolve => {
     resolve(values);
   }, 500);
 });
-
-export const actions = {
-  updateUserAction,
-  addUserAddressAction,
-};
 
 // ------------------------------------
 // Action Handlers

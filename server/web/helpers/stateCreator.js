@@ -14,6 +14,10 @@ const getUser = (request) => new Promise((resolve, reject) => {
 
 const getState = (request) => new Promise((resolve, reject) => {
   const state = {};
+  state.cart = {
+    services: [],
+    total: 0,
+  };
   getUser(request).then((user) => {
     state.user = user;
     return getServiceTypes();

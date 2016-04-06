@@ -1,28 +1,24 @@
-export const UPDATE_USER = 'UPDATE_USER';
+export const UPDATE_OBJECT = 'UPDATE_OBJECT';
 
-export const updateUserAction = (user) => ({
-  type: UPDATE_USER,
-  payload: user,
+export const updateObjectAction = (object) => ({
+  type: UPDATE_OBJECT,
+  payload: object,
 });
 
-export const updateUserReducer = (state, action) => action.payload;
-
-export const actions = {
-  updateUserAction,
-};
+export const updateObjectReducer = (state, action) => action.payload;
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [UPDATE_USER]: updateUserReducer,
+  [UPDATE_OBJECT]: updateObjectReducer,
 };
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
 const initialState = {};
-export default function userReducer(state = initialState, action) {
+export default function objectReducer(state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type];
   return handler ? handler(state, action) : state;
 }

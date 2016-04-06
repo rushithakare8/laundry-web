@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getServiceTypes as getServiceTypesFunc } from '../redux/reducers/orders';
 import NewOrderAddress from '../containers/NewOrderAddress';
 import NewOrderServices from '../containers/NewOrderServices';
 import NewOrderPayments from '../containers/NewOrderPayments';
@@ -36,5 +35,4 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect((mapStateToProps), {
-  getServiceTypes: getServiceTypesFunc,
 })(NewOrderView);

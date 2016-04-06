@@ -2,31 +2,48 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getServiceTypes } from '../redux/reducers/orders';
+import { addServiceToCart, updateServiceOnCart, removeServiceFromCart } from '../redux/reducers/cart';
 import ServiceCategory from '../components/orders/service/ServiceCategory';
+import ServiceOption from '../components/orders/service/ServiceOption';
 
 class NewOrderServices extends React.Component {
   componentDidMount() {
     $('.accordionServices').accordion();
   }
   render() {
+    // Filtering the selected services (added to the cart)
+    const servicesAdded = this.props.serviceTypes
+      .filter(service => service.idServiceType)
+      .map((service, idx) => (
+        <ServiceOption key={ idx } service={ service } isRoot
+          updateServiceOnCart={ this.props.updateServiceOnCart }
+          removeServiceFromCart={ this.props.removeServiceFromCart }
+        />
+      ));
+    // Service Categories comming from the BE
     const serviceCategories = this.props.serviceTypes
       .filter(service => service.idServiceCategory)
       .map((service, idx) => (
-        <ServiceCategory key={ idx } serviceCategory={ service } />
+        <ServiceCategory key={ idx } serviceCategory={ service }
+          addServiceToCart={ this.props.addServiceToCart }
+        />
       ));
     return (
       <div className="ui accordion accordionServices">
-        <h3>Services</h3>
+        <h3>Select Services</h3>
         { serviceCategories }
+        <h3>Added Services</h3>
+        { servicesAdded }
       </div>
     );
   }
 }
 
 NewOrderServices.propTypes = {
-  getServiceTypes: PropTypes.func.isRequired,
   serviceTypes: PropTypes.array.isRequired,
+  addServiceToCart: PropTypes.func.isRequired,
+  updateServiceOnCart: PropTypes.func.isRequired,
+  removeServiceFromCart: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -34,5 +51,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect((mapStateToProps), {
-  getServiceTypes,
+  addServiceToCart,
+  updateServiceOnCart,
+  removeServiceFromCart,
 })(NewOrderServices);
