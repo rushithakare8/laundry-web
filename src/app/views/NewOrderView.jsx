@@ -4,6 +4,7 @@ import NewOrderAddress from '../containers/NewOrderAddress';
 import NewOrderServices from '../containers/NewOrderServices';
 import NewOrderPayments from '../containers/NewOrderPayments';
 import NewOrderSummary from '../containers/NewOrderSummary';
+import NewOrderComments from '../containers/NewOrderComments';
 
 class NewOrderView extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class NewOrderView extends React.Component {
         <NewOrderAddress user={ this.props.user } />
         <NewOrderServices serviceTypes={ this.props.serviceTypes } />
         <NewOrderPayments user={ this.props.user } />
+        <NewOrderComments />
       </div>
     );
   }

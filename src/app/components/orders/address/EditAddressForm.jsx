@@ -3,6 +3,7 @@ import { reduxForm } from 'redux-form';
 
 const EditAddressForm = ({ fields, handleSubmit, cancelHandler, submitting }) => (
   <form onSubmit={ handleSubmit }>
+    <input type="hidden" { ...fields.idClient } />
     <div className="ui two column grid">
       <div className="row">
         <div className="sixteen wide column">
@@ -21,16 +22,32 @@ const EditAddressForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
         </div>
       </div>
       <div className="row">
-        <div className="column">
+        <div className="sixteen wide column">
+          <div className="ui fluid input">
+            <label htmlFor="country"></label>
+            <input type="text" placeholder="Country" { ...fields.country } />
+          </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="sixteen wide column">
           <div className="ui fluid input">
             <label htmlFor="city"></label>
             <input type="text" placeholder="City" { ...fields.city } />
           </div>
         </div>
+      </div>
+      <div className="row">
         <div className="column">
           <div className="ui fluid input">
             <label htmlFor="state"></label>
             <input type="text" placeholder="State" { ...fields.state } />
+          </div>
+        </div>
+        <div className="column">
+          <div className="ui fluid input">
+            <label htmlFor="zipcode"></label>
+            <input type="text" placeholder="Zipcode" { ...fields.zipcode } />
           </div>
         </div>
       </div>
@@ -64,7 +81,7 @@ EditAddressForm.propTypes = {
 
 export default reduxForm({
   form: 'editAddressForm',
-  fields: ['address', 'address2', 'city', 'state'],
+  fields: ['address', 'address2', 'city', 'state', 'country', 'zipcode', 'idClient'],
 })(EditAddressForm);
 
  // ,

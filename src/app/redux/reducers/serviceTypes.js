@@ -18,6 +18,7 @@ export const removeServiceFromCartReducer = (services, action) =>
 // ------------------------------------
 const ACTION_HANDLERS = {
   [ADD_SERVICE_TO_CART]: addServiceToCartReducer,
+  [REMOVE_SERVICE_FROM_CART]: removeServiceFromCartReducer,
 };
 
 // ------------------------------------

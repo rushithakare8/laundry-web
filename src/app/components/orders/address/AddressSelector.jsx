@@ -5,7 +5,16 @@ import AddressOption from './AddressOption';
 
 class AddressSelector extends React.Component {
   componentDidMount() {
-    $('.ui.dropdown').dropdown();
+    $(`#${this.props.inputName}`).dropdown({
+      onChange: (value) => {
+        this.props.onChange({
+          target: {
+            name: this.props.inputName,
+            value,
+          },
+        });
+      },
+    });
   }
   render() {
     const dropDownAddresses = this.props.addresses.map((address, idx) => (
@@ -13,8 +22,8 @@ class AddressSelector extends React.Component {
     ));
     return (
       <section>
-        <div className="ui selection dropdown">
-          <input type="hidden" name="idAddress" />
+        <div id={ this.props.inputName } className="ui selection dropdown">
+          <input type="hidden" name={ this.props.inputName } />
           <div className="default text">Address</div>
           <i className="dropdown icon"></i>
           <div className="menu">
@@ -27,7 +36,9 @@ class AddressSelector extends React.Component {
 }
 
 AddressSelector.propTypes = {
-  addresses: PropTypes.array,
+  onChange: PropTypes.func.isRequired,
+  addresses: PropTypes.array.isRequired,
+  inputName: PropTypes.string.isRequired,
 };
 
 export default AddressSelector;

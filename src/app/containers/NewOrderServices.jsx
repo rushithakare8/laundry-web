@@ -14,8 +14,8 @@ class NewOrderServices extends React.Component {
     // Filtering the selected services (added to the cart)
     const servicesAdded = this.props.serviceTypes
       .filter(service => service.idServiceType)
-      .map((service, idx) => (
-        <ServiceOption key={ idx } service={ service } isRoot
+      .map((service) => (
+        <ServiceOption key={ `SO${service.idServiceType}` } service={ service } isRoot
           updateServiceOnCart={ this.props.updateServiceOnCart }
           removeServiceFromCart={ this.props.removeServiceFromCart }
         />
@@ -23,8 +23,8 @@ class NewOrderServices extends React.Component {
     // Service Categories comming from the BE
     const serviceCategories = this.props.serviceTypes
       .filter(service => service.idServiceCategory)
-      .map((service, idx) => (
-        <ServiceCategory key={ idx } serviceCategory={ service }
+      .map((service) => (
+        <ServiceCategory key={ `SC${service.idServiceCategory}` } serviceCategory={ service }
           addServiceToCart={ this.props.addServiceToCart }
         />
       ));

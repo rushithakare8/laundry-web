@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { addUserAddress } from '../redux/reducers/user';
+import { updateCartInfo } from '../redux/reducers/cart';
 import AddressSelector from '../components/orders/address/AddressSelector';
 import EditAddressForm from '../components/orders/address/EditAddressForm';
 
@@ -11,6 +12,7 @@ class NewOrderAddress extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.cancelHandler = this.cancelHandler.bind(this);
     this.openAddressForm = this.openAddressForm.bind(this);
+    this.changeInfoHandler = this.changeInfoHandler.bind(this);
   }
   onSubmit(values, dispatch) {
     return addUserAddress(values, dispatch).then(() => this.setState({ addingAddress: false }));
@@ -25,21 +27,38 @@ class NewOrderAddress extends React.Component {
       addingAddress: true,
     });
   }
+  changeInfoHandler(event) {
+    const values = {};
+    values[event.target.name] = event.target.value;
+    this.props.updateCartInfo(values);
+  }
   render() {
     const user = this.props.user;
     const preferredPickup = user.addresses ?
-      (<AddressSelector addresses={ user.addresses } />) : (<div>Please add an Address</div>);
+      (<AddressSelector addresses={ user.addresses } inputName="idAddressPickup" onChange={ this.changeInfoHandler } />)
+      : (<div>Please add an Address</div>);
     const preferredDelivery = user.addresses ?
-      (<AddressSelector addresses={ user.addresses } />) : (<div>Please add an Address</div>);
+      (<AddressSelector addresses={ user.addresses } inputName="idAddressDeliver" onChange={ this.changeInfoHandler } />)
+      : (<div>Please add an Address</div>);
     const selecting = !this.state.addingAddress ? (
-      <div>
+      <div className="ui column row">
         <h3>Pickup Address</h3>
         <div>
           { preferredPickup }
         </div>
+        <h3>Pickup Time</h3>
+        <div className="ui fluid input">
+          <label htmlFor="address2"></label>
+          <input type="datetime" placeholder="8:10" name="pickupTime" onChange={ this.changeInfoHandler } />
+        </div>
         <h3>Delivery Address</h3>
         <div>
           { preferredDelivery }
+        </div>
+        <h3>Delivery Time</h3>
+        <div className="ui fluid input">
+          <label htmlFor="address2"></label>
+          <input type="datetime" placeholder="8:10" name="deliveryTime" onChange={ this.changeInfoHandler } />
         </div>
         <button className="ui icon button" onClick={ this.openAddressForm }>
           <i className="fa fa-map-marker"></i>
@@ -48,7 +67,7 @@ class NewOrderAddress extends React.Component {
       </div>
     ) : null;
     const addingAddress = this.state.addingAddress ? (
-      <EditAddressForm cancelHandler={ this.cancelHandler } onSubmit={ this.onSubmit } />
+      <EditAddressForm initialValues={ { idClient: user.idClient } } cancelHandler={ this.cancelHandler } onSubmit={ this.onSubmit } />
     ) : null;
     return (
       <div>
@@ -60,8 +79,9 @@ class NewOrderAddress extends React.Component {
 }
 
 NewOrderAddress.propTypes = {
-  addUserAddress: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
+  addUserAddress: PropTypes.func.isRequired,
+  updateCartInfo: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -70,4 +90,5 @@ const mapStateToProps = (state) => ({
 
 export default connect((mapStateToProps), {
   addUserAddress,
+  updateCartInfo,
 })(NewOrderAddress);

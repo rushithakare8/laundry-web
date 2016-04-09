@@ -5,15 +5,18 @@ const ServiceOption = ({ service, addServiceToCart, updateServiceOnCart, removeS
   const addServiceHandler = () => addServiceToCart(service);
   const removeServiceHandler = () => removeServiceFromCart(service);
   const specs = service.specs && isRoot ? service.specs.map((spec, idx) => (
-    <SpecOptions key={ idx } spec={ spec } updateServiceOnCart={ updateServiceOnCart } />
+    <SpecOptions key={ idx } spec={ spec }
+      idServiceType={ service.idServiceType }
+      updateServiceOnCart={ updateServiceOnCart }
+    />
   )) : null;
   const icon = isRoot ? <i className="fa fa-shopping-basket"></i> : null;
-  const addButton = isRoot ? (
+  const addButton = !isRoot ? (
     <button className="ui icon button" onClick={ addServiceHandler }>
       <i className="fa fa-plus"></i>
     </button>
   ) : null;
-  const removeButton = !isRoot ? (
+  const removeButton = isRoot ? (
     <button className="ui icon button" onClick={ removeServiceHandler }>
       <i className="fa fa-minus"></i>
     </button>

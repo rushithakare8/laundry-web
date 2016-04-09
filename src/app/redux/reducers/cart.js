@@ -51,18 +51,35 @@ export const removeServiceFromCart = (service) => (dispatch) => {
 // ------------------------------------
 export const UPDATE_SERVICE_ON_CART = 'UPDATE_SERVICE_ON_CART';
 
-export const updateServiceOnCartAction = (spec) => ({
+export const updateServiceOnCartAction = (payload) => ({
   type: UPDATE_SERVICE_ON_CART,
-  payload: spec,
+  payload,
 });
 
 export const updateServiceOnCartReducer = (state, action) => {
-  const spec = action.payload;
+  console.log(state);
+  console.log(action.payload);
   return state;
 };
 
-export const updateServiceOnCart = (spec) => (dispatch) => {
-  dispatch(updateServiceOnCartAction(spec));
+export const updateServiceOnCart = (spec, idServiceType, adding) => (dispatch) => {
+  dispatch(updateServiceOnCartAction({ spec, idServiceType, adding }));
+};
+
+// -----------------------------------------------------------------------
+// UPDATE INFO LIKE ADDRESS AND TIME ON CART REDUCER
+// -----------------------------------------------------------------------
+export const UPDATE_CART_INFO = 'UPDATE_CART_INFO';
+
+export const updateCartInfoAction = (payload) => ({
+  type: UPDATE_CART_INFO,
+  payload,
+});
+
+export const updateCartInfoReducer = (state, action) => Object.assign({}, state, action.payload);
+
+export const updateCartInfo = (values) => (dispatch) => {
+  dispatch(updateCartInfoAction(values));
 };
 
 // ------------------------------------
@@ -70,8 +87,9 @@ export const updateServiceOnCart = (spec) => (dispatch) => {
 // ------------------------------------
 const ACTION_HANDLERS = {
   [ADD_SERVICE_TO_CART]: addServiceToCartReducer,
-  [UPDATE_SERVICE_ON_CART]: updateServiceOnCartReducer,
   [REMOVE_SERVICE_FROM_CART]: removeServiceFromCartReducer,
+  [UPDATE_SERVICE_ON_CART]: updateServiceOnCartReducer,
+  [UPDATE_CART_INFO]: updateCartInfoReducer,
 };
 
 // ------------------------------------

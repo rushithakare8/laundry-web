@@ -18,31 +18,21 @@ exports.login = {
   auth: 'facebook',
   handler(request, reply) {
     const profile = request.auth.credentials.profile;
+    const signin = (user) => {
+      const userCookie = Object.assign({}, profile, user);
+      request.cookieAuth.set({ user: userCookie });
+      return reply.redirect('/main');
+    };
     if (!request.auth.isAuthenticated) {
       return reply(`Authentication failed due to: ${request.auth.error.message}`);
     }
+    const userPayload = {
+      email: profile.email,
+      lastName: profile.name.last,
+      name: profile.name.first,
+    };
     return getUsersByEmail(profile.email)
-      .then((user) => {
-        if (!user || user.idClient === 0) {
-          const userPayload = {
-            email: profile.email,
-            lastName: profile.name.last,
-            name: profile.name.first,
-          };
-          return createUser(userPayload)
-            .then((newUser) => {
-              const userCookie = Object.assign({}, profile, { idClient: newUser.idClient });
-              request.cookieAuth.set({ user: userCookie });
-              return reply.redirect('/main');
-            });
-        }
-        const userCookie = Object.assign({}, profile, { idClient: user.idClient });
-        request.cookieAuth.set({ user: userCookie });
-        return reply.redirect('/main');
-      })
-      .catch((err) => {
-        console.error(err);
-        return reply(boom.badImplementation('Internal Server Error'));
-      });
+      .then(user => (user ? signin(user) : createUser(userPayload).then(newUser => signin(newUser))))
+      .catch((err) => reply(boom.badImplementation('Internal Server Error', err)));
   },
 };

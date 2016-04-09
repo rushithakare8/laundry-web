@@ -1,4 +1,4 @@
-// import { post } from 'jquery';
+import { post } from 'jquery';
 
 // ------------------------------------
 // UPDATE USER REDUCER
@@ -31,10 +31,12 @@ export const addUserAddressReducer = (user, action) => {
 };
 
 export const addUserAddress = (values, dispatch) => new Promise(resolve => {
-  setTimeout(() => {
-    dispatch(addUserAddressAction(values));
-    resolve(values);
-  }, 500);
+  console.log(values);
+  post('/api/v1/adduseraddress', values).done((result) => {
+    console.log(result);
+    dispatch(addUserAddressAction(result));
+    resolve(result);
+  });
 });
 
 // ------------------------------------
