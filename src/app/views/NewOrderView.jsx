@@ -21,6 +21,12 @@ class NewOrderView extends React.Component {
         <NewOrderServices serviceTypes={ this.props.serviceTypes } />
         <NewOrderPayments user={ this.props.user } />
         <NewOrderComments />
+        <div className="ui column row">
+          <button className="fluid ui icon button">
+            <i className="fa fa-shopping-cart"></i>
+            <span className="Mstart(10px)">Checkout</span>
+          </button>
+        </div>
       </div>
     );
   }

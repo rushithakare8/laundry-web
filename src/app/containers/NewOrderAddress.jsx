@@ -49,7 +49,7 @@ class NewOrderAddress extends React.Component {
         <h3>Pickup Time</h3>
         <div className="ui fluid input">
           <label htmlFor="address2"></label>
-          <input type="datetime" placeholder="8:10" name="pickupTime" onChange={ this.changeInfoHandler } />
+          <input type="datetime" name="pickupTime" placeholder="8:10" onChange={ this.changeInfoHandler } />
         </div>
         <h3>Delivery Address</h3>
         <div>
@@ -58,12 +58,14 @@ class NewOrderAddress extends React.Component {
         <h3>Delivery Time</h3>
         <div className="ui fluid input">
           <label htmlFor="address2"></label>
-          <input type="datetime" placeholder="8:10" name="deliveryTime" onChange={ this.changeInfoHandler } />
+          <input type="datetime" name="deliveryTime" placeholder="8:10" onChange={ this.changeInfoHandler } />
         </div>
-        <button className="ui icon button" onClick={ this.openAddressForm }>
-          <i className="fa fa-map-marker"></i>
-          <span className="Mstart(10px)">Add New Address</span>
-        </button>
+        <div className="row">
+          <button className="ui fluid icon button" onClick={ this.openAddressForm }>
+            <i className="fa fa-map-marker"></i>
+            <span className="Mstart(10px)">Add New Address</span>
+          </button>
+        </div>
       </div>
     ) : null;
     const addingAddress = this.state.addingAddress ? (

@@ -22,7 +22,7 @@ class AddressSelector extends React.Component {
     ));
     return (
       <section>
-        <div id={ this.props.inputName } className="ui selection dropdown">
+        <div id={ this.props.inputName } className="ui fluid selection dropdown">
           <input type="hidden" name={ this.props.inputName } />
           <div className="default text">Address</div>
           <i className="dropdown icon"></i>

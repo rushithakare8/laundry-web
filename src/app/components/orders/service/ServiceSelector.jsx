@@ -1,4 +1,4 @@
-/* global $*/
+/* global $ */
 
 import React, { PropTypes, Component } from 'react';
 
@@ -17,9 +17,7 @@ class ServiceSelector extends Component {
       </div>
     ));
     return (
-      <div id={ `dropdownService${this.props.id}` }
-        className="ui selection dropdown dropdownService"
-      >
+      <div id={ `dropdownService${this.props.id}` } className="ui fluid selection dropdown">
         <input type="hidden" name="idServiceType" />
         <div className="default text">Services</div>
         <i className="dropdown icon"></i>
