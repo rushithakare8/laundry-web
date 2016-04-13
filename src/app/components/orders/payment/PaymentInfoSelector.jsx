@@ -16,8 +16,8 @@ class PaymentInfoSelector extends React.Component {
     });
   }
   render() {
-    const paymentInfos = this.props.paymentInfos.map((token, idx) => (
-      <div key={ idx }>
+    const paymentInfos = this.props.paymentInfos.map((token) => (
+      <div key={ token.idClientPaymentInfo }>
         <span><i className="fa fa-credit-card"></i></span>
         <span>XXXX-XXXX-XXXX-</span>
         <span>{ token.last4 }</span>

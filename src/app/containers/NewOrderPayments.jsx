@@ -2,7 +2,10 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { updateCartInfo } from '../redux/reducers/cart';
+import { addUserPaymentInfo } from '../redux/reducers/user';
 import EditPaymentForm from '../components/orders/payment/EditPaymentForm';
+import PaymentInfoSelector from '../components/orders/payment/PaymentInfoSelector';
 
 class NewOrderPayments extends React.Component {
   constructor(props) {
@@ -14,7 +17,7 @@ class NewOrderPayments extends React.Component {
     this.changeInfoHandler = this.changeInfoHandler.bind(this);
   }
   onSubmit(values, dispatch) {
-    // return addUserAddress(values, dispatch).then(() => this.setState({ addingPayment: false }));
+    return addUserPaymentInfo(values, dispatch).then(() => this.setState({ addingPayment: false }));
   }
   cancelHandler() {
     this.setState({
@@ -29,19 +32,22 @@ class NewOrderPayments extends React.Component {
   changeInfoHandler(event) {
     const values = {};
     values[event.target.name] = event.target.value;
-    // this.props.updateCartInfo(values);
+    this.props.updateCartInfo(values);
   }
   render() {
     const user = this.props.user;
+    const preferredPickup = user.paymentInfos ?
+      (<PaymentInfoSelector paymentInfos={ user.paymentInfos } onChange={ this.changeInfoHandler } />)
+      : (<div>Please add a Card</div>);
     const selecting = !this.state.addingPayment ? (
       <div className="row">
-        
-      </div>
-      <div className="row">
-        <button className="ui fluid icon button" onClick={ this.openPaymentForm }>
-          <i className="fa fa-credit-card"></i>
-          <span className="Mstart(10px)">Add New Payment Method</span>
-        </button>
+        { preferredPickup }
+        <div className="row">
+          <button className="ui fluid icon button" onClick={ this.openPaymentForm }>
+            <i className="fa fa-credit-card"></i>
+            <span className="Mstart(10px)">Add New Payment Method</span>
+          </button>
+        </div>
       </div>
     ) : null;
     const addingPayment = this.state.addingPayment ? (
@@ -59,6 +65,7 @@ class NewOrderPayments extends React.Component {
 
 NewOrderPayments.propTypes = {
   user: PropTypes.object.isRequired,
+  updateCartInfo: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -66,4 +73,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect((mapStateToProps), {
+  updateCartInfo,
 })(NewOrderPayments);

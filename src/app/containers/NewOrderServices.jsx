@@ -28,11 +28,12 @@ class NewOrderServices extends React.Component {
           addServiceToCart={ this.props.addServiceToCart }
         />
       ));
+    const addedTitle = servicesAdded.lenght > 0 ? (<h3>Added Services</h3>) : null;
     return (
       <div className="ui accordion accordionServices">
         <h3>Select Services</h3>
         { serviceCategories }
-        <h3>Added Services</h3>
+        { addedTitle }
         { servicesAdded }
       </div>
     );
