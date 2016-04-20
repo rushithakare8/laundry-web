@@ -5,9 +5,9 @@ exports.index = {
   handler(request, reply) {
     const baseData = ViewData.getBaseData();
     baseData.fbAccount = {
-      appId: app_id,
-      csrf: csrf_guid,
-      version: api_version,
+      appId: '881601445289245',
+      csrf: uuid.v1(),
+      version: 'v2.5',
     };
     return reply.view('home', baseData);
   },

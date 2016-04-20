@@ -1,10 +1,9 @@
-/* global $, noty, LW */
+/* global $, noty, loginError, AccountKit, fbAccount */
 
 const menu = $('#menu');
 const header = $('#header');
 const menuToggle = $('.menuToggle');
-const templateTxt = '<div class="noty_message">' +
-                 '<span class="noty_text"></span><div class="noty_close"></div></div>';
+const templateTxt = '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>';
 
 $('#shorts').waypoint({
   handler(direction) {
@@ -53,11 +52,49 @@ $.noty.defaults = {
 
 $(document).foundation();
 $(document).ready(() => {
-  const errors = LW.PAGE.home.view.error;
+  const errors = loginError;
   if (errors && errors.loginError) {
     noty({
       text: 'There was an errror when login in, please try again',
       type: 'error',
     });
   }
+  // Initialization of the Facebook Account Kit
+  // AccountKit.init({
+  //   appId: fbAccount.appId,
+  //   state: fbAccount.csrf,
+  //   version: fbAccount.version,
+  // });
 });
+
+// login callback
+// function loginCallback(response) {
+//   console.log(response);
+//   if (response.status === 'PARTIALLY_AUTHENTICATED') {
+//     document.getElementById('code').value = response.code;
+//     document.getElementById('csrf_nonce').value = response.state;
+//     document.getElementById('my_form').submit();
+//   } else if (response.status === 'NOT_AUTHENTICATED') {
+//     // handle authentication failure
+//   } else if (response.status === 'BAD_PARAMS') {
+//     // handle bad parameters
+//   }
+// }
+
+// phone form submission handler
+// function phoneBtnOnClick() {
+//   const countryCode = document.getElementById('countryCode').value;
+//   const phoneNumber = document.getElementById('phoneNumber').value;
+//   AccountKit.login('PHONE', {
+//     countryCode,
+//     phoneNumber,
+//   }, loginCallback);
+// }
+
+// email form submission handler
+// function emailBtnOnClick() {
+//   const emailAddress = document.getElementById('email').value;
+//   AccountKit.login('EMAIL', {
+//     emailAddress,
+//   }, loginCallback);
+// }
