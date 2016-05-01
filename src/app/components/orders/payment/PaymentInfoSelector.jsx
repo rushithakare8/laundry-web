@@ -17,10 +17,10 @@ class PaymentInfoSelector extends React.Component {
   }
   render() {
     const paymentInfos = this.props.paymentInfos.map((token) => (
-      <div key={ token.idClientPaymentInfo }>
+      <div key={token.idClientPaymentInfo}>
         <span><i className="fa fa-credit-card"></i></span>
         <span>XXXX-XXXX-XXXX-</span>
-        <span>{ token.last4 }</span>
+        <span>{token.last4}</span>
       </div>
     ));
     return (
@@ -29,7 +29,7 @@ class PaymentInfoSelector extends React.Component {
           <input type="hidden" name="idClientPaymentInfo" />
           <div className="default text">Payment Method</div>
           <div className="menu">
-            { paymentInfos }
+            {paymentInfos}
           </div>
         </div>
       </section>

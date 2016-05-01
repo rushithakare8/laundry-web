@@ -22,7 +22,7 @@
   "author": "Luis Gonzalez <luismgonzalezb@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "6.0.0"
+    "node": "5.11.0"
   },
   "dependencies": {
     "babel-loader": "6.x",
@@ -62,6 +62,7 @@
     "eslint": "*",
     "eslint-config-airbnb": "*",
     "eslint-plugin-babel": "*",
+    "eslint-plugin-import": "*",
     "eslint-plugin-jsx-a11y": "*",
     "eslint-plugin-react": "*",
     "gulp": "*",

@@ -12,10 +12,10 @@ class NewOrderSummary extends React.Component {
       <div className="ui two column grid">
         <div className="row">
           <div className="column">
-            <span className="Pend(7px)">{ cart.services.length }</span>
+            <span className="Pend(7px)">{cart.services.length}</span>
             <span>Services</span>
           </div>
-          <div className="column"><span>{ cart.total }</span></div>
+          <div className="column"><span>{cart.total}</span></div>
         </div>
       </div>
     );

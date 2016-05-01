@@ -37,12 +37,12 @@ const EditPaymentForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
   const cxCM = classNames(base, { error: fields.cardExpMonth.touched && fields.cardExpMonth.error });
   const cxCY = classNames(base, { error: fields.cardExpYear.touched && fields.cardExpYear.error });
   return (
-    <form onSubmit={ handleSubmit }>
+    <form onSubmit={handleSubmit}>
       <input type="hidden" { ...fields.idClient } />
       <div className="ui grid">
         <div className="row">
           <div className="column">
-            <div className={ cxCN }>
+            <div className={cxCN}>
               <label htmlFor="cardNumber"></label>
               <input type="number" placeholder="Card Number" maxLength="19" pattern="[0-9]" { ...fields.cardNumber } />
             </div>
@@ -52,19 +52,19 @@ const EditPaymentForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
           <div className="column">
             <div className="ui three column grid">
               <div className="column">
-                <div className={ cxCM }>
+                <div className={cxCM}>
                   <label htmlFor="cardExpMonth"></label>
                   <input type="number" placeholder="Month" maxLength="2" pattern="[0-9]" { ...fields.cardExpMonth } />
                 </div>
               </div>
               <div className="column">
-                <div className={ cxCY }>
+                <div className={cxCY}>
                   <label htmlFor="cardExpYear"></label>
                   <input type="number" placeholder="Year" maxLength="4" pattern="[0-9]" { ...fields.cardExpYear } />
                 </div>
               </div>
               <div className="column">
-                <div className={ cxCV }>
+                <div className={cxCV}>
                   <label htmlFor="cardCvc"></label>
                   <input type="number" placeholder="CVC" maxLength="4" pattern="[0-9]" { ...fields.cardCvc } />
                 </div>
@@ -74,11 +74,11 @@ const EditPaymentForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
         </div>
         <div className="row">
           <div className="sixteen wide column Ta(e)">
-            <button className="ui icon button" type="button" onClick={ cancelHandler } disabled={ submitting }>
+            <button className="ui icon button" type="button" onClick={cancelHandler} disabled={submitting}>
               <i className="fa fa-times"></i>
               <span className="Mstart(10px)">Cancel</span>
             </button>
-            <button className="ui icon button" type="submit" onClick={ handleSubmit } disabled={ submitting }>
+            <button className="ui icon button" type="submit" onClick={handleSubmit} disabled={submitting}>
               <i className="fa fa-floppy-o"></i>
               <span className="Mstart(10px)">Save</span>
             </button>

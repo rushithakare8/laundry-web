@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 
 const EditAddressForm = ({ fields, handleSubmit, cancelHandler, submitting }) => (
-  <form onSubmit={ handleSubmit }>
+  <form onSubmit={handleSubmit}>
     <input type="hidden" { ...fields.idClient } />
     <div className="ui two column grid">
       <div className="row">
@@ -53,14 +53,16 @@ const EditAddressForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
       </div>
       <div className="row">
         <div className="sixteen wide column Ta(e)">
-          <button className="ui icon button" type="button"
-            onClick={ cancelHandler } disabled={ submitting }
+          <button
+            className="ui icon button" type="button"
+            onClick={cancelHandler} disabled={submitting}
           >
             <i className="fa fa-times"></i>
             <span className="Mstart(10px)">Cancel</span>
           </button>
-          <button className="ui icon button" type="submit"
-            onClick={ handleSubmit } disabled={ submitting }
+          <button
+            className="ui icon button" type="submit"
+            onClick={handleSubmit} disabled={submitting}
           >
             <i className="fa fa-floppy-o"></i>
             <span className="Mstart(10px)">Save</span>

@@ -3,12 +3,12 @@ import ProgressCard from './ProgressCard';
 
 const CurrentOrders = ({ orders, getCurrentOrders }) => {
   const children = orders ? orders.map((order, idx) => (
-    <ProgressCard key={ idx } order={ order } />
+    <ProgressCard key={idx} order={order} />
   )) : null;
   return (
     <section>
-      <button className="button" onClick={ getCurrentOrders }>Get Current Orders</button>
-      { children }
+      <button className="button" onClick={getCurrentOrders}>Get Current Orders</button>
+      {children}
     </section>
   );
 };

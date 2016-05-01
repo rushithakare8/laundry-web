@@ -26,11 +26,12 @@ class CoreLayout extends React.Component {
     const title = routeTitle[this.props.location.pathname];
     return (
       <div className="ui">
-        <Header title={ title } openMenu={ this.openMenu } user={ this.props.user } />
-        <Menu opened={ this.state.openedMenu } openMenu={ this.openMenu }
-          user={ this.props.user }
+        <Header title={title} openMenu={this.openMenu} user={this.props.user} />
+        <Menu
+          opened={this.state.openedMenu} openMenu={this.openMenu}
+          user={this.props.user}
         />
-        { children }
+        {children}
       </div>
     );
   }
@@ -42,8 +43,6 @@ CoreLayout.propTypes = {
   route: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
 };
-
-export default CoreLayout;
 
 const mapStateToProps = (state) => ({
   user: state.user,

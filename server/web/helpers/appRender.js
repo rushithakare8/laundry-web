@@ -21,7 +21,7 @@ const RenderApp = (url, initialState) => new Promise((resolve, reject) => {
         reject(['Route not Found']);
       }
       html = renderToString(
-        <Provider store={ store }>
+        <Provider store={store}>
           <RouterContext {...renderProps} />
         </Provider>
       );

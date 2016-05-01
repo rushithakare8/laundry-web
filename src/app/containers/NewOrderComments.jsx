@@ -21,7 +21,7 @@ class NewOrderComments extends React.Component {
         <div className="ui form">
           <div className="field">
             <label htmlFor="comments"></label>
-            <textarea placeholder="Comments" name="comments" onChange={ this.changeInfoHandler }></textarea>
+            <textarea placeholder="Comments" name="comments" onChange={this.changeInfoHandler}></textarea>
           </div>
         </div>
       </div>

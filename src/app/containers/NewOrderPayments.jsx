@@ -37,13 +37,13 @@ class NewOrderPayments extends React.Component {
   render() {
     const user = this.props.user;
     const preferredPickup = user.paymentInfos ?
-      (<PaymentInfoSelector paymentInfos={ user.paymentInfos } onChange={ this.changeInfoHandler } />)
+      (<PaymentInfoSelector paymentInfos={user.paymentInfos} onChange={this.changeInfoHandler} />)
       : (<div>Please add a Card</div>);
     const selecting = !this.state.addingPayment ? (
       <div className="row">
-        { preferredPickup }
+        {preferredPickup}
         <div className="row">
-          <button className="ui fluid icon button" onClick={ this.openPaymentForm }>
+          <button className="ui fluid icon button" onClick={this.openPaymentForm}>
             <i className="fa fa-credit-card"></i>
             <span className="Mstart(10px)">Add New Payment Method</span>
           </button>
@@ -51,13 +51,13 @@ class NewOrderPayments extends React.Component {
       </div>
     ) : null;
     const addingPayment = this.state.addingPayment ? (
-      <EditPaymentForm initialValues={ { idClient: user.idClient } } cancelHandler={ this.cancelHandler } onSubmit={ this.onSubmit } />
+      <EditPaymentForm initialValues={{ idClient: user.idClient }} cancelHandler={this.cancelHandler} onSubmit={this.onSubmit} />
     ) : null;
     return (
       <div className="ui">
         <h3>Payment Method</h3>
-        { selecting }
-        { addingPayment }
+        {selecting}
+        {addingPayment}
       </div>
     );
   }
