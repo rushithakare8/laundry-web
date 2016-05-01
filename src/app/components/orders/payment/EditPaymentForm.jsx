@@ -22,7 +22,8 @@ const validate = values => {
   if (!values.cardExpYear) {
     errors.cardExpYear = 'Required';
   }
-  if (!Stripe.card.validateExpiry(`${values.cardExpMonth}/${values.cardExpYear}`)) {
+  if ((values.cardExpYear && values.cardExpMonth)
+    && !Stripe.card.validateExpiry(`${values.cardExpMonth}/${values.cardExpYear}`)) {
     errors.cardExpYear = 'Invalid Expiration Date';
     errors.cardExpMonth = 'Invalid Expiration Date';
   }
@@ -98,6 +99,6 @@ EditPaymentForm.propTypes = {
 
 export default reduxForm({
   form: 'editAddressForm',
-  fields: ['cardNumber', 'cardCvc', 'cardExpMonth', 'cardExpYear'],
+  fields: ['cardNumber', 'cardCvc', 'cardExpMonth', 'cardExpYear', 'idClient'],
   validate,
 })(EditPaymentForm);
