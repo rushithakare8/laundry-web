@@ -14,11 +14,11 @@ const apiRoutes = require('il-middleware-services').apiRoutes;
 const goodConfig = require('./configs/good.config');
 const poopConfig = require('./configs/poop.config');
 const vault = require('./configs/getEnviroment').getVault();
-require('opbeat').start({
-  appId: 'a6e428e550',
-  organizationId: '2556f6e3f5c34d968c5a2e46f6c8eea5',
-  secretToken: 'c74d95c618e4ee667677b30971b97943cab78e03',
-});
+// require('opbeat').start({
+//   appId: 'a6e428e550',
+//   organizationId: '2556f6e3f5c34d968c5a2e46f6c8eea5',
+//   secretToken: 'c74d95c618e4ee667677b30971b97943cab78e03',
+// });
 
 exports.register = (server, options, next) => {
   server.register([
