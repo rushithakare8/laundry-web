@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 
 const ProgressCard = ({ order }) => (
   <section className="">
-    <span className="">${ order.price }</span>
+    <span className="">${order.price}</span>
   </section>
 );
 

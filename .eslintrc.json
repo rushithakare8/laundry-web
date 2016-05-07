@@ -1,7 +1,10 @@
 {
-    "extends": "airbnb",
-    "plugins": [
-        "react",
-        "babel"
-    ]
+  "rules": {
+    "max-len": "off"
+  },
+  "extends": "airbnb",
+  "plugins": [
+    "react",
+    "babel"
+  ]
 }

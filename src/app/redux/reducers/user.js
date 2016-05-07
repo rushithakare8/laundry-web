@@ -1,19 +1,28 @@
-// import { post } from 'jquery';
+/* global Stripe */
 
+import { post } from 'jquery';
+
+// ------------------------------------
+// UPDATE USER REDUCER
+// ------------------------------------
 export const UPDATE_USER = 'UPDATE_USER';
-export const ADD_ADDRESS = 'ADD_ADDRESS';
 
 export const updateUserAction = (user) => ({
   type: UPDATE_USER,
   payload: user,
 });
 
+export const updateUserReducer = (user, action) => action.payload;
+
+// ------------------------------------
+// ADD ADDRESS REDUCER
+// ------------------------------------
+export const ADD_USER_ADDRESS = 'ADD_USER_ADDRESS';
+
 export const addUserAddressAction = (address) => ({
-  type: ADD_ADDRESS,
+  type: ADD_USER_ADDRESS,
   payload: address,
 });
-
-export const updateUserReducer = (user, action) => action.payload;
 
 export const addUserAddressReducer = (user, action) => {
   const addresses = user.addresses || [];
@@ -24,23 +33,66 @@ export const addUserAddressReducer = (user, action) => {
 };
 
 export const addUserAddress = (values, dispatch) => new Promise(resolve => {
-  setTimeout(() => {
-    dispatch(addUserAddressAction(values));
-    resolve(values);
-  }, 500);
+  post('/api/v1/adduseraddress', values).done((result) => {
+    dispatch(addUserAddressAction(result));
+    resolve(result);
+  });
 });
 
-export const actions = {
-  updateUserAction,
-  addUserAddressAction,
+// ------------------------------------
+// ADD PAYMENT INFO TO USER REDUCER
+// ------------------------------------
+export const ADD_USER_PAYMENT_INFO = 'ADD_USER_PAYMENT_INFO';
+
+export const addUserPaymentInfoAction = (paymentInfo) => ({
+  type: ADD_USER_PAYMENT_INFO,
+  payload: paymentInfo,
+});
+
+export const addUserPaymentInfoReducer = (user, action) => {
+  const clientPaymentInfos = user.clientPaymentInfos || [];
+  clientPaymentInfos.push(action.payload);
+  return Object.assign({}, user, {
+    clientPaymentInfos,
+  });
 };
+
+export const addUserPaymentInfo = (values, dispatch) => new Promise(resolve => {
+  Stripe.card.createToken({
+    number: values.cardNumber,
+    cvc: values.cardCvc,
+    exp_month: values.cardExpMonth,
+    exp_year: values.cardExpYear,
+  }, (status, response) => {
+    if (response.error) {
+      // Show the errors on the form
+    } else {
+      const paymentInfo = {
+        idClient: values.idClient,
+        token: response.id,
+        country: response.card.country,
+        exp_month: response.card.exp_month,
+        exp_year: response.card.exp_year,
+        last4: response.card.last4,
+        object: response.card.object,
+        brand: response.card.brand,
+        funding: response.card.funding,
+      };
+      post('/api/v1/adduserpaymentinfo', paymentInfo).done((result) => {
+        dispatch(addUserPaymentInfoAction(result));
+        resolve(result);
+      });
+    }
+  });
+});
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
   [UPDATE_USER]: updateUserReducer,
-  [ADD_ADDRESS]: addUserAddressReducer,
+  [ADD_USER_ADDRESS]: addUserAddressReducer,
+  [ADD_USER_PAYMENT_INFO]: addUserPaymentInfoReducer,
 };
 
 // ------------------------------------

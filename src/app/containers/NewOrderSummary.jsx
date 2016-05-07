@@ -2,37 +2,33 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getServiceTypes as getServiceTypesFunc } from '../redux/reducers/orders';
 
-class ServiceSelector extends React.Component {
+class NewOrderSummary extends React.Component {
   componentDidMount() {
   }
   render() {
+    const { cart } = this.props;
     return (
-      <div className="ui three column grid">
+      <div className="ui two column grid">
         <div className="row">
-          <div className="column">4 Services</div>
-          <div className="column">$1,500.00</div>
           <div className="column">
-            <button className="ui icon button">
-              <i className="fa fa-check"></i>
-              <span className="Mstart(10px)">Done</span>
-            </button>
+            <span className="Pend(7px)">{cart.services.length}</span>
+            <span>Services</span>
           </div>
+          <div className="column"><span>{cart.total}</span></div>
         </div>
       </div>
     );
   }
 }
 
-ServiceSelector.propTypes = {
-  serviceTypes: PropTypes.array.isRequired,
+NewOrderSummary.propTypes = {
+  cart: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  serviceTypes: state.serviceTypes,
+  cart: state.cart,
 });
 
 export default connect((mapStateToProps), {
-  getServiceTypes: getServiceTypesFunc,
-})(ServiceSelector);
+})(NewOrderSummary);

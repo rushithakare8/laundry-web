@@ -1,29 +1,24 @@
-import { get } from 'jquery';
+// ------------------------------------
+// ADD SERVICE TO CART REDUCER
+// ------------------------------------
+export const ADD_SERVICE_TO_CART = 'ADD_SERVICE_TO_CART';
 
-export const GET_SERVICE_TYPES = 'GET_SERVICE_TYPES';
+export const addServiceToCartReducer = (services, action) => [...services, action.payload];
 
-export const getServiceTypesAction = (serviceTypes) => ({
-  type: GET_SERVICE_TYPES,
-  payload: serviceTypes,
-});
+// ------------------------------------
+// REMOVE SERVICE FROM CART REDUCER
+// ------------------------------------
+export const REMOVE_SERVICE_FROM_CART = 'REMOVE_SERVICE_FROM_CART';
 
-export const getServiceTypesReducer = (state, action) => action.payload;
-
-export const getServiceTypes = () => (dispatch) => {
-  get('/api/v1/getcurrentorders', (data) => {
-    dispatch(getServiceTypesAction(data.orders));
-  });
-};
-
-export const actions = {
-  getServiceTypes,
-};
+export const removeServiceFromCartReducer = (services, action) =>
+  services.filter(service => service.idServiceType !== action.payload.idServiceType);
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [GET_SERVICE_TYPES]: getServiceTypesReducer,
+  [ADD_SERVICE_TO_CART]: addServiceToCartReducer,
+  [REMOVE_SERVICE_FROM_CART]: removeServiceFromCartReducer,
 };
 
 // ------------------------------------

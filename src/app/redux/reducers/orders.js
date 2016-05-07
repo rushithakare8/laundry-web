@@ -1,5 +1,8 @@
 import { get } from 'jquery';
 
+// ------------------------------------
+// GET CURRENT ORDERS
+// ------------------------------------
 export const GET_CURRENT_ORDERS = 'GET_CURRENT_ORDERS';
 
 export const getOrdersAction = (orders) => ({
@@ -13,10 +16,6 @@ export const getCurrentOrders = () => (dispatch) => {
   get('/api/v1/getcurrentorders/2', (data) => {
     dispatch(getOrdersAction(data.orders));
   });
-};
-
-export const actions = {
-  getOrdersAction,
 };
 
 // ------------------------------------

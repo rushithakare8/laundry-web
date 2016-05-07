@@ -116,4 +116,5 @@ block content
 
 block scripts
   script.
-    var LW = { PAGE: { home: { view: { error: !{JSON.stringify(error).replace(/<\//g, "<\\/")} } } } }
+    var loginError = !{JSON.stringify(error).replace(/<\//g, "<\\/")}
+    var fbAccount = !{JSON.stringify(fbAccount).replace(/<\//g, "<\\/")}

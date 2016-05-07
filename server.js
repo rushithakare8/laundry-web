@@ -12,7 +12,7 @@ composer((err, server) => {
     throw err;
   }
   server.start(() => {
-    console.log(`Started the plot device on port ${server.info.port}`);
+    console.log(`Started the plot device on port ${server.info.port}, with PID ${process.pid}`);
   });
 });
 

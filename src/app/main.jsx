@@ -1,3 +1,5 @@
+/* global Stripe */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createBrowserHistory from 'history/lib/createBrowserHistory';
@@ -22,3 +24,5 @@ ReactDOM.render(
   <Root history={history} routes={routes} store={store} />,
   document.getElementById('container')
 );
+
+Stripe.setPublishableKey('pk_test_b8SZC99Ac6LFHWr18HmLKPB5');

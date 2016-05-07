@@ -5,7 +5,7 @@ import CurrentOrders from '../components/orders/CurrentOrders';
 
 export const HomeView = ({ orders, getCurrentOrders }) => (
   <div className="container text-center">
-    <CurrentOrders orders={ orders } getCurrentOrders={ getCurrentOrders } />
+    <CurrentOrders orders={orders} getCurrentOrders={getCurrentOrders} />
   </div>
 );
 

@@ -34,7 +34,6 @@ module.exports = {
     'redux-thunk': 'ReduxThunk',
     'redux-form': 'ReduxForm',
     'react-dom': 'ReactDOM',
-    immutable: 'Immutable',
     jquery: 'jQuery',
     react: 'React',
     redux: 'Redux',
