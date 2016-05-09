@@ -36,6 +36,7 @@ ENV VAULT='{"auth":{"facebook":{"clientId":"881601445289245","clientSecret":"8b3
 
 # Define default command.
 ENTRYPOINT ["npm", "start"]
+# ENTRYPOINT ["start.sh"]
 
 # Expose ports.
 EXPOSE 3000
