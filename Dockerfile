@@ -4,8 +4,8 @@
 #
 # To run:
 # run docker mongo....
-# docker run -p 9000:9000 -it cesaregb/laundry-web
-# docker run -p 9000:9000 -it --entrypoint bash cesaregb/laundry-web
+# docker run -p 3000:3000 -it cesaregb/laundry-web
+# docker run -p 3000:3000 -it --entrypoint bash cesaregb/laundry-web
 FROM node
 MAINTAINER Cesar Gonzalez, cesareg.borjon@gmail.com
 
@@ -15,7 +15,14 @@ RUN apt-get update && \
             apt-get clean && \
             rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN git clone https://github.com/cesaregb/il-middleware-services.git
+RUN mkdir -p /root/.ssh
+ADD github_rsa /root/.ssh/id_rsa
+RUN chmod 700 /root/.ssh/id_rsa
+RUN echo "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
+
+# RUN ssh-keyscan github.com >> ~/.ssh/github_rsa
+
+# RUN git clone https://github.com/cesaregb/il-middleware-services.git
 
 RUN mkdir app
 COPY package.json app/package.json
@@ -29,6 +36,7 @@ ENV VAULT='{"auth":{"facebook":{"clientId":"881601445289245","clientSecret":"8b3
 
 # Define default command.
 ENTRYPOINT ["npm", "start"]
+# ENTRYPOINT ["start.sh"]
 
 # Expose ports.
 EXPOSE 3000
