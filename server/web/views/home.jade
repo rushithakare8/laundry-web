@@ -5,90 +5,213 @@ block styles
 block content
   #page-wrapper.page-wrapper
     header#header.header.alt
-      nav#nav.nav
+      div.header-logo(class='P(7px)')
+        img(src='/public/img/bear1.png')
+      nav(class='Pt(10px)').show-for-medium
+        ul
+          li
+            a(href='#') Inicio
+          li
+            a(href='#shorts') Como empezar?
+          li
+            a(href='#contact') Contacto
+      nav#nav.nav.mobile.hide-for-medium
         ul
           li.special
-            a(href='#menu').menuToggle
+            a(href='#menu' class='Mt(7px)').menuToggle
               span Menu
-          #menu.menu.hide
+          #menu.menu.hide.menuToggle
             ul
               li
-                a(href='/') Home
+                a(href='#') Inicio
               li
-                a(href='#shorts') About
+                a(href='#shorts') Como empezar?
               li
-                a(href='#features') Features
-              li
-                a(href='#pricing') Pricing
-              li
-                a(href='#contact') Contact
-              li
-                a(href='#signup', data-open='signup-modal') Sign Up
-              li
-                a(href='#login', data-open='login-modal') Log In
-            a(href='#menu').close.menuToggle
+                a(href='#contact') Contacto
+              //- li
+              //-   a(href='#login', data-open='login-modal') Log In
+            a(href='#menu').close
     #banner.banner
       .row
-        .columns.medium-12
-          h1 Busy at Work, Busy With Family, Busy Life.
-        .columns.medium-12
-          h2 Get your laundry off the list, done deal.
-        .columns.medium-12
-          a(href='#shorts').more.scrolly Learn More
+        .columns.small-12
+          img(src='/public/img/logo1.png')
+        .columns.small-12(class='Pt(32px)')
+          h1.shadow Ropa limpia sin salir de casa.
+        .columns.small-12
+          a(href='#shorts').more.scrolly M&aacute;s Informaci&oacute;n
     #shorts.shorts
       .row(class='Py(40px)')
-        .columns.medium-8.medium-offset-2
-          h2 ARCU ALIQUET VEL LOBORTIS ATA NISL EGET AUGUE AMET ALIQUET NISL CEP DONEC
-          hr
-          h3 Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.
-        .columns.medium-8.medium-offset-2
+        .columns.medium-8.medium-offset-2.small-12
           .row
-            .columns.medium-4
-              i.fa.fa-usd
-            .columns.medium-4
-              i.fa.fa-car
-            .columns.medium-4
-              i.fa.fa-mobile
-    #features.features
-      .row.expanded.f1
-        .columns.medium-4(class='P(0)')
-          img(src='/public/img/ganchos.jpg')
-        .columns.medium-8
-          h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
-          p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
-      .row.expanded.f2
-        .columns.medium-8
-          h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
-          p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
-        .columns.medium-4(class='P(0)')
-          img(src='/public/img/mac_feet.jpg')
-      .row.expanded.f3
-        .columns.medium-4(class='P(0)')
-          img(src='/public/img/lady_phone.jpg')
-        .columns.medium-8
-          h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
-          p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
-    #pricing.pricing
-      .row(class='Py(40px)')
-        .columns.medium-8.medium-offset-2
-          h2 ARCU ALIQUET VEL LOBORTIS ATA NISL EGET AUGUE AMET ALIQUET NISL CEP DONEC
-          hr
-          h3 Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.
-        .columns.medium-8.medium-offset-2
+            .columns.small-12(class='Py(21px)')
+              h2 Como funciona Tersus?
           .row
-            .columns.medium-6
-              i.fa.fa-usd
-            .columns.medium-6
-              i.fa.fa-car
-            .columns.medium-6
-              i.fa.fa-mobile
-            .columns.medium-6
-              i.fa.fa-mobile
-    #contact.contact
-      .row.expanded
-        .columns.medium-6
-        .columns.medium-6(class='P(0)')
+            .columns.medium-4.type-select(data-target='people')
+              i(class='Fz(32px)').fa.fa-user
+              div(class='Fz(12px)') Soy Persona
+            .columns.medium-4.type-select(data-target='company-pickup')
+              i(class='Fz(32px)').fa.fa-truck
+              div(class='Fz(12px)') Descuento para Empleados
+            .columns.medium-4.type-select(data-target='company')
+              i(class='Fz(32px)').fa.fa-building
+              div(class='Fz(12px)') Soy Empresa
+        #people.columns.small-12.type-section
+          .row(class='Py(21px)')
+            .columns.medium-3.small-12(class='Pos(r)')
+              div.circ-step(class='My(42px)')
+                i.fa.fa-phone(class='Fz(42px)')
+                hr.circ-step-divide.show-for-medium
+              div Programa tu Orden
+              div(class='Fz(12px) P(21px)') Llamanos al numero 333-333-3333, para decirnos cual es el mejor momento para recojer tu ropa.
+            .columns.medium-3.small-12(class='Pos(r)')
+              div.circ-step(class='My(42px)')
+                i(class='Fz(42px)').fa.fa-truck
+                hr.circ-step-divide.show-for-medium
+              div Recogemos tu Ropa
+              div(class='Fz(12px) P(21px)') Nuestro personal llegara puntual a recojer tu ropa.
+            .columns.medium-3.small-12(class='Pos(r)')
+              div.circ-step(class='My(42px)')
+                img(src='/public/img/washing-machine.svg', width='42px', height='42px')
+                hr.circ-step-divide.show-for-medium
+              div Limpieza experta
+              div(class='Fz(12px) P(21px)') Nuestro personal con profecionalistmo y atencion se asegurara que tu ropa no se encoja ni se decolore y tenga la mejor limipieza.
+            .columns.medium-3.small-12
+              div.circ-step(class='My(42px)')
+                i(class='Fz(42px)').fa.fa-check
+              div Entregamos tu ropa
+              div(class='Fz(12px) P(21px)') Te llevamos tu ropa a la hora y direcci&oacute;n pactada.
+        #company-pickup.columns.small-12.type-section.hide
+          .row(class='Py(21px)')
+            .columns.medium-3.small-12(class='Pos(r)')
+              div.circ-step(class='My(42px)')
+                i.fa.fa-usd(class='Fz(42px)')
+                hr.circ-step-divide.show-for-medium
+              div Inscribe a tu Empresa
+              div(class='Fz(12px) P(21px)') Pon en la lista a tu empresa para recivir grandes descuentos como colecta y entrega gratuitos y precios preferenciales.
+            .columns.medium-3.small-12(class='Pos(r)')
+              div.circ-step(class='My(42px)')
+                i(class='Fz(42px)').fa.fa-truck
+                hr.circ-step-divide.show-for-medium
+              div Recogemos su Ropa
+              div(class='Fz(12px) P(21px)') Nuestro personal llegara un dia a la semana (o mas si lo requiren) siempre puntuales a recojer la ropa.
+            .columns.medium-3.small-12(class='Pos(r)')
+              div.circ-step(class='My(42px)')
+                img(src='/public/img/washing-machine.svg', width='42px', height='42px')
+                hr.circ-step-divide.show-for-medium
+              div Limpieza experta
+              div(class='Fz(12px) P(21px)') Nuestro personal con profecionalistmo y atencion se asegurara que tu ropa no se encoja ni se decolore y tenga la mejor limipieza.
+            .columns.medium-3.small-12
+              div.circ-step(class='My(42px)')
+                i(class='Fz(42px)').fa.fa-check
+              div Entregamos tu ropa
+              div(class='Fz(12px) P(21px)') Nuestro personal entregara la ropa en la empresa.
+        #company.columns.small-12.type-section.hide
+          .row(class='Py(21px)')
+            .columns.medium-3.small-12(class='Pos(r)')
+              div.circ-step(class='My(42px)')
+                i.fa.fa-phone(class='Fz(42px)')
+                hr.circ-step-divide.show-for-medium
+              div Programa tu Orden
+              div(class='Fz(12px) P(21px)') Llamanos al numero 333-333-3333, para decirnos cual es el mejor momento para recojer tu ropa.
+            .columns.medium-3.small-12(class='Pos(r)')
+              div.circ-step(class='My(42px)')
+                i(class='Fz(42px)').fa.fa-truck
+                hr.circ-step-divide.show-for-medium
+              div Recogemos tu Ropa
+              div(class='Fz(12px) P(21px)') Nuestro personal llegara puntual a recojer tu ropa.
+            .columns.medium-3.small-12(class='Pos(r)')
+              div.circ-step(class='My(42px)')
+                img(src='/public/img/washing-machine.svg', width='42px', height='42px')
+                hr.circ-step-divide.show-for-medium
+              div Limpieza experta
+              div(class='Fz(12px) P(21px)') Nuestro personal con profecionalistmo y atencion se asegurara que tu ropa no se encoja ni se decolore y tenga la mejor limipieza.
+            .columns.medium-3.small-12
+              div.circ-step(class='My(42px)')
+                i(class='Fz(42px)').fa.fa-check
+              div Entregamos tu ropa
+              div(class='Fz(12px) P(21px)') Te llevamos tu ropa a la hora y direcci&oacute;n pactada.
+    #contact.contact(class='Pos(r)')
+      #map.map.show-for-medium
+        iframe(width='100%' height='500px' src="https://www.google.com/maps/embed/v1/place?q=Guadalajara,+Jalisco,+Mexico&zoom=13&key=AIzaSyCLtDjfPwO8Fwa2fY6E2Gvkb8KoOKNeFmA")
+      #info.info(class='P(21px)')
+        h3 Contactanos
+        h5 Estamos contentos de escucharte
+        ul.no-bullet
+          li(class='Py(14px)') Por Telefono
+          li
+            i.fa.fa-phone(class='Px(14px) Fz(24px)')
+            span(class='Fz(18px)') 333-333-3333
+          li(class='Py(14px)') Por Correo
+          li
+            i.fa.fa-envelope(class='Px(14px) Fz(24px)')
+            span(class='Fz(18px)') clientes@tersuslavanderia.com
+          li(class='Py(14px)') En persona
+          li
+            i.fa.fa-map-marker(class='Px(14px) Fz(24px)')
+            span(class='Fz(18px)')
+              | Calle Alguna Direccion #555
+              br
+              | Colonia en el Centro
+              br
+              | Guadalajara, MX 94945
+      
+    //- #features.features
+    //-   .row.expanded.f1
+    //-     .columns.medium-4(class='P(0)')
+    //-       img(src='/public/img/ganchos.jpg')
+    //-     .columns.medium-8
+    //-       h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
+    //-       p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
+    //-   .row.expanded.f2
+    //-     .columns.medium-8
+    //-       h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
+    //-       p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
+    //-     .columns.medium-4(class='P(0)')
+    //-       img(src='/public/img/mac_feet.jpg')
+    //-   .row.expanded.f3
+    //-     .columns.medium-4(class='P(0)')
+    //-       img(src='/public/img/lady_phone.jpg')
+    //-     .columns.medium-8
+    //-       h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
+    //-       p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
+    //- #contact.contact
+    //-   .row.expanded
+    //-     .columns.medium-6
+    //-     .columns.medium-6(class='P(0)')
     footer.footer
+      .row
+        .columns.medium-3.small-12(class='Py(21px)')
+          h5 Nuestra compania
+          ul.no-bullet
+            li
+              a(href='/blog') Blog
+            li
+              a(href='/carrers') Empleo
+            li
+              a(href='/about') Nuesta Mision
+        .columns.medium-3.small-12(class='Py(21px)')
+          h5 Servicios
+          ul.no-bullet
+            li
+              a(href='/blog') A personas
+            li
+              a(href='/carrers') Empresarial
+            li
+              a(href='/about') En tu lugar de trabajo
+      .row(class='Py(21px) Ta(c)')
+        .columns.small-12
+          a(href='https://www.facebook.com/tersuslavanderia/', target='_blank').social
+            i.fa.fa-facebook
+          a(href='https://twitter.com/tersuslavanderia', target='_blank').social
+            i.fa.fa-twitter
+      
+      .row(class='Py(21px) Ta(c)')
+        .columns.small-12
+          a(href='#' class='D(ib) Mx(14px)') Terms
+          a(href='#' class='D(ib) Mx(14px)') Privacy
+      .row(class='Py(21px) Ta(c)')
+        .columns.small-12
+          span(class='D(ib) Mx(14px)') &copy; Tersus Lavanderia 2016
   #login-modal.login-modal.reveal(data-reveal)
     h3.subheader Login
     .row(class='Ta(c)')
@@ -97,22 +220,6 @@ block content
           i.fa.fa-facebook-official
           span(class='Mstart(10px)') |
           span(class='Mstart(10px)') Login with Facebook
-    .hr
-    form(action='/auth/basic', method='POST')
-      .row
-        label(class='W(100%)')
-          | Email
-          input(placeholder='Email', type='text', name='login-email')
-      .row
-        label(class='W(100%)')
-          | Password
-          input(placeholder='Password', type='text', name='login-pass')
-      .row
-        button.button Login
-    button.close-button(data-close) &times;
-  #signup-modal.signup-modal.reveal(data-reveal)
-    h2 Signup
-    button.close-button(data-close) &times;
 
 block scripts
   script.

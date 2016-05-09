@@ -58,7 +58,8 @@ $palette: (
   trans-4: rgba(0, 0, 0, .4),
   trans-3: rgba(0, 0, 0, .3),
   trans-2: rgba(0, 0, 0, .2),
-
+  bear-blue: #87caf0,
+  bear-green: #97f89B,
   accent1: (
     bg:	#21b2a6,
     fg-bold: #fff,
@@ -134,7 +135,19 @@ $palette: (
     border-bg: rgba(0, 0, 0, .0375),
     border2: #bfbfbf,
     border2-bg: rgba(0, 0, 0, .1)
+  ),
+
+  accent8: (
+    bg:	#3e3f5a,
+    fg-bold: #2e3842,
+    fg:	#d3d4e4,
+    fg-light: #8e8892,
+    border: #dfdfdf,
+    border-bg: rgba(0, 0, 0, .0375),
+    border2: #bfbfbf,
+    border2-bg: rgba(0, 0, 0, .1)
   )
+
 );
 
 // Main Site Vars
