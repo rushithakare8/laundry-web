@@ -11,5 +11,5 @@ heapdump*
 logs/
 configs/vault.json
 npm-debug.log
-# github_rsa
-# start.sh
+github_rsa
+start.sh
