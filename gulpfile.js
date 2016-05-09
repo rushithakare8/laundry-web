@@ -33,4 +33,5 @@ gulp.task('watch', () => {
   gulp.watch(paths.img.src, ['img', 'svg']);
 });
 
-gulp.task('default', ['watch', 'scripts', 'devscripts', 'devAtomicCSS', 'atomicCSS', 'styles', 'devstyles', 'react']); // 'img', 'svg'
+gulp.task('dev', ['watch', 'scripts', 'devscripts', 'devAtomicCSS', 'atomicCSS', 'styles', 'devstyles', 'react', 'img', 'svg']);
+gulp.task('default', ['scripts', 'devscripts', 'devAtomicCSS', 'atomicCSS', 'styles', 'devstyles', 'react', 'img', 'svg']);

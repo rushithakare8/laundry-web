@@ -5,7 +5,19 @@ block styles
 block content
   #page-wrapper.page-wrapper
     header#header.header.alt
-      nav#nav.nav
+      nav.show-for-medium
+        ul
+          li
+            a(href='/') Home
+          li
+            a(href='#shorts') About
+          li
+            a(href='#shorts') Features
+          li
+            a(href='#pricing') Pricing
+          li
+            a(href='#contact') Contact
+      nav#nav.nav.hide-for-medium
         ul
           li.special
             a(href='#menu').menuToggle
@@ -22,72 +34,72 @@ block content
                 a(href='#pricing') Pricing
               li
                 a(href='#contact') Contact
-              li
-                a(href='#signup', data-open='signup-modal') Sign Up
-              li
-                a(href='#login', data-open='login-modal') Log In
+              //- li
+              //-   a(href='#login', data-open='login-modal') Log In
             a(href='#menu').close.menuToggle
     #banner.banner
       .row
-        .columns.medium-12
-          h1 Busy at Work, Busy With Family, Busy Life.
-        .columns.medium-12
-          h2 Get your laundry off the list, done deal.
-        .columns.medium-12
-          a(href='#shorts').more.scrolly Learn More
+        .columns.small-12
+          img(src='/public/img/logo1.png')
+        .columns.small-12(class='Py(21px)')
+          h2 Ropa limpia sin salir de casa.
+        .columns.small-12
+          a(href='#shorts').more.scrolly M&aacute;s Informaci&oacute;n
     #shorts.shorts
       .row(class='Py(40px)')
-        .columns.medium-8.medium-offset-2
-          h2 ARCU ALIQUET VEL LOBORTIS ATA NISL EGET AUGUE AMET ALIQUET NISL CEP DONEC
-          hr
-          h3 Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.
-        .columns.medium-8.medium-offset-2
+        .columns.medium-8.medium-offset-2.small-12
           .row
             .columns.medium-4
-              i.fa.fa-usd
+              i(class='Fz(32px)').fa.fa-user
+              div(class='Fz(12px)') Soy Persona
             .columns.medium-4
-              i.fa.fa-car
+              i(class='Fz(32px)').fa.fa-truck
+              div(class='Fz(12px)') Descuento para Empleados
             .columns.medium-4
-              i.fa.fa-mobile
-    #features.features
-      .row.expanded.f1
-        .columns.medium-4(class='P(0)')
-          img(src='/public/img/ganchos.jpg')
-        .columns.medium-8
-          h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
-          p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
-      .row.expanded.f2
-        .columns.medium-8
-          h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
-          p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
-        .columns.medium-4(class='P(0)')
-          img(src='/public/img/mac_feet.jpg')
-      .row.expanded.f3
-        .columns.medium-4(class='P(0)')
-          img(src='/public/img/lady_phone.jpg')
-        .columns.medium-8
-          h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
-          p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
-    #pricing.pricing
-      .row(class='Py(40px)')
-        .columns.medium-8.medium-offset-2
-          h2 ARCU ALIQUET VEL LOBORTIS ATA NISL EGET AUGUE AMET ALIQUET NISL CEP DONEC
-          hr
-          h3 Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.
-        .columns.medium-8.medium-offset-2
+              i(class='Fz(32px)').fa.fa-building
+              div(class='Fz(12px)') Soy Empresa
+        .columns.medium-8.medium-offset-2.small-12
           .row
-            .columns.medium-6
-              i.fa.fa-usd
-            .columns.medium-6
-              i.fa.fa-car
-            .columns.medium-6
-              i.fa.fa-mobile
-            .columns.medium-6
-              i.fa.fa-mobile
-    #contact.contact
-      .row.expanded
-        .columns.medium-6
-        .columns.medium-6(class='P(0)')
+            .columns.medium-3.small-12
+              i(class='Fz(32px)').fa.fa-phone
+              div Programa tu Orden
+              div(class='Fz(12px)') Llamanos al numero 333-333-3333, para decirnos cual es el mejor momento para recojer tu ropa.
+            .columns.medium-3.small-12
+              i(class='Fz(32px)').fa.fa-truck
+              div Recogemos tu Ropa
+              div(class='Fz(12px)') Nuestro personal llegara puntual a recojer tu ropa.
+            .columns.medium-3.small-12
+              img(src='/public/img/washing-machine.svg', width='32px', height='32px')
+              div Limpieza experta
+              div(class='Fz(12px)') Nuestro personal con profecionalistmo y atencion se asegurara que tu ropa no se encoja ni se decolore y tenga la mejor limipieza.
+            .columns.medium-3.small-12
+              i(class='Fz(32px)').fa.fa-check
+              div Entregamos tu ropa
+              div(class='Fz(12px)') Te llevamos tu ropa a la hora y direcci&oacute;n pactada.
+          
+    //- #features.features
+    //-   .row.expanded.f1
+    //-     .columns.medium-4(class='P(0)')
+    //-       img(src='/public/img/ganchos.jpg')
+    //-     .columns.medium-8
+    //-       h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
+    //-       p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
+    //-   .row.expanded.f2
+    //-     .columns.medium-8
+    //-       h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
+    //-       p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
+    //-     .columns.medium-4(class='P(0)')
+    //-       img(src='/public/img/mac_feet.jpg')
+    //-   .row.expanded.f3
+    //-     .columns.medium-4(class='P(0)')
+    //-       img(src='/public/img/lady_phone.jpg')
+    //-     .columns.medium-8
+    //-       h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
+    //-       p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
+    //- #contact.contact
+    //-   .row.expanded
+    //-     .columns.medium-6
+    //-     .columns.medium-6(class='P(0)')
     footer.footer
   #login-modal.login-modal.reveal(data-reveal)
     h3.subheader Login
@@ -97,22 +109,6 @@ block content
           i.fa.fa-facebook-official
           span(class='Mstart(10px)') |
           span(class='Mstart(10px)') Login with Facebook
-    .hr
-    form(action='/auth/basic', method='POST')
-      .row
-        label(class='W(100%)')
-          | Email
-          input(placeholder='Email', type='text', name='login-email')
-      .row
-        label(class='W(100%)')
-          | Password
-          input(placeholder='Password', type='text', name='login-pass')
-      .row
-        button.button Login
-    button.close-button(data-close) &times;
-  #signup-modal.signup-modal.reveal(data-reveal)
-    h2 Signup
-    button.close-button(data-close) &times;
 
 block scripts
   script.
