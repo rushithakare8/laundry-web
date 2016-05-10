@@ -1,0 +1,18 @@
+node_modules
+test/artifacts/*
+.sass-lint.yml
+.csscomb.json
+.vscode
+tsd.json
+jsconfig.json
+typings/
+public/
+heapdump*
+logs/
+configs/vault.json
+npm-debug.log
+
+# git rm --cached github_rsa
+# github_rsa
+# git rm --cached start.sh
+# start.sh
