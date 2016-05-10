@@ -14,5 +14,4 @@ npm-debug.log
 
 # git rm --cached github_rsa
 # github_rsa
-# git rm --cached start.sh
-# start.sh
+# dockerHandler.sh
