@@ -8,6 +8,6 @@ VAULT='{"auth":{"facebook":{"clientId":"881601445289245","clientSecret":"8b3671f
 export NODE_ENV
 export VAULT
 
-npm start
+#--env-file /home/aaa.properties
 
 exit 0;
