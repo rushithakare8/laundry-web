@@ -1,0 +1,84 @@
+extends home/layout
+
+block styles
+
+block content
+  #page-wrapper.page-wrapper
+    header#header.header.alt
+      div.header-logo(class='P(7px)')
+        img(src='/public/img/bear1.png')
+      nav(class='Pt(10px)').show-for-medium
+        ul
+          li
+            a(href='#') Inicio
+          li
+            a(href='#shorts') Como empezar?
+          li
+            a(href='#contact') Contacto
+      nav#nav.nav.mobile.hide-for-medium
+        ul
+          li.special
+            a(href='#menu' class='Mt(7px)').menuToggle
+              span Menu
+          #menu.menu.hide.menuToggle
+            ul
+              li
+                a(href='#') Inicio
+              li
+                a(href='#shorts') Como empezar?
+              li
+                a(href='#contact') Contacto
+              //- li
+              //-   a(href='#login', data-open='login-modal') Log In
+            a(href='#menu').close
+    #pricing.pricing
+      .row
+        .columns.small-12
+          | Your Pricing Stuff
+    footer.footer
+      .row
+        .columns.medium-3.small-12(class='Py(21px)')
+          h5 Nuestra compania
+          ul.no-bullet
+            li
+              a(href='/blog') Blog
+            li
+              a(href='/carrers') Empleo
+            li
+              a(href='/about') Nuesta Mision
+        .columns.medium-3.small-12(class='Py(21px)')
+          h5 Servicios
+          ul.no-bullet
+            li
+              a(href='/blog') A personas
+            li
+              a(href='/carrers') Empresarial
+            li
+              a(href='/about') En tu lugar de trabajo
+      .row(class='Py(21px) Ta(c)')
+        .columns.small-12
+          a(href='https://www.facebook.com/tersuslavanderia/', target='_blank').social
+            i.fa.fa-facebook
+          a(href='https://twitter.com/tersuslavanderia', target='_blank').social
+            i.fa.fa-twitter
+      
+      .row(class='Py(21px) Ta(c)')
+        .columns.small-12
+          a(href='#' class='D(ib) Mx(14px)') Terms
+          a(href='#' class='D(ib) Mx(14px)') Privacy
+      .row(class='Py(21px) Ta(c)')
+        .columns.small-12
+          span(class='D(ib) Mx(14px)') &copy; Tersus Lavanderia 2016
+  #login-modal.login-modal.reveal(data-reveal)
+    h3.subheader Login
+    .row(class='Ta(c)')
+      .medium-12.medium-center
+        a.button.facebook(href='/auth/facebook')
+          i.fa.fa-facebook-official
+          span(class='Mstart(10px)') |
+          span(class='Mstart(10px)') Login with Facebook
+
+block scripts
+  script.
+    var loginError = !{JSON.stringify(error).replace(/<\//g, "<\\/")}
+    var fbAccount = !{JSON.stringify(fbAccount).replace(/<\//g, "<\\/")}

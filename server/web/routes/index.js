@@ -4,6 +4,7 @@ import Auth from '../controllers/auth.js';
 
 module.exports = [
   { method: 'GET', path: '/', config: Home.index },
+  { method: 'GET', path: '/pricing', config: Home.pricing },
   { method: ['GET', 'POST'], path: '/auth/facebook', config: Auth.login },
   { method: 'GET', path: '/favicon.ico', handler: { file: 'public/img/favicon.ico' } },
   {
