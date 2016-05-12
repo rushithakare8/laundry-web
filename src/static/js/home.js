@@ -36,6 +36,6 @@ $('.type-select').on('click', evt => {
 $(document).ready(() => {
   $(document).foundation();
   if ($('#map')) {
-    initMap();
+    // initMap();
   }
 });
