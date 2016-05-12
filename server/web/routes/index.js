@@ -5,6 +5,10 @@ import Auth from '../controllers/auth.js';
 module.exports = [
   { method: 'GET', path: '/', config: Home.index },
   { method: 'GET', path: '/pricing', config: Home.pricing },
+  { method: 'GET', path: '/about', config: Home.about },
+  // { method: 'GET', path: '/privacy', config: Home.privacy },
+  // { method: 'GET', path: '/terms', config: Home.terms },
+  { method: 'GET', path: '/maps', config: Home.maps },
   { method: ['GET', 'POST'], path: '/auth/facebook', config: Auth.login },
   { method: 'GET', path: '/favicon.ico', handler: { file: 'public/img/favicon.ico' } },
   {

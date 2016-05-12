@@ -1,0 +1,37 @@
+extends home/layout
+
+block styles
+
+block content
+  #page-wrapper.page-wrapper
+    block menu
+    #page-title.callout.large.primary
+      .row.column.text-center
+        .columns.small-12
+          img(src='/public/img/logo-sm.png')
+        .columns.small-12(class='Pt(32px)')
+          h1.shadow Tersus Lavanderia.  
+    #shorts.shorts.big-text
+      .row(class='Py(40px)')
+        .columns.medium-8.medium-offset-2.small-12
+          div
+            | Somos una empresa que tiene como finalidad brindar un servicio de calidad a nuestros clientes, esto mediante una  actitud positiva ante cualquier situación que se presente, tenemos   el objetivó de hacerle notar a nuestros clientes que nos preocupamos por el tiempo que invierte en el mantenimiento de su ropa, (lavado, secado, planchado y tintorería) por el cual hemos creado una nueva forma de solicitar estos servicios de recolección y entrega  a domicilio entré las cuales se encuentran las siguientes opciones.
+            | Teléfono: El cliente nos envía un mensaje de texto, WhatsApp, o llamada para solicitar nuestro servicio.
+            br
+            |   Internet: El cliente ingresa a  la página www.  A través de su teléfono o computadora para solicitar el servicio.
+            br
+            |   Aplicación móvil: El cliente descarga la aplicación para solicitar el servicio.
+            br
+            |   Si el cliente  prefiere pasar al local a solicitar su servicio también se le aceptara,  en este caso s ele ofrece la opción de nosotros entregarle la ropa   en el domicilio y horario que nos indique.
+            br
+            |   Este servicio está dirigido  principalmente al ramo familiar destinado a lavado de prendas de ropa de vestir familiares así como prendas del hogar como: manteles, sábanas, cubrecamas, etc.
+            br
+            |   Se contempla ampliar nuestro mercado  en un periodo de 6 meses en el ramo  Ejecutivo: destinado principalmente al lavado de prendas de vestir para personas en zonas corporativas o empresariales.
+            br
+            |   Industrial: ideal para atender altos volúmenes de pendas por ejemplo de hoteles, hospitales, empresas organizadoras de eventos Estos consisten en: mantelería, ropa de dormitorio, cortinas, etc.
+
+    block footer
+block scripts
+  script.
+    var loginError = !{JSON.stringify(error).replace(/<\//g, "<\\/")}
+    var fbAccount = !{JSON.stringify(fbAccount).replace(/<\//g, "<\\/")}

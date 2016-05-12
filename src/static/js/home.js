@@ -3,6 +3,13 @@
 const menu = $('#menu');
 const header = $('#header');
 const menuToggle = $('.menuToggle');
+// let map;
+// const initMap = () => {
+//   map = new google.maps.Map(document.getElementById('map'), {
+//     center: { lat: -34.397, lng: 150.644 },
+//     zoom: 8,
+//   });
+// };
 
 $('#shorts').waypoint({
   offset: 60,
@@ -26,6 +33,9 @@ $('.type-select').on('click', evt => {
   evt.preventDefault();
 });
 
-$(document).foundation();
 $(document).ready(() => {
+  $(document).foundation();
+  if ($('#map')) {
+    initMap();
+  }
 });

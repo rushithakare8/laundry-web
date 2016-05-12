@@ -4,71 +4,186 @@ block styles
 
 block content
   #page-wrapper.page-wrapper
-    header#header.header.alt
-      div.header-logo(class='P(7px)')
-        img(src='/public/img/bear1.png')
-      nav(class='Pt(10px)').show-for-medium
-        ul
-          li
-            a(href='#') Inicio
-          li
-            a(href='#shorts') Como empezar?
-          li
-            a(href='#contact') Contacto
-      nav#nav.nav.mobile.hide-for-medium
-        ul
-          li.special
-            a(href='#menu' class='Mt(7px)').menuToggle
-              span Menu
-          #menu.menu.hide.menuToggle
-            ul
-              li
-                a(href='#') Inicio
-              li
-                a(href='#shorts') Como empezar?
-              li
-                a(href='#contact') Contacto
-              //- li
-              //-   a(href='#login', data-open='login-modal') Log In
-            a(href='#menu').close
-    #pricing.pricing
-      .row
+    block menu
+    #page-title.callout.large.primary
+      .row.column.text-center
         .columns.small-12
-          | Your Pricing Stuff
-    footer.footer
-      .row
-        .columns.medium-3.small-12(class='Py(21px)')
-          h5 Nuestra compania
-          ul.no-bullet
-            li
-              a(href='/blog') Blog
-            li
-              a(href='/carrers') Empleo
-            li
-              a(href='/about') Nuesta Mision
-        .columns.medium-3.small-12(class='Py(21px)')
-          h5 Servicios
-          ul.no-bullet
-            li
-              a(href='/blog') A personas
-            li
-              a(href='/carrers') Empresarial
-            li
-              a(href='/about') En tu lugar de trabajo
-      .row(class='Py(21px) Ta(c)')
-        .columns.small-12
-          a(href='https://www.facebook.com/tersuslavanderia/', target='_blank').social
-            i.fa.fa-facebook
-          a(href='https://twitter.com/tersuslavanderia', target='_blank').social
-            i.fa.fa-twitter
+          img(src='/public/img/logo-sm.png')
+        .columns.small-12(class='Pt(32px)')
+          h1.shadow Precio de servicios. 
+    #shorts.shorts
+      .row(class='Py(40px)')
+        .columns.medium-8.medium-offset-2.small-12
+          .row.small-up-2.large-up-3
+            .column
+              ul.pricing-table.no-bullet.text-center
+                li.title 
+                  .circ-step(class='My(36px)')
+                    img(src='/public/img/washing-machine.svg', width='36px', height='36px')
+                li.price $68.00
+                li Lavanderia
+                li.description Servicio de lavado desde $60, compara nuestros precios!
+                li Entrega programada
+                li
+                  a.button(href='#' data-open="washingPriceDetails" ) Informacion
+            .column
+              ul.pricing-table.no-bullet.text-center
+                li.title 
+                  .circ-step(class='My(36px)')
+                    img(src='/public/img/plancha.svg', width='36px', height='36px')
+                li.price $40.00
+                li Planchaduria
+                li.description Servicio de planchado desde $40, compara nuestros precios!
+                li Entrega programada
+                li
+                  a.button(href='#' data-open="ironingPriceDetails" ) Informacion
+            .column
+              ul.pricing-table.no-bullet.text-center
+                li.title 
+                  .circ-step(class='My(36px)')
+                    img(src='/public/img/gancho.svg', width='36px', height='36px')
+                li.price $##.00
+                li Tintoreria
+                li.description Servicio de tintoreria desde $##, compara nuestros precios!
+                li Entrega programada
+                li
+                  a.button(href='#' data-open="dryCleaningPriceDetails" ) Informacion
+  
+    #washingPriceDetails.priceDetails.large.reveal(data-reveal='')
+      .section-title
+        h3 Detalle en precios lavanderia
+      .blog-post
+        h3
+          | Ropa
+        table
+          thead
+            tr
+              th Carga
+              th Detalle
+              th Precio
+          tbody
+            tr
+              td Carga 1
+              td Aprox 1 - 5 Kg
+              td $68.00
+            tr
+              td Carga 2
+              td Aprox 1 - 10 Kg
+              td $129.60
+            tr
+              td Carga 3
+              td Aprox 1 - 15 Kg
+              td $196.50
+            tr
+              td Carga 4
+              td Aprox 1 - 20 Kg
+              td $271.50
+            tr
+              td(colspan='3') ....
+      div
+        h3
+          | Blancos
+        table
+          thead
+            tr
+              th Tipo
+              th Individual
+              th Matrimonial
+              th Queen Size
+              th King Size
+          tbody
+            tr
+              td Sabanas
+              td $50.00
+              td $50.00
+              td $50.00
+              td $50.00
+            tr
+              td Colcha
+              td $50.00
+              td $50.00
+              td $50.00
+              td $50.00
+            tr
+              td Cobija
+              td $65.00
+              td $65.00
+              td $65.00
+              td $65.00
+            tr
+              td Edredon
+              td $65.00
+              td $65.00
+              td $65.00
+              td $65.00
+      div
+        p
+          strong(class='My(36px)') Pregunta por precios a negocios. 
+          br
+          |  * Lavado de Tenis
+      button.close-button(data-close='', aria-label='Close reveal', type='button')
+        span(aria-hidden='true') ×
+
+    #ironingPriceDetails.priceDetails.large.reveal(data-reveal='')
+      .section-title
+        h3 Detalle en precios planchado
+      .blog-post
+        table
+          thead
+            tr
+              th Piezas
+              th Precio
+          tbody
+            tr
+              td 1
+              td $20
+            tr
+              td 6
+              td $40.00
+            tr
+              td 12
+              td $65.00
+            tr
+              td 18
+              td $95.00
+            tr
+              td(colspan='2') ....
+      div
+        p
+          strong(class='My(36px)') Pregunta por precios a negocios. 
+      button.close-button(data-close='', aria-label='Close reveal', type='button')
+        span(aria-hidden='true') ×
       
-      .row(class='Py(21px) Ta(c)')
-        .columns.small-12
-          a(href='#' class='D(ib) Mx(14px)') Terms
-          a(href='#' class='D(ib) Mx(14px)') Privacy
-      .row(class='Py(21px) Ta(c)')
-        .columns.small-12
-          span(class='D(ib) Mx(14px)') &copy; Tersus Lavanderia 2016
+    #dryCleaningPriceDetails.priceDetails.large.reveal(data-reveal='')
+      .section-title
+        h3 Detalle en precios planchado
+      .blog-post
+        table
+          thead
+            tr
+              th Piezas
+              th Precio
+          tbody
+            tr
+              td 1
+              td $20
+            tr
+              td 6
+              td $40.00
+            tr
+              td 12
+              td $65.00
+            tr
+              td 18
+              td $95.00
+            tr
+              td(colspan='2') ....
+      div
+        p
+          strong(class='My(36px)') Pregunta por precios a negocios. 
+      button.close-button(data-close='', aria-label='Close reveal', type='button')
+        span(aria-hidden='true') ×
+    block footer
   #login-modal.login-modal.reveal(data-reveal)
     h3.subheader Login
     .row(class='Ta(c)')

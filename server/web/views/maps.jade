@@ -1,0 +1,36 @@
+extends home/layout
+
+block styles
+
+block content
+  #page-wrapper.page-wrapper
+    block menu
+    #page-title.callout.large.primary
+      .row.column.text-center
+        .columns.small-12
+          img(src='/public/img/logo-sm.png')
+        .columns.small-12(class='Pt(32px)')
+          h1.shadow Donde atendemos!
+    #shorts.shorts
+      .row(class='Py(40px)')
+        .columns.medium-8.medium-offset-2.small-12
+          .big-text
+            | Atendemos en casi toda la zona metropolitana (mapa con mas informacion), pero aun para muchas zonas tenemos un costo de recuperacion por el trasporte. 
+            | Pero incluso con este costo somos mas baratos que mucha de la competencia, cotiza y compara!!! 
+          div
+            #map
+          
+    block footer
+  #login-modal.login-modal.reveal(data-reveal)
+    h3.subheader Login
+    .row(class='Ta(c)')
+      .medium-12.medium-center
+        a.button.facebook(href='/auth/facebook')
+          i.fa.fa-facebook-official
+          span(class='Mstart(10px)') |
+          span(class='Mstart(10px)') Login with Facebook
+
+block scripts
+  script.
+    var loginError = !{JSON.stringify(error).replace(/<\//g, "<\\/")}
+    var fbAccount = !{JSON.stringify(fbAccount).replace(/<\//g, "<\\/")}

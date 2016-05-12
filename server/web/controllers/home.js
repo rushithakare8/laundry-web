@@ -24,3 +24,27 @@ exports.pricing = {
     return reply.view('pricing', baseData);
   },
 };
+
+exports.about = {
+  handler(request, reply) {
+    const baseData = ViewData.getBaseData();
+    baseData.fbAccount = {
+      appId: '881601445289245',
+      csrf: uuid.v1(),
+      version: 'v2.5',
+    };
+    return reply.view('about', baseData);
+  },
+};
+
+exports.maps = {
+  handler(request, reply) {
+    const baseData = ViewData.getBaseData();
+    baseData.fbAccount = {
+      appId: '881601445289245',
+      csrf: uuid.v1(),
+      version: 'v2.5',
+    };
+    return reply.view('maps', baseData);
+  },
+};

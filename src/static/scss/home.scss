@@ -386,7 +386,7 @@ nav {
 }
 
 .map {
-  height: 500px;
+  height: 550px;
 }
 
 .info {
@@ -394,7 +394,7 @@ nav {
   left: 15%;
   color: _palette(accent8, fg);
   background-color: _palette(accent8, bg);
-  height: 500px;
+  height: 550px;
 }
 
 .social {
@@ -433,7 +433,7 @@ nav {
 @media screen and (min-width: 40em) {
   .info {
     position: absolute;
-    width: 30%;
+    width: 40%;
   }
 }
 
@@ -445,3 +445,80 @@ nav {
 
 // Large only
 // @media screen and (min-width: 64em) and (max-width: 74.9375em) {}
+
+
+// sections
+#page-title{
+  margin: 0 0 0 0;
+  background-color: #2e3842;
+  h1{
+    padding-top: 10px;
+  }
+}
+.pricing-table {
+  border: solid 1px #DDDDDD;
+
+  li {
+    border-bottom: dotted 1px #DDDDDD;
+    font-size: 0.75rem;
+    padding: 0.875rem 1.125rem;
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  .title {
+    background-color: #333333;
+    color: #EEEEEE;
+    font-size: 0.875rem;
+    border-bottom: 0;
+  }
+
+  .price {
+    background-color: #F6F6F6;
+    color: #333333;
+    font-size: 1.75rem;
+    border-bottom: 0;
+  }
+
+  .description {
+    color: #222222;
+    font-size: 0.625rem;
+  }
+
+  .button {
+    margin: 0;
+  }
+}
+
+.priceDetails{
+  color:#222222;
+  strong,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+      color:#222222;
+  }
+  // background-color: rgb(33, 178, 166);
+}
+
+.section-title{
+  width: 100%;
+  // background: #2e3842;
+  text-align: center;
+  // padding: 10px;
+  // margin-top: 15px;
+}
+
+.big-text{
+    text-align: left;
+}
+
+#map {
+  width: 500px;
+  height: 400px;
+}

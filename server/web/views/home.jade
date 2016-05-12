@@ -1,36 +1,10 @@
 extends home/layout
-
+//- 
 block styles
 
 block content
   #page-wrapper.page-wrapper
-    header#header.header.alt
-      div.header-logo(class='P(7px)')
-        img(src='/public/img/bear1.png')
-      nav(class='Pt(10px)').show-for-medium
-        ul
-          li
-            a(href='#') Inicio
-          li
-            a(href='#shorts') Como empezar?
-          li
-            a(href='#contact') Contacto
-      nav#nav.nav.mobile.hide-for-medium
-        ul
-          li.special
-            a(href='#menu' class='Mt(7px)').menuToggle
-              span Menu
-          #menu.menu.hide.menuToggle
-            ul
-              li
-                a(href='#') Inicio
-              li
-                a(href='#shorts') Como empezar?
-              li
-                a(href='#contact') Contacto
-              //- li
-              //-   a(href='#login', data-open='login-modal') Log In
-            a(href='#menu').close
+    block menu
     #banner.banner
       .row
         .columns.small-12
@@ -74,7 +48,7 @@ block content
                 img(src='/public/img/washing-machine.svg', width='42px', height='42px')
                 hr.circ-step-divide.show-for-medium
               div Limpieza experta
-              div(class='Fz(12px) P(21px)') Nuestro personal con profecionalistmo y atencion se asegurara que tu ropa no se encoja ni se decolore y tenga la mejor limipieza.
+              div(class='Fz(12px) P(21px)') Nuestro personal con profesionalismo y atencion se asegurara que tu ropa no se encoja ni se decolore y tenga la mejor limipieza.
             .columns.medium-3.small-12
               div.circ-step(class='My(42px)')
                 i(class='Fz(42px)').fa.fa-check
@@ -87,7 +61,7 @@ block content
                 i.fa.fa-usd(class='Fz(42px)')
                 hr.circ-step-divide.show-for-medium
               div Inscribe a tu Empresa
-              div(class='Fz(12px) P(21px)') Pon en la lista a tu empresa para recivir grandes descuentos como colecta y entrega gratuitos y precios preferenciales.
+              div(class='Fz(12px) P(21px)') Pon en la lista a tu empresa para recibir grandes descuentos como colecta y entrega gratuitos y precios preferenciales.
             .columns.medium-3.small-12(class='Pos(r)')
               div.circ-step(class='My(42px)')
                 i(class='Fz(42px)').fa.fa-truck
@@ -99,7 +73,7 @@ block content
                 img(src='/public/img/washing-machine.svg', width='42px', height='42px')
                 hr.circ-step-divide.show-for-medium
               div Limpieza experta
-              div(class='Fz(12px) P(21px)') Nuestro personal con profecionalistmo y atencion se asegurara que tu ropa no se encoja ni se decolore y tenga la mejor limipieza.
+              div(class='Fz(12px) P(21px)') Nuestro personal con profesionalismo y atencion se asegurara que tu ropa no se encoja ni se decolore y tenga la mejor limipieza.
             .columns.medium-3.small-12
               div.circ-step(class='My(42px)')
                 i(class='Fz(42px)').fa.fa-check
@@ -132,7 +106,7 @@ block content
               div(class='Fz(12px) P(21px)') Te llevamos tu ropa a la hora y direcci&oacute;n pactada.
     #contact.contact(class='Pos(r)')
       #map.map.show-for-medium
-        iframe(width='100%' height='500px' src="https://www.google.com/maps/embed/v1/place?q=Guadalajara,+Jalisco,+Mexico&zoom=13&key=AIzaSyCLtDjfPwO8Fwa2fY6E2Gvkb8KoOKNeFmA")
+        //- iframe(width='100%' height='500px' src="https://www.google.com/maps/embed/v1/place?q=Tersus+Lavanderia/@20.6213761,-103.4202502,17z/data=!3m1!4b1!4m5!3m4!1s0x0:0xd8b4aad5281c3900!8m2!3d20.6213761!4d-103.4180615?hl=en")
       #info.info(class='P(21px)')
         h3 Contactanos
         h5 Estamos contentos de escucharte
@@ -141,6 +115,10 @@ block content
           li
             i.fa.fa-phone(class='Px(14px) Fz(24px)')
             span(class='Fz(18px)') (33) 22 64 1111
+          li(class='Py(14px)') Por Whatsapp
+          li
+            i.fa.fa-whatsapp(class='Px(14px) Fz(24px)')
+            span(class='Fz(18px)') 3319804527
           li(class='Py(14px)') Por Correo
           li
             i.fa.fa-envelope(class='Px(14px) Fz(24px)')
@@ -178,40 +156,7 @@ block content
     //-   .row.expanded
     //-     .columns.medium-6
     //-     .columns.medium-6(class='P(0)')
-    footer.footer
-      .row
-        .columns.medium-3.small-12(class='Py(21px)')
-          h5 Nuestra compania
-          ul.no-bullet
-            li
-              a(href='/blog') Blog
-            li
-              a(href='/carrers') Empleo
-            li
-              a(href='/about') Nuesta Mision
-        .columns.medium-3.small-12(class='Py(21px)')
-          h5 Servicios
-          ul.no-bullet
-            li
-              a(href='/blog') A personas
-            li
-              a(href='/carrers') Empresarial
-            li
-              a(href='/about') En tu lugar de trabajo
-      .row(class='Py(21px) Ta(c)')
-        .columns.small-12
-          a(href='https://www.facebook.com/tersuslavanderia/', target='_blank').social
-            i.fa.fa-facebook
-          a(href='https://twitter.com/tersuslavanderia', target='_blank').social
-            i.fa.fa-twitter
-      
-      .row(class='Py(21px) Ta(c)')
-        .columns.small-12
-          a(href='#' class='D(ib) Mx(14px)') Terms
-          a(href='#' class='D(ib) Mx(14px)') Privacy
-      .row(class='Py(21px) Ta(c)')
-        .columns.small-12
-          span(class='D(ib) Mx(14px)') &copy; Tersus Lavanderia 2016
+    block footer
   #login-modal.login-modal.reveal(data-reveal)
     h3.subheader Login
     .row(class='Ta(c)')
