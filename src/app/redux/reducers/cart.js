@@ -9,11 +9,11 @@ export const addServiceToCartAction = (service) => ({
   payload: service,
 });
 
-export const addServiceToCartReducer = (state, action) => {
+export const addServiceToCartReducer = (cart, action) => {
   const service = action.payload;
-  const services = state.services.concat(service.idServiceType);
-  return Object.assign({}, state, {
-    total: state.total + service.price,
+  const services = cart.services.concat(service.idServiceType);
+  return Object.assign({}, cart, {
+    total: cart.total + service.price,
     services,
   });
 };
@@ -32,12 +32,12 @@ export const removeServiceFromCartAction = (service) => ({
   payload: service,
 });
 
-export const removeServiceFromCartReducer = (state, action) => {
+export const removeServiceFromCartReducer = (cart, action) => {
   const service = action.payload;
-  const services = state.services.filter(idServiceType => idServiceType !== service.idServiceType);
+  const services = cart.services.filter(idServiceType => idServiceType !== service.idServiceType);
   // TODO: Remove also specs that got added
-  return Object.assign({}, state, {
-    total: state.total - service.price,
+  return Object.assign({}, cart, {
+    total: cart.total - service.price,
     services,
   });
 };
@@ -56,11 +56,7 @@ export const updateServiceOnCartAction = (payload) => ({
   payload,
 });
 
-export const updateServiceOnCartReducer = (state, action) => {
-  console.log(state);
-  console.log(action.payload);
-  return state;
-};
+export const updateServiceOnCartReducer = (cart) => cart;
 
 export const updateServiceOnCart = (spec, idServiceType, adding) => (dispatch) => {
   dispatch(updateServiceOnCartAction({ spec, idServiceType, adding }));
@@ -76,7 +72,7 @@ export const updateCartInfoAction = (payload) => ({
   payload,
 });
 
-export const updateCartInfoReducer = (state, action) => Object.assign({}, state, action.payload);
+export const updateCartInfoReducer = (cart, action) => Object.assign({}, cart, action.payload);
 
 export const updateCartInfo = (values) => (dispatch) => {
   dispatch(updateCartInfoAction(values));

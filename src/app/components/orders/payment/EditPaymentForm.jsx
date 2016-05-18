@@ -39,6 +39,7 @@ const EditPaymentForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
   return (
     <form onSubmit={handleSubmit}>
       <input type="hidden" { ...fields.idClient } />
+      <input type="hidden" { ...fields.stripeCustumerId } />
       <div className="ui grid">
         <div className="row">
           <div className="column">
@@ -99,6 +100,6 @@ EditPaymentForm.propTypes = {
 
 export default reduxForm({
   form: 'editAddressForm',
-  fields: ['cardNumber', 'cardCvc', 'cardExpMonth', 'cardExpYear', 'idClient'],
+  fields: ['cardNumber', 'cardCvc', 'cardExpMonth', 'cardExpYear', 'idClient', 'stripeCustumerId'],
   validate,
 })(EditPaymentForm);
