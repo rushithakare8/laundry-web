@@ -10,7 +10,7 @@ export const getOrdersAction = (orders) => ({
   payload: orders,
 });
 
-export const getCurrentOrdersReducer = (state, action) => action.payload;
+export const getCurrentOrdersReducer = (orders, action) => action.payload;
 
 export const getCurrentOrders = () => (dispatch) => {
   get('/api/v1/getcurrentorders/2', (data) => {
