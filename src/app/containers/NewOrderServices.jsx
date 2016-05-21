@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addServiceToCart, updateServiceOnCart, removeServiceFromCart } from '../redux/reducers/cart';
+import { addServiceToCart, updateServiceOnCart, removeServiceFromCart } from '../data/reducers/cart';
 import ServiceCategory from '../components/orders/service/ServiceCategory';
 import ServiceOption from '../components/orders/service/ServiceOption';
 

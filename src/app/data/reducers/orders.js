@@ -3,10 +3,8 @@ import { get } from 'jquery';
 // ------------------------------------
 // GET CURRENT ORDERS
 // ------------------------------------
-export const GET_CURRENT_ORDERS = 'GET_CURRENT_ORDERS';
-
 export const getOrdersAction = (orders) => ({
-  type: GET_CURRENT_ORDERS,
+  type: 'GET_CURRENT_ORDERS',
   payload: orders,
 });
 
@@ -22,7 +20,7 @@ export const getCurrentOrders = () => (dispatch) => {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [GET_CURRENT_ORDERS]: getCurrentOrdersReducer,
+  GET_CURRENT_ORDERS: getCurrentOrdersReducer,
 };
 
 // ------------------------------------

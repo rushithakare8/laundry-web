@@ -2,8 +2,8 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { updateCartInfo } from '../redux/reducers/cart';
-import { addUserPaymentInfo } from '../redux/reducers/user';
+import { updateCartInfo } from '../data/reducers/cart';
+import { addUserPaymentInfo } from '../data/reducers/user';
 import EditPaymentForm from '../components/orders/payment/EditPaymentForm';
 import PaymentInfoSelector from '../components/orders/payment/PaymentInfoSelector';
 

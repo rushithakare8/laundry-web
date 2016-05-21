@@ -3,24 +3,10 @@
 import { post } from 'jquery';
 
 // ------------------------------------
-// UPDATE USER REDUCER
-// ------------------------------------
-export const UPDATE_USER = 'UPDATE_USER';
-
-export const updateUserAction = (user) => ({
-  type: UPDATE_USER,
-  payload: user,
-});
-
-export const updateUserReducer = (user, action) => action.payload;
-
-// ------------------------------------
 // ADD ADDRESS REDUCER
 // ------------------------------------
-export const ADD_USER_ADDRESS = 'ADD_USER_ADDRESS';
-
 export const addUserAddressAction = (address) => ({
-  type: ADD_USER_ADDRESS,
+  type: 'ADD_USER_ADDRESS',
   payload: address,
 });
 
@@ -42,10 +28,8 @@ export const addUserAddress = (values, dispatch) => new Promise(resolve => {
 // ------------------------------------
 // ADD PAYMENT INFO TO USER REDUCER
 // ------------------------------------
-export const ADD_USER_PAYMENT_INFO = 'ADD_USER_PAYMENT_INFO';
-
 export const addUserPaymentInfoAction = (paymentInfo) => ({
-  type: ADD_USER_PAYMENT_INFO,
+  type: 'ADD_USER_PAYMENT_INFO',
   paymentInfo,
 });
 
@@ -87,9 +71,8 @@ export const addUserPaymentInfo = (values, dispatch) => new Promise((resolve, re
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [UPDATE_USER]: updateUserReducer,
-  [ADD_USER_ADDRESS]: addUserAddressReducer,
-  [ADD_USER_PAYMENT_INFO]: addUserPaymentInfoReducer,
+  ADD_USER_ADDRESS: addUserAddressReducer,
+  ADD_USER_PAYMENT_INFO: addUserPaymentInfoReducer,
 };
 
 // ------------------------------------

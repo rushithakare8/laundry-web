@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { updateCartInfo } from '../redux/reducers/cart';
+import { updateCartInfo } from '../data/reducers/cart';
 
 class NewOrderComments extends React.Component {
   constructor(props) {

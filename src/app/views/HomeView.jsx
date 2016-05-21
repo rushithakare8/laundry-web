@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getCurrentOrders as getCurrentOrdersFunc } from '../redux/reducers/orders';
+import { getCurrentOrders as getCurrentOrdersFunc } from '../data/reducers/orders';
 import CurrentOrders from '../components/orders/CurrentOrders';
 
 export const HomeView = ({ orders, getCurrentOrders }) => (

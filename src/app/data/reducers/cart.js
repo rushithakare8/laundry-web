@@ -1,11 +1,8 @@
-
 // ------------------------------------
 // ADD SERVICE TO CART REDUCER
 // ------------------------------------
-export const ADD_SERVICE_TO_CART = 'ADD_SERVICE_TO_CART';
-
 export const addServiceToCartAction = (service) => ({
-  type: ADD_SERVICE_TO_CART,
+  type: 'ADD_SERVICE_TO_CART',
   payload: service,
 });
 
@@ -25,10 +22,8 @@ export const addServiceToCart = (service) => (dispatch) => {
 // ------------------------------------
 // REMOVE SERVICE FROM CART REDUCER
 // ------------------------------------
-export const REMOVE_SERVICE_FROM_CART = 'REMOVE_SERVICE_FROM_CART';
-
 export const removeServiceFromCartAction = (service) => ({
-  type: REMOVE_SERVICE_FROM_CART,
+  type: 'REMOVE_SERVICE_FROM_CART',
   payload: service,
 });
 
@@ -49,10 +44,8 @@ export const removeServiceFromCart = (service) => (dispatch) => {
 // ------------------------------------
 // UPDATE SERVICE ON CART REDUCER
 // ------------------------------------
-export const UPDATE_SERVICE_ON_CART = 'UPDATE_SERVICE_ON_CART';
-
 export const updateServiceOnCartAction = (payload) => ({
-  type: UPDATE_SERVICE_ON_CART,
+  type: 'UPDATE_SERVICE_ON_CART',
   payload,
 });
 
@@ -65,10 +58,8 @@ export const updateServiceOnCart = (spec, idServiceType, adding) => (dispatch) =
 // -----------------------------------------------------------------------
 // UPDATE INFO LIKE ADDRESS AND TIME ON CART REDUCER
 // -----------------------------------------------------------------------
-export const UPDATE_CART_INFO = 'UPDATE_CART_INFO';
-
 export const updateCartInfoAction = (payload) => ({
-  type: UPDATE_CART_INFO,
+  type: 'UPDATE_CART_INFO',
   payload,
 });
 
@@ -78,14 +69,31 @@ export const updateCartInfo = (values) => (dispatch) => {
   dispatch(updateCartInfoAction(values));
 };
 
+// -----------------------------------------------------------------------
+// CHECKOUT CART REDUCER
+// -----------------------------------------------------------------------
+export const checkoutAction = (errors) => ({
+  type: 'CHECKOUT',
+  errors,
+});
+
+export const checkoutReducer = (cart, action) => Object.assign({}, cart, action.errors);
+
+export const checkout = (cart) => (dispatch) => {
+  const errors = undefined;
+  console.log(cart);
+  dispatch(checkoutAction(errors));
+};
+
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [ADD_SERVICE_TO_CART]: addServiceToCartReducer,
-  [REMOVE_SERVICE_FROM_CART]: removeServiceFromCartReducer,
-  [UPDATE_SERVICE_ON_CART]: updateServiceOnCartReducer,
-  [UPDATE_CART_INFO]: updateCartInfoReducer,
+  ADD_SERVICE_TO_CART: addServiceToCartReducer,
+  REMOVE_SERVICE_FROM_CART: removeServiceFromCartReducer,
+  UPDATE_SERVICE_ON_CART: updateServiceOnCartReducer,
+  UPDATE_CART_INFO: updateCartInfoReducer,
+  CHECKOUT: checkoutReducer,
 };
 
 // ------------------------------------

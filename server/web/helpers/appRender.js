@@ -5,7 +5,7 @@ import { RouterContext, match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
 
 import makeRoutes from '../../../src/app/routes';
-import configureStore from '../../../src/app/redux/configureStore';
+import configureStore from '../../../src/app/data/configureStore';
 
 const RenderApp = (url, initialState) => new Promise((resolve, reject) => {
   try {

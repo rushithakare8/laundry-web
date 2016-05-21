@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addUserAddress } from '../redux/reducers/user';
-import { updateCartInfo } from '../redux/reducers/cart';
+import { addUserAddress } from '../data/reducers/user';
+import { updateCartInfo } from '../data/reducers/cart';
 import AddressSelector from '../components/orders/address/AddressSelector';
 import EditAddressForm from '../components/orders/address/EditAddressForm';
 
