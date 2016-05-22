@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getCurrentOrders as getCurrentOrdersFunc } from '../data/reducers/orders';
+import { getOrders as getOrdersFunc } from '../data/reducers/orders';
 import CurrentOrders from '../components/orders/CurrentOrders';
 
-export const HomeView = ({ orders, getCurrentOrders }) => (
+export const HomeView = ({ orders, getOrders }) => (
   <div className="container text-center">
-    <CurrentOrders orders={orders} getCurrentOrders={getCurrentOrders} />
+    <CurrentOrders orders={orders} getOrders={getOrders} />
   </div>
 );
 
 HomeView.propTypes = {
-  getCurrentOrders: PropTypes.func.isRequired,
+  getOrders: PropTypes.func.isRequired,
   orders: PropTypes.array,
   user: PropTypes.object.isRequired,
 };
@@ -21,5 +21,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect((mapStateToProps), {
-  getCurrentOrders: getCurrentOrdersFunc,
+  getOrders: getOrdersFunc,
 })(HomeView);

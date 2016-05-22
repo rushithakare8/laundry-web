@@ -1,3 +1,6 @@
+import { onErrorsAction } from './errors';
+import { validate } from '../validators/order.js';
+
 // ------------------------------------
 // ADD SERVICE TO CART REDUCER
 // ------------------------------------
@@ -72,17 +75,21 @@ export const updateCartInfo = (values) => (dispatch) => {
 // -----------------------------------------------------------------------
 // CHECKOUT CART REDUCER
 // -----------------------------------------------------------------------
-export const checkoutAction = (errors) => ({
+export const checkoutAction = (order) => ({
   type: 'CHECKOUT',
-  errors,
+  order,
 });
 
-export const checkoutReducer = (cart, action) => Object.assign({}, cart, action.errors);
+export const checkoutReducer = (cart, action) => Object.assign({}, cart, action.order);
 
 export const checkout = (cart) => (dispatch) => {
-  const errors = undefined;
+  const errors = validate(cart);
   console.log(cart);
-  dispatch(checkoutAction(errors));
+  console.log(errors);
+  if (errors.length > 0) {
+    return dispatch(onErrorsAction(errors));
+  }
+  return dispatch(checkoutAction(errors));
 };
 
 // ------------------------------------

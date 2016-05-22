@@ -39,6 +39,7 @@
     "hapi-auth-cookie": "6.x",
     "history": "2.x",
     "il-middleware-services": "cesaregb/middleware-services",
+    "immutable": "^3.8.1",
     "inert": "4.x",
     "jade": "1.x",
     "joi": "8.x",

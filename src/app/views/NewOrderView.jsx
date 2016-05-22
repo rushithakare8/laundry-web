@@ -37,8 +37,9 @@ class NewOrderView extends React.Component {
 }
 
 NewOrderView.propTypes = {
-  user: PropTypes.object.isRequired,
   cart: PropTypes.object,
+  user: PropTypes.object.isRequired,
+  errors: PropTypes.array.isRequired,
   serviceTypes: PropTypes.array.isRequired,
   checkout: PropTypes.func.isRequired,
 };
@@ -46,6 +47,7 @@ NewOrderView.propTypes = {
 const mapStateToProps = (state) => ({
   user: state.user,
   cart: state.cart,
+  errors: state.errors,
   serviceTypes: state.serviceTypes,
 });
 
