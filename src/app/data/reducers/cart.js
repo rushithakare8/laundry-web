@@ -84,12 +84,10 @@ export const checkoutReducer = (cart, action) => Object.assign({}, cart, action.
 
 export const checkout = (cart) => (dispatch) => {
   const errors = validate(cart);
-  console.log(cart);
-  console.log(errors);
-  if (errors.length > 0) {
-    return dispatch(onErrorsAction(errors));
+  dispatch(onErrorsAction(errors));
+  if (errors.length < 1) {
+    dispatch(checkoutAction(errors));
   }
-  return dispatch(checkoutAction(errors));
 };
 
 // ------------------------------------
@@ -106,8 +104,7 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = {};
-export default function cartReducer(state = initialState, action) {
+export default function cartReducer(state = {}, action) {
   const handler = ACTION_HANDLERS[action.type];
   return handler ? handler(state, action) : state;
 }

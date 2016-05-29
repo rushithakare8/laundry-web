@@ -20,15 +20,13 @@ const getState = (request) => new Promise((resolve, reject) => {
   };
   getUser(request).then((user) => {
     state.user = user;
-    return getServiceTypes();
-  })
-  .then((serviceTypes) => {
-    state.serviceTypes = serviceTypes;
-    return getCurrentOrders(state.user.idClient);
-  })
-  .then((orders) => {
-    state.orders = orders;
-    resolve(state);
+    return getServiceTypes().then((serviceTypes) => {
+      state.serviceTypes = serviceTypes;
+      return getCurrentOrders(state.user.idClient).then((orders) => {
+        state.orders = orders;
+        resolve(state);
+      });
+    });
   })
   .catch(err => reject(err));
 });

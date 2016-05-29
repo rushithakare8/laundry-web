@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { checkout } from '../data/reducers/cart';
+import Errors from '../components/Errors';
 import NewOrderAddress from '../containers/NewOrderAddress';
 import NewOrderServices from '../containers/NewOrderServices';
 import NewOrderPayments from '../containers/NewOrderPayments';
@@ -18,9 +19,11 @@ class NewOrderView extends React.Component {
     this.props.checkout(cart);
   }
   render() {
+    const { errors } = this.props;
     return (
       <div className="ui container">
         <NewOrderSummary />
+        {errors.length > 0 ? (<Errors errors={errors} />) : null}
         <NewOrderAddress user={this.props.user} />
         <NewOrderServices serviceTypes={this.props.serviceTypes} />
         <NewOrderPayments user={this.props.user} />

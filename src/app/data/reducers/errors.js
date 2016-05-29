@@ -6,7 +6,7 @@ export const onErrorsAction = (errors) => ({
   errors,
 });
 
-export const onErrorsReducer = (errors, action) => [...errors, action.errors];
+export const onErrorsReducer = (errors, action) => [...action.errors];
 
 export const onErrors = (errors) => (dispatch) => {
   dispatch(onErrorsAction(errors));
@@ -22,8 +22,7 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = [];
-export default function errorsReducer(state = initialState, action) {
+export default function errorsReducer(state = [], action) {
   const handler = ACTION_HANDLERS[action.type];
   return handler ? handler(state, action) : state;
 }

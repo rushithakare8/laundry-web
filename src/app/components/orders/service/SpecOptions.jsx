@@ -1,12 +1,16 @@
 import React, { PropTypes } from 'react';
+import SpecOptionSelector from './SpecOptionSelector';
 
 const SpecOptions = ({ spec, idServiceType, updateServiceOnCart }) => {
   const addSpecHandler = () => updateServiceOnCart(idServiceType, spec, true);
   const removeSpecHandler = () => updateServiceOnCart(idServiceType, spec, false);
   return (
-    <div className="three column row">
+    <div className="four column row">
       <div className="column">
         {spec.description}
+      </div>
+      <div className="column">
+        {spec.options ? (<SpecOptionSelector onChange={addSpecHandler} specOptions={spec.options[spec.idSpecs]} idSpec={spec.idSpecs} />) : null}
       </div>
       <div className="column">
         ${spec.price}

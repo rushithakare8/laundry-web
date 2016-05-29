@@ -55,7 +55,7 @@
     "redux": "3.x",
     "redux-form": "5.x",
     "redux-thunk": "2.x",
-    "scooter": "2.x",
+    "scooter": "3.x",
     "vision": "4.x"
   },
   "devDependencies": {
