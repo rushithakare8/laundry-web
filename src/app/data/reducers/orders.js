@@ -3,17 +3,15 @@ import { get } from 'jquery';
 // ------------------------------------
 // GET CURRENT ORDERS
 // ------------------------------------
-export const GET_CURRENT_ORDERS = 'GET_CURRENT_ORDERS';
-
 export const getOrdersAction = (orders) => ({
-  type: GET_CURRENT_ORDERS,
-  payload: orders,
+  type: 'GET_CURRENT_ORDERS',
+  orders,
 });
 
-export const getCurrentOrdersReducer = (state, action) => action.payload;
+export const getOrdersReducer = (orders, action) => action.orders;
 
-export const getCurrentOrders = () => (dispatch) => {
-  get('/api/v1/getcurrentorders/2', (data) => {
+export const getOrders = (idClient) => (dispatch) => {
+  get(`/api/v1/getcurrentorders/${idClient}`, (data) => {
     dispatch(getOrdersAction(data.orders));
   });
 };
@@ -22,7 +20,7 @@ export const getCurrentOrders = () => (dispatch) => {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  [GET_CURRENT_ORDERS]: getCurrentOrdersReducer,
+  GET_CURRENT_ORDERS: getOrdersReducer,
 };
 
 // ------------------------------------

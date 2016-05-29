@@ -2,8 +2,8 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { updateCartInfo } from '../redux/reducers/cart';
-import { addUserPaymentInfo } from '../redux/reducers/user';
+import { updateCartInfo } from '../data/reducers/cart';
+import { addUserPaymentInfo } from '../data/reducers/user';
 import EditPaymentForm from '../components/orders/payment/EditPaymentForm';
 import PaymentInfoSelector from '../components/orders/payment/PaymentInfoSelector';
 
@@ -35,29 +35,27 @@ class NewOrderPayments extends React.Component {
     this.props.updateCartInfo(values);
   }
   render() {
-    const user = this.props.user;
-    const preferredPickup = user.paymentInfos ?
-      (<PaymentInfoSelector paymentInfos={user.paymentInfos} onChange={this.changeInfoHandler} />)
-      : (<div>Please add a Card</div>);
-    const selecting = !this.state.addingPayment ? (
-      <div className="row">
-        {preferredPickup}
-        <div className="row">
-          <button className="ui fluid icon button" onClick={this.openPaymentForm}>
-            <i className="fa fa-credit-card"></i>
-            <span className="Mstart(10px)">Add New Payment Method</span>
-          </button>
-        </div>
-      </div>
-    ) : null;
-    const addingPayment = this.state.addingPayment ? (
-      <EditPaymentForm initialValues={{ idClient: user.idClient }} cancelHandler={this.cancelHandler} onSubmit={this.onSubmit} />
-    ) : null;
+    const { idClient, stripeCustumerId, paymentInfos } = this.props.user;
+    const initialValues = { idClient, stripeCustumerId };
     return (
       <div className="ui">
         <h3>Payment Method</h3>
-        {selecting}
-        {addingPayment}
+        {!this.state.addingPayment ? (
+          <div className="row">
+            {paymentInfos ?
+              (<PaymentInfoSelector paymentInfos={paymentInfos} onChange={this.changeInfoHandler} />)
+              : (<div>Please add a Card</div>)}
+            <div className="row">
+              <button className="ui fluid icon button" onClick={this.openPaymentForm}>
+                <i className="fa fa-credit-card"></i>
+                <span className="Mstart(10px)">Add New Payment Method</span>
+              </button>
+            </div>
+          </div>
+        ) : null}
+        {this.state.addingPayment ? (
+          <EditPaymentForm initialValues={initialValues} cancelHandler={this.cancelHandler} onSubmit={this.onSubmit} />
+        ) : null}
       </div>
     );
   }

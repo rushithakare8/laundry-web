@@ -29,11 +29,13 @@ module.exports = {
     extensions: ['', '.webpack.js', '.jsx', '.js', '.json'],
   },
   externals: {
+    'react-router-redux': 'ReactRouterRedux',
     'react-router': 'ReactRouter',
     'react-redux': 'ReactRedux',
     'redux-thunk': 'ReduxThunk',
     'redux-form': 'ReduxForm',
     'react-dom': 'ReactDOM',
+    immutable: 'Immutable',
     jquery: 'jQuery',
     react: 'React',
     redux: 'Redux',

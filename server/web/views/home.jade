@@ -136,40 +136,7 @@ block content
               | Colonia Pinar de la calma
               br
               | Zapopan, Jalisco, MX 45080
-      
-    //- #features.features
-    //-   .row.expanded.f1
-    //-     .columns.medium-4(class='P(0)')
-    //-       img(src='/public/img/ganchos.jpg')
-    //-     .columns.medium-8
-    //-       h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
-    //-       p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
-    //-   .row.expanded.f2
-    //-     .columns.medium-8
-    //-       h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
-    //-       p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
-    //-     .columns.medium-4(class='P(0)')
-    //-       img(src='/public/img/mac_feet.jpg')
-    //-   .row.expanded.f3
-    //-     .columns.medium-4(class='P(0)')
-    //-       img(src='/public/img/lady_phone.jpg')
-    //-     .columns.medium-8
-    //-       h2 MAGNA PRIMIS LOBORTIS SED ULLAMCORPER
-    //-       p Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.
-    //- #contact.contact
-    //-   .row.expanded
-    //-     .columns.medium-6
-    //-     .columns.medium-6(class='P(0)')
     block footer
-  #login-modal.login-modal.reveal(data-reveal)
-    h3.subheader Login
-    .row(class='Ta(c)')
-      .medium-12.medium-center
-        a.button.facebook(href='/auth/facebook')
-          i.fa.fa-facebook-official
-          span(class='Mstart(10px)') |
-          span(class='Mstart(10px)') Login with Facebook
-
 block scripts
   script.
     var loginError = !{JSON.stringify(error).replace(/<\//g, "<\\/")}

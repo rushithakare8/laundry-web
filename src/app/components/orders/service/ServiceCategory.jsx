@@ -18,14 +18,6 @@ class ServiceCategory extends Component {
   render() {
     const { serviceCategory } = this.props;
     const { idServiceType } = this.state;
-    const selectedService = serviceCategory.serviceTypes
-      .filter(service => parseInt(service.idServiceType, 0) === parseInt(idServiceType, 0))
-      .map((service, idx) => (
-        <ServiceOption
-          key={idx} service={service} isRoot={false}
-          addServiceToCart={this.props.addServiceToCart}
-        />
-      ));
     return (
       <div>
         <div className="title">
@@ -38,7 +30,14 @@ class ServiceCategory extends Component {
             id={serviceCategory.idServiceCategory}
             onChange={this.onServiceSelectChange}
           />
-          {selectedService}
+          {serviceCategory.serviceTypes
+            .filter(service => parseInt(service.idServiceType, 0) === parseInt(idServiceType, 0))
+            .map((service, idx) => (
+              <ServiceOption
+                key={idx} service={service} isRoot={false}
+                addServiceToCart={this.props.addServiceToCart}
+              />
+            ))}
         </div>
       </div>
     );

@@ -11,18 +11,17 @@ class ServiceSelector extends Component {
     });
   }
   render() {
-    const serviceOptions = this.props.services.map((service, idx) => (
-      <div key={idx} className="item" data-value={service.idServiceType} >
-        <div>{service.name}</div>
-      </div>
-    ));
     return (
       <div id={`dropdownService${this.props.id}`} className="ui fluid selection dropdown">
         <input type="hidden" name="idServiceType" />
         <div className="default text">Services</div>
         <i className="dropdown icon"></i>
         <div className="menu">
-          {serviceOptions}
+          {this.props.services.map((service, idx) => (
+            <div key={idx} className="item" data-value={service.idServiceType} >
+              <div>{service.name}</div>
+            </div>
+          ))}
         </div>
       </div>
     );

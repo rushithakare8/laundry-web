@@ -24,20 +24,19 @@ class PaymentInfoSelector extends React.Component {
     });
   }
   render() {
-    const paymentInfos = this.props.paymentInfos.map((token) => (
-      <div key={token.id} className="item" data-value={token.id} >
-        <span className="Pend(7px)"><i className={cx('fa', `fa-cc-${brandToFA[token.brand]}`)}></i></span>
-        <span>XXXX-XXXX-XXXX-</span>
-        <span>{token.last4}</span>
-      </div>
-    ));
     return (
       <div id="dropdownPaymentInfo" className="ui fluid selection dropdown">
         <input type="hidden" name="idClientPaymentInfo" />
         <div className="default text">Payment Method</div>
         <i className="dropdown icon"></i>
         <div className="menu">
-          {paymentInfos}
+          {this.props.paymentInfos.map((token) => (
+            <div key={token.id} className="item" data-value={token.id} >
+              <span className="Pend(7px)"><i className={cx('fa', `fa-cc-${brandToFA[token.brand]}`)}></i></span>
+              <span>XXXX-XXXX-XXXX-</span>
+              <span>{token.last4}</span>
+            </div>
+          ))}
         </div>
       </div>
     );
