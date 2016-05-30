@@ -26,7 +26,7 @@ const EditPaymentForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
               <div className="column">
                 <div className={vFields.cardExpMonth}>
                   <label htmlFor="cardExpMonth"></label>
-                  <input type="number" placeholder="Month" maxLength="2" pattern="[0-9]" { ...fields.cardExpMonth } />
+                  <input type="text" placeholder="Month" maxLength="2" pattern="[0-9]" { ...fields.cardExpMonth } />
                 </div>
               </div>
               <div className="column">

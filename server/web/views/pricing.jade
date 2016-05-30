@@ -4,7 +4,7 @@ block styles
 
 block content
   #page-wrapper.page-wrapper
-    block menu
+    include home/menu
     #page-title.callout.large.primary
       .row.column.text-center
         .columns.small-12
@@ -48,7 +48,6 @@ block content
                 li Entrega programada
                 li
                   a.button(href='#' data-open="dryCleaningPriceDetails" ) Informacion
-  
     #washingPriceDetails.priceDetails.large.reveal(data-reveal='')
       .section-title
         h3 Detalle en precios lavanderia
@@ -123,7 +122,6 @@ block content
           |  * Lavado de Tenis
       button.close-button(data-close='', aria-label='Close reveal', type='button')
         span(aria-hidden='true') ×
-
     #ironingPriceDetails.priceDetails.large.reveal(data-reveal='')
       .section-title
         h3 Detalle en precios planchado
@@ -153,7 +151,6 @@ block content
           strong(class='My(36px)') Pregunta por precios a negocios. 
       button.close-button(data-close='', aria-label='Close reveal', type='button')
         span(aria-hidden='true') ×
-      
     #dryCleaningPriceDetails.priceDetails.large.reveal(data-reveal='')
       .section-title
         h3 Detalle en precios planchado
@@ -211,7 +208,7 @@ block content
           strong(class='My(36px)') Pregunta por precios a negocios. 
       button.close-button(data-close='', aria-label='Close reveal', type='button')
         span(aria-hidden='true') ×
-    block footer
+    include home/footer
   #login-modal.login-modal.reveal(data-reveal)
     h3.subheader Login
     .row(class='Ta(c)')

@@ -13,16 +13,22 @@ const SpecOptions = ({ spec, idServiceType, updateServiceOnCart }) => {
         {spec.options ? (<SpecOptionSelector onChange={addSpecHandler} specOptions={spec.options[spec.idSpecs]} idSpec={spec.idSpecs} />) : null}
       </div>
       <div className="column">
-        ${spec.price}
+        {spec.serviceIncrement > 0 ? (
+          <span>${spec.serviceIncrement}</span>
+        ) : (
+          <span>Incluido</span>
+        )}
       </div>
-      <div className="column">
-        <button className="ui icon button" onClick={addSpecHandler}>
-          <i className="fa fa-plus"></i>
-        </button>
-        <button className="ui icon button" onClick={removeSpecHandler}>
-          <i className="fa fa-minus"></i>
-        </button>
-      </div>
+      {spec.optional !== 0 ? (
+        <div className="column">
+          <button className="ui icon button" onClick={addSpecHandler}>
+            <i className="fa fa-plus"></i>
+          </button>
+          <button className="ui icon button" onClick={removeSpecHandler}>
+            <i className="fa fa-minus"></i>
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 };
