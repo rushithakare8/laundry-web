@@ -1,0 +1,115 @@
+extends home/layout
+
+block styles
+
+block content
+  #page-wrapper.page-wrapper
+    block menu
+    #page-title.callout.large.primary
+      .row.column.text-center
+        .columns.small-12
+          img(src='/public/img/logo-sm.png')
+        .columns.small-12(class='Pt(32px)')
+          h1.shadow Preguntas frecuentes 
+    #shorts.text-block
+      .row
+        .medium-8.columns
+          ul
+            li
+              a(href='#how-it-works') Como funciona Tersus lavanderia
+            li
+              a(href='#how-it-works') Como funciona Tersus lavanderia
+          #how-it-works.blog-post
+            h3 Como funciona Tersus lavanderia 
+            div
+              | Tersus lavanderia, es ropa limpia sin salir de casa.
+              br
+              |  Tenemos 3 tipos de servicios:
+              br
+              ul
+                li
+                  i.fa.fa-building-o(aria-hidden='true')
+                  | Encargo: Dejanos tu ropa y recojela cuanod puedas!!
+                li
+                  i.fa.fa-truck(aria-hidden='true')
+                  | Ruta: Tenemos varias 
+                  a(href='#rutas') rutas
+                  |  que seguro pasan cerca de ti, si no pasamos enfrente de tu casa/trabajo pero sabes que estamos por tu zona, 
+                  a(href='#contact') contactanos
+                  |                         y pasaremos a la brevedad por tu pedido. Al igual tus 
+                  a(href='#contact') peticiones/recomendaciones
+                  |  haran que agregemos otra parada en nuestra ruta en el horario que prefieras.
+                li
+                  i.fa.fa-motorcycle(aria-hidden='true')
+                  | Pedidos: No pasamos por tu domicilio en horario que puedas atendernos, 
+                  a(href='#') contactanos
+                  |  y vamos por tu ropa. Esto tiene un pequenio costo de recuperacion, pero tu tiempo
+                  |                         lo vale!!
+          .blog-post
+            h3 Que servicios tienen? 
+            div
+              | Nuestros servicios son primordialmente. Lavanderia, Tintoreria y Planchaduria.
+              br
+              |  Compara nuestros precios.
+          .blog-post
+            h3 Que dias pasan a mi colonia/oficina? 
+            div
+              | Tenemos diferentes rutas programadas las puedes checar 
+              a(href='#rutas') aqui.
+              br
+              |  Si aun no cubrimos tu zona, por favor 
+              a(href='#contact') contactanos
+              |  y trabajaremos en eso lo antes posible.
+          .blog-post
+            h3 Soy negocio manejan algun precio de mayoreo?  
+            div
+              | Si, tenemos diversos servicios para cubrir tus necesidades, 
+              a(href='#contact') contactanos
+              |  y trabajemos en algo que de solucion a tus necesidades.
+          .blog-post
+            h3 Cuanto tiempo tardan en entregan mi pedido?  
+            div
+              | Nos comprometemos a entregar todos los pedidos o en la 
+              a(href='#rutas') ruta de entrega
+              |  (normalmente 24 hras despues) o tu programas tu entrega.
+              br
+              |  Algunos pedidos desafortunadamente nos toman mas tiempo, igual te daremos un estimado (real) de cuando te entregaremos tu ropa.
+          .blog-post
+            h3 Que zonas cubre su servicio a domicilio? 
+            div
+              a(href='#rutas') Aqui
+              |  puedes consultar las rutas que tenemos, ofrecemos la busqueda por colonia o empresa.
+              br
+          .blog-post
+            h3 Tiene costo el servico a domicilio ?
+            div
+              | Para pedidos individuales (fuera de rutas) puede tener un costo.
+              br
+              |  Depende de tu hubicacion el precio de este, puedes revisar los costos 
+              a(href='#rutas') aqui
+          .blog-post
+            h3 Que formas de pago tienen ?
+            div
+              | Tarjetas y Efectivo.
+              br
+              |  Pronto podras registrar tu tarjeta / paypal en nuestro sistema y asi tendras mejor control de tu consumo.
+          .blog-post
+            h3 Manejan garantias.
+            div
+              | Algunos tejidos, fibras y colores de las prendas son delicados y al darles tratamiento cuidamos que se mantengan en las mejores condiciones. El grado de uso y deterioro de las fibras, el tipo de mancha que presenten las prendas (origen orgánico o sintético)
+              | así como los diferentes tipos de telas y combinaciones de las mismas, pueden reaccionar de distintas formas al lavado, ya sea en seco o en agua, es por ello que no podemos garantizar el quitar alguna mancha.
+
+    block footer
+  #login-modal.login-modal.reveal(data-reveal)
+    h3.subheader Login
+    .row(class='Ta(c)')
+      .medium-12.medium-center
+        a.button.facebook(href='/auth/facebook')
+          i.fa.fa-facebook-official
+          span(class='Mstart(10px)') |
+          span(class='Mstart(10px)') Login with Facebook
+
+block scripts
+  script.
+    var loginError = !{JSON.stringify(error).replace(/<\//g, "<\\/")}
+    var fbAccount = !{JSON.stringify(fbAccount).replace(/<\//g, "<\\/")}

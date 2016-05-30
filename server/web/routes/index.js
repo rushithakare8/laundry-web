@@ -9,6 +9,7 @@ module.exports = [
   // { method: 'GET', path: '/privacy', config: Home.privacy },
   // { method: 'GET', path: '/terms', config: Home.terms },
   { method: 'GET', path: '/maps', config: Home.maps },
+  { method: 'GET', path: '/faq', config: Home.faq },
   { method: ['GET', 'POST'], path: '/auth/facebook', config: Auth.login },
   { method: 'GET', path: '/favicon.ico', handler: { file: 'public/img/favicon.ico' } },
   {
