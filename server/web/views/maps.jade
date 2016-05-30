@@ -4,7 +4,7 @@ block styles
 
 block content
   #page-wrapper.page-wrapper
-    block menu
+    include home/menu
     #page-title.callout.large.primary
       .row.column.text-center
         .columns.small-12
@@ -20,7 +20,7 @@ block content
           div
             #map
           
-    block footer
+    include home/footer
   #login-modal.login-modal.reveal(data-reveal)
     h3.subheader Login
     .row(class='Ta(c)')

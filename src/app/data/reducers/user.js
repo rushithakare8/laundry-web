@@ -34,7 +34,8 @@ export const addUserPaymentInfoAction = (paymentInfo) => ({
 });
 
 export const addUserPaymentInfoReducer = (user, action) => {
-  const paymentInfos = [...user.paymentInfos, action.paymentInfo];
+  const prevInfos = user.paymentInfos || [];
+  const paymentInfos = [...prevInfos, action.paymentInfo];
   return Object.assign({}, user, { paymentInfos });
 };
 

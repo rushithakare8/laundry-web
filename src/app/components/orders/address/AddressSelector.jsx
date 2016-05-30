@@ -5,7 +5,9 @@ import AddressOption from './AddressOption';
 
 class AddressSelector extends React.Component {
   componentDidMount() {
-    $(`#${this.props.inputName}`).dropdown({
+    const { inputName, addresses } = this.props;
+    const dropdownElem = $(`#${inputName}`);
+    dropdownElem.dropdown({
       onChange: (value) => {
         this.props.onChange({
           target: {
@@ -15,6 +17,7 @@ class AddressSelector extends React.Component {
         });
       },
     });
+    dropdownElem.dropdown('set selected', addresses[0].idAddress);
   }
   render() {
     return (

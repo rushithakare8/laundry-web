@@ -11,7 +11,8 @@ export const addServiceToCartAction = (service) => ({
 
 export const addServiceToCartReducer = (cart, action) => {
   const service = action.payload;
-  const services = cart.services.concat(service.idServiceType);
+  const prevServices = cart.services || [];
+  const services = [...prevServices, service];
   return Object.assign({}, cart, {
     total: cart.total + service.price,
     services,
@@ -80,13 +81,16 @@ export const checkoutAction = (order) => ({
   order,
 });
 
-export const checkoutReducer = (cart, action) => Object.assign({}, cart, action.order);
+export const checkoutReducer = (cart, action) => {
+  console.log(cart);
+  return Object.assign({}, cart, action.order);
+};
 
 export const checkout = (cart) => (dispatch) => {
   const errors = validate(cart);
   dispatch(onErrorsAction(errors));
   if (errors.length < 1) {
-    dispatch(checkoutAction(errors));
+    dispatch(checkoutAction(cart));
   }
 };
 

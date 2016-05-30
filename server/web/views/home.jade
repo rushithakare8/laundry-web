@@ -1,10 +1,10 @@
 extends home/layout
-//- 
+
 block styles
 
 block content
   #page-wrapper.page-wrapper
-    block menu
+    include home/menu
     #banner.banner
       .row
         .columns.small-12
@@ -136,7 +136,7 @@ block content
               | Colonia Pinar de la calma
               br
               | Zapopan, Jalisco, MX 45080
-    block footer
+    include home/footer
 block scripts
   script.
     var loginError = !{JSON.stringify(error).replace(/<\//g, "<\\/")}
