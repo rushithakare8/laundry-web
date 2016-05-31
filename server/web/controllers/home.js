@@ -48,3 +48,15 @@ exports.maps = {
     return reply.view('maps', baseData);
   },
 };
+
+exports.faq = {
+  handler(request, reply) {
+    const baseData = ViewData.getBaseData();
+    baseData.fbAccount = {
+      appId: '881601445289245',
+      csrf: uuid.v1(),
+      version: 'v2.5',
+    };
+    return reply.view('faq', baseData);
+  },
+};
