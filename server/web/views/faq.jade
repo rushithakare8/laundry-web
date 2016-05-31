@@ -4,7 +4,7 @@ block styles
 
 block content
   #page-wrapper.page-wrapper
-    block menu
+    include home/menu
     #page-title.callout.large.primary
       .row.column.text-center
         .columns.small-12
@@ -12,14 +12,29 @@ block content
         .columns.small-12(class='Pt(32px)')
           h1.shadow Preguntas frecuentes 
     #shorts.text-block
-      .row
+      .row(class='Py(40px)')
         .medium-8.columns
-          ul
+          ul.vertical.faq-options
             li
               a(href='#how-it-works') Como funciona Tersus lavanderia
             li
-              a(href='#how-it-works') Como funciona Tersus lavanderia
-          #how-it-works.blog-post
+              a(href='#services') Que servicios tienen?
+            li
+              a(href='#days') Que dias pasan a mi colonia/oficina? 
+            li
+              a(href='#business') Soy negocio manejan algun precio de mayoreo? 
+            li
+              a(href='#time') Cuanto tiempo tardan en entregan mi pedido?
+            li
+              a(href='#areas') Que zonas cubre su servicio a domicilio?
+            li
+              a(href='#home-service-price') Tiene costo el servico a domicilio ?
+            li
+              a(href='#payment-services') Que formas de pago tienen?
+            li
+              a(href='#warranty') Manejan garantias?
+          span#how-it-works.anchor
+          .blog-post
             h3 Como funciona Tersus lavanderia 
             div
               | Tersus lavanderia, es ropa limpia sin salir de casa.
@@ -29,10 +44,10 @@ block content
               ul
                 li
                   i.fa.fa-building-o(aria-hidden='true')
-                  | Encargo: Dejanos tu ropa y recojela cuanod puedas!!
+                  |  Encargo: Dejanos tu ropa y recojela cuanod puedas!!
                 li
                   i.fa.fa-truck(aria-hidden='true')
-                  | Ruta: Tenemos varias 
+                  |  Ruta: Tenemos varias 
                   a(href='#rutas') rutas
                   |  que seguro pasan cerca de ti, si no pasamos enfrente de tu casa/trabajo pero sabes que estamos por tu zona, 
                   a(href='#contact') contactanos
@@ -41,16 +56,18 @@ block content
                   |  haran que agregemos otra parada en nuestra ruta en el horario que prefieras.
                 li
                   i.fa.fa-motorcycle(aria-hidden='true')
-                  | Pedidos: No pasamos por tu domicilio en horario que puedas atendernos, 
+                  |  Pedidos: No pasamos por tu domicilio en horario que puedas atendernos, 
                   a(href='#') contactanos
                   |  y vamos por tu ropa. Esto tiene un pequenio costo de recuperacion, pero tu tiempo
                   |                         lo vale!!
+          span#services.anchor
           .blog-post
             h3 Que servicios tienen? 
             div
-              | Nuestros servicios son primordialmente. Lavanderia, Tintoreria y Planchaduria.
+              | Nuestros servicios prinsipales servicios son: Lavanderia, Tintoreria y Planchaduria.
               br
               |  Compara nuestros precios.
+          span#days.anchor
           .blog-post
             h3 Que dias pasan a mi colonia/oficina? 
             div
@@ -60,46 +77,52 @@ block content
               |  Si aun no cubrimos tu zona, por favor 
               a(href='#contact') contactanos
               |  y trabajaremos en eso lo antes posible.
+          span#business.anchor
           .blog-post
-            h3 Soy negocio manejan algun precio de mayoreo?  
+            h3 Soy negocio manejan algun precio de mayoreo?
             div
               | Si, tenemos diversos servicios para cubrir tus necesidades, 
               a(href='#contact') contactanos
               |  y trabajemos en algo que de solucion a tus necesidades.
+          span#time.anchor
           .blog-post
-            h3 Cuanto tiempo tardan en entregan mi pedido?  
+            h3 Cuanto tiempo tardan en entregan mi pedido?
             div
               | Nos comprometemos a entregar todos los pedidos o en la 
               a(href='#rutas') ruta de entrega
               |  (normalmente 24 hras despues) o tu programas tu entrega.
               br
               |  Algunos pedidos desafortunadamente nos toman mas tiempo, igual te daremos un estimado (real) de cuando te entregaremos tu ropa.
+          span#areas.anchor
           .blog-post
             h3 Que zonas cubre su servicio a domicilio? 
             div
               a(href='#rutas') Aqui
               |  puedes consultar las rutas que tenemos, ofrecemos la busqueda por colonia o empresa.
               br
+          span#home-service-price.anchor
           .blog-post
-            h3 Tiene costo el servico a domicilio ?
+            h3 Tiene costo el servico a domicilio?
             div
               | Para pedidos individuales (fuera de rutas) puede tener un costo.
               br
               |  Depende de tu hubicacion el precio de este, puedes revisar los costos 
               a(href='#rutas') aqui
+          span#payment-services.anchor
           .blog-post
-            h3 Que formas de pago tienen ?
+            h3 Que formas de pago tienen?
             div
               | Tarjetas y Efectivo.
               br
               |  Pronto podras registrar tu tarjeta / paypal en nuestro sistema y asi tendras mejor control de tu consumo.
+          span#warranty.anchor
           .blog-post
-            h3 Manejan garantias.
+            h3 Manejan garantias?
             div
               | Algunos tejidos, fibras y colores de las prendas son delicados y al darles tratamiento cuidamos que se mantengan en las mejores condiciones. El grado de uso y deterioro de las fibras, el tipo de mancha que presenten las prendas (origen orgánico o sintético)
               | así como los diferentes tipos de telas y combinaciones de las mismas, pueden reaccionar de distintas formas al lavado, ya sea en seco o en agua, es por ello que no podemos garantizar el quitar alguna mancha.
 
-    block footer
+    include home/footer
   #login-modal.login-modal.reveal(data-reveal)
     h3.subheader Login
     .row(class='Ta(c)')
