@@ -335,6 +335,53 @@ nav {
   background-color: _palette(accent1, bg);
   text-align: center;
 }
+.text-block {
+  background-color: #A7A9AC;
+  text-align: left;
+  h3{
+    margin-top: -300px 0 0 0;
+    // margin: 0;
+  }
+  div{
+    color: #2e3842;
+    padding-bottom: 10px;
+    a {
+      color: #d3d4e4;
+    }
+  }
+
+  i {
+    color: #d3d4e4;
+    padding-right: 3px;
+  }
+  li {
+    color: #2e3842;
+    padding-bottom: 5px;
+  }
+  .faq-options {
+    a{
+      color: #2e3842;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding-left: 1.3em;
+    }
+    li:before {
+      content: "\f128"; /* FontAwesome Unicode */
+      font-family: FontAwesome;
+      display: inline-block;
+      margin-left: -1.3em; /* same as padding-left set on li */
+      width: 1.3em; /* same as padding-left set on li */
+    }
+  }
+  ul{
+    list-style-type: none;
+  }
+
+}
 
 .features {
   background-color: _palette(bg);
@@ -521,4 +568,11 @@ nav {
 
 #map {
   width: 500px;
+}
+
+.anchor{
+  display: block;
+  height: 70px;
+  margin-top: -70px;
+  visibility: hidden;
 }
