@@ -1,6 +1,6 @@
 import { onErrorsAction } from './errors';
-import { validate } from '../validators/order.js';
-
+import { validate } from '../validators/order';
+import { int } from '../utils/utils';
 // ------------------------------------
 // ADD SERVICE TO CART REDUCER
 // ------------------------------------
@@ -9,12 +9,25 @@ export const addServiceToCartAction = (service) => ({
   payload: service,
 });
 
+export const getCartSpec = (spec) => ({
+  quantity: 1,
+  serviceIncrement: 0,
+  idSpecs: spec.idSpecs,
+  value: spec.options[spec.idSpecs].filter(opt => opt.serviceIncrement === 0)[0].value,
+});
+
+export const getCartService = (service) => ({
+  price: service.price,
+  idServiceType: service.idServiceType,
+  specs: service.specs ? service.specs.filter(spec => spec.optional === 0).map(spec => getCartSpec(spec)) : [],
+});
+
 export const addServiceToCartReducer = (cart, action) => {
   const service = action.payload;
   const prevServices = cart.services || [];
-  const services = [...prevServices, service];
+  const services = [...prevServices, getCartService(service)];
   return Object.assign({}, cart, {
-    total: cart.total + service.price,
+    subTotal: cart.subTotal + service.price,
     services,
   });
 };
@@ -36,7 +49,7 @@ export const removeServiceFromCartReducer = (cart, action) => {
   const services = cart.services.filter(idServiceType => idServiceType !== service.idServiceType);
   // TODO: Remove also specs that got added
   return Object.assign({}, cart, {
-    total: cart.total - service.price,
+    subTotal: cart.subTotal - service.price,
     services,
   });
 };
@@ -46,17 +59,77 @@ export const removeServiceFromCart = (service) => (dispatch) => {
 };
 
 // ------------------------------------
-// UPDATE SERVICE ON CART REDUCER
+// ADD SERVICE ON CART REDUCER
 // ------------------------------------
-export const updateServiceOnCartAction = (payload) => ({
-  type: 'UPDATE_SERVICE_ON_CART',
+export const addSpecOnCartAction = (payload) => ({
+  type: 'ADD_SPEC_ON_CART',
   payload,
 });
 
-export const updateServiceOnCartReducer = (cart) => cart;
+export const addSpecOnCartReducer = (cart, action) => {
+  const { idServiceType, spec } = action.payload;
+  const services = cart.services.map(service => (
+    int(service.idServiceType) === int(idServiceType) ? Object.assign({}, service, { specs: [...service.specs, getCartSpec(spec)] }) : service
+  ));
+  const increment = services.reduce((inc, service) => inc + (service.specs.reduce((sInc, sp) => sInc + sp.serviceIncrement, 0) * service.price), 0);
+  return Object.assign({}, cart, { services, increment });
+};
 
-export const updateServiceOnCart = (spec, idServiceType, adding) => (dispatch) => {
-  dispatch(updateServiceOnCartAction({ spec, idServiceType, adding }));
+export const addSpecOnCart = (idServiceType, spec) => (dispatch) => {
+  dispatch(addSpecOnCartAction({ idServiceType, spec }));
+};
+
+// ------------------------------------
+// REMOVE SERVICE ON CART REDUCER
+// ------------------------------------
+export const removeSpecOnCartAction = (payload) => ({
+  type: 'REMOVE_SPEC_ON_CART',
+  payload,
+});
+
+export const removeSpecOnCartReducer = (cart, action) => {
+  const { idServiceType, idSpecs } = action.payload;
+  const services = cart.services.map(service => (
+    int(service.idServiceType) === int(idServiceType) ? Object.assign({}, service, { specs: service.specs.filter(sp => sp.idSpecs !== idSpecs) }) : service
+  ));
+  const increment = services.reduce((inc, service) => inc + (service.specs.reduce((sInc, sp) => sInc + sp.serviceIncrement, 0) * service.price), 0);
+  return Object.assign({}, cart, { services, increment });
+};
+
+export const removeSpecOnCart = (idServiceType, idSpecs) => (dispatch) => {
+  dispatch(removeSpecOnCartAction({ idServiceType, idSpecs }));
+};
+
+// ------------------------------------
+// UPDATE SERVICE ON CART REDUCER
+// ------------------------------------
+export const getUpdatedCartSpec = (spec, option) => ({
+  value: option.key,
+  idSpecs: spec.idSpecs,
+  quantity: spec.quantity,
+  serviceIncrement: option.serviceIncrement,
+});
+
+export const getUpdatedCartService = (service, idSpecs, option) => ({
+  price: service.price,
+  idServiceType: service.idServiceType,
+  specs: service.specs.map(spec => (int(spec.idSpecs) === int(idSpecs) ? getUpdatedCartSpec(spec, option) : spec)),
+});
+
+export const updateSpecOnCartAction = (payload) => ({
+  type: 'UPDATE_SPEC_ON_CART',
+  payload,
+});
+
+export const updateSpecOnCartReducer = (cart, action) => {
+  const { idServiceType, idSpecs, option } = action.payload;
+  const services = cart.services.map(service => (int(service.idServiceType) === int(idServiceType) ? getUpdatedCartService(service, idSpecs, option) : service));
+  const increment = services.reduce((inc, service) => inc + (service.specs.reduce((sInc, spec) => sInc + spec.serviceIncrement, 0) * service.price), 0);
+  return Object.assign({}, cart, { services, increment });
+};
+
+export const updateSpecOnCart = (idServiceType, idSpecs, option) => (dispatch) => {
+  dispatch(updateSpecOnCartAction({ idServiceType, idSpecs, option }));
 };
 
 // -----------------------------------------------------------------------
@@ -100,8 +173,10 @@ export const checkout = (cart) => (dispatch) => {
 const ACTION_HANDLERS = {
   ADD_SERVICE_TO_CART: addServiceToCartReducer,
   REMOVE_SERVICE_FROM_CART: removeServiceFromCartReducer,
-  UPDATE_SERVICE_ON_CART: updateServiceOnCartReducer,
   UPDATE_CART_INFO: updateCartInfoReducer,
+  ADD_SPEC_ON_CART: addSpecOnCartReducer,
+  UPDATE_SPEC_ON_CART: updateSpecOnCartReducer,
+  REMOVE_SPEC_ON_CART: removeSpecOnCartReducer,
   CHECKOUT: checkoutReducer,
 };
 

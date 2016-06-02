@@ -15,7 +15,7 @@ const getUser = (request) => new Promise((resolve, reject) => {
 const getState = (request) => new Promise((resolve, reject) => {
   const state = {};
   state.cart = {
-    total: 0,
+    subTotal: 0,
     services: [],
   };
   getUser(request).then((user) => {

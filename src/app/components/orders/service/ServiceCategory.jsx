@@ -33,10 +33,7 @@ class ServiceCategory extends Component {
           {serviceCategory.serviceTypes
             .filter(service => parseInt(service.idServiceType, 0) === parseInt(idServiceType, 0))
             .map((service, idx) => (
-              <ServiceOption
-                key={idx} service={service} isRoot={false}
-                addServiceToCart={this.props.addServiceToCart}
-              />
+              <ServiceOption key={idx} service={service} isRoot={false} {...this.props} />
             ))}
         </div>
       </div>
@@ -47,6 +44,9 @@ class ServiceCategory extends Component {
 ServiceCategory.propTypes = {
   serviceCategory: PropTypes.object.isRequired,
   addServiceToCart: PropTypes.func.isRequired,
+  addSpecOnCart: PropTypes.func.isRequired,
+  updateSpecOnCart: PropTypes.func.isRequired,
+  removeSpecOnCart: PropTypes.func.isRequired,
 };
 
 export default ServiceCategory;

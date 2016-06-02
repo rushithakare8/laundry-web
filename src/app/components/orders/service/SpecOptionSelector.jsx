@@ -4,27 +4,30 @@ import React, { PropTypes } from 'react';
 
 class SpecOptionSelector extends React.Component {
   componentDidMount() {
-    const { idSpec, specOptions } = this.props;
-    const dropdownElem = $(`#specOptions${idSpec}`);
+    const { idSpecs, specOptions } = this.props;
+    const dropdownElem = $(`#specOptions${idSpecs}`);
     dropdownElem.dropdown({
       onChange: (value) => {
-        this.props.onChange(value);
+        const selected = specOptions.filter(opt => opt.value === value)[0];
+        this.props.onChange(selected);
       },
     });
-    dropdownElem.dropdown('set selected', specOptions[0].value);
+    dropdownElem.dropdown('set selected', specOptions.filter(opt => opt.serviceIncrement === 0)[0].value);
   }
   render() {
-    const { idSpec, specOptions } = this.props;
+    const { idSpecs, specOptions } = this.props;
     return (
       <section>
-        <div id={`specOptions${idSpec}`} className="ui fluid selection dropdown">
-          <input type="hidden" name={`specOptions${idSpec}`} />
+        <div id={`specOptions${idSpecs}`} className="ui fluid selection dropdown">
+          <input type="hidden" name={`specOptions${idSpecs}`} />
           <div className="default text">Option</div>
           <i className="dropdown icon"></i>
           <div className="menu">
-            {specOptions.map((opt, idx) => (<div key={`SPCO${idSpec}${idx}`} className="item" data-value={opt.value} >
-              <div>{opt.value}</div>
-            </div>))}
+            {specOptions.map((opt, idx) => (
+              <div key={`SPCO${idSpecs}${idx}`} className="item" data-value={opt.value} >
+                <div>{opt.value}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -35,7 +38,7 @@ class SpecOptionSelector extends React.Component {
 SpecOptionSelector.propTypes = {
   onChange: PropTypes.func.isRequired,
   specOptions: PropTypes.array.isRequired,
-  idSpec: PropTypes.number.isRequired,
+  idSpecs: PropTypes.number.isRequired,
 };
 
 export default SpecOptionSelector;

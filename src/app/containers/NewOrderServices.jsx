@@ -2,7 +2,13 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addServiceToCart, updateServiceOnCart, removeServiceFromCart } from '../data/reducers/cart';
+import {
+  addServiceToCart,
+  removeServiceFromCart,
+  addSpecOnCart,
+  updateSpecOnCart,
+  removeSpecOnCart,
+} from '../data/reducers/cart';
 import ServiceCategory from '../components/orders/service/ServiceCategory';
 import ServiceOption from '../components/orders/service/ServiceOption';
 
@@ -19,18 +25,11 @@ class NewOrderServices extends React.Component {
       <div className="ui accordion accordionServices">
         <h3>Select Services</h3>
         {serviceCategories.map((service) => (
-          <ServiceCategory
-            key={`SC${service.idServiceCategory}`} serviceCategory={service}
-            addServiceToCart={this.props.addServiceToCart}
-          />
+          <ServiceCategory key={`SC${service.idServiceCategory}`} serviceCategory={service} {...this.props} />
         ))}
         {servicesAdded.length > 0 ? (<h3>Added Services</h3>) : null}
         {servicesAdded.map((service) => (
-          <ServiceOption
-            key={`SO${service.idServiceType}`} service={service} isRoot
-            updateServiceOnCart={this.props.updateServiceOnCart}
-            removeServiceFromCart={this.props.removeServiceFromCart}
-          />
+          <ServiceOption key={`SO${service.idServiceType}`} service={service} isRoot {...this.props} />
         ))}
       </div>
     );
@@ -38,18 +37,24 @@ class NewOrderServices extends React.Component {
 }
 
 NewOrderServices.propTypes = {
+  cart: PropTypes.object.isRequired,
   serviceTypes: PropTypes.array.isRequired,
   addServiceToCart: PropTypes.func.isRequired,
-  updateServiceOnCart: PropTypes.func.isRequired,
   removeServiceFromCart: PropTypes.func.isRequired,
+  addSpecOnCart: PropTypes.func.isRequired,
+  updateSpecOnCart: PropTypes.func.isRequired,
+  removeSpecOnCart: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   serviceTypes: state.serviceTypes,
+  cart: state.cart,
 });
 
 export default connect((mapStateToProps), {
   addServiceToCart,
-  updateServiceOnCart,
   removeServiceFromCart,
+  addSpecOnCart,
+  updateSpecOnCart,
+  removeSpecOnCart,
 })(NewOrderServices);
