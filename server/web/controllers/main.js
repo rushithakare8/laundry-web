@@ -3,7 +3,7 @@ import ViewData from '../helpers/ViewData';
 import appRender from '../helpers/appRender';
 import { getState } from '../helpers/stateCreator';
 
-exports.index = {
+export const main = {
   auth: 'session',
   handler(request, reply) {
     const baseData = ViewData.getBaseData();

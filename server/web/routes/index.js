@@ -1,27 +1,22 @@
-import Main from '../controllers/main.js';
-import Home from '../controllers/home.js';
-import Auth from '../controllers/auth.js';
+import { main } from '../controllers/main';
+import { index, pricing, about, maps, faq } from '../controllers/home';
+import { login, logout, accountkitlogin } from '../controllers/auth';
 
 module.exports = [
-  { method: 'GET', path: '/', config: Home.index },
-  { method: 'GET', path: '/pricing', config: Home.pricing },
-  { method: 'GET', path: '/about', config: Home.about },
-  // { method: 'GET', path: '/privacy', config: Home.privacy },
-  // { method: 'GET', path: '/terms', config: Home.terms },
-  { method: 'GET', path: '/maps', config: Home.maps },
-  { method: 'GET', path: '/faq', config: Home.faq },
-  { method: ['GET', 'POST'], path: '/auth/facebook', config: Auth.login },
+  { method: 'GET', path: '/', config: index },
+  { method: 'GET', path: '/pricing', config: pricing },
+  { method: 'GET', path: '/about', config: about },
+  // { method: 'GET', path: '/privacy', config: privacy },
+  // { method: 'GET', path: '/terms', config: terms },
+  { method: 'GET', path: '/maps', config: maps },
+  { method: 'GET', path: '/faq', config: faq },
+  { method: 'GET', path: '/logout', config: logout },
+  { method: ['GET', 'POST'], path: '/auth/facebook', config: login },
+  { method: 'POST', path: '/accountkitlogin', config: accountkitlogin },
+  { method: 'GET', path: '/main', config: main },
+  { method: 'GET', path: '/main/{path*}', config: main },
+  // FAVICON
   { method: 'GET', path: '/favicon.ico', handler: { file: 'public/img/favicon.ico' } },
-  {
-    method: 'GET',
-    path: '/apple-touch-icon-precomposed.png',
-    handler: { file: 'public/img/apple-touch-icon-precomposed.png' },
-  },
-  {
-    method: 'GET',
-    path: '/apple-touch-icon.png',
-    handler: { file: 'public/img/apple-touch-icon.png' },
-  },
-  { method: 'GET', path: '/main', config: Main.index },
-  { method: 'GET', path: '/main/{path*}', config: Main.index },
+  { method: 'GET', path: '/apple-touch-icon.png', handler: { file: 'public/img/apple-touch-icon.png' } },
+  { method: 'GET', path: '/apple-touch-icon-precomposed.png', handler: { file: 'public/img/apple-touch-icon-precomposed.png' } },
 ];

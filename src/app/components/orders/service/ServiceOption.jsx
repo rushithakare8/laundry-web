@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import SpecOptions from './SpecOptions';
 
-const ServiceOption = ({ service, addServiceToCart, removeServiceFromCart, addSpecOnCart, updateSpecOnCart, removeSpecOnCart, isRoot }) => {
+const ServiceOption = ({ cart, service, addServiceToCart, removeServiceFromCart, addSpecOnCart, updateSpecOnCart, removeSpecOnCart, isRoot }) => {
   const addServiceHandler = () => addServiceToCart(service);
   const removeServiceHandler = () => removeServiceFromCart(service);
   return (
@@ -27,7 +27,7 @@ const ServiceOption = ({ service, addServiceToCart, removeServiceFromCart, addSp
         <div className="ui grid">
           {service.specs && isRoot ? service.specs.map((spec, idx) => (
             <SpecOptions
-              key={idx} spec={spec} idServiceType={service.idServiceType} price={service.price}
+              key={idx} spec={spec} idServiceType={service.idServiceType} price={service.price} cart={cart}
               addSpecOnCart={addSpecOnCart} updateSpecOnCart={updateSpecOnCart} removeSpecOnCart={removeSpecOnCart}
             />
           )) : null}
@@ -39,6 +39,7 @@ const ServiceOption = ({ service, addServiceToCart, removeServiceFromCart, addSp
 
 ServiceOption.propTypes = {
   isRoot: PropTypes.bool.isRequired,
+  cart: PropTypes.object.isRequired,
   service: PropTypes.object.isRequired,
   addServiceToCart: PropTypes.func.isRequired,
   removeServiceFromCart: PropTypes.func.isRequired,

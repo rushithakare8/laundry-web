@@ -209,16 +209,3 @@ block content
       button.close-button(data-close='', aria-label='Close reveal', type='button')
         span(aria-hidden='true') ×
     include home/footer
-  #login-modal.login-modal.reveal(data-reveal)
-    h3.subheader Login
-    .row(class='Ta(c)')
-      .medium-12.medium-center
-        a.button.facebook(href='/auth/facebook')
-          i.fa.fa-facebook-official
-          span(class='Mstart(10px)') |
-          span(class='Mstart(10px)') Login with Facebook
-
-block scripts
-  script.
-    var loginError = !{JSON.stringify(error).replace(/<\//g, "<\\/")}
-    var fbAccount = !{JSON.stringify(fbAccount).replace(/<\//g, "<\\/")}

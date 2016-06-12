@@ -36,6 +36,7 @@ module.exports = {
     'redux-form': 'ReduxForm',
     'react-dom': 'ReactDOM',
     immutable: 'Immutable',
+    history: 'History',
     jquery: 'jQuery',
     react: 'React',
     redux: 'Redux',

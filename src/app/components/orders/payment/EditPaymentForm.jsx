@@ -16,7 +16,7 @@ const EditPaymentForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
           <div className="column">
             <div className={vFields.cardNumber}>
               <label htmlFor="cardNumber"></label>
-              <input type="number" placeholder="Card Number" maxLength="19" pattern="[0-9]" { ...fields.cardNumber } />
+              <input type="text" placeholder="Card Number" maxLength="16" pattern="[0-9]" { ...fields.cardNumber } />
             </div>
           </div>
         </div>
@@ -32,13 +32,13 @@ const EditPaymentForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
               <div className="column">
                 <div className={vFields.cardExpYear}>
                   <label htmlFor="cardExpYear"></label>
-                  <input type="number" placeholder="Year" maxLength="4" pattern="[0-9]" { ...fields.cardExpYear } />
+                  <input type="text" placeholder="Year" maxLength="4" pattern="[0-9]" { ...fields.cardExpYear } />
                 </div>
               </div>
               <div className="column">
                 <div className={vFields.cardCvc}>
                   <label htmlFor="cardCvc"></label>
-                  <input type="number" placeholder="CVC" maxLength="4" pattern="[0-9]" { ...fields.cardCvc } />
+                  <input type="text" placeholder="CVC" maxLength="4" pattern="[0-9]" { ...fields.cardCvc } />
                 </div>
               </div>
             </div>
