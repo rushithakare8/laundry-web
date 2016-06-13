@@ -24,14 +24,22 @@ const ServiceOption = ({ cart, service, addServiceToCart, removeServiceFromCart,
             </button>
           ) : null}
         </div>
-        <div className="ui grid">
-          {service.specs && isRoot ? service.specs.map((spec, idx) => (
-            <SpecOptions
-              key={idx} spec={spec} idServiceType={service.idServiceType} price={service.price} cart={cart}
-              addSpecOnCart={addSpecOnCart} updateSpecOnCart={updateSpecOnCart} removeSpecOnCart={removeSpecOnCart}
-            />
-          )) : null}
-        </div>
+        {service.specs && isRoot ? (
+          <div className="ui grid">
+            <div className="five column row">
+              <div className="column">Opcion</div>
+              <div className="column"></div>
+              <div className="column">Precio</div>
+              <div className="column">Cantidad</div>
+            </div>
+            {service.specs.map((spec, idx) => (
+              <SpecOptions
+                key={idx} spec={spec} idServiceType={service.idServiceType} price={service.price} cart={cart}
+                addSpecOnCart={addSpecOnCart} updateSpecOnCart={updateSpecOnCart} removeSpecOnCart={removeSpecOnCart}
+              />
+            ))}
+          </div>
+        ) : null}
       </div>
     </div>
   );

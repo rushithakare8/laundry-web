@@ -14,7 +14,7 @@ class NewOrderSummary extends React.Component {
         <div className="row">
           <div className="column">
             <span className="Pend(7px)">{services.length}</span>
-            <span>Services</span>
+            <span>Servicios</span>
           </div>
           <div className="column"><span>{(subTotal + increment)}</span></div>
         </div>

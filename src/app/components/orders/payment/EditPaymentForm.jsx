@@ -16,7 +16,7 @@ const EditPaymentForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
           <div className="column">
             <div className={vFields.cardNumber}>
               <label htmlFor="cardNumber"></label>
-              <input type="text" placeholder="Card Number" maxLength="16" pattern="[0-9]" { ...fields.cardNumber } />
+              <input type="text" placeholder="Numero de Targeta" maxLength="16" pattern="[0-9]" { ...fields.cardNumber } />
             </div>
           </div>
         </div>
@@ -26,13 +26,13 @@ const EditPaymentForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
               <div className="column">
                 <div className={vFields.cardExpMonth}>
                   <label htmlFor="cardExpMonth"></label>
-                  <input type="text" placeholder="Month" maxLength="2" pattern="[0-9]" { ...fields.cardExpMonth } />
+                  <input type="text" placeholder="Mes" maxLength="2" pattern="[0-9]" { ...fields.cardExpMonth } />
                 </div>
               </div>
               <div className="column">
                 <div className={vFields.cardExpYear}>
                   <label htmlFor="cardExpYear"></label>
-                  <input type="text" placeholder="Year" maxLength="4" pattern="[0-9]" { ...fields.cardExpYear } />
+                  <input type="text" placeholder="Año" maxLength="4" pattern="[0-9]" { ...fields.cardExpYear } />
                 </div>
               </div>
               <div className="column">
@@ -48,11 +48,11 @@ const EditPaymentForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
           <div className="sixteen wide column Ta(e)">
             <button className="ui icon button" type="button" onClick={cancelHandler} disabled={submitting}>
               <i className="fa fa-times"></i>
-              <span className="Mstart(10px)">Cancel</span>
+              <span className="Mstart(10px)">Cancelar</span>
             </button>
             <button className="ui icon button" type="submit" onClick={handleSubmit} disabled={submitting}>
               <i className="fa fa-floppy-o"></i>
-              <span className="Mstart(10px)">Save</span>
+              <span className="Mstart(10px)">Guardar</span>
             </button>
           </div>
         </div>

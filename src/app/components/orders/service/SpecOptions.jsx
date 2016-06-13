@@ -5,13 +5,15 @@ const SpecOptions = ({ cart, spec, idServiceType, updateSpecOnCart, addSpecOnCar
   const addSpecHandler = () => addSpecOnCart(idServiceType, spec);
   const removeSpecHandler = () => removeSpecOnCart(idServiceType, spec.idSpecs);
   const updateSpecHandler = (option) => updateSpecOnCart(idServiceType, spec.idSpecs, option);
-  // const quantity = cart.services.filter(ser => )
+  const quantity = cart.services.filter(ser => ser.idServiceType === idServiceType)[0].specs.filter(sp => sp.idSpecs === spec.idSpecs)[0].quantity;
+  const showRemove = (spec.optional === 0 && quantity > 1) || (spec.optional !== 0 && quantity > 0);
+  const showAdd = true;
   let increment = spec.serviceIncrement * price;
   increment = spec.specPrice > 0 ? spec.specPrice : increment;
   console.log(cart);
   console.log(spec);
   return (
-    <div className="four column row">
+    <div className="five column row">
       <div className="column">
         {spec.description}
       </div>
@@ -25,13 +27,18 @@ const SpecOptions = ({ cart, spec, idServiceType, updateSpecOnCart, addSpecOnCar
           <span>Incluido</span>
         )}
       </div>
+      <div className="column">{quantity}</div>
       <div className="column">
-        <button className="ui icon button" onClick={addSpecHandler}>
-          <i className="fa fa-plus"></i>
-        </button>
-        <button className="ui icon button" onClick={removeSpecHandler}>
-          <i className="fa fa-minus"></i>
-        </button>
+        {showRemove ? (
+          <button className="ui icon button" onClick={removeSpecHandler}>
+            <i className="fa fa-minus"></i>
+          </button>
+        ) : null}
+        {showAdd ? (
+          <button className="ui icon button" onClick={addSpecHandler}>
+            <i className="fa fa-plus"></i>
+          </button>
+        ) : null}
       </div>
     </div>
   );

@@ -39,16 +39,18 @@ class NewOrderPayments extends React.Component {
     const initialValues = { idClient, stripeCustumerId };
     return (
       <div className="ui">
-        <h3>Payment Method</h3>
+        <h3>Metodo de Pago</h3>
         {!this.state.addingPayment ? (
           <div className="row">
-            {paymentInfos ?
-              (<PaymentInfoSelector paymentInfos={paymentInfos} onChange={this.changeInfoHandler} />)
-              : (<div>Please add a Card</div>)}
+            {paymentInfos ? (
+              <PaymentInfoSelector paymentInfos={paymentInfos} onChange={this.changeInfoHandler} />
+            ) : (
+              <div>No tienes metodos de pago registrados</div>
+            )}
             <div className="row">
               <button className="ui fluid icon button" onClick={this.openPaymentForm}>
                 <i className="fa fa-credit-card"></i>
-                <span className="Mstart(10px)">Add New Payment Method</span>
+                <span className="Mstart(10px)">Registra un Nuevo Metodo de Pago</span>
               </button>
             </div>
           </div>

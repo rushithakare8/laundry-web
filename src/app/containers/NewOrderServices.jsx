@@ -23,11 +23,11 @@ class NewOrderServices extends React.Component {
     const serviceCategories = this.props.serviceTypes.filter(service => service.idServiceCategory);
     return (
       <div className="ui accordion accordionServices">
-        <h3>Select Services</h3>
+        <h3>Selecciona Servicios para Agregar</h3>
         {serviceCategories.map((service) => (
           <ServiceCategory key={`SC${service.idServiceCategory}`} serviceCategory={service} {...this.props} />
         ))}
-        {servicesAdded.length > 0 ? (<h3>Added Services</h3>) : null}
+        {servicesAdded.length > 0 ? (<h3>Servicios Agregados</h3>) : null}
         {servicesAdded.map((service) => (
           <ServiceOption key={`SO${service.idServiceType}`} service={service} isRoot {...this.props} />
         ))}
