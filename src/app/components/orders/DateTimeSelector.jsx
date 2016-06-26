@@ -4,17 +4,26 @@ import React, { PropTypes } from 'react';
 
 class DateTimeSelector extends React.Component {
   componentDidMount() {
-    const { fieldName, onChange } = this.props;
+    const { fieldName, isPickup, onChange } = this.props;
+    const localChange = (date) => onChange({
+      target: {
+        name: fieldName,
+        value: date,
+      },
+    });
+    const now = new Date();
+    now.setHours(8, 30);
+    if (!isPickup) {
+      now.setHours(18, 0);
+    }
+    const defaultDate = now.toString();
+    localChange(defaultDate);
     flatpickr(`#${fieldName}`, {
       enableTime: true,
       dateFormat: 'd/m/Y',
+      defaultDate,
       onChange(date) {
-        onChange({
-          target: {
-            name: fieldName,
-            value: date,
-          },
-        });
+        localChange(date);
       },
     });
   }
@@ -28,7 +37,12 @@ class DateTimeSelector extends React.Component {
   }
 }
 
+DateTimeSelector.defaultProps = {
+  isPickup: true,
+};
+
 DateTimeSelector.propTypes = {
+  isPickup: PropTypes.bool.isRequired,
   fieldName: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
