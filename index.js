@@ -13,6 +13,7 @@ const webRoutes = require('./server/web/routes');
 const apiRoutes = require('il-middleware-services').apiRoutes;
 const goodConfig = require('./configs/good.config');
 const poopConfig = require('./configs/poop.config');
+const versions = require('./configs/versions');
 const vault = require('./configs/getEnviroment').getVault();
 require('opbeat').start({
   appId: 'a6e428e550',
@@ -40,6 +41,9 @@ exports.register = (server, options, next) => {
       throw err;
     }
     const auth = vault.auth;
+    versions.then(v => {
+      server.app.versions = v; // eslint-disable-line
+    });
 
     // ERROR HANDLIGN
     // server.ext('onPreResponse', (request, reply) => {

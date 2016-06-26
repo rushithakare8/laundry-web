@@ -75,6 +75,8 @@ export const addSpecOnCartAction = (payload) => ({
 
 export const addSpecOnCartReducer = (cart, action) => {
   const { idServiceType, spec } = action.payload;
+  console.log(cart);
+  console.log(action);
   const services = cart.services.map(service => (
     int(service.idServiceType) === int(idServiceType) ? Object.assign({}, service, { specs: [...service.specs, getCartSpec(spec)] }) : service
   ));
