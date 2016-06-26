@@ -2,7 +2,6 @@
 @import 'common';
 @import 'vars';
 @import 'getters';
-@import 'components/radial-progress';
 
 .container {
   position: relative;
@@ -82,20 +81,6 @@
       transform: scale(1);
     }
   }
-}
-
-.radial-progress {
-  margin: 0 auto;
-
-  @include radial-progress(
-    $inset-color: _main(colors, background),
-    $circle-color: #50d2c2,
-    $shadow: none,
-    $percentage-color: inherit,
-    $circle-background: _palette(trans-2),
-    $circle-size: 50px,
-    $inset-size: 40px
-  );
 }
 
 .banner {

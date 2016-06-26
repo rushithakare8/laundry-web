@@ -31,7 +31,7 @@ class NewOrderView extends React.Component {
         <div className="ui column row">
           <button className="fluid ui icon button" onClick={this.checkoutHandler}>
             <i className="fa fa-shopping-cart"></i>
-            <span className="Mstart(10px)">Checkout</span>
+            <span className="Mstart(10px)">Completar Orden</span>
           </button>
         </div>
       </div>

@@ -27,7 +27,7 @@ class PaymentInfoSelector extends React.Component {
     return (
       <div id="dropdownPaymentInfo" className="ui fluid selection dropdown">
         <input type="hidden" name="idClientPaymentInfo" />
-        <div className="default text">Payment Method</div>
+        <div className="default text">Metodos de Pago</div>
         <i className="dropdown icon"></i>
         <div className="menu">
           {this.props.paymentInfos.map((token) => (

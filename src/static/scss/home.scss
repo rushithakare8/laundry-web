@@ -74,21 +74,6 @@ sup {
   font-size: .8em;
 }
 
-hr {
-  margin: (_size(element-margin) * 1.5) 0;
-  border: 0;
-  border-bottom: solid 2px _palette(border);
-
-  &.major {
-    margin: (_size(element-margin) * 2.25) 0;
-  }
-}
-
-.hr {
-  margin: 10px 0;
-  border-bottom: solid 2px _palette(il-black);
-}
-
 blockquote {
   margin: 0 0 _size(element-margin);
   padding: .5em 0 .5em 2em;
@@ -405,8 +390,11 @@ nav {
 }
 
 .button {
-  .facebook {
-    background-color: .3b5998;
+  &.facebook {
+    background-color: #3b5998;
+  }
+  &.email, &.sms {
+    background-color: _palette(accent1, bg);
   }
 }
 

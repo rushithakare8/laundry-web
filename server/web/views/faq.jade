@@ -123,16 +123,3 @@ block content
               | así como los diferentes tipos de telas y combinaciones de las mismas, pueden reaccionar de distintas formas al lavado, ya sea en seco o en agua, es por ello que no podemos garantizar el quitar alguna mancha.
 
     include home/footer
-  #login-modal.login-modal.reveal(data-reveal)
-    h3.subheader Login
-    .row(class='Ta(c)')
-      .medium-12.medium-center
-        a.button.facebook(href='/auth/facebook')
-          i.fa.fa-facebook-official
-          span(class='Mstart(10px)') |
-          span(class='Mstart(10px)') Login with Facebook
-
-block scripts
-  script.
-    var loginError = !{JSON.stringify(error).replace(/<\//g, "<\\/")}
-    var fbAccount = !{JSON.stringify(fbAccount).replace(/<\//g, "<\\/")}
