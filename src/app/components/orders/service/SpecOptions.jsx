@@ -7,7 +7,7 @@ const SpecOptions = ({ cart, spec, idServiceType, updateSpecOnCart, addSpecOnCar
   const updateSpecHandler = (option) => updateSpecOnCart(idServiceType, spec.idSpecs, option);
   const quantity = cart.services.filter(ser => ser.idServiceType === idServiceType)[0].specs.filter(sp => sp.idSpecs === spec.idSpecs)[0].quantity;
   const showRemove = (spec.optional === 0 && quantity > 1) || (spec.optional !== 0 && quantity > 0);
-  const showAdd = true;
+  const showAdd = spec.max_qty > quantity;
   let increment = spec.serviceIncrement * price;
   increment = spec.specPrice > 0 ? spec.specPrice * quantity : increment;
   return (

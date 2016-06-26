@@ -9,13 +9,13 @@ const EditAddressForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
   const vFields = new Map(fields).map(f => cx(base, { error: f.touched && f.error })).toObject();
   return (
     <form onSubmit={handleSubmit}>
-      <input type="hidden" { ...fields.idClient } />
+      <input type="hidden" {...fields.idClient} />
       <div className="ui two column grid">
         <div className="row">
           <div className="sixteen wide column">
             <div className={vFields.address}>
               <label htmlFor="address"></label>
-              <input type="text" placeholder="Direccion" { ...fields.address } />
+              <input type="text" placeholder="Direccion" {...fields.address} />
             </div>
           </div>
         </div>
@@ -23,7 +23,7 @@ const EditAddressForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
           <div className="sixteen wide column">
             <div className={vFields.address}>
               <label htmlFor="address2"></label>
-              <input type="text" placeholder="Interior #" { ...fields.address2 } />
+              <input type="text" placeholder="Interior #" {...fields.address2} />
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@ const EditAddressForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
           <div className="sixteen wide column">
             <div className={vFields.country}>
               <label htmlFor="country"></label>
-              <input type="text" placeholder="Pais" { ...fields.country } />
+              <input type="text" placeholder="Pais" {...fields.country} />
             </div>
           </div>
         </div>
@@ -39,7 +39,7 @@ const EditAddressForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
           <div className="sixteen wide column">
             <div className={vFields.city}>
               <label htmlFor="city"></label>
-              <input type="text" placeholder="Ciudad" { ...fields.city } />
+              <input type="text" placeholder="Ciudad" {...fields.city} />
             </div>
           </div>
         </div>
@@ -47,13 +47,13 @@ const EditAddressForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
           <div className="column">
             <div className={vFields.state}>
               <label htmlFor="state"></label>
-              <input type="text" placeholder="Estado" { ...fields.state } />
+              <input type="text" placeholder="Estado" {...fields.state} />
             </div>
           </div>
           <div className="column">
             <div className={vFields.zipcode}>
               <label htmlFor="zipcode"></label>
-              <input type="text" placeholder="Codigo Postal" { ...fields.zipcode } />
+              <input type="text" placeholder="Codigo Postal" {...fields.zipcode} />
             </div>
           </div>
         </div>

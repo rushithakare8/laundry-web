@@ -9,14 +9,14 @@ const EditPaymentForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
   const vFields = new Map(fields).map(f => cx(base, { error: f.touched && f.error })).toObject();
   return (
     <form onSubmit={handleSubmit}>
-      <input type="hidden" { ...fields.idClient } />
-      <input type="hidden" { ...fields.stripeCustumerId } />
+      <input type="hidden" {...fields.idClient} />
+      <input type="hidden" {...fields.stripeCustumerId} />
       <div className="ui grid">
         <div className="row">
           <div className="column">
             <div className={vFields.cardNumber}>
               <label htmlFor="cardNumber"></label>
-              <input type="text" placeholder="Numero de Targeta" maxLength="16" pattern="[0-9]" { ...fields.cardNumber } />
+              <input type="text" placeholder="Numero de Targeta" maxLength="16" pattern="[0-9]" {...fields.cardNumber} />
             </div>
           </div>
         </div>
@@ -26,19 +26,19 @@ const EditPaymentForm = ({ fields, handleSubmit, cancelHandler, submitting }) =>
               <div className="column">
                 <div className={vFields.cardExpMonth}>
                   <label htmlFor="cardExpMonth"></label>
-                  <input type="text" placeholder="Mes" maxLength="2" pattern="[0-9]" { ...fields.cardExpMonth } />
+                  <input type="text" placeholder="Mes" maxLength="2" pattern="[0-9]" {...fields.cardExpMonth} />
                 </div>
               </div>
               <div className="column">
                 <div className={vFields.cardExpYear}>
                   <label htmlFor="cardExpYear"></label>
-                  <input type="text" placeholder="Año" maxLength="4" pattern="[0-9]" { ...fields.cardExpYear } />
+                  <input type="text" placeholder="Año" maxLength="4" pattern="[0-9]" {...fields.cardExpYear} />
                 </div>
               </div>
               <div className="column">
                 <div className={vFields.cardCvc}>
                   <label htmlFor="cardCvc"></label>
-                  <input type="text" placeholder="CVC" maxLength="4" pattern="[0-9]" { ...fields.cardCvc } />
+                  <input type="text" placeholder="CVC" maxLength="4" pattern="[0-9]" {...fields.cardCvc} />
                 </div>
               </div>
             </div>

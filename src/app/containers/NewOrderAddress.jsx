@@ -4,6 +4,7 @@ import { addUserAddress } from '../data/reducers/user';
 import { updateCartInfo } from '../data/reducers/cart';
 import AddressSelector from '../components/orders/address/AddressSelector';
 import EditAddressForm from '../components/orders/address/EditAddressForm';
+import DateTimeSelector from '../components/orders/DateTimeSelector';
 
 class NewOrderAddress extends React.Component {
   constructor(props) {
@@ -47,10 +48,7 @@ class NewOrderAddress extends React.Component {
               )}
             </div>
             <h3>Hora para recojer</h3>
-            <div className="ui fluid input">
-              <label htmlFor="address2"></label>
-              <input type="datetime" name="pickupTime" placeholder="8:10" onChange={this.changeInfoHandler} />
-            </div>
+            <DateTimeSelector fieldName="pickupTime" onChange={this.changeInfoHandler} />
             <h3>Direccion de entrega</h3>
             <div>
               {user.addresses ? (
@@ -60,10 +58,7 @@ class NewOrderAddress extends React.Component {
               )}
             </div>
             <h3>Hora para entrega</h3>
-            <div className="ui fluid input">
-              <label htmlFor="address2"></label>
-              <input type="datetime" name="deliveryTime" placeholder="8:10" onChange={this.changeInfoHandler} />
-            </div>
+            <DateTimeSelector fieldName="deliveryTime" onChange={this.changeInfoHandler} />
             <div className="row">
               <button className="ui fluid icon button" onClick={this.openAddressForm}>
                 <i className="fa fa-map-marker"></i>
