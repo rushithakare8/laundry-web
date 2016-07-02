@@ -1,6 +1,8 @@
+import { ajax } from 'jquery';
 import { onErrorsAction } from './errors';
 import { validate } from '../validators/order';
 import { int } from '../utils/utils';
+import { CHECKOUT_URL } from '../constants/endpoints';
 
 export const getCartSpec = (spec, option) => ({
   key: option.key,
@@ -17,11 +19,11 @@ export const getCartService = (service) => ({
 });
 
 export const updateCartPrices = (cart, services) => {
-  let subTotal = services.reduce((sub, service) => sub + service.price, 0);
+  let price = services.reduce((sub, service) => sub + service.price, 0);
   const increment = services.reduce((inc, service) => inc + (service.specs.reduce((sInc, spec) => sInc + (spec.serviceIncrement * spec.quantity), 0) * service.price), 0);
   const priceIncrement = services.reduce((inc, service) => inc + (service.specs.reduce((sInc, spec) => sInc + (spec.specPrice * spec.quantity), 0)), 0);
-  subTotal = subTotal + increment + priceIncrement;
-  return Object.assign({}, cart, { services, subTotal, increment });
+  price = price + increment + priceIncrement;
+  return Object.assign({}, cart, { services, price, increment });
 };
 
 // ------------------------------------
@@ -56,7 +58,7 @@ export const removeServiceFromCartReducer = (cart, action) => {
   const services = cart.services.filter(idServiceType => idServiceType !== service.idServiceType);
   // TODO: Remove also specs that got added
   return Object.assign({}, cart, {
-    subTotal: cart.subTotal - service.price,
+    price: cart.price - service.price,
     services,
   });
 };
@@ -185,7 +187,7 @@ export const checkoutAction = (order) => ({
 });
 
 export const checkoutReducer = (cart, action) => {
-  console.log(cart);
+  console.log(action);
   return Object.assign({}, cart, action.order);
 };
 
@@ -193,8 +195,31 @@ export const checkout = (cart) => (dispatch) => {
   const errors = validate(cart);
   dispatch(onErrorsAction(errors));
   if (errors.length < 1) {
-    dispatch(checkoutAction(cart));
+    console.log(cart);
+    ajax({
+      type: 'POST',
+      dataType: 'json',
+      url: CHECKOUT_URL,
+      data: JSON.stringify(cart),
+      contentType: 'application/json',
+    }).done((order) => {
+      dispatch(checkoutAction(order));
+    });
   }
+};
+
+// -----------------------------------------------------------------------
+// SET USER CART REDUCER
+// -----------------------------------------------------------------------
+export const setUserAction = (idClient) => ({
+  type: 'SET_USER',
+  idClient,
+});
+
+export const setUserReducer = (cart, action) => Object.assign({}, cart, { idClient: action.idClient });
+
+export const setUser = (idClient) => (dispatch) => {
+  dispatch(setUserAction(idClient));
 };
 
 // ------------------------------------
@@ -208,6 +233,7 @@ const ACTION_HANDLERS = {
   UPDATE_SPEC_ON_CART: updateSpecOnCartReducer,
   REMOVE_SPEC_ON_CART: removeSpecOnCartReducer,
   CHECKOUT: checkoutReducer,
+  SET_USER: setUserReducer,
 };
 
 // ------------------------------------

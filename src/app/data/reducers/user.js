@@ -1,6 +1,10 @@
 /* global Stripe */
 
 import { post } from 'jquery';
+import {
+  ADD_USER_ADDRESS_URL,
+  ADD_USER_PAYMENT_URL,
+} from '../constants/endpoints';
 
 // ------------------------------------
 // ADD ADDRESS REDUCER
@@ -19,7 +23,7 @@ export const addUserAddressReducer = (user, action) => {
 };
 
 export const addUserAddress = (values, dispatch) => new Promise(resolve => {
-  post('/api/v1/adduseraddress', values).done((result) => {
+  post(ADD_USER_ADDRESS_URL, values).done((result) => {
     dispatch(addUserAddressAction(result));
     resolve(result);
   });
@@ -61,7 +65,7 @@ export const addUserPaymentInfo = (values, dispatch) => new Promise((resolve, re
       brand: response.card.brand,
       funding: response.card.funding,
     };
-    return post('/api/v1/adduserpaymentinfo', paymentInfo).done((result) => {
+    return post(ADD_USER_PAYMENT_URL, paymentInfo).done((result) => {
       dispatch(addUserPaymentInfoAction(result));
       resolve(result);
     });

@@ -12,6 +12,7 @@ const packages = [
   'history',
   'es6-promise',
   'flatpickr',
+  'jquery',
 ];
 
 // default options
