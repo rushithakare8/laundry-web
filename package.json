@@ -58,6 +58,7 @@
     "vision": "4.x"
   },
   "devDependencies": {
+    "babel-cli": "latest",
     "babel-plugin-transform-object-assign": "latest",
     "babel-plugin-es6-promise": "latest",
     "babel-preset-es2015": "latest",

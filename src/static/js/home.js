@@ -1,43 +1,50 @@
 /* global $, noty, AccountKit, fbAccount */
 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import configureStore from './data/configureStore';
+
 const menu = $('#menu');
 const header = $('#header');
 const menuToggle = $('.menuToggle');
-// let map;
-// const initMap = () => {
-//   map = new google.maps.Map(document.getElementById('map'), {
-//     center: { lat: -34.397, lng: 150.644 },
-//     zoom: 8,
-//   });
-// };
-
-$('#shorts').waypoint({
-  offset: 60,
-  handler(direction) {
-    if (direction === 'down') {
-      header.removeClass('alt');
-    } else {
-      header.addClass('alt');
-    }
-  },
-});
 
 menuToggle.click(() => {
   menu.toggleClass('hide');
 });
 
-$('.type-select').on('click', evt => {
-  const elem = $(evt.currentTarget).data();
-  $('.type-section').addClass('hide');
-  $(`#${elem.target}`).removeClass('hide');
-  evt.preventDefault();
-});
+const initCalculator = () => {
+  const initialState = window.initialState;
+  const store = configureStore(initialState);
+
+  ReactDOM.render(
+    <Root history={history} routes={routes} store={store} />,
+    document.getElementById('container')
+  );
+
+}
 
 $(document).ready(() => {
+
+  $('#shorts').waypoint({
+    offset: 60,
+    handler(direction) {
+      if (direction === 'down') {
+        header.removeClass('alt');
+      } else {
+        header.addClass('alt');
+      }
+    },
+  });
+
+  $('.type-select').on('click', evt => {
+    const elem = $(evt.currentTarget).data();
+    $('.type-section').addClass('hide');
+    $(`#${elem.target}`).removeClass('hide');
+    evt.preventDefault();
+  });
+
   $(document).foundation();
-  if ($('#map')) {
-    // initMap();
-  }
+
 });
 
 // Initialize Account Kit with csrf protection

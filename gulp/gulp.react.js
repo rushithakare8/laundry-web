@@ -10,7 +10,7 @@ const webpackConfig = require('../webpack.config');
 module.exports = {
   react() {
     return gulp.src(paths.react.main)
-    .pipe(webpack(webpackConfig))
+    .pipe(webpack(webpackConfig[0]))
     .pipe(gulp.dest(paths.react.dest))
     .pipe(rename({ suffix: '.min' }))
     .pipe(uglify())

@@ -3,6 +3,8 @@
 @import 'vars';
 @import 'getters';
 
+@import "home/pricing";
+
 strong,
 b {
   color: _palette(fg-bold);
@@ -320,6 +322,7 @@ nav {
   background-color: _palette(accent1, bg);
   text-align: center;
 }
+
 .text-block {
   background-color: #A7A9AC;
   text-align: left;
@@ -385,7 +388,6 @@ nav {
 }
 
 .pricing {
-  background-color: _palette(accent1, bg);
   text-align: center;
 }
 
@@ -408,11 +410,19 @@ nav {
     min-width: 42px;
   }
 
+  img {
+    min-height: 36px;
+  }
+
   .circ-step-divide {
     position: absolute;
     width: 50%;
     top: 38px;
     right: -25%;
+  }
+
+  &.blue {
+    border-color: _palette(il-font-blue-dark);
   }
 }
 
@@ -422,6 +432,18 @@ nav {
 
 .map {
   height: 550px;
+}
+
+.map-shim {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  &::before {
+    content: '';
+  }
 }
 
 .info {
@@ -454,7 +476,7 @@ nav {
 }
 
 .footer {
-  color: #FFFFFF;
+  color: _palette(il-white);
   background-color: _palette(bg);
 }
 
@@ -466,12 +488,7 @@ nav {
 // @media screen and (max-width: 39.9375em) {}
 
 // Medium and up
-@media screen and (min-width: 40em) {
-  .info {
-    position: absolute;
-    width: 40%;
-  }
-}
+// @media screen and (min-width: 40em) {}
 
 // Medium only
 // @media screen and (min-width: 40em) and (max-width: 63.9375em) {}

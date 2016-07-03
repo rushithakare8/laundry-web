@@ -1,10 +1,11 @@
 {
   "js": {
-    "src": "src/static/js/*.js",
+    "src": "./src/static/js/**/*",
+    "main": "./src/static/js/home.js",
     "dest": "public/js/"
   },
   "css": {
-    "src": "src/static/scss/*.scss",
+    "src": "src/static/scss/**/*.scss",
     "dest": "public/css/"
   },
   "acss": {

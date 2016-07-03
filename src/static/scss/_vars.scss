@@ -20,6 +20,7 @@ $duration: (
 
 // Size.
 $size: (
+  gutter: 7px,
   element-height: 2.75em,
   element-margin: 2em,
   element-tall: 3.5em,
@@ -46,7 +47,9 @@ $palette: (
   il-gray-2: #888,
   il-font: #333,
   il-font-light: #666,
+  il-font-blue-dark: #303A4C,
   bg: #2e3842,
+  bg-clear: #eee,
   fg: #fff,
   fg-bold: #fff,
   fg-light: rgba(255, 255, 255, .5),

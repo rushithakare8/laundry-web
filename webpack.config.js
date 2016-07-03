@@ -1,47 +1,21 @@
 
-
+const webpackConfig = require('./configs/base-webpack.config');
 const paths = require('./configs/paths.json');
 
-module.exports = {
+const appConfig = Object.assign({}, webpackConfig, {
   context: __dirname,
   entry: paths.react.main,
   output: {
     filename: 'main.js',
   },
-  module: {
-    loaders: [
-      {
-        test: /\.json$/,
-        exclude: /node_modules/,
-        loader: 'json',
-      },
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react'],
-        },
-      },
-    ],
+});
+
+const homeConfig = Object.assign({}, webpackConfig, {
+  context: __dirname,
+  entry: paths.js.main,
+  output: {
+    filename: 'home.js',
   },
-  resolve: {
-    extensions: ['', '.webpack.js', '.jsx', '.js', '.json'],
-  },
-  externals: {
-    'react-router-redux': 'ReactRouterRedux',
-    'react-router': 'ReactRouter',
-    'es6-promise': 'ES6Promise',
-    'react-redux': 'ReactRedux',
-    'redux-thunk': 'ReduxThunk',
-    'redux-form': 'ReduxForm',
-    'react-dom': 'ReactDOM',
-    immutable: 'Immutable',
-    flatpickr: 'flatpickr',
-    history: 'History',
-    jquery: 'jQuery',
-    react: 'React',
-    redux: 'Redux',
-  },
-  debug: true,
-};
+});
+
+module.exports = [appConfig, homeConfig];
