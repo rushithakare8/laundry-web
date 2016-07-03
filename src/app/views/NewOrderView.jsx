@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { checkout } from '../data/reducers/cart';
+import {
+  checkout,
+  setUser,
+} from '../data/reducers/cart';
 import Errors from '../components/Errors';
 import NewOrderAddress from '../containers/NewOrderAddress';
 import NewOrderServices from '../containers/NewOrderServices';
@@ -13,6 +16,10 @@ class NewOrderView extends React.Component {
     super(props);
     this.state = { openedMenu: false };
     this.checkoutHandler = this.checkoutHandler.bind(this);
+  }
+  componentDidMount() {
+    const { user } = this.props;
+    this.props.setUser(user.idClient);
   }
   checkoutHandler() {
     const { cart } = this.props;
@@ -44,6 +51,7 @@ NewOrderView.propTypes = {
   user: PropTypes.object.isRequired,
   errors: PropTypes.array.isRequired,
   serviceTypes: PropTypes.array.isRequired,
+  setUser: PropTypes.func.isRequired,
   checkout: PropTypes.func.isRequired,
 };
 
@@ -55,5 +63,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect((mapStateToProps), {
+  setUser,
   checkout,
 })(NewOrderView);

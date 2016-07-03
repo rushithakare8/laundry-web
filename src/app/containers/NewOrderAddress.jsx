@@ -48,7 +48,7 @@ class NewOrderAddress extends React.Component {
               )}
             </div>
             <h3>Hora para recojer</h3>
-            <DateTimeSelector fieldName="pickupTime" onChange={this.changeInfoHandler} />
+            <DateTimeSelector fieldName="pickUpDate" onChange={this.changeInfoHandler} />
             <h3>Direccion de entrega</h3>
             <div>
               {user.addresses ? (
@@ -58,7 +58,7 @@ class NewOrderAddress extends React.Component {
               )}
             </div>
             <h3>Hora para entrega</h3>
-            <DateTimeSelector fieldName="deliveryTime" isPickup={false} onChange={this.changeInfoHandler} />
+            <DateTimeSelector fieldName="deliveryDate" isPickup={false} onChange={this.changeInfoHandler} />
             <div className="row">
               <button className="ui fluid icon button" onClick={this.openAddressForm}>
                 <i className="fa fa-map-marker"></i>
