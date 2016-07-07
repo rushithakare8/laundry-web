@@ -1,0 +1,16 @@
+
+.page-title {
+  &.faq, &.about {
+    background-image: url('../img/ganchos.jpg');
+    background-size: 100% auto;
+    background-position: center center;
+  }
+  h1 {
+    color: _palette(il-white);
+  }
+}
+
+.faq, .about {
+  background-color: _palette(bg-clear);
+  color: _palette(il-font-blue-dark);
+}

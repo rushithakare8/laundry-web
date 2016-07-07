@@ -41,7 +41,7 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-export default function serviceTypesReducer(state = [], action) {
+export default function servicesReducer(state = [], action) {
   const handler = ACTION_HANDLERS[action.type];
   return handler ? handler(state, action) : state;
 }

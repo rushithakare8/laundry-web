@@ -2,30 +2,32 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import configureStore from './data/configureStore';
+import configureStore from './calc/data/configureStore';
+import PriceCalculator from './calc/PriceCalculator';
+
+const PHONE_REHEX = /^\d{10}$/;
+const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const validatePhone = (number) => PHONE_REHEX.test(number);
+const validateEmail = (email) => EMAIL_REGEX.test(email);
 
 const menu = $('#menu');
 const header = $('#header');
 const menuToggle = $('.menuToggle');
 
+const initCalculator = () => {
+  const store = configureStore();
+  const elem = document.getElementById('PriceCalculator');
+  if (elem) {
+    ReactDOM.render(<PriceCalculator store={store} />, elem);
+  }
+};
+
 menuToggle.click(() => {
   menu.toggleClass('hide');
 });
 
-const initCalculator = () => {
-  const initialState = window.initialState;
-  const store = configureStore(initialState);
-
-  ReactDOM.render(
-    <Root history={history} routes={routes} store={store} />,
-    document.getElementById('container')
-  );
-
-}
-
 $(document).ready(() => {
-
-  $('#shorts').waypoint({
+  $('.menuWaypoint').waypoint({
     offset: 60,
     handler(direction) {
       if (direction === 'down') {
@@ -44,7 +46,7 @@ $(document).ready(() => {
   });
 
   $(document).foundation();
-
+  initCalculator();
 });
 
 // Initialize Account Kit with csrf protection
@@ -75,11 +77,6 @@ function accountKitCallback(response) {
     showError('Error en el servidor, intenta nuevamente');
   }
 }
-
-const PHONE_REHEX = /^\d{10}$/;
-const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const validatePhone = (number) => PHONE_REHEX.test(number);
-const validateEmail = (email) => EMAIL_REGEX.test(email);
 
 // phone form submission handler
 // eslint-disable-next-line

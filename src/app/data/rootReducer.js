@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { routerReducer as router } from 'react-router-redux';
 import { reducer as form } from 'redux-form';
-import serviceTypes from './reducers/serviceTypes';
+import services from './reducers/services';
 import errors from './reducers/errors';
 import orders from './reducers/orders';
 import user from './reducers/user';
@@ -16,5 +16,5 @@ export default combineReducers({
   user,
   orders,
   errors,
-  serviceTypes,
+  services,
 });

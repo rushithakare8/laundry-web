@@ -26,11 +26,11 @@ class ServiceCategory extends Component {
         </div>
         <div className="content">
           <ServiceSelector
-            services={serviceCategory.serviceTypes}
+            services={serviceCategory.services}
             id={serviceCategory.idServiceCategory}
             onChange={this.onServiceSelectChange}
           />
-          {serviceCategory.serviceTypes
+          {serviceCategory.services
             .filter(service => parseInt(service.idServiceType, 0) === parseInt(idServiceType, 0))
             .map((service, idx) => (
               <ServiceOption key={idx} service={service} isRoot={false} {...this.props} />

@@ -35,13 +35,15 @@ $font: (
   family-fixed: ('Courier New',  monospace),
   weight:	400,
   weight-bold: 600,
-  weight-extrabold:	800
+  weight-extrabold:	800,
+  size-small: 12px,
 );
 
 // Palette.
 $palette: (
   il-black: #000,
   il-white: #fff,
+  il-white-med: #bbb,
   il-white-dark: #fff,
   il-gray: #aaa,
   il-gray-2: #888,
@@ -64,7 +66,7 @@ $palette: (
   bear-blue: #87caf0,
   bear-green: #97f89B,
   accent1: (
-    bg:	#21b2a6,
+    bg:	#007a87,
     fg-bold: #fff,
     fg:	mix(#21b2a6,  #fff,  25%),
     fg-light: mix(#21b2a6,  #fff,  40%),
@@ -72,72 +74,6 @@ $palette: (
     border-bg: rgba(255, 255, 255, .075),
     border2: rgba(0, 0, 0, .25),
     border2-bg: rgba(255, 255, 255, .2)
-  ),
-
-  accent2: (
-    bg:	#0fc,
-    fg-bold: #fff,
-    fg:	mix(#0fc,  #fff,  25%),
-    fg-light: mix(#0fc,  #fff,  40%),
-    border: rgba(0, 0, 0, .125),
-    border-bg: rgba(255, 255, 255, .075),
-    border2: rgba(0, 0, 0, .25),
-    border2-bg: rgba(255, 255, 255, .2)
-  ),
-
-  accent3: (
-    bg:	#00f0ff,
-    fg-bold: #fff,
-    fg:	mix(#00f0ff,  #fff,  25%),
-    fg-light: mix(#00f0ff,  #fff,  40%),
-    border: rgba(0, 0, 0, .125),
-    border-bg: rgba(255, 255, 255, .075),
-    border2: rgba(0, 0, 0, .25),
-    border2-bg: rgba(255, 255, 255, .2)
-  ),
-
-  accent4: (
-    bg:	#76ddff,
-    fg-bold: #fff,
-    fg:	mix(#76ddff,  #fff,  25%),
-    fg-light: mix(#76ddff,  #fff,  40%),
-    border: rgba(0, 0, 0, .125),
-    border-bg: rgba(255, 255, 255, .075),
-    border2: rgba(0, 0, 0, .25),
-    border2-bg: rgba(255, 255, 255, .2)
-  ),
-
-  accent5: (
-    bg:	#505393,
-    fg-bold: #fff,
-    fg:	mix(#505393,  #fff,  25%),
-    fg-light: mix(#505393,  #fff,  40%),
-    border: rgba(0, 0, 0, .125),
-    border-bg: rgba(255, 255, 255, .075),
-    border2: rgba(0, 0, 0, .25),
-    border2-bg: rgba(255, 255, 255, .2)
-  ),
-
-  accent6: (
-    bg:	#ed4933,
-    fg-bold: #fff,
-    fg:	mix(#ed4933,  #fff,  25%),
-    fg-light: mix(#ed4933,  #fff,  40%),
-    border: rgba(0, 0, 0, .125),
-    border-bg: rgba(255, 255, 255, .075),
-    border2: rgba(0, 0, 0, .25),
-    border2-bg: rgba(255, 255, 255, .2)
-  ),
-
-  accent7: (
-    bg:	#fff,
-    fg-bold: #2e3842,
-    fg:	#4e4852,
-    fg-light: #8e8892,
-    border: #dfdfdf,
-    border-bg: rgba(0, 0, 0, .0375),
-    border2: #bfbfbf,
-    border2-bg: rgba(0, 0, 0, .1)
   ),
 
   accent8: (

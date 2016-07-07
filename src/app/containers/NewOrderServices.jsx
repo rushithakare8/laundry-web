@@ -18,9 +18,9 @@ class NewOrderServices extends React.Component {
   }
   render() {
     // Filtering the selected services (added to the cart)
-    const servicesAdded = this.props.serviceTypes.filter(service => service.idServiceType);
+    const servicesAdded = this.props.services.filter(service => service.idServiceType);
     // Service Categories comming from the BE
-    const serviceCategories = this.props.serviceTypes.filter(service => service.idServiceCategory);
+    const serviceCategories = this.props.services.filter(service => service.idServiceCategory);
     return (
       <div className="ui accordion accordionServices">
         <h3>Selecciona Servicios para Agregar</h3>
@@ -38,7 +38,7 @@ class NewOrderServices extends React.Component {
 
 NewOrderServices.propTypes = {
   cart: PropTypes.object.isRequired,
-  serviceTypes: PropTypes.array.isRequired,
+  services: PropTypes.array.isRequired,
   addServiceToCart: PropTypes.func.isRequired,
   removeServiceFromCart: PropTypes.func.isRequired,
   addSpecOnCart: PropTypes.func.isRequired,
@@ -47,7 +47,7 @@ NewOrderServices.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  serviceTypes: state.serviceTypes,
+  services: state.services,
   cart: state.cart,
 });
 
