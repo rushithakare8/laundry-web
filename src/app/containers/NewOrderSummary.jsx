@@ -7,16 +7,16 @@ class NewOrderSummary extends React.Component {
   componentDidMount() {
   }
   render() {
-    const { services, subTotal } = this.props.cart;
+    const { services, price } = this.props.cart;
     const increment = this.props.cart.increment || 0;
     return (
       <div className="ui two column grid">
         <div className="row">
           <div className="column">
             <span className="Pend(7px)">{services.length}</span>
-            <span>Services</span>
+            <span>Servicios</span>
           </div>
-          <div className="column"><span>{(subTotal + increment)}</span></div>
+          <div className="column"><span>{(price + increment)}</span></div>
         </div>
       </div>
     );

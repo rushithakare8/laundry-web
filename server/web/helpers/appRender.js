@@ -2,8 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
-import createLocation from 'history/lib/createLocation';
-
+import { createLocation } from 'history/lib';
 import makeRoutes from '../../../src/app/routes';
 import configureStore from '../../../src/app/data/configureStore';
 

@@ -15,7 +15,8 @@ export const removeServiceFromCartReducer = (services, action) =>
 // UPDATE SERVICE ON CART REDUCER
 // ------------------------------------
 export const getUpdatedCartSpec = (spec, option) => Object.assign({}, spec, {
-  value: option.key,
+  key: option.key,
+  specPrice: option.specPrice,
   serviceIncrement: option.serviceIncrement,
 });
 
@@ -27,7 +28,6 @@ export const updateSpecOnCartReducer = (services, action) => {
   const { idServiceType, idSpecs, option } = action.payload;
   return services.map(service => (int(service.idServiceType) === int(idServiceType) ? getUpdatedCartService(service, idSpecs, option) : service));
 };
-
 
 // ------------------------------------
 // Action Handlers
@@ -41,7 +41,7 @@ const ACTION_HANDLERS = {
 // ------------------------------------
 // Reducer
 // ------------------------------------
-export default function serviceTypesReducer(state = [], action) {
+export default function servicesReducer(state = [], action) {
   const handler = ACTION_HANDLERS[action.type];
   return handler ? handler(state, action) : state;
 }

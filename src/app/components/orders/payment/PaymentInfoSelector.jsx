@@ -12,22 +12,28 @@ const brandToFA = {
 };
 class PaymentInfoSelector extends React.Component {
   componentDidMount() {
-    $('#dropdownPaymentInfo').dropdown({
-      onChange: (value) => {
-        this.props.onChange({
-          target: {
-            name: 'idClientPaymentInfo',
-            value,
-          },
-        });
+    const { paymentInfos, onChange } = this.props;
+    const profile = paymentInfos[0];
+    const getEvent = (name, value) => ({
+      target: {
+        name,
+        value,
       },
     });
+    $('#dropdownPaymentInfo').dropdown({
+      onChange(value) {
+        onChange(getEvent('idClientPaymentInfo', value));
+      },
+    });
+    if (profile) {
+      onChange(getEvent('customer', profile.customer));
+    }
   }
   render() {
     return (
       <div id="dropdownPaymentInfo" className="ui fluid selection dropdown">
         <input type="hidden" name="idClientPaymentInfo" />
-        <div className="default text">Payment Method</div>
+        <div className="default text">Metodos de Pago</div>
         <i className="dropdown icon"></i>
         <div className="menu">
           {this.props.paymentInfos.map((token) => (

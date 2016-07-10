@@ -15,10 +15,10 @@ const Menu = ({ user, opened, openMenu }) => {
           <div className="email">{user.email}</div>
         </div>
         <nav className="nav-left" onClick={openMenu}>
-          <Link to="/main"><i className="fa fa-home"></i><span>Overview</span></Link>
-          <Link to="/main/neworder"><i className="fa fa-cart-plus"></i><span>New Order</span></Link>
+          <Link to="/main"><i className="fa fa-home"></i><span>Inicio</span></Link>
+          <Link to="/main/neworder"><i className="fa fa-cart-plus"></i><span>Nueva Orden</span></Link>
           <a href="#close" onClick={openMenu}>
-            <i className="fa fa-times"></i><span>Close</span>
+            <i className="fa fa-times"></i><span>Cerrar</span>
           </a>
         </nav>
       </div>

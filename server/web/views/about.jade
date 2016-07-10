@@ -5,13 +5,14 @@ block styles
 block content
   #page-wrapper.page-wrapper
     include home/menu
-    #page-title.callout.large.primary
-      .row.column.text-center
-        .columns.small-12
+    .page-title.about(class='Py(80px) Pos(r)')
+      .overlay-dark
+      .text-center(class='Pos(r)')
+        div
           img(src='/public/img/logo-sm.png')
-        .columns.small-12(class='Pt(32px)')
-          h1.shadow Tersus Lavanderia.  
-    #shorts.shorts.big-text
+        div
+          h1 Tersus Lavanderia.  
+    #about.about.big-text.menuWaypoint
       .row(class='Py(40px)')
         .columns.medium-8.medium-offset-2.small-12
           div
@@ -38,7 +39,3 @@ block content
             br
             |   Industrial: ideal para atender altos volúmenes de pendas por ejemplo de hoteles, hospitales, empresas organizadoras de eventos Estos consisten en: mantelería, ropa de dormitorio, cortinas, etc.
     include home/footer
-block scripts
-  script.
-    var loginError = !{JSON.stringify(error).replace(/<\//g, "<\\/")}
-    var fbAccount = !{JSON.stringify(fbAccount).replace(/<\//g, "<\\/")}

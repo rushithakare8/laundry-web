@@ -5,9 +5,9 @@ import Header from '../components/Header';
 import Menu from '../components/Menu';
 
 const routeTitle = {
-  '/main': 'Overview',
-  '/main/': 'Overview',
-  '/main/neworder': 'New Order',
+  '/main': 'Inicio',
+  '/main/': 'Inicio',
+  '/main/neworder': 'Nueva Orden',
 };
 
 class CoreLayout extends React.Component {

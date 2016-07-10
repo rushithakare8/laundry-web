@@ -1,62 +1,42 @@
 import ViewData from '../helpers/ViewData';
-import uuid from 'node-uuid';
+import { getFBAccount } from './auth';
 
-exports.index = {
+export const index = {
   handler(request, reply) {
-    const baseData = ViewData.getBaseData();
-    baseData.fbAccount = {
-      appId: '881601445289245',
-      csrf: uuid.v1(),
-      version: 'v2.5',
-    };
+    const baseData = ViewData.getBaseData(request.server.app);
+    baseData.fbAccount = getFBAccount();
     return reply.view('home', baseData);
   },
 };
 
-exports.pricing = {
+export const pricing = {
   handler(request, reply) {
-    const baseData = ViewData.getBaseData();
-    baseData.fbAccount = {
-      appId: '881601445289245',
-      csrf: uuid.v1(),
-      version: 'v2.5',
-    };
+    const baseData = ViewData.getBaseData(request.server.app);
+    baseData.fbAccount = getFBAccount();
     return reply.view('pricing', baseData);
   },
 };
 
-exports.about = {
+export const about = {
   handler(request, reply) {
-    const baseData = ViewData.getBaseData();
-    baseData.fbAccount = {
-      appId: '881601445289245',
-      csrf: uuid.v1(),
-      version: 'v2.5',
-    };
+    const baseData = ViewData.getBaseData(request.server.app);
+    baseData.fbAccount = getFBAccount();
     return reply.view('about', baseData);
   },
 };
 
-exports.maps = {
+export const maps = {
   handler(request, reply) {
-    const baseData = ViewData.getBaseData();
-    baseData.fbAccount = {
-      appId: '881601445289245',
-      csrf: uuid.v1(),
-      version: 'v2.5',
-    };
+    const baseData = ViewData.getBaseData(request.server.app);
+    baseData.fbAccount = getFBAccount();
     return reply.view('maps', baseData);
   },
 };
 
-exports.faq = {
+export const faq = {
   handler(request, reply) {
-    const baseData = ViewData.getBaseData();
-    baseData.fbAccount = {
-      appId: '881601445289245',
-      csrf: uuid.v1(),
-      version: 'v2.5',
-    };
+    const baseData = ViewData.getBaseData(request.server.app);
+    baseData.fbAccount = getFBAccount();
     return reply.view('faq', baseData);
   },
 };

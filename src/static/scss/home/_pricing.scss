@@ -1,0 +1,50 @@
+@import 'bourbon';
+@import 'common';
+@import 'vars';
+@import 'getters';
+@import '../functions/utils';
+
+.pricing {
+  &.banner {
+    height: auto;
+    min-height: 100%;
+  }
+  background-color: _palette(bg-clear);
+  color: _palette(il-font-blue-dark);
+
+  #{headings()} {
+    color: _palette(il-font-blue-dark);
+    letter-spacing: normal;
+  }
+
+  .card {
+    background: _palette(il-white);
+    padding: _size(gutter) * 2;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px 0 _palette(trans-2);
+    margin-bottom: 50px;
+  }
+
+  .pricing-cost {
+    padding-top: _size(gutter) * 2;
+
+    h1 {
+      margin: (_size(gutter) * 2)  0;
+      font-size: 54px;
+      font-weight: lighter;
+    }
+  }
+
+  .button {
+    width: 100%;
+    background: none;
+    color: _palette(il-font-blue-dark);
+    border-top: 1px solid _palette(il-font-blue-dark);
+    border-bottom: 1px solid _palette(il-font-blue-dark);
+
+    &:hover {
+      background: _palette(il-font-blue-dark);
+      color: _palette(il-white);
+    }
+  }
+}
