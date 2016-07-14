@@ -2,8 +2,9 @@
 @import 'common';
 @import 'vars';
 @import 'getters';
-@import 'home/_faq-about';
+@import 'home/faq-about';
 @import 'home/pricing';
+@import 'components/rheostat';
 
 strong,
 b {
@@ -26,7 +27,6 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 (_size(element-margin) * .5);
   text-transform: uppercase;
   letter-spacing: _size(letter-spacing-alt);
   font-weight: _font(weight-extrabold);
@@ -377,8 +377,44 @@ nav {
   }
 }
 
+.circ-option {
+  padding: 24px;
+  opacity: .6;
+  border-radius: 50%;
+  display: inline-block;
+
+  i {
+    min-width: 42px;
+  }
+
+  img {
+    min-height: 36px;
+  }
+
+  &.selected {
+    opacity: 1;
+  }
+
+  &.laundry {
+    background-color: _palette(il-font-blue-dark);
+  }
+
+  &.iron {
+    background-color: _palette(accent1, bg);
+  }
+
+  &.dry {
+    background-color: _palette(accent8, bg);
+  }
+
+}
+
 .shadow {
   text-shadow: 2px 2px _palette(trans-5);
+}
+
+.box-shadow {
+  box-shadow: 1px 1px 2px 1px _palette(trans-5);
 }
 
 .map {
@@ -447,6 +483,11 @@ nav {
   height: 100%;
   position: absolute;
   background: _palette(trans-3);
+}
+
+.slider-handle {
+  border-radius: 50%;
+  background-color: _palette(il-font-blue-dark);
 }
 
 // Small only

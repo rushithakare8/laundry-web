@@ -41,7 +41,7 @@
     "inert": "4.x",
     "installed": "3.x",
     "jade": "1.x",
-    "joi": "8.x",
+    "joi": "9.x",
     "jquery": "3.x",
     "opbeat": "3.x",
     "poop": "2.x",
@@ -54,6 +54,7 @@
     "redux-form": "5.x",
     "redux-thunk": "2.x",
     "request": "2.x",
+    "rheostat": "^1.1.1",
     "scooter": "3.x",
     "vision": "4.x"
   },

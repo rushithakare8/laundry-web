@@ -1,4 +1,22 @@
+import { get } from 'jquery';
+
 export const int = (val) => parseInt(val, 10);
+
+// ------------------------------------
+// GET SERVICES
+// ------------------------------------
+export const getServicesAction = (orders) => ({
+  type: 'GET_CURRENT_ORDERS',
+  orders,
+});
+
+export const getServicesReducer = (orders, action) => action.orders;
+
+export const getServices = () => (dispatch) => {
+  get('/api/v1/gerservices', (data) => {
+    dispatch(getServicesAction(data.orders));
+  });
+};
 
 // ------------------------------------
 // ADD SERVICE TO CART REDUCER
