@@ -22,13 +22,14 @@ footer.footer
           a(href='/#shorts') En tu lugar de trabajo
         li
           a(href='/#pricing') Precios
-        //- li
-        //-   a(href='#login', data-open='login-modal') Log In
+        li
+          if isAuthenticated
+            a(href='/main') Iniciar Sesión
+          else
+            a(href='#login', data-open='login-modal') Iniciar Sesión
     //- .columns.medium-2.small-12(class='Py(21px)')
     //-   h5(class='Pb(14px)') Usuarios
     //-   ul(class='Px(7px)').no-bullet
-    //-     li
-    //-       a(href='#login', data-open='login-modal') Log In
   .row(class='Py(21px) Ta(c)')
     .columns.small-12
       a(href='https://www.facebook.com/tersuslavanderia/', target='_blank').social
@@ -38,8 +39,3 @@ footer.footer
   .row(class='Py(21px) Ta(c)')
     .columns.small-12
       span(class='D(ib) Mx(14px)') &copy; Tersus Lavanderia 2016
-
-block scripts
-  script.
-    var loginError = !{JSON.stringify(error).replace(/<\//g, "<\\/")}
-    var fbAccount = !{JSON.stringify(fbAccount).replace(/<\//g, "<\\/")}

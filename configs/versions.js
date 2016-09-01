@@ -1,18 +1,21 @@
 import installed from 'installed';
+
 const packages = [
+  'd3',
   'react',
+  'redux',
+  'jquery',
+  'history',
   'react-dom',
   'immutable',
-  'redux',
-  'react-router',
+  'flatpickr',
+  'field-kit',
+  'redux-form',
   'react-redux',
   'redux-thunk',
-  'redux-form',
-  'react-router-redux',
-  'history',
   'es6-promise',
-  'flatpickr',
-  'jquery',
+  'react-router',
+  'react-router-redux',
 ];
 
 // default options

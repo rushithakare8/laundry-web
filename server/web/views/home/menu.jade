@@ -13,8 +13,11 @@ header#header.header.alt
         a(href='/#pricing') Precios
       li
         a(href='/#contact') Contacto
-      //- li
-      //-   a(href='#login', data-open='login-modal') Log In
+      li
+        if isAuthenticated
+          a(href='/main') Iniciar Sesión
+        else
+          a(href='#login', data-open='login-modal') Iniciar Sesión
   nav#nav.nav.mobile.hide-for-medium
     ul
       li.special
@@ -32,6 +35,9 @@ header#header.header.alt
             a(href='/#pricing') Precios
           li
             a(href='/#contact') Contacto
-          //- li
-          //-   a(href='#login', data-open='login-modal') Log In
+          li
+            if isAuthenticated
+              a(href='/main') Iniciar Sesión
+            else
+              a(href='#login', data-open='login-modal') Iniciar Sesión
         a(href='#menu').close

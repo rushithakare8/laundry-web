@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: "off" */
 const gulp = require('gulp');
 const uglify = require('gulp-uglify');
 const header = require('gulp-header');

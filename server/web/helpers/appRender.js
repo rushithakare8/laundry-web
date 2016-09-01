@@ -20,6 +20,7 @@ const RenderApp = (url, initialState) => new Promise((resolve, reject) => {
         reject(['Route not Found']);
       }
       html = renderToString(
+        // eslint-disable-next-line
         <Provider store={store}>
           <RouterContext {...renderProps} />
         </Provider>

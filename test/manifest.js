@@ -1,7 +1,8 @@
-
+/* eslint import/no-extraneous-dependencies: "off" */
 const Lab = require('lab');
 const Code = require('code');
 const Manifest = require('../manifest');
+
 const lab = exports.lab = Lab.script();
 
 lab.experiment('Manifest', () => {

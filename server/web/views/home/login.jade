@@ -11,9 +11,9 @@
     .small-12.columns
       label Numero de Telefono:
     .small-12.columns
-      input#phoneNumber(type="tel", placeholder="444555666")
+      input#phoneNumber(type="tel", placeholder="(555) 555-5555")
     .small-12.text-center
-      button.button.sms(onclick='loginWithPhone()')
+      button.button.sms#loginWithPhone
         i.fa.fa-mobile
         span(class='Mstart(10px)') |
         span(class='Mstart(10px)') Login con Mobile
@@ -24,7 +24,7 @@
     .small-12.columns
       input#emailAddress(type="email", placeholder="Email")
     .small-12.text-center
-      button.button.email(onclick='loginWithEmail()')
+      button.button.email#loginWithEmail
         i.fa.fa-envelope
         span(class='Mstart(10px)') |
         span(class='Mstart(10px)') Login con Email

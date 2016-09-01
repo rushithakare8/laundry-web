@@ -1,7 +1,7 @@
 /* global $ */
-
 import React, { PropTypes } from 'react';
 import cx from 'classnames';
+
 const brandToFA = {
   Visa: 'visa',
   MasterCard: 'mastercard',
@@ -10,6 +10,7 @@ const brandToFA = {
   'Diners Club': 'diners-club',
   JCB: 'jcb',
 };
+
 class PaymentInfoSelector extends React.Component {
   componentDidMount() {
     const { paymentInfos, onChange } = this.props;
@@ -34,11 +35,11 @@ class PaymentInfoSelector extends React.Component {
       <div id="dropdownPaymentInfo" className="ui fluid selection dropdown">
         <input type="hidden" name="idClientPaymentInfo" />
         <div className="default text">Metodos de Pago</div>
-        <i className="dropdown icon"></i>
+        <i className="dropdown icon" />
         <div className="menu">
           {this.props.paymentInfos.map((token) => (
             <div key={token.id} className="item" data-value={token.id} >
-              <span className="Pend(7px)"><i className={cx('fa', `fa-cc-${brandToFA[token.brand]}`)}></i></span>
+              <span className="Pend(7px)"><i className={cx('fa', `fa-cc-${brandToFA[token.brand]}`)} /></span>
               <span>XXXX-XXXX-XXXX-</span>
               <span>{token.last4}</span>
             </div>

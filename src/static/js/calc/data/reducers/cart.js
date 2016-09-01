@@ -1,180 +1,140 @@
 export const int = (val) => parseInt(val, 10);
 
-export const getCartSpec = (spec, option) => ({
-  key: option.key,
-  idSpecs: spec.idSpecs,
-  specPrice: option.specPrice,
-  quantity: spec.quantity || 1,
-  serviceIncrement: option.serviceIncrement,
-});
+// ------------------------------------
+// UPDATE CART PRICE
+// ------------------------------------
+export const updateCartPriceAction = () => ({ type: 'UPDATE_CART_PRICE' });
 
-export const getCartService = (service) => ({
-  price: service.price,
-  idServiceType: service.idServiceType,
-  specs: service.specs ? service.specs.filter(spec => spec.optional === 0).map(spec => getCartSpec(spec, spec.options[spec.idSpecs][0])) : [],
-});
-
-export const updateCartPrices = (cart, services) => {
-  let price = services.reduce((sub, service) => sub + service.price, 0);
-  const increment = services.reduce((inc, service) => inc + (service.specs.reduce((sInc, spec) => sInc + (spec.serviceIncrement * spec.quantity), 0) * service.price), 0);
-  const priceIncrement = services.reduce((inc, service) => inc + (service.specs.reduce((sInc, spec) => sInc + (spec.specPrice * spec.quantity), 0)), 0);
-  price = price + increment + priceIncrement;
-  return Object.assign({}, cart, { services, price, increment });
+export const updateCartPriceReducer = (cart) => {
+  let total = 0;
+  let subtotal = 0;
+  const { selectedServiceType } = cart.selectedService;
+  if (selectedServiceType) {
+    const { specs } = selectedServiceType;
+    const baseIncrement = specs ? specs.reduce((sInc, spec) => {
+      let specPrice = 0;
+      if (spec.primarySpec) {
+        const optionPrice = spec.option ? spec.option.specPrice : 0;
+        specPrice = (spec.price + optionPrice) * spec.amount;
+      }
+      return sInc + specPrice;
+    }, 0) : 0;
+    const specIncrement = specs ? specs.reduce((sInc, spec) => {
+      let specInc = 0;
+      if (!spec.primarySpec) {
+        specInc = spec.option ? spec.option.serviceIncrement : 0;
+        specInc *= spec.amount;
+      }
+      return sInc + specInc;
+    }, 0) : 0;
+    const specPriceInc = specs ? specs.reduce((sInc, spec) => {
+      let specPrice = 0;
+      if (!spec.primarySpec) {
+        const optionPrice = spec.option ? spec.option.specPrice : 0;
+        specPrice = (spec.price + optionPrice) * spec.amount;
+      }
+      return sInc + specPrice;
+    }, 0) : 0;
+    total = selectedServiceType.price;
+    total += baseIncrement;
+    subtotal = total + specPriceInc;
+    total = specIncrement > 0 ? total * (1 + (specIncrement / 100)) : total;
+    total += specPriceInc;
+  }
+  return Object.assign({}, cart, { total, subtotal });
 };
 
-// ------------------------------------
-// ADD SERVICE TO CART REDUCER
-// ------------------------------------
-export const addServiceToCartAction = (service) => ({
-  type: 'ADD_SERVICE_TO_CART',
-  payload: service,
+export const updateCartSpecAction = ({ idSpecs, key, amount }) => ({
+  type: 'UPDATE_CART_SPEC',
+  idSpecs,
+  key,
+  amount,
 });
 
-export const addServiceToCartReducer = (cart, action) => {
-  const service = action.payload;
-  const prevServices = cart.services || [];
-  const services = [...prevServices, getCartService(service)];
-  return updateCartPrices(cart, services);
-};
-
-export const addServiceToCart = (service) => (dispatch) => {
-  dispatch(addServiceToCartAction(service));
-};
-
-// ------------------------------------
-// REMOVE SERVICE FROM CART REDUCER
-// ------------------------------------
-export const removeServiceFromCartAction = (service) => ({
-  type: 'REMOVE_SERVICE_FROM_CART',
-  payload: service,
-});
-
-export const removeServiceFromCartReducer = (cart, action) => {
-  const service = action.payload;
-  const services = cart.services.filter(idServiceType => idServiceType !== service.idServiceType);
-  // TODO: Remove also specs that got added
+export const updateCartSpecReducer = (cart, action) => {
+  const { selectedService } = cart;
+  const { selectedServiceType } = selectedService;
+  const specs = selectedServiceType.specs && selectedServiceType.specs.map(spec => {
+    let option = spec.option || (spec.options && spec.options[spec.idSpecs][0]);
+    let amount = !spec.optional ? 1 : 0;
+    if (int(spec.idSpecs) === int(action.idSpecs)) {
+      option = action.key ? spec.options[spec.idSpecs].filter(opt => int(opt.key) === int(action.key))[0] : option;
+      amount = int(action.amount) || spec.amount || amount;
+    }
+    return Object.assign({}, spec, {
+      option,
+      amount,
+    });
+  });
   return Object.assign({}, cart, {
-    price: cart.price - service.price,
-    services,
+    selectedService: Object.assign({}, selectedService, {
+      selectedServiceType: Object.assign({}, selectedServiceType, {
+        specs,
+      }),
+    }),
   });
 };
 
-export const removeServiceFromCart = (service) => (dispatch) => {
-  dispatch(removeServiceFromCartAction(service));
+export const updateCartSpec = ({ idSpecs, key, amount }) => (dispatch) => {
+  dispatch(updateCartSpecAction({ idSpecs, key, amount }));
+  dispatch(updateCartPriceAction());
 };
 
-// ------------------------------------
-// ADD SERVICE ON CART REDUCER
-// ------------------------------------
-export const addSpecOnCartAction = (payload) => ({
-  type: 'ADD_SPEC_ON_CART',
-  payload,
+// ------------------------------------------------------------------------
+// ADD THE SELECTED SERVICE TYPE TO THE CART INCLUDING INITIAL SPECS
+// ------------------------------------------------------------------------
+export const updateCartServiceTypeAction = (idServiceType) => ({
+  type: 'UPDATE_CART_SERVICE_TYPE',
+  idServiceType,
 });
 
-export const addSpecOnCartReducer = (cart, action) => {
-  const { idServiceType, spec } = action.payload;
-  const services = cart.services.reduce((acc, serv) => {
-    let newServ = serv;
-    if (int(serv.idServiceType) === int(idServiceType)) {
-      let isNewSpec = true;
-      let specs = serv.specs.reduce((accSpec, sp) => {
-        let newSpec = sp;
-        if (int(sp.idSpecs) === int(spec.idSpecs)) {
-          isNewSpec = false;
-          // Existing Spec, add one to quantity
-          newSpec = Object.assign({}, sp, { quantity: (sp.quantity + 1) });
-        }
-        return [...accSpec, newSpec];
-      }, []);
-      // There was no spec we need to add it to the specs array
-      if (isNewSpec) {
-        const option = {
-          key: spec.key,
-          specPrice: spec.specPrice,
-          serviceIncrement: spec.serviceIncrement,
-        };
-        specs = [...specs, getCartSpec(spec, option)];
-      }
-      newServ = Object.assign({}, serv, { specs });
-    }
-    return [...acc, newServ];
-  }, []);
-  return updateCartPrices(cart, services);
+export const updateCartServiceTypeReducer = (cart, action) => {
+  const { selectedService } = cart;
+  const selectedServiceType = selectedService.serviceTypes.filter(st => int(st.idServiceType) === int(action.idServiceType))[0];
+  const specs = selectedServiceType.specs && selectedServiceType.specs.map(spec => {
+    const option = spec.options && spec.options[spec.idSpecs][0];
+    const amount = !spec.optional ? 1 : 0;
+    return Object.assign({}, spec, {
+      option,
+      amount,
+    });
+  });
+  return Object.assign({}, cart, {
+    selectedService: Object.assign({}, selectedService, {
+      selectedServiceType: Object.assign({}, selectedServiceType, {
+        specs,
+      }),
+    }),
+  });
 };
 
-export const addSpecOnCart = (idServiceType, spec) => (dispatch) => {
-  dispatch(addSpecOnCartAction({ idServiceType, spec }));
-};
-
-// ------------------------------------
-// REMOVE SERVICE ON CART REDUCER
-// ------------------------------------
-export const removeSpecOnCartAction = (payload) => ({
-  type: 'REMOVE_SPEC_ON_CART',
-  payload,
+// ------------------------------------------------------------------------
+// ADD THE SELECTED SERVICE TO THE CART
+// ------------------------------------------------------------------------
+export const updateCartServiceAction = (selectedService) => ({
+  type: 'UPDATE_CART_SERVICE',
+  selectedService,
 });
 
-export const removeSpecOnCartReducer = (cart, action) => {
-  const { idServiceType, idSpecs } = action.payload;
-  const services = cart.services.reduce((acc, serv) => {
-    let newServ = serv;
-    if (int(serv.idServiceType) === int(idServiceType)) {
-      const specs = serv.specs.reduce((accSpec, sp) => {
-        // Existing Spec, remove from quantity
-        const newSpec = (int(sp.idSpecs) === int(idSpecs)) ? Object.assign({}, sp, { quantity: (sp.quantity - 1) }) : sp;
-        return newSpec.quantity > 0 ? [...accSpec, newSpec] : newSpec;
-      }, []);
-      // There was no spec we need to add it to the specs array
-      newServ = Object.assign({}, serv, { specs });
-    }
-    return [...acc, newServ];
-  }, []);
-  return updateCartPrices(cart, services);
-};
-
-export const removeSpecOnCart = (idServiceType, idSpecs) => (dispatch) => {
-  dispatch(removeSpecOnCartAction({ idServiceType, idSpecs }));
-};
-
-// ------------------------------------
-// UPDATE SERVICE ON CART REDUCER
-// ------------------------------------
-export const getUpdatedCartService = (service, idSpecs, option) => ({
-  price: service.price,
-  idServiceType: service.idServiceType,
-  specs: service.specs.map(spec => (int(spec.idSpecs) === int(idSpecs) ? getCartSpec(spec, option) : spec)),
+export const updateCartServiceReducer = (cart, action) => Object.assign({}, cart, {
+  selectedService: action.selectedService,
 });
-
-export const updateSpecOnCartAction = (payload) => ({
-  type: 'UPDATE_SPEC_ON_CART',
-  payload,
-});
-
-export const updateSpecOnCartReducer = (cart, action) => {
-  const { idServiceType, idSpecs, option } = action.payload;
-  const services = cart.services.map(service => (int(service.idServiceType) === int(idServiceType) ? getUpdatedCartService(service, idSpecs, option) : service));
-  return updateCartPrices(cart, services);
-};
-
-export const updateSpecOnCart = (idServiceType, idSpecs, option) => (dispatch) => {
-  dispatch(updateSpecOnCartAction({ idServiceType, idSpecs, option }));
-};
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  ADD_SERVICE_TO_CART: addServiceToCartReducer,
-  REMOVE_SERVICE_FROM_CART: removeServiceFromCartReducer,
-  ADD_SPEC_ON_CART: addSpecOnCartReducer,
-  UPDATE_SPEC_ON_CART: updateSpecOnCartReducer,
-  REMOVE_SPEC_ON_CART: removeSpecOnCartReducer,
+  UPDATE_CART_PRICE: updateCartPriceReducer,
+  UPDATE_CART_SERVICE_TYPE: updateCartServiceTypeReducer,
+  UPDATE_CART_SERVICE: updateCartServiceReducer,
+  UPDATE_CART_SPEC: updateCartSpecReducer,
 };
 
 // ------------------------------------
 // Reducer
 // ------------------------------------
-export default function cartReducer(state = {}, action) {
+const initialState = { total: 0, subtotal: 0 };
+export default function servicesReducer(state = initialState, action) {
   const handler = ACTION_HANDLERS[action.type];
   return handler ? handler(state, action) : state;
 }

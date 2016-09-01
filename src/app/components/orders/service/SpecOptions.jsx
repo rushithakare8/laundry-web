@@ -29,12 +29,12 @@ const SpecOptions = ({ cart, spec, idServiceType, updateSpecOnCart, addSpecOnCar
       <div className="column">
         {showRemove ? (
           <button className="ui icon button" onClick={removeSpecHandler}>
-            <i className="fa fa-minus"></i>
+            <i className="fa fa-minus" />
           </button>
         ) : null}
         {showAdd ? (
           <button className="ui icon button" onClick={addSpecHandler}>
-            <i className="fa fa-plus"></i>
+            <i className="fa fa-plus" />
           </button>
         ) : null}
       </div>

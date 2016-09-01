@@ -1,5 +1,3 @@
-require('babel-core/register');
-
 const Path = require('path');
 const Jade = require('jade');
 const Bell = require('bell');

@@ -6,8 +6,11 @@ import { getState } from '../helpers/stateCreator';
 export const main = {
   auth: 'session',
   handler(request, reply) {
-    const baseData = ViewData.getBaseData(request.server.app);
-    getState(request).then((state) => {
+    if (!request.auth.isAuthenticated) {
+      return reply.redirect('/');
+    }
+    const baseData = ViewData.getBaseData(request);
+    return getState(request).then((state) => {
       baseData.state = state;
       return appRender(request.path, state).then((html) => {
         baseData.html = html;
@@ -16,3 +19,5 @@ export const main = {
     }).catch((err) => reply(boom.badImplementation('Internal Server Error', err)));
   },
 };
+
+export default main;

@@ -1,6 +1,7 @@
+/* eslint import/no-extraneous-dependencies: "off" */
 const Lab = require('lab');
 const Code = require('code');
-const composer = require('../../../server.js');
+const composer = require('../../../server');
 
 const lab = exports.lab = Lab.script();
 let request;

@@ -1,4 +1,3 @@
-
 const webpackConfig = require('./configs/base-webpack.config');
 const paths = require('./configs/paths.json');
 
