@@ -8,7 +8,7 @@ import {
   addSpecOnCart,
   updateSpecOnCart,
   removeSpecOnCart,
-} from '../data/reducers/cart';
+} from '../data/actions/cart';
 import ServiceCategory from '../components/orders/service/ServiceCategory';
 import ServiceOption from '../components/orders/service/ServiceOption';
 
@@ -28,8 +28,8 @@ class NewOrderServices extends React.Component {
           <ServiceCategory key={`SC${service.idServiceCategory}`} serviceCategory={service} {...this.props} />
         ))}
         {servicesAdded.length > 0 ? (<h3>Servicios Agregados</h3>) : null}
-        {servicesAdded.map((service) => (
-          <ServiceOption key={`SO${service.idServiceType}`} service={service} isRoot {...this.props} />
+        {servicesAdded.map((service, idx) => (
+          <ServiceOption key={`SO${service.idServiceType}${idx}`} service={service} isRoot {...this.props} />
         ))}
       </div>
     );

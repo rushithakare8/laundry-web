@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: "off" */
 const gulp = require('gulp');
 // const imagemin = require('gulp-imagemin');
 // const imageminJpegtran = require('imagemin-jpegtran');

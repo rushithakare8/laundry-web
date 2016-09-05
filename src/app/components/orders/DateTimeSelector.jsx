@@ -30,7 +30,7 @@ class DateTimeSelector extends React.Component {
   render() {
     return (
       <div className="ui fluid input">
-        <label htmlFor="datetime"></label>
+        <label htmlFor="datetime" />
         <input type="datetime" id={this.props.fieldName} name={this.props.fieldName} placeholder="Fecha y Hora" />
       </div>
     );

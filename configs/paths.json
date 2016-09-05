@@ -11,7 +11,7 @@
   "acss": {
     "src": [
       "server/web/views/**/*.jade",
-      "src/app/**/*.jsx"
+      "src/**/*.jsx"
     ],
     "dest": "public/css/"
   },

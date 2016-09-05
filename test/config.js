@@ -1,6 +1,8 @@
+/* eslint import/no-extraneous-dependencies: "off" */
 const Lab = require('lab');
 const Code = require('code');
-const Config = require('../configs/server.config.js');
+const Config = require('../configs/server.config');
+
 const lab = exports.lab = Lab.script();
 
 lab.experiment('Config', () => {

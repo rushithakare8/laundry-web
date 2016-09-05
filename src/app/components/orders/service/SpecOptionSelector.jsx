@@ -21,7 +21,7 @@ class SpecOptionSelector extends React.Component {
         <div id={`specOptions${idSpecs}`} className="ui fluid selection dropdown">
           <input type="hidden" name={`specOptions${idSpecs}`} />
           <div className="default text">Opciones</div>
-          <i className="dropdown icon"></i>
+          <i className="dropdown icon" />
           <div className="menu">
             {specOptions.map((opt, idx) => (
               <div key={`SPCO${idSpecs}${idx}`} className="item" data-value={opt.value} >

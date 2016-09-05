@@ -12,3 +12,15 @@ html(lang='en')
     include login
     include scripts
     block scripts
+    script.
+      var loginError = !{JSON.stringify(error).replace(/<\//g, "<\\/")}
+      var fbAccount = !{JSON.stringify(fbAccount).replace(/<\//g, "<\\/")}
+      var isAuthenticated = #{isAuthenticated}
+      // Initialize Account Kit with csrf protection
+      function AccountKit_OnInteractive() {
+        AccountKit.init({
+          appId: fbAccount.appId,
+          state: fbAccount.csrf,
+          version: fbAccount.version,
+        });
+      }

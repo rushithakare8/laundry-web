@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: "off" */
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const rename = require('gulp-rename');
@@ -9,6 +10,7 @@ const atomicss = require('gulp-atomizer');
 const bourbon = require('node-bourbon');
 const banner = require('../configs/banner');
 const paths = require('../configs/paths.json');
+
 const sassOptions = {
   style: 'compressed',
   includePaths: bourbon.includePaths,

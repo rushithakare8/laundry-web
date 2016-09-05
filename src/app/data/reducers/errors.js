@@ -1,22 +1,17 @@
+import {
+  ON_ERROR,
+} from '../constants/actionTypes';
+
 // ------------------------------------
 // ON ERRORS ORDERS
 // ------------------------------------
-export const onErrorsAction = (errors) => ({
-  type: 'ON_ERROR',
-  errors,
-});
-
-export const onErrorsReducer = (errors, action) => [...action.errors];
-
-export const onErrors = (errors) => (dispatch) => {
-  dispatch(onErrorsAction(errors));
-};
+export const onErrorsReducer = (errors, action) => [...errors, ...action.errors];
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-  ON_ERROR: onErrorsReducer,
+  [ON_ERROR]: onErrorsReducer,
 };
 
 // ------------------------------------

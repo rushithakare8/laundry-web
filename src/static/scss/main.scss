@@ -32,13 +32,13 @@
   .sidebar-content {
     z-index: 9999;
     visibility: hidden;
-    padding: 15px 0 15px 15px;
+    padding: 14px;
     background: _palette(il-white);
     color: _palette(il-font);
     transform: translateX(-100%);
 
     .top-head {
-      padding-right: 50px;
+      padding-right: 28px;
 
       .name {
         margin-bottom: 5px;

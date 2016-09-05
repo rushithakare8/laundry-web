@@ -1,3 +1,4 @@
+/* eslint import/no-extraneous-dependencies: "off" */
 const gulp = require('gulp');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
