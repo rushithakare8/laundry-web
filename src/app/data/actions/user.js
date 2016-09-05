@@ -82,7 +82,6 @@ export const updateUserInfo = (values, dispatch) => new Promise((resolve, reject
     data: values,
     method: 'PUT',
   }).done((result) => {
-    console.log(result);
     dispatch(updateUserInfoAction(result));
     resolve(result);
   }).fail(err => {

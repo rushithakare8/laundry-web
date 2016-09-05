@@ -28,7 +28,7 @@ export const addUserPaymentInfoReducer = (user, action) => {
 // ------------------------------------
 // ADD ADDRESS REDUCER
 // ------------------------------------
-export const updateUserInfoReducer = (user) => user;
+export const updateUserInfoReducer = (user, action) => Object.assign({}, user, action.user);
 
 // ------------------------------------
 // Action Handlers

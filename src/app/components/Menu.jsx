@@ -7,7 +7,7 @@ const Menu = ({ user, opened, openMenu }) => (
     <div className="sidebar-overlay" onClick={openMenu} />
     <div className="sidebar-content">
       <div className="top-head">
-        <div className="name">{user.displayName}</div>
+        <div className="name">{`${user.name} ${user.lastName}`}</div>
         <div className="email">{user.email}</div>
       </div>
       <nav className="nav-left" onClick={openMenu}>
