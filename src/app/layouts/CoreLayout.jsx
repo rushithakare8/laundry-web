@@ -8,6 +8,7 @@ const routeTitle = {
   '/main': 'Inicio',
   '/main/': 'Inicio',
   '/main/neworder': 'Nueva Orden',
+  '/main/profile': 'Perfil de Usuario',
 };
 
 class CoreLayout extends React.Component {

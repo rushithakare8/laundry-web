@@ -25,7 +25,7 @@ class AddressSelector extends React.Component {
         <div id={this.props.inputName} className="ui fluid selection dropdown">
           <input type="hidden" name={this.props.inputName} />
           <div className="default text">Direcciones Disponibles</div>
-          <i className="dropdown icon"></i>
+          <i className="dropdown icon" />
           <div className="menu">
             {this.props.addresses.map((address, idx) => (
               <AddressOption address={address} key={idx} />

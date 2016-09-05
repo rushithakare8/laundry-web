@@ -2,7 +2,7 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { updateCartInfo } from '../data/reducers/cart';
+import { updateCartInfo } from '../data/actions/cart';
 
 class NewOrderComments extends React.Component {
   constructor(props) {
@@ -20,8 +20,8 @@ class NewOrderComments extends React.Component {
         <h3>Comments</h3>
         <div className="ui form">
           <div className="field">
-            <label htmlFor="comments"></label>
-            <textarea placeholder="Comments" name="comments" onChange={this.changeInfoHandler}></textarea>
+            <label htmlFor="comments" />
+            <textarea placeholder="Comments" name="comments" onChange={this.changeInfoHandler} />
           </div>
         </div>
       </div>

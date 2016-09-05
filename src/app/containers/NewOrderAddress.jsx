@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addUserAddress } from '../data/reducers/user';
-import { updateCartInfo } from '../data/reducers/cart';
+import { addUserAddress } from '../data/actions/user';
+import { updateCartInfo } from '../data/actions/cart';
 import AddressSelector from '../components/orders/address/AddressSelector';
 import EditAddressForm from '../components/orders/address/EditAddressForm';
 import DateTimeSelector from '../components/orders/DateTimeSelector';
@@ -61,7 +61,7 @@ class NewOrderAddress extends React.Component {
             <DateTimeSelector fieldName="deliveryDate" isPickup={false} onChange={this.changeInfoHandler} />
             <div className="row">
               <button className="ui fluid icon button" onClick={this.openAddressForm}>
-                <i className="fa fa-map-marker"></i>
+                <i className="fa fa-map-marker" />
                 <span className="Mstart(10px)">Registra una Nueva Direccion</span>
               </button>
             </div>

@@ -15,3 +15,5 @@ npm-debug.log
 # git rm --cached github_rsa
 # github_rsa
 # dockerHandler.sh
+
+.idea/*

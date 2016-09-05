@@ -21,16 +21,16 @@ class ServiceCategory extends Component {
     return (
       <div>
         <div className="title">
-          <i className="fa fa-shopping-basket"></i>
+          <i className="fa fa-shopping-basket" />
           <span>{serviceCategory.name}</span>
         </div>
         <div className="content">
           <ServiceSelector
-            services={serviceCategory.services}
+            services={serviceCategory.serviceTypes}
             id={serviceCategory.idServiceCategory}
             onChange={this.onServiceSelectChange}
           />
-          {serviceCategory.services
+          {serviceCategory.serviceTypes
             .filter(service => parseInt(service.idServiceType, 0) === parseInt(idServiceType, 0))
             .map((service, idx) => (
               <ServiceOption key={idx} service={service} isRoot={false} {...this.props} />

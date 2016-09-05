@@ -1,5 +1,5 @@
 import { getUserById } from 'il-middleware-services/server/beApi/beUsers';
-import { getServices } from 'il-middleware-services/server/beApi/beServiceTypes';
+import { getServiceTypes } from 'il-middleware-services/server/beApi/beServiceTypes';
 import { getCurrentOrders } from 'il-middleware-services/server/beApi/beOrders';
 
 const getUser = (request) => new Promise((resolve, reject) => {
@@ -20,7 +20,7 @@ const getState = (request) => new Promise((resolve, reject) => {
   };
   getUser(request).then((user) => {
     state.user = user;
-    return getServices().then((services) => {
+    return getServiceTypes().then((services) => {
       state.services = services;
       return getCurrentOrders(state.user.idClient).then((orders) => {
         state.orders = orders;

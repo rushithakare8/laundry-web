@@ -15,7 +15,7 @@ class ServiceSelector extends Component {
       <div id={`dropdownService${this.props.id}`} className="ui fluid selection dropdown">
         <input type="hidden" name="idServiceType" />
         <div className="default text">Servicios</div>
-        <i className="dropdown icon"></i>
+        <i className="dropdown icon" />
         <div className="menu">
           {this.props.services.map((service, idx) => (
             <div key={idx} className="item" data-value={service.idServiceType} >

@@ -2,8 +2,8 @@
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { updateCartInfo } from '../data/reducers/cart';
-import { addUserPaymentInfo } from '../data/reducers/user';
+import { updateCartInfo } from '../data/actions/cart';
+import { addUserPaymentInfo } from '../data/actions/user';
 import EditPaymentForm from '../components/orders/payment/EditPaymentForm';
 import PaymentInfoSelector from '../components/orders/payment/PaymentInfoSelector';
 
@@ -49,7 +49,7 @@ class NewOrderPayments extends React.Component {
             )}
             <div className="row">
               <button className="ui fluid icon button" onClick={this.openPaymentForm}>
-                <i className="fa fa-credit-card"></i>
+                <i className="fa fa-credit-card" />
                 <span className="Mstart(10px)">Registra un Nuevo Metodo de Pago</span>
               </button>
             </div>

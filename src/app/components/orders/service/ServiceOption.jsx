@@ -7,7 +7,7 @@ const ServiceOption = ({ cart, service, addServiceToCart, removeServiceFromCart,
   return (
     <div>
       <div className="title">
-        {isRoot ? <i className="fa fa-shopping-basket"></i> : null}
+        {isRoot ? <i className="fa fa-shopping-basket" /> : null}
         <span>{service.name}</span>
       </div>
       <div className={isRoot ? 'content' : ''}>
@@ -15,12 +15,12 @@ const ServiceOption = ({ cart, service, addServiceToCart, removeServiceFromCart,
         <div>
           {!isRoot ? (
             <button className="ui icon button" onClick={addServiceHandler}>
-              <i className="fa fa-plus"></i>
+              <i className="fa fa-plus" />
             </button>
           ) : null}
           {isRoot ? (
             <button className="ui icon button" onClick={removeServiceHandler}>
-              <i className="fa fa-minus"></i>
+              <i className="fa fa-minus" />
             </button>
           ) : null}
         </div>
@@ -28,7 +28,7 @@ const ServiceOption = ({ cart, service, addServiceToCart, removeServiceFromCart,
           <div className="ui grid">
             <div className="five column row">
               <div className="column">Opcion</div>
-              <div className="column"></div>
+              <div className="column" />
               <div className="column">Precio</div>
               <div className="column">Cantidad</div>
             </div>

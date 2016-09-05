@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   checkout,
   setUser,
-} from '../data/reducers/cart';
+} from '../data/actions/cart';
 import Errors from '../components/Errors';
 import NewOrderAddress from '../containers/NewOrderAddress';
 import NewOrderServices from '../containers/NewOrderServices';
@@ -31,13 +31,13 @@ class NewOrderView extends React.Component {
       <div className="ui container">
         <NewOrderSummary />
         {errors.length > 0 ? (<Errors errors={errors} />) : null}
-        <NewOrderAddress user={this.props.user} />
-        <NewOrderServices services={this.props.services} />
-        <NewOrderPayments user={this.props.user} />
+        <NewOrderAddress />
+        <NewOrderServices />
+        <NewOrderPayments />
         <NewOrderComments />
         <div className="ui column row">
           <button className="fluid ui icon button" onClick={this.checkoutHandler}>
-            <i className="fa fa-shopping-cart"></i>
+            <i className="fa fa-shopping-cart" />
             <span className="Mstart(10px)">Completar Orden</span>
           </button>
         </div>
@@ -50,7 +50,6 @@ NewOrderView.propTypes = {
   cart: PropTypes.object,
   user: PropTypes.object.isRequired,
   errors: PropTypes.array.isRequired,
-  services: PropTypes.array.isRequired,
   setUser: PropTypes.func.isRequired,
   checkout: PropTypes.func.isRequired,
 };
@@ -59,7 +58,6 @@ const mapStateToProps = (state) => ({
   user: state.user,
   cart: state.cart,
   errors: state.errors,
-  services: state.services,
 });
 
 export default connect((mapStateToProps), {

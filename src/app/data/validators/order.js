@@ -9,19 +9,19 @@ export const validate = (values) => {
     idClientPaymentInfo,
     services,
   } = values;
-  if (!Boolean(idAddressPickup)) {
+  if (!idAddressPickup) {
     errors.push('Por favor agrega o selecciona una direccion para recojer');
   }
-  if (!Boolean(pickUpDate)) {
+  if (!pickUpDate) {
     errors.push('Por favor ingresa una hora para recojer');
   }
-  if (!Boolean(idAddressDeliver)) {
+  if (!idAddressDeliver) {
     errors.push('Por favor agrega o selecciona una direccion para entrega');
   }
-  if (!Boolean(deliveryDate)) {
+  if (!deliveryDate) {
     errors.push('Por favor ingresa una hora para entrega');
   }
-  if (!Boolean(idClientPaymentInfo)) {
+  if (!idClientPaymentInfo) {
     errors.push('Por favor agrega o selecciona metodo de pago');
   }
   if (services.length < 1) {
@@ -29,3 +29,5 @@ export const validate = (values) => {
   }
   return errors;
 };
+
+export default validate;

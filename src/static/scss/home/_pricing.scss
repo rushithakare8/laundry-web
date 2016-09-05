@@ -42,9 +42,23 @@
     border-top: 1px solid _palette(il-font-blue-dark);
     border-bottom: 1px solid _palette(il-font-blue-dark);
 
-    &:hover {
+    &:hover,
+    &.selected {
       background: _palette(il-font-blue-dark);
       color: _palette(il-white);
     }
+  }
+
+  select {
+    min-width: 150px;
+  }
+}
+
+.price-calculator {
+  .total {
+    margin: (_size(gutter) * 2)  0;
+    font-family: _font(family-helv);
+    font-size: 82px;
+    font-weight: lighter;
   }
 }

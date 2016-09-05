@@ -1,7 +1,6 @@
-
-
 const Confidence = require('confidence');
 const Config = require('./configs/server.config');
+
 const criteria = {
   env: process.env.NODE_ENV,
 };
