@@ -7,19 +7,19 @@
   },
   "qa": {
     "port":8080,
-    "host": "www.cleandeliver.com",
+    "host": "52.7.139.88",
     "protocol": "http",
     "version": "api"
   },
   "stage": {
     "port":8080,
-    "host": "www.cleandeliver.com",
+    "host": "52.7.139.88",
     "protocol": "http",
     "version": "api"
   },
   "production": {
     "port":8080,
-    "host": "www.cleandeliver.com",
+    "host": "52.7.139.88",
     "protocol": "http",
     "version": "api"
   }
