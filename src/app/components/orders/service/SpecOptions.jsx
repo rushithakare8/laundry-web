@@ -4,11 +4,11 @@ import SpecOptionSelector from './SpecOptionSelector';
 const SpecOptions = ({ cart, spec, idServiceType, updateSpecOnCart, addSpecOnCart, removeSpecOnCart, price }) => {
   const addSpecHandler = () => addSpecOnCart(idServiceType, spec);
   const removeSpecHandler = () => removeSpecOnCart(idServiceType, spec.idSpecs);
-  const updateSpecHandler = (option) => updateSpecOnCart(idServiceType, spec.idSpecs, option);
+  const updateSpecHandler = option => updateSpecOnCart(idServiceType, spec.idSpecs, option);
   const quantity = cart.services.filter(ser => ser.idServiceType === idServiceType)[0].specs.filter(sp => sp.idSpecs === spec.idSpecs)[0].quantity;
   const showRemove = (spec.optional === 0 && quantity > 1) || (spec.optional !== 0 && quantity > 0);
   const showAdd = spec.max_qty > quantity;
-  let increment = spec.serviceIncrement * price;
+  let increment = (spec.serviceIncrement / 100) * price * quantity;
   increment = spec.specPrice > 0 ? spec.specPrice * quantity : increment;
   return (
     <div className="five column row">

@@ -28,6 +28,8 @@
         i.fa.fa-envelope
         span(class='Mstart(10px)') |
         span(class='Mstart(10px)') Login con Email
+  button.close-button(data-close, aria-label="Close Accessible Modal", type="button")
+    span(aria-hidden="true") &times;
 
 form#AccountKitForm(name="AccountKitForm" action="/accountkitlogin" method="POST" class="D(n)")
   input#code(type="hidden" name="code")

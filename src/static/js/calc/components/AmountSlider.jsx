@@ -4,11 +4,17 @@ import Rheostat from 'rheostat';
 import SliderPit from './SliderPit';
 
 class AmountSlider extends React.Component {
+  static getPoints() {
+    const points = [];
+    for (let i = 0; i < 7; i += 1) {
+      points.push(i * 2);
+    }
+    return points;
+  }
   constructor(props) {
     super(props);
     this.onSpecChange = this.onSpecChange.bind(this);
     this.onAmountChange = this.onAmountChange.bind(this);
-    this.getPoints = this.getPoints.bind(this);
     this.getIncrement = this.getIncrement.bind(this);
   }
   onSpecChange(e) {
@@ -20,13 +26,6 @@ class AmountSlider extends React.Component {
     const val = e.values[0];
     const { spec } = this.props;
     this.props.onAmountChange(val, spec.idSpecs);
-  }
-  getPoints() {
-    const points = [];
-    for (let i = 0; i < 7; i++) {
-      points.push(i * 2);
-    }
-    return points;
   }
   getIncrement() {
     const { spec } = this.props;
@@ -75,7 +74,7 @@ class AmountSlider extends React.Component {
           </div>
         </div>
         {total > 0 ? (
-          <Rheostat min={min} max={max} values={[min]} pitPoints={this.getPoints()} pitComponent={SliderPit} onValuesUpdated={this.onAmountChange} />
+          <Rheostat min={min} max={max} values={[min]} pitPoints={AmountSlider.getPoints()} pitComponent={SliderPit} onValuesUpdated={this.onAmountChange} />
         ) : null}
         <h5 className="subheader">Agrega ${Math.round(total * 100) / 100}</h5>
         <hr />

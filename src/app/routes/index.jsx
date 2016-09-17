@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import CoreLayout from '../layouts/CoreLayout';
+// eslint-disable-next-line
 import HomeView from '../views/HomeView';
 import NewOrderView from '../views/NewOrderView';
 import ProfileView from '../views/ProfileView';

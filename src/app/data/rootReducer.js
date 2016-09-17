@@ -3,6 +3,7 @@ import { routerReducer as router } from 'react-router-redux';
 import { reducer as form } from 'redux-form';
 import services from './reducers/services';
 import errors from './reducers/errors';
+import config from './reducers/config';
 import orders from './reducers/orders';
 import user from './reducers/user';
 import cart from './reducers/cart';
@@ -14,7 +15,8 @@ export default combineReducers({
   // Custom reducers
   cart,
   user,
-  orders,
   errors,
+  config,
+  orders,
   services,
 });

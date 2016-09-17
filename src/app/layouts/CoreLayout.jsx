@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import Errors from '../components/Errors';
+import Loading from '../components/Loading';
 import Header from '../components/Header';
 import Menu from '../components/Menu';
 
@@ -23,15 +25,14 @@ class CoreLayout extends React.Component {
     });
   }
   render() {
-    const { children } = this.props;
-    const title = routeTitle[this.props.location.pathname];
+    const { children, location, user, config, errors } = this.props;
+    const title = routeTitle[location.pathname];
     return (
       <div className="ui">
-        <Header title={title} openMenu={this.openMenu} user={this.props.user} />
-        <Menu
-          opened={this.state.openedMenu} openMenu={this.openMenu}
-          user={this.props.user}
-        />
+        <Header title={title} openMenu={this.openMenu} user={user} />
+        <Loading config={config.loading} />
+        <Errors errors={errors} />
+        <Menu user={user} opened={this.state.openedMenu} openMenu={this.openMenu} />
         {children}
       </div>
     );
@@ -39,14 +40,17 @@ class CoreLayout extends React.Component {
 }
 
 CoreLayout.propTypes = {
-  children: PropTypes.element.isRequired,
+  errors: PropTypes.array.isRequired,
   user: PropTypes.object.isRequired,
-  route: PropTypes.object.isRequired,
+  config: PropTypes.object.isRequired,
+  children: PropTypes.element.isRequired,
   location: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
+  errors: state.errors,
+  config: state.config,
 });
 
 export default connect(mapStateToProps)(CoreLayout);

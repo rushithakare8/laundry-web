@@ -1,0 +1,14 @@
+#ProgressTracker {
+  canvas {
+    width: 100% !important;
+    min-height: 300px !important;
+    margin: 28px auto;
+  }
+
+  .perc {
+    margin: 14px 0;
+    font-size: 72px;
+    font-weight: lighter;
+    letter-spacing: .5em;
+  }
+}

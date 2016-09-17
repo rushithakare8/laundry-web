@@ -5,12 +5,12 @@ import {
   updateCartServiceTypeAction,
 } from './cart';
 
-export const int = (val) => parseInt(val, 10);
+export const int = val => parseInt(val, 10);
 
 // ------------------------------------
 // UPDATE SELECTED SERVICE TYPE
 // ------------------------------------
-export const updateServiceTypeAction = (idServiceType) => ({
+export const updateServiceTypeAction = idServiceType => ({
   type: 'UPDATE_SERVICE_TYPE',
   idServiceType,
 });
@@ -19,7 +19,7 @@ export const updateServiceTypeReducer = (services, action) => Object.assign({}, 
   idServiceType: action.idServiceType,
 });
 
-export const updateServiceType = (idServiceType) => (dispatch) => {
+export const updateServiceType = idServiceType => (dispatch) => {
   dispatch(updateServiceTypeAction(idServiceType));
   dispatch(updateCartServiceTypeAction(idServiceType));
   dispatch(updateCartPriceAction());
@@ -28,7 +28,7 @@ export const updateServiceType = (idServiceType) => (dispatch) => {
 // ------------------------------------
 // UPDATE SELECTED SERVICE
 // ------------------------------------
-export const updateServiceAction = (idServiceCategory) => ({
+export const updateServiceAction = idServiceCategory => ({
   type: 'UPDATE_SERVICE',
   idServiceCategory,
 });
@@ -37,7 +37,7 @@ export const updateServiceReducer = (services, action) => Object.assign({}, serv
   idServiceCategory: action.idServiceCategory,
 });
 
-export const updateService = (idServiceCategory) => (dispatch, getState) => {
+export const updateService = idServiceCategory => (dispatch, getState) => {
   const { services } = getState();
   const selectedService = services.services.filter(serv => int(serv.idServiceCategory) === int(idServiceCategory))[0];
   const selectedServiceType = selectedService.serviceTypes[0];
@@ -53,9 +53,9 @@ export const updateService = (idServiceCategory) => (dispatch, getState) => {
 // ------------------------------------
 export const getServicesRequestAction = () => ({ type: 'GET_SERVICES_REQUEST' });
 
-export const getServicesRequestReducer = (services) => Object.assign({}, services, { loading: true });
+export const getServicesRequestReducer = services => Object.assign({}, services, { loading: true });
 
-export const getServicesAction = (services) => ({
+export const getServicesAction = services => ({
   type: 'GET_SERVICES',
   services,
 });

@@ -43,10 +43,6 @@ class ServiceCategory extends Component {
 
 ServiceCategory.propTypes = {
   serviceCategory: PropTypes.object.isRequired,
-  addServiceToCart: PropTypes.func.isRequired,
-  addSpecOnCart: PropTypes.func.isRequired,
-  updateSpecOnCart: PropTypes.func.isRequired,
-  removeSpecOnCart: PropTypes.func.isRequired,
 };
 
 export default ServiceCategory;

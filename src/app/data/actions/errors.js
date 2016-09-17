@@ -1,15 +1,25 @@
 import {
   ON_ERROR,
-} from '../constants/actionTypes';
+  CLEAR_ERRORS,
+} from '../constants/actions';
 
 // ------------------------------------
-// ON ERRORS ORDERS
+// ON ERRORS
 // ------------------------------------
-export const onErrorsAction = (errors) => ({
+export const onErrorsAction = errors => ({
   type: ON_ERROR,
   errors,
 });
 
-export const onErrors = (errors) => (dispatch) => {
+export const onErrors = errors => (dispatch) => {
   dispatch(onErrorsAction(errors));
+};
+
+// ------------------------------------
+// CLEAR ERRORS
+// ------------------------------------
+export const clearErrorsAction = () => ({ type: CLEAR_ERRORS });
+
+export const clearErrors = () => (dispatch) => {
+  dispatch(clearErrorsAction());
 };

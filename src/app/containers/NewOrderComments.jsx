@@ -31,11 +31,9 @@ class NewOrderComments extends React.Component {
 
 NewOrderComments.propTypes = {
   updateCartInfo: PropTypes.func.isRequired,
-  cart: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  cart: state.cart,
+const mapStateToProps = () => ({
 });
 
 export default connect((mapStateToProps), {

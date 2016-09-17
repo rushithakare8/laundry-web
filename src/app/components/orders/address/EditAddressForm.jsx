@@ -1,89 +1,64 @@
 import React, { PropTypes } from 'react';
-import { reduxForm } from 'redux-form';
-import { Map } from 'immutable';
-import cx from 'classnames';
+import { Field, reduxForm } from 'redux-form';
 import { validate } from '../../../data/validators/address';
+import Input from '../../fields/Fields.jsx';
 
-const EditAddressForm = ({ fields, handleSubmit, cancelHandler, submitting }) => {
-  const base = 'ui fluid input';
-  const vFields = new Map(fields).map(f => cx(base, { error: f.touched && f.error })).toObject();
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type="hidden" {...fields.idClient} />
-      <div className="ui two column grid">
-        <div className="row">
-          <div className="sixteen wide column">
-            <div className={vFields.address}>
-              <label htmlFor="address" />
-              <input type="text" placeholder="Direccion" {...fields.address} />
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="sixteen wide column">
-            <div className={vFields.address}>
-              <label htmlFor="address2" />
-              <input type="text" placeholder="Interior #" {...fields.address2} />
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="sixteen wide column">
-            <div className={vFields.country}>
-              <label htmlFor="country" />
-              <input type="text" placeholder="Pais" {...fields.country} />
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="sixteen wide column">
-            <div className={vFields.city}>
-              <label htmlFor="city" />
-              <input type="text" placeholder="Ciudad" {...fields.city} />
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="column">
-            <div className={vFields.state}>
-              <label htmlFor="state" />
-              <input type="text" placeholder="Estado" {...fields.state} />
-            </div>
-          </div>
-          <div className="column">
-            <div className={vFields.zipcode}>
-              <label htmlFor="zipcode" />
-              <input type="text" placeholder="Codigo Postal" {...fields.zipcode} />
-            </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="sixteen wide column Ta(e)">
-            <button className="ui icon button" type="button" onClick={cancelHandler} disabled={submitting}>
-              <i className="fa fa-times" />
-              <span className="Mstart(10px)">Cancelar</span>
-            </button>
-            <button className="ui icon button" type="submit" onClick={handleSubmit} disabled={submitting}>
-              <i className="fa fa-floppy-o" />
-              <span className="Mstart(10px)">Guardar</span>
-            </button>
-          </div>
+const EditAddressForm = ({ handleSubmit, cancelHandler, submitting }) => (
+  <form onSubmit={handleSubmit}>
+    <Field component="input" type="hidden" name="idAddress" />
+    <Field component="input" type="hidden" name="idClient" />
+    <div className="ui two column grid">
+      <div className="row">
+        <div className="sixteen wide column">
+          <Field component={Input} type="text" name="address" placeholder="Direccion" />
         </div>
       </div>
-    </form>
-  );
-};
+      <div className="row">
+        <div className="sixteen wide column">
+          <Field component={Input} type="text" name="address2" placeholder="Interior #" />
+        </div>
+      </div>
+      <div className="row">
+        <div className="sixteen wide column">
+          <Field component={Input} type="text" name="country" placeholder="Pais" />
+        </div>
+      </div>
+      <div className="row">
+        <div className="sixteen wide column">
+          <Field component={Input} type="text" name="city" placeholder="Ciudad" />
+        </div>
+      </div>
+      <div className="row">
+        <div className="column">
+          <Field component={Input} type="text" name="state" placeholder="Estado" />
+        </div>
+        <div className="column">
+          <Field component={Input} type="text" name="zipcode" placeholder="Codigo Postal" />
+        </div>
+      </div>
+      <div className="row">
+        <div className="sixteen wide column Ta(e)">
+          <button className="ui icon button" type="button" onClick={cancelHandler} disabled={submitting}>
+            <i className="fa fa-times" />
+            <span className="Mstart(10px)">Cancelar</span>
+          </button>
+          <button className="ui icon button" type="submit" onClick={handleSubmit} disabled={submitting}>
+            <i className="fa fa-floppy-o" />
+            <span className="Mstart(10px)">Guardar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+);
 
 EditAddressForm.propTypes = {
-  fields: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  resetForm: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
   cancelHandler: PropTypes.func.isRequired,
 };
 
 export default reduxForm({
   form: 'editAddressForm',
-  fields: ['address', 'address2', 'city', 'state', 'country', 'zipcode', 'idClient'],
   validate,
 })(EditAddressForm);

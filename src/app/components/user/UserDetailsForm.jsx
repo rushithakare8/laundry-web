@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { validate } from '../../data/validators/userDetails';
-import Input from '../form/fields.jsx';
+import Input from '../fields/Fields.jsx';
 
 class UserDetailsForm extends React.Component {
   componentDidMount() {}
@@ -10,6 +10,7 @@ class UserDetailsForm extends React.Component {
     return (
       <form onSubmit={handleSubmit}>
         <Field component="input" type="hidden" name="idClient" />
+        <Field component="input" type="hidden" name="loginID" />
         <div className="ui grid">
           <div className="row">
             <div className="column">
@@ -51,7 +52,6 @@ class UserDetailsForm extends React.Component {
 }
 
 UserDetailsForm.propTypes = {
-  resetForm: PropTypes.func,
   handleSubmit: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
 };

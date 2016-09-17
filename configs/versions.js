@@ -1,11 +1,13 @@
 import installed from 'installed';
 
 const packages = [
+  'd3',
   'react',
   'redux',
   'jquery',
   'history',
-  'recharts',
+  'chart.js',
+  'cleave.js',
   'react-dom',
   'immutable',
   'flatpickr',

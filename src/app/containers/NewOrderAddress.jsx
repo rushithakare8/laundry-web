@@ -77,15 +77,13 @@ class NewOrderAddress extends React.Component {
 
 NewOrderAddress.propTypes = {
   user: PropTypes.object.isRequired,
-  addUserAddress: PropTypes.func.isRequired,
   updateCartInfo: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
 });
 
 export default connect((mapStateToProps), {
-  addUserAddress,
   updateCartInfo,
 })(NewOrderAddress);

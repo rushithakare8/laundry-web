@@ -16,7 +16,7 @@ export const main = {
         baseData.html = html;
         return reply.view('main', baseData);
       });
-    }).catch((err) => reply(boom.badImplementation('Internal Server Error', err)));
+    }).catch(err => reply(boom.badImplementation('Internal Server Error', err)));
   },
 };
 

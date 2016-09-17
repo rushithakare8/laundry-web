@@ -24,7 +24,7 @@ class NewOrderServices extends React.Component {
     return (
       <div className="ui accordion accordionServices">
         <h3>Selecciona Servicios para Agregar</h3>
-        {serviceCategories.map((service) => (
+        {serviceCategories.map(service => (
           <ServiceCategory key={`SC${service.idServiceCategory}`} serviceCategory={service} {...this.props} />
         ))}
         {servicesAdded.length > 0 ? (<h3>Servicios Agregados</h3>) : null}
@@ -37,16 +37,10 @@ class NewOrderServices extends React.Component {
 }
 
 NewOrderServices.propTypes = {
-  cart: PropTypes.object.isRequired,
-  services: PropTypes.array.isRequired,
-  addServiceToCart: PropTypes.func.isRequired,
-  removeServiceFromCart: PropTypes.func.isRequired,
-  addSpecOnCart: PropTypes.func.isRequired,
-  updateSpecOnCart: PropTypes.func.isRequired,
-  removeSpecOnCart: PropTypes.func.isRequired,
+  services: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   services: state.services,
   cart: state.cart,
 });

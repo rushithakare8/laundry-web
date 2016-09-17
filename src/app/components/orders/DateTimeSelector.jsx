@@ -5,7 +5,7 @@ import React, { PropTypes } from 'react';
 class DateTimeSelector extends React.Component {
   componentDidMount() {
     const { fieldName, isPickup, onChange } = this.props;
-    const localChange = (date) => onChange({
+    const localChange = date => onChange({
       target: {
         name: fieldName,
         value: date,

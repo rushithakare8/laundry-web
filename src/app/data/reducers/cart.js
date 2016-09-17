@@ -6,9 +6,8 @@ import {
   ADD_SPEC_ON_CART,
   UPDATE_SPEC_ON_CART,
   REMOVE_SPEC_ON_CART,
-  CHECKOUT,
   SET_USER,
-} from '../constants/actionTypes';
+} from '../constants/actions';
 
 const getCartSpec = (spec, option) => ({
   key: option.key,
@@ -18,7 +17,7 @@ const getCartSpec = (spec, option) => ({
   serviceIncrement: option.serviceIncrement,
 });
 
-const getCartService = (service) => ({
+const getCartService = service => ({
   price: service.price,
   idServiceType: service.idServiceType,
   specs: service.specs ? service.specs.filter(spec => spec.optional === 0).map(spec => getCartSpec(spec, spec.options[spec.idSpecs][0])) : [],
@@ -26,7 +25,7 @@ const getCartService = (service) => ({
 
 const updateCartPrices = (cart, services) => {
   let price = services.reduce((sub, service) => sub + service.price, 0);
-  const increment = services.reduce((inc, service) => inc + (service.specs.reduce((sInc, spec) => sInc + (spec.serviceIncrement * spec.quantity), 0) * service.price), 0);
+  const increment = services.reduce((inc, service) => inc + (service.specs.reduce((sInc, spec) => sInc + ((spec.serviceIncrement / 100) * spec.quantity), 0) * service.price), 0);
   const priceIncrement = services.reduce((inc, service) => inc + (service.specs.reduce((sInc, spec) => sInc + (spec.specPrice * spec.quantity), 0)), 0);
   price = price + increment + priceIncrement;
   return Object.assign({}, cart, { services, price, increment });
@@ -54,11 +53,7 @@ export const addServiceToCartReducer = (cart, action) => {
 export const removeServiceFromCartReducer = (cart, action) => {
   const { service } = action;
   const services = cart.services.filter(idServiceType => idServiceType !== service.idServiceType);
-  // TODO: Remove also specs that got added
-  return Object.assign({}, cart, {
-    price: cart.price - service.price,
-    services,
-  });
+  return updateCartPrices(cart, services);
 };
 
 // ------------------------------------
@@ -131,14 +126,6 @@ export const updateSpecOnCartReducer = (cart, action) => {
 export const updateCartInfoReducer = (cart, action) => Object.assign({}, cart, action.values);
 
 // -----------------------------------------------------------------------
-// CHECKOUT CART REDUCER
-// -----------------------------------------------------------------------
-export const checkoutReducer = (cart, action) => {
-  console.log(action);
-  return Object.assign({}, cart, action.order);
-};
-
-// -----------------------------------------------------------------------
 // SET USER CART REDUCER
 // -----------------------------------------------------------------------
 export const setUserReducer = (cart, action) => Object.assign({}, cart, { idClient: action.idClient });
@@ -153,7 +140,6 @@ const ACTION_HANDLERS = {
   [ADD_SPEC_ON_CART]: addSpecOnCartReducer,
   [UPDATE_SPEC_ON_CART]: updateSpecOnCartReducer,
   [REMOVE_SPEC_ON_CART]: removeSpecOnCartReducer,
-  [CHECKOUT]: checkoutReducer,
   [SET_USER]: setUserReducer,
 };
 

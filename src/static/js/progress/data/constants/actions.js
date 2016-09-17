@@ -1,0 +1,4 @@
+export const ON_AJAX_STARTED = 'ON_AJAX_STARTED';
+export const ON_AJAX_FINISHED = 'ON_AJAX_FINISHED';
+export const GET_TASKS_ERROR = 'GET_TASKS_ERROR';
+export const GET_TASKS = 'GET_TASKS';

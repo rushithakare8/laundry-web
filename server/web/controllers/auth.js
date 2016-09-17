@@ -59,7 +59,7 @@ export const login = {
       user ? signin(request, reply, user, profile) : createUser(userPayload).then(newUser =>
         signin(request, reply, newUser, profile)
       )
-    )).catch((err) => reply(boom.badImplementation('Internal Server Error', err)));
+    )).catch(err => reply(boom.badImplementation('Internal Server Error', err)));
   },
 };
 
@@ -84,12 +84,12 @@ export const accountkitlogin = {
             loginID: meRespBody.id,
             email: meRespBody.email && meRespBody.email.address,
           };
-          return getUsersByLoginId(meRespBody.id).then(users => {
+          return getUsersByLoginId(meRespBody.id).then((users) => {
             const user = users[0];
             if (user) {
               return signin(request, reply, user);
             }
-            return createUser(userPayload).then(newUser => {
+            return createUser(userPayload).then((newUser) => {
               if (meRespBody.phone) {
                 const phonePayload = {
                   idClient: newUser.idClient,
@@ -100,7 +100,7 @@ export const accountkitlogin = {
               }
               return signin(request, reply, newUser);
             });
-          }).catch((err) => reply(boom.badImplementation('Internal Server Error', err)));
+          }).catch(err => reply(boom.badImplementation('Internal Server Error', err)));
         });
       });
     }

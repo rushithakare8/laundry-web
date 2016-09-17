@@ -7,21 +7,16 @@ import {
 import UserDetailsForm from '../components/user/UserDetailsForm';
 
 class UserDetails extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmitUserDetails = this.handleSubmitUserDetails.bind(this);
-  }
-  componentDidMount() {}
-  handleSubmitUserDetails(values, dispatch) {
+  static handleSubmitUserDetails(values, dispatch) {
     return updateUserInfo(values, dispatch);
   }
   render() {
     const { user } = this.props;
-    const { idClient, name, lastName, email, rfc, razonSocial } = user;
-    const userInitialValues = { idClient, name, lastName, email, rfc, razonSocial };
+    const { idClient, name, lastName, email, rfc, razonSocial, loginID } = user;
+    const userInitialValues = { idClient, name, lastName, email, rfc, razonSocial, loginID };
     return (
       <div className="ui column row">
-        <UserDetailsForm initialValues={userInitialValues} onSubmit={this.handleSubmitUserDetails} />
+        <UserDetailsForm initialValues={userInitialValues} onSubmit={UserDetails.handleSubmitUserDetails} />
       </div>
     );
   }
@@ -31,7 +26,7 @@ UserDetails.propTypes = {
   user: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
 });
 

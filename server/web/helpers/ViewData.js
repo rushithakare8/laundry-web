@@ -1,6 +1,6 @@
 // const env = process.env.NODE_ENV || 'development';
 
-exports.getBaseData = (request) => ({
+exports.getBaseData = request => ({
   error: null,
   versions: request.server.app.versions,
   isAuthenticated: request.auth.isAuthenticated,

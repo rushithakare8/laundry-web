@@ -37,7 +37,7 @@ class PaymentInfoSelector extends React.Component {
         <div className="default text">Metodos de Pago</div>
         <i className="dropdown icon" />
         <div className="menu">
-          {this.props.paymentInfos.map((token) => (
+          {this.props.paymentInfos.map(token => (
             <div key={token.id} className="item" data-value={token.id} >
               <span className="Pend(7px)"><i className={cx('fa', `fa-cc-${brandToFA[token.brand]}`)} /></span>
               <span>XXXX-XXXX-XXXX-</span>

@@ -68,7 +68,7 @@ NewOrderPayments.propTypes = {
   updateCartInfo: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
 });
 

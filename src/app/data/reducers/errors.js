@@ -1,17 +1,24 @@
 import {
   ON_ERROR,
-} from '../constants/actionTypes';
+  CLEAR_ERRORS,
+} from '../constants/actions';
 
 // ------------------------------------
-// ON ERRORS ORDERS
+// ON ERRORS
 // ------------------------------------
 export const onErrorsReducer = (errors, action) => [...errors, ...action.errors];
+
+// ------------------------------------
+// CLEAR ERRORS
+// ------------------------------------
+export const clearErrorsReducer = () => [];
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
   [ON_ERROR]: onErrorsReducer,
+  [CLEAR_ERRORS]: clearErrorsReducer,
 };
 
 // ------------------------------------

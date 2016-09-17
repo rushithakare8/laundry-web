@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react';
+import cx from 'classnames';
 
-const Input = ({ input, label, type, placeholder, meta: { touched, error } }) => (
-  <div className="ui fluid input">
+const Input = ({ input, id, label, type, placeholder, meta: { touched, error } }) => (
+  <div className={cx('ui fluid field input', { error: touched && error })}>
     <label htmlFor={input.name}>{label}</label>
-    <input {...input} placeholder={placeholder} type={type} />
-    {touched && error && <span>{error}</span>}
+    <input {...input} id={id} placeholder={placeholder} type={type} />
   </div>
 );
 
 Input.propTypes = {
+  id: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
   input: PropTypes.object.isRequired,

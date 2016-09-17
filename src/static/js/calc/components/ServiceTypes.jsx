@@ -5,7 +5,7 @@ const ServiceTypes = ({ serviceTypes, idServiceType, onServiceTypeChange }) => (
   <div className="column small-12 My(7px)">
     {serviceTypes ? (
       <div className="expanded button-group">
-        {serviceTypes.map(serv => {
+        {serviceTypes.map((serv) => {
           const onClick = () => onServiceTypeChange(serv.idServiceType);
           return (
             <a

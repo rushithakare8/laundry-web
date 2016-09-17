@@ -1,8 +1,7 @@
 import { getUserById } from 'il-middleware-services/server/beApi/beUsers';
 import { getServiceTypes } from 'il-middleware-services/server/beApi/beServiceTypes';
-import { getCurrentOrders } from 'il-middleware-services/server/beApi/beOrders';
 
-const getUser = (request) => new Promise((resolve, reject) => {
+const getUser = request => new Promise((resolve, reject) => {
   const signedInUser = request.auth.credentials.user;
   getUserById(signedInUser.idClient).then((userData) => {
     const user = Object.assign({}, signedInUser, userData);
@@ -12,7 +11,7 @@ const getUser = (request) => new Promise((resolve, reject) => {
   });
 });
 
-const getState = (request) => new Promise((resolve, reject) => {
+const getState = request => new Promise((resolve, reject) => {
   const state = {};
   state.cart = {
     price: 0,
@@ -22,10 +21,7 @@ const getState = (request) => new Promise((resolve, reject) => {
     state.user = user;
     return getServiceTypes().then((services) => {
       state.services = services;
-      return getCurrentOrders(state.user.idClient).then((orders) => {
-        state.orders = orders;
-        resolve(state);
-      });
+      resolve(state);
     });
   })
   .catch(err => reject(err));

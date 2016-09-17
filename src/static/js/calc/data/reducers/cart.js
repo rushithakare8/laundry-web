@@ -1,4 +1,4 @@
-export const int = (val) => parseInt(val, 10);
+export const int = val => parseInt(val, 10);
 
 // ------------------------------------
 // UPDATE CART PRICE
@@ -54,7 +54,7 @@ export const updateCartSpecAction = ({ idSpecs, key, amount }) => ({
 export const updateCartSpecReducer = (cart, action) => {
   const { selectedService } = cart;
   const { selectedServiceType } = selectedService;
-  const specs = selectedServiceType.specs && selectedServiceType.specs.map(spec => {
+  const specs = selectedServiceType.specs && selectedServiceType.specs.map((spec) => {
     let option = spec.option || (spec.options && spec.options[spec.idSpecs][0]);
     let amount = !spec.optional ? 1 : 0;
     if (int(spec.idSpecs) === int(action.idSpecs)) {
@@ -83,7 +83,7 @@ export const updateCartSpec = ({ idSpecs, key, amount }) => (dispatch) => {
 // ------------------------------------------------------------------------
 // ADD THE SELECTED SERVICE TYPE TO THE CART INCLUDING INITIAL SPECS
 // ------------------------------------------------------------------------
-export const updateCartServiceTypeAction = (idServiceType) => ({
+export const updateCartServiceTypeAction = idServiceType => ({
   type: 'UPDATE_CART_SERVICE_TYPE',
   idServiceType,
 });
@@ -91,7 +91,7 @@ export const updateCartServiceTypeAction = (idServiceType) => ({
 export const updateCartServiceTypeReducer = (cart, action) => {
   const { selectedService } = cart;
   const selectedServiceType = selectedService.serviceTypes.filter(st => int(st.idServiceType) === int(action.idServiceType))[0];
-  const specs = selectedServiceType.specs && selectedServiceType.specs.map(spec => {
+  const specs = selectedServiceType.specs && selectedServiceType.specs.map((spec) => {
     const option = spec.options && spec.options[spec.idSpecs][0];
     const amount = !spec.optional ? 1 : 0;
     return Object.assign({}, spec, {
@@ -111,7 +111,7 @@ export const updateCartServiceTypeReducer = (cart, action) => {
 // ------------------------------------------------------------------------
 // ADD THE SELECTED SERVICE TO THE CART
 // ------------------------------------------------------------------------
-export const updateCartServiceAction = (selectedService) => ({
+export const updateCartServiceAction = selectedService => ({
   type: 'UPDATE_CART_SERVICE',
   selectedService,
 });

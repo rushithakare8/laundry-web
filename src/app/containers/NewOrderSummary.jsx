@@ -4,8 +4,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 class NewOrderSummary extends React.Component {
-  componentDidMount() {
-  }
+  componentDidMount() {}
   render() {
     const { services, price } = this.props.cart;
     const increment = this.props.cart.increment || 0;
@@ -27,7 +26,7 @@ NewOrderSummary.propTypes = {
   cart: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   cart: state.cart,
 });
 

@@ -1,4 +1,3 @@
-/* global $ */
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import {
@@ -104,7 +103,7 @@ PriceCalculator.propTypes = {
   handleStartOrder: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   cart: state.cart,
   services: state.services.services,
   idServiceCategory: state.services.idServiceCategory,

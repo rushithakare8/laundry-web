@@ -2,15 +2,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FieldKit from 'field-kit';
-import configureStore from './calc/data/configureStore';
+import priceStore from './calc/data/configureStore';
 import PriceCalculator from './calc/PriceCalculator';
-
-// import './progress';
+import progressStore from './progress/data/configureStore';
+import ProgressTracker from './progress/ProgressTracker';
 
 const PHONE_REHEX = /(?:\d{1}\s)?\(?(\d{3})\)?-?\s?(\d{3})-?\s?(\d{4})/g;
 const EMAIL_REGEX = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const validatePhone = (number) => PHONE_REHEX.test(number);
-const validateEmail = (email) => EMAIL_REGEX.test(email);
+const validatePhone = number => PHONE_REHEX.test(number);
+const validateEmail = email => EMAIL_REGEX.test(email);
 
 const menu = $('#menu');
 const header = $('#header');
@@ -25,7 +25,7 @@ const handleStartOrder = () => {
 };
 
 const initCalculator = () => {
-  const store = configureStore();
+  const store = priceStore();
   const elem = document.getElementById('PriceCalculator');
   if (elem) {
     // eslint-disable-next-line
@@ -33,11 +33,20 @@ const initCalculator = () => {
   }
 };
 
+const initProgressTracker = () => {
+  const store = progressStore();
+  const elem = document.getElementById('ProgressTracker');
+  if (elem) {
+    // eslint-disable-next-line
+    ReactDOM.render(<ProgressTracker store={store} />, elem);
+  }
+};
+
 menuToggle.click(() => {
   menu.toggleClass('hide');
 });
 
-const showError = (msg) => noty({
+const showError = msg => noty({
   text: msg,
   type: 'error',
   timeout: 2000,
@@ -93,7 +102,7 @@ $(document).ready(() => {
     },
   });
 
-  $('.type-select').on('click', evt => {
+  $('.type-select').on('click', (evt) => {
     const elem = $(evt.currentTarget).data();
     $('.type-section').addClass('hide');
     $(`#${elem.target}`).removeClass('hide');
@@ -108,6 +117,8 @@ $(document).ready(() => {
   $('#loginWithEmail').on('click', () => loginWithEmail());
 
   $('.initCalculator').on('click', () => initCalculator());
+
+  $('.progress-tracker-menu').on('click', () => initProgressTracker());
 
   $(document).foundation();
 });

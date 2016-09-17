@@ -1,6 +1,6 @@
 /* global Stripe */
 
-export const validate = values => {
+export const validate = (values) => {
   const errors = {};
   if (!values.cardNumber) {
     errors.cardNumber = 'Required';

@@ -4,7 +4,6 @@ import {
   checkout,
   setUser,
 } from '../data/actions/cart';
-import Errors from '../components/Errors';
 import NewOrderAddress from '../containers/NewOrderAddress';
 import NewOrderServices from '../containers/NewOrderServices';
 import NewOrderPayments from '../containers/NewOrderPayments';
@@ -26,11 +25,9 @@ class NewOrderView extends React.Component {
     this.props.checkout(cart);
   }
   render() {
-    const { errors } = this.props;
     return (
       <div className="ui container">
         <NewOrderSummary />
-        {errors.length > 0 ? (<Errors errors={errors} />) : null}
         <NewOrderAddress />
         <NewOrderServices />
         <NewOrderPayments />
@@ -49,15 +46,13 @@ class NewOrderView extends React.Component {
 NewOrderView.propTypes = {
   cart: PropTypes.object,
   user: PropTypes.object.isRequired,
-  errors: PropTypes.array.isRequired,
   setUser: PropTypes.func.isRequired,
   checkout: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.user,
   cart: state.cart,
-  errors: state.errors,
 });
 
 export default connect((mapStateToProps), {

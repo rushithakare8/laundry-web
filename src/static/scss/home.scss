@@ -5,6 +5,7 @@
 @import 'home/faq-about';
 @import 'home/pricing';
 @import 'components/rheostat';
+@import 'components/progress-tracker';
 
 strong,
 b {
@@ -111,6 +112,11 @@ nav {
         text-transform: uppercase;
         letter-spacing: _size(letter-spacing-alt);
         font-size: .8em;
+
+        &.important {
+          border: 1px solid;
+          padding: 7px;
+        }
 
         &.menuToggle {
           position: relative;

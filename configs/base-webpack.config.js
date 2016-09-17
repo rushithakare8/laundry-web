@@ -26,6 +26,7 @@ module.exports = {
     redux: 'Redux',
     jquery: 'jQuery',
     history: 'History',
+    'chart.js': 'Chart',
     flatpickr: 'flatpickr',
     immutable: 'Immutable',
     'field-kit': 'FieldKit',

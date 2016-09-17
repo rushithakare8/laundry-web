@@ -8,7 +8,7 @@ const Option = ({ idServiceCategorySel, idServiceCategory, onServiceChange }) =>
     <div className="column small-4">
       <div
         className={cx(`circ-option box-shadow Cur(p) ${optionClass[idServiceCategory]}`, { selected: idServiceCategory === idServiceCategorySel })}
-        onClick={onClick}
+        onClick={onClick} role="button"
       >
         <img src={`/public/img/${optionIcon[idServiceCategory]}`} width="36px" height="36px" alt="" />
       </div>
