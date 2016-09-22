@@ -2,6 +2,7 @@
   "js": {
     "src": "./src/static/js/**/*",
     "main": "./src/static/js/home.js",
+    "routes": "./src/static/js/routes.js",
     "dest": "public/js/"
   },
   "css": {

@@ -1,7 +1,7 @@
 {
   "rules": {
     "max-len": 0,
-    "react/forbid-prop-types": [1, { "forbid": ["any", "array", "object"]}],
+    "react/forbid-prop-types": [0, { "forbid": ["any", "object"]}],
     "jsx-a11y/no-static-element-interactions": 1
   },
   "extends": "airbnb",

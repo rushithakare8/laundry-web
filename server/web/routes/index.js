@@ -1,14 +1,11 @@
 import { main } from '../controllers/main';
-import { index, pricing, about, maps, faq } from '../controllers/home';
+import { index, about, routes, faq } from '../controllers/home';
 import { login, logout, accountkitlogin } from '../controllers/auth';
 
 module.exports = [
   { method: 'GET', path: '/', config: index },
-  { method: 'GET', path: '/pricing', config: pricing },
   { method: 'GET', path: '/about', config: about },
-  // { method: 'GET', path: '/privacy', config: privacy },
-  // { method: 'GET', path: '/terms', config: terms },
-  { method: 'GET', path: '/maps', config: maps },
+  { method: 'GET', path: '/routes', config: routes },
   { method: 'GET', path: '/faq', config: faq },
   { method: 'GET', path: '/logout', config: logout },
   { method: ['GET', 'POST'], path: '/auth/facebook', config: login },

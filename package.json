@@ -34,7 +34,7 @@
     "d3": "4.x",
     "es6-promise": "3.x",
     "field-kit": "2.x",
-    "flatpickr": "1.x",
+    "flatpickr": "2.x",
     "glue": "4.x",
     "good": "7.x",
     "good-console": "6.x",
@@ -62,6 +62,7 @@
     "request": "2.x",
     "rheostat": "2.x",
     "scooter": "4.x",
+    "socket.io": "1.x",
     "vision": "4.x"
   },
   "devDependencies": {

@@ -1,0 +1,21 @@
+extends home/layout
+
+block styles
+
+block content
+  #page-wrapper.page-wrapper
+    include home/menu
+    .page-title.about(class='Py(80px) Pos(r)')
+      .overlay-dark
+      .text-center(class='Pos(r)')
+        div
+          img(src='/public/img/logo-sm.png')
+        div
+          h1 Donde puedes encontrarnos?
+    #about.about.big-text.menuWaypoint
+      .row(class='Py(40px)')
+        .columns.medium-8.medium-offset-2.small-12
+          div Routes
+    include home/footer
+block scripts
+  script(src='/public/js/routes#{minAssets}.js')

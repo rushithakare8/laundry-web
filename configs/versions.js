@@ -1,17 +1,18 @@
 import installed from 'installed';
 
 const packages = [
-  'd3',
   'react',
   'redux',
   'jquery',
   'history',
   'chart.js',
   'cleave.js',
+  'socket.io',
   'react-dom',
   'immutable',
   'flatpickr',
   'field-kit',
+  'classnames',
   'redux-form',
   'react-redux',
   'redux-thunk',

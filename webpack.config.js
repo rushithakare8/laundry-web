@@ -17,4 +17,16 @@ const homeConfig = Object.assign({}, webpackConfig, {
   },
 });
 
-module.exports = [appConfig, homeConfig];
+const routesConfig = Object.assign({}, webpackConfig, {
+  context: __dirname,
+  entry: paths.js.routes,
+  output: {
+    filename: 'routes.js',
+  },
+});
+
+module.exports = {
+  appConfig,
+  homeConfig,
+  routesConfig,
+};

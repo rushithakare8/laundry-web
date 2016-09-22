@@ -9,14 +9,6 @@ export const index = {
   },
 };
 
-export const pricing = {
-  handler(request, reply) {
-    const baseData = ViewData.getBaseData(request);
-    baseData.fbAccount = getFBAccount();
-    return reply.view('pricing', baseData);
-  },
-};
-
 export const about = {
   handler(request, reply) {
     const baseData = ViewData.getBaseData(request);
@@ -25,11 +17,11 @@ export const about = {
   },
 };
 
-export const maps = {
+export const routes = {
   handler(request, reply) {
     const baseData = ViewData.getBaseData(request);
     baseData.fbAccount = getFBAccount();
-    return reply.view('maps', baseData);
+    return reply.view('routes', baseData);
   },
 };
 
