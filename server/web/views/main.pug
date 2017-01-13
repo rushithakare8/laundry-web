@@ -17,4 +17,4 @@ block scripts
   script.
     var initialState = !{JSON.stringify(state).replace(/<\//g, "<\\/")}
     var error = !{JSON.stringify(error).replace(/<\//g, "<\\/")}
-  script(src='/public/app/build/main#{minAssets}.js')
+  script(src=`/public/app/build/main${minAssets}.js`)

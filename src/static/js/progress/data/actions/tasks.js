@@ -21,13 +21,10 @@ export const getTasks = idOrder => (dispatch) => {
     dataType: 'json',
     contentType: 'application/json; charset=utf-8',
   }).done((result) => {
+    console.log(result);
     if (result) {
       return dispatch(getTasksAction(result));
     }
     return dispatch(getTasksErrorAction('Order no Encontrada'));
-  }).fail(() =>
-    dispatch(getTasksErrorAction('Order no Encontrada'))
-  ).always(() =>
-    dispatch(onAjaxFinishedAction())
-  );
+  }).fail(() => dispatch(getTasksErrorAction('Order no Encontrada'))).always(() => dispatch(onAjaxFinishedAction()));
 };
