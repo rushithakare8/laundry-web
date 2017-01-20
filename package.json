@@ -8,7 +8,7 @@
     "start": "node server.js",
     "test": "./node_modules/lab/bin/lab -l",
     "build": "./node_modules/gulp/bin/gulp.js",
-    "dev": "gulp dev"
+    "dev": "./node_modules/gulp/bin/gulp.js dev"
   },
   "repository": {
     "type": "git",
@@ -53,12 +53,12 @@
     "react": "15.x",
     "react-dom": "15.x",
     "react-redux": "5.x",
-    "react-router": "3.x",
+    "react-router": "^3.0.2",
     "react-router-redux": "4.x",
     "redux": "3.x",
     "redux-form": "6.x",
     "redux-logger": "2.x",
-    "redux-thunk": "2.x",
+    "redux-thunk": "^2.2.0",
     "request": "2.x",
     "rheostat": "2.x",
     "scooter": "4.x",
@@ -68,14 +68,14 @@
   "devDependencies": {
     "babel-cli": "latest",
     "babel-loader": "latest",
-    "babel-plugin-transform-object-assign": "latest",
     "babel-plugin-es6-promise": "latest",
+    "babel-plugin-transform-object-assign": "latest",
     "babel-preset-es2015": "latest",
     "babel-preset-react": "latest",
     "code": "latest",
-    "eslint": "latest",
+    "eslint": "^3.13.1",
     "eslint-config-airbnb": "latest",
-    "eslint-plugin-babel": "latest",
+    "eslint-plugin-babel": "^4.0.1",
     "eslint-plugin-import": "latest",
     "eslint-plugin-jsx-a11y": "latest",
     "eslint-plugin-react": "latest",
@@ -93,6 +93,7 @@
     "lab": "latest",
     "node-bourbon": "latest",
     "npm": "latest",
+    "pug-lint": "latest",
     "webpack-stream": "latest"
   }
 }
