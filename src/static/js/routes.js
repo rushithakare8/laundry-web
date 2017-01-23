@@ -1,25 +1,26 @@
-/* global google */
-import $ from 'jquery';
-import io from 'socket.io';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import configureStore from './routes/data/configureStore';
+import {
+  TERSUS_POSITION,
+  TERSUS_ADDRESS,
+} from './routes/data/constants/utils';
+import Routes from './routes/Routes';
 
-const initMap = (directions) => {
-  const directionsDisplay = new google.maps.DirectionsRenderer();
-  const map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 7,
-    center: { lat: 41.85, lng: -87.65 },
-  });
-  directionsDisplay.setMap(map);
-  console.log(directions);
-  directionsDisplay.setDirections(directions);
+const initialState = {
+  map: {
+    center: TERSUS_POSITION,
+    marker: {
+      position: TERSUS_POSITION,
+      address: TERSUS_ADDRESS,
+    },
+  },
 };
+const store = configureStore(initialState);
 
-$(document).ready(() => {
-  const client = io();
-  client.on('getRoutes', (data) => {
-    initMap(data);
-    console.log('Socket.io data', data);
-  });
-  client.on('routeUpdates', (data) => {
-    console.log('Socket.io UPDATES: ', data);
-  });
-});
+ReactDOM.render(
+  // eslint-disable-next-line
+  <Provider store={store}><Routes /></Provider>,
+  document.getElementById('map'),
+);
