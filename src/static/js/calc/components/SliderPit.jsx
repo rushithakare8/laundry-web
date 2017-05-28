@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const SliderPit = ({ children }) => (
   <div className="rheostat-pit" style={{ width: (10 + (2 * children)) }}>
@@ -7,7 +8,7 @@ const SliderPit = ({ children }) => (
 );
 
 SliderPit.propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.number.isRequired,
 };
 
 export default SliderPit;

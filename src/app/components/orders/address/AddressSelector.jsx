@@ -1,6 +1,7 @@
 /* global $*/
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import AddressOption from './AddressOption';
 
 class AddressSelector extends React.Component {

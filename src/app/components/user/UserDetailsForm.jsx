@@ -1,7 +1,8 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { validate } from '../../data/validators/userDetails';
-import Input from '../fields/Fields.jsx';
+import InputField from '../fields/InputField';
 
 class UserDetailsForm extends React.Component {
   componentDidMount() {}
@@ -14,27 +15,27 @@ class UserDetailsForm extends React.Component {
         <div className="ui grid">
           <div className="row">
             <div className="column">
-              <Field component={Input} type="text" name="name" placeholder="Nombre" />
+              <Field component={InputField} type="text" name="name" placeholder="Nombre" />
             </div>
           </div>
           <div className="row">
             <div className="column">
-              <Field component={Input} type="text" name="lastName" placeholder="Apellido" />
+              <Field component={InputField} type="text" name="lastName" placeholder="Apellido" />
             </div>
           </div>
           <div className="row">
             <div className="column">
-              <Field component={Input} type="email" name="email" placeholder="Email" />
+              <Field component={InputField} type="email" name="email" placeholder="Email" />
             </div>
           </div>
           <div className="row">
             <div className="column">
-              <Field component={Input} type="text" name="rfc" placeholder="RFC" />
+              <Field component={InputField} type="text" name="rfc" placeholder="RFC" />
             </div>
           </div>
           <div className="row">
             <div className="column">
-              <Field component={Input} type="text" name="razonSocial" placeholder="Razon Social" />
+              <Field component={InputField} type="text" name="razonSocial" placeholder="Razon Social" />
             </div>
           </div>
           <div className="row">

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const RoutesTable = ({ routes, selectRoute }) => (
   <div className="small-12 columns">

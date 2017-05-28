@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { optionIcon, optionClass } from '../data/constants/constants';
 
@@ -8,6 +9,7 @@ const Option = ({ idServiceCategorySel, idServiceCategory, onServiceChange }) =>
     <div className="column small-4">
       <div
         role="button"
+        tabIndex="-1"
         onClick={onClick}
         className={cx(`circ-option box-shadow Cur(p) ${optionClass[idServiceCategory]}`, { selected: idServiceCategory === idServiceCategorySel })}
       >
