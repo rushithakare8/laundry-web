@@ -12,6 +12,10 @@ const ServiceSpecs = ({ specs, cartSpecs, subtotal, onSpecChange, onAmountChange
   );
 };
 
+ServiceSpecs.defaultProps = {
+  cartSpecs: [],
+};
+
 ServiceSpecs.propTypes = {
   cartSpecs: PropTypes.array,
   subtotal: PropTypes.number.isRequired,

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { validate } from '../../../data/validators/address';
-import Input from '../../fields/Fields.jsx';
+import InputField from '../../fields/InputField';
 
 const EditAddressForm = ({ handleSubmit, cancelHandler, submitting }) => (
   <form onSubmit={handleSubmit}>
@@ -10,30 +10,30 @@ const EditAddressForm = ({ handleSubmit, cancelHandler, submitting }) => (
     <div className="ui two column grid">
       <div className="row">
         <div className="sixteen wide column">
-          <Field component={Input} type="text" name="address" placeholder="Direccion" />
+          <Field component={InputField} type="text" name="address" placeholder="Direccion" />
         </div>
       </div>
       <div className="row">
         <div className="sixteen wide column">
-          <Field component={Input} type="text" name="address2" placeholder="Interior #" />
+          <Field component={InputField} type="text" name="address2" placeholder="Interior #" />
         </div>
       </div>
       <div className="row">
         <div className="sixteen wide column">
-          <Field component={Input} type="text" name="country" placeholder="Pais" />
+          <Field component={InputField} type="text" name="country" placeholder="Pais" />
         </div>
       </div>
       <div className="row">
         <div className="sixteen wide column">
-          <Field component={Input} type="text" name="city" placeholder="Ciudad" />
+          <Field component={InputField} type="text" name="city" placeholder="Ciudad" />
         </div>
       </div>
       <div className="row">
         <div className="column">
-          <Field component={Input} type="text" name="state" placeholder="Estado" />
+          <Field component={InputField} type="text" name="state" placeholder="Estado" />
         </div>
         <div className="column">
-          <Field component={Input} type="text" name="zipcode" placeholder="Codigo Postal" />
+          <Field component={InputField} type="text" name="zipcode" placeholder="Codigo Postal" />
         </div>
       </div>
       <div className="row">

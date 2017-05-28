@@ -1,5 +1,3 @@
-/* global $ */
-
 import React, { PropTypes, Component } from 'react';
 import ServiceSelector from './ServiceSelector';
 import ServiceOption from './ServiceOption';

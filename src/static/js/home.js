@@ -1,4 +1,4 @@
-/* global noty, AccountKit, fbAccount, isAuthenticated */
+/* global noty, AccountKit, isAuthenticated */
 import $ from 'jquery';
 import React from 'react';
 import ReactDOM from 'react-dom';

@@ -8,6 +8,10 @@ const Loading = ({ loading }) => (
   </div>
 );
 
+Loading.defaultProps = {
+  loading: false,
+};
+
 Loading.propTypes = {
   loading: PropTypes.bool,
 };

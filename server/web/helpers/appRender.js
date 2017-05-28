@@ -23,7 +23,7 @@ const RenderApp = (url, initialState) => new Promise((resolve, reject) => {
         // eslint-disable-next-line
         <Provider store={store}>
           <RouterContext {...renderProps} />
-        </Provider>
+        </Provider>,
       );
       resolve(html);
     });

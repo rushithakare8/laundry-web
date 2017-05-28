@@ -43,6 +43,10 @@ class NewOrderView extends React.Component {
   }
 }
 
+NewOrderView.defaultProps = {
+  cart: {},
+};
+
 NewOrderView.propTypes = {
   cart: PropTypes.object,
   user: PropTypes.object.isRequired,

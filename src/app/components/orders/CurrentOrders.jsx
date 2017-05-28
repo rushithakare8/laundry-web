@@ -10,6 +10,10 @@ const CurrentOrders = ({ orders, getOrders }) => (
   </section>
 );
 
+CurrentOrders.defaultProps = {
+  orders: [],
+};
+
 CurrentOrders.propTypes = {
   orders: PropTypes.array,
   getOrders: PropTypes.func.isRequired,

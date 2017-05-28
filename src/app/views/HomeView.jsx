@@ -22,10 +22,14 @@ class HomeView extends React.Component {
   }
 }
 
+HomeView.defaultProps = {
+  orders: [],
+};
+
 HomeView.propTypes = {
   user: PropTypes.object.isRequired,
-  orders: PropTypes.arrayOf(PropTypes.object),
   getOrders: PropTypes.func.isRequired,
+  orders: PropTypes.arrayOf(PropTypes.object),
 };
 
 const mapStateToProps = state => ({

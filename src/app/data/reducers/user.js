@@ -1,4 +1,3 @@
-/* global Stripe */
 import {
   ADD_USER_ADDRESS,
   DELETE_USER_ADDRESS,

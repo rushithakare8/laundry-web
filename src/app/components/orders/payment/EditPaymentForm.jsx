@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import Cleave from 'cleave.js';
-import Input from '../../fields/Fields.jsx';
+import InputField from '../../fields/InputField';
 import { validate } from '../../../data/validators/payments';
 
 class EditPaymentForm extends React.Component {
@@ -19,20 +19,20 @@ class EditPaymentForm extends React.Component {
         <div className="ui grid">
           <div className="row">
             <div className="column">
-              <Field component={Input} id="cardNumber" type="text" name="cardNumber" placeholder="Numero de Targeta" />
+              <Field component={InputField} id="cardNumber" type="text" name="cardNumber" placeholder="Numero de Targeta" />
             </div>
           </div>
           <div className="row">
             <div className="column">
               <div className="ui three column grid">
                 <div className="column">
-                  <Field component={Input} type="text" name="cardExpMonth" placeholder="Mes" />
+                  <Field component={InputField} type="text" name="cardExpMonth" placeholder="Mes" />
                 </div>
                 <div className="column">
-                  <Field component={Input} type="text" name="cardExpYear" placeholder="Año" />
+                  <Field component={InputField} type="text" name="cardExpYear" placeholder="Año" />
                 </div>
                 <div className="column">
-                  <Field component={Input} type="text" name="cardCvc" placeholder="CVC" />
+                  <Field component={InputField} type="text" name="cardCvc" placeholder="CVC" />
                 </div>
               </div>
             </div>

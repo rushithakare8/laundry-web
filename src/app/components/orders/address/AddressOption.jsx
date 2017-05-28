@@ -12,7 +12,7 @@ const AddressOption = ({ address }) => (
 );
 
 AddressOption.propTypes = {
-  address: PropTypes.object,
+  address: PropTypes.object.isRequired,
 };
 
 export default AddressOption;

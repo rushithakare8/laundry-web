@@ -32,10 +32,16 @@ const ServiceOption = ({ cart, service, addServiceToCart, removeServiceFromCart,
               <div className="column">Precio</div>
               <div className="column">Cantidad</div>
             </div>
-            {service.specs.map((spec, idx) => (
+            {service.specs.map(spec => (
               <SpecOptions
-                key={idx} spec={spec} idServiceType={service.idServiceType} price={service.price} cart={cart}
-                addSpecOnCart={addSpecOnCart} updateSpecOnCart={updateSpecOnCart} removeSpecOnCart={removeSpecOnCart}
+                key={service.idServiceType}
+                spec={spec}
+                idServiceType={service.idServiceType}
+                price={service.price}
+                cart={cart}
+                addSpecOnCart={addSpecOnCart}
+                updateSpecOnCart={updateSpecOnCart}
+                removeSpecOnCart={removeSpecOnCart}
               />
             ))}
           </div>

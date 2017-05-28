@@ -1,4 +1,3 @@
-/* global $ */
 import React, { PropTypes } from 'react';
 import Rheostat from 'rheostat';
 import SliderPit from './SliderPit';
