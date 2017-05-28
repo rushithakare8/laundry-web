@@ -68,6 +68,7 @@ class Map extends React.Component {
 }
 
 Map.propTypes = {
+  map: PropTypes.object.isRequired,
   positionToAddress: PropTypes.func.isRequired,
 };
 

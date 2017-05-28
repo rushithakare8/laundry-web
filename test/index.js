@@ -3,7 +3,7 @@ const Lab = require('lab');
 const Code = require('code');
 const composer = require('../server');
 
-const lab = exports.lab = Lab.script();
+const lab = Lab.script();
 
 lab.experiment('App', () => {
   lab.test('it composes a server', (done) => {
@@ -13,3 +13,5 @@ lab.experiment('App', () => {
     });
   });
 });
+
+exports.lab = lab;

@@ -164,12 +164,12 @@ nav {
   font-size: .8em;
   opacity: 1;
 
-  @include transition-property(transform);
-  @include transition-property(opacity);
-  @include transition-property(translateY(0));
-  @include transition-duration(.75s);
-  @include transition-timing-function(ease-in);
-  @include transition-delay(3.5s);
+  transition-property: transform;
+  transition-property: opacity;
+  transition-property: translateY(0);
+  transition-duration: .75s;
+  transition-timing-function: ease-in;
+  transition-delay: 3.5s;
 
   &::after {
     position: absolute;
@@ -198,13 +198,13 @@ nav {
   line-height: 3em;
   box-shadow: 2px 1px 4px _palette(il-font-light);
 
-  @include transition-property(background-color);
-  @include transition-duration(_duration(transitions));
+  transition-property: background-color;
+  transition-duration: _duration(transitions);
 
   .header-logo {
     display: inline-block;
-    @include transition-property(opacity);
-    @include transition-duration(_duration(transitions));
+    transition-property: opacity;
+    transition-duration: _duration(transitions);
   }
 
   &.alt {
@@ -245,8 +245,7 @@ nav {
   background-size: cover;
   background-repeat: no-repeat;
   color: _palette(fg);
-
-  @include background-image(linear-gradient(top, _palette(trans-5), _palette(trans-5)), url('../img/laundry1.jpg'));
+  background-image: linear-gradient(to bottom, _palette(trans-5), _palette(trans-5)), url('../img/laundry1.jpg');
 }
 
 .banner {
@@ -257,10 +256,10 @@ nav {
   text-align: center;
   cursor: default;
 
-  @include align-items(stretch);
-  @include display(flex);
-  @include flex-direction(column);
-  @include justify-content(center);
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .menu {
@@ -275,10 +274,10 @@ nav {
   background: _palette(accent1, bg);
   color: _palette(accent1, fg-bold);
 
-  @include transition-property(right);
-  @include transition-duration(.75s);
-  @include transition-timing-function(ease-in);
-  @include transition-delay(3.5s);
+  transition-property: right;
+  transition-duration: .75s;
+  transition-timing-function: ease-in;
+  transition-delay: 3.5s;
 
   ul {
     padding: 0;
@@ -318,7 +317,6 @@ nav {
     background-image: url('../img/close.svg');
     background-position: 4.85em 1em;
     background-repeat: no-repeat;
-    vertical-align: middle;
     cursor: pointer;
   }
 }

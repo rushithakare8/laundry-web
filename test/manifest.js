@@ -3,7 +3,7 @@ const Lab = require('lab');
 const Code = require('code');
 const Manifest = require('../manifest');
 
-const lab = exports.lab = Lab.script();
+const lab = Lab.script();
 
 lab.experiment('Manifest', () => {
   lab.test('it gets manifest data', (done) => {
@@ -15,3 +15,6 @@ lab.experiment('Manifest', () => {
     done();
   });
 });
+
+
+exports.lab = lab;

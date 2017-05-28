@@ -3,7 +3,7 @@ const Lab = require('lab');
 const Code = require('code');
 const Config = require('../configs/server.config');
 
-const lab = exports.lab = Lab.script();
+const lab = Lab.script();
 
 lab.experiment('Config', () => {
   lab.test('it gets config data', (done) => {
@@ -16,3 +16,5 @@ lab.experiment('Config', () => {
     done();
   });
 });
+
+exports.lab = lab;

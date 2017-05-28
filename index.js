@@ -2,7 +2,7 @@
 const opbeat = require('opbeat').start({
   appId: 'a6e428e550',
   organizationId: '2556f6e3f5c34d968c5a2e46f6c8eea5',
-  secretToken: 'c74d95c618e4ee667677b30971b97943cab78e03',
+  secretToken: 'c63f3b79bd8d81bbcd18b61069a6c708a4ee820b',
 });
 const Path = require('path');
 const Pug = require('pug');

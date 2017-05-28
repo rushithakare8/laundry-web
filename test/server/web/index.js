@@ -3,7 +3,7 @@ const Lab = require('lab');
 const Code = require('code');
 const composer = require('../../../server');
 
-const lab = exports.lab = Lab.script();
+const lab = Lab.script();
 let request;
 let server;
 
@@ -35,3 +35,5 @@ lab.experiment('Home Page View', () => {
     });
   });
 });
+
+exports.lab = lab;
