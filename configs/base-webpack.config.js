@@ -37,6 +37,7 @@ module.exports = {
     'redux-thunk': 'ReduxThunk',
     'es6-promise': 'ES6Promise',
     'react-router': 'ReactRouter',
+    'react-router-dom': 'ReactRouterDOM',
     'react-router-redux': 'ReactRouterRedux',
   },
   debug: true,

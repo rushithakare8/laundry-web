@@ -18,6 +18,7 @@ const packages = [
   'redux-thunk',
   'es6-promise',
   'react-router',
+  'react-router-dom',
   'react-router-redux',
 ];
 

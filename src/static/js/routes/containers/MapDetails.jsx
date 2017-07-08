@@ -11,19 +11,8 @@ import {
 
 const MapDetails = ({ map, selectedRoute, positionToAddress }) => (
   <div className="row Py(7px)">
-    {selectedRoute ? (
+    {selectedRoute && (
       <RouteStops selectedRoute={selectedRoute} />
-    ) : (
-      map.marker && (
-        <div className="small-10 columns">
-          {map.marker.address && (
-            <div className="Py(7px)">Direccion: {map.marker.address}</div>
-          )}
-          {map.marker.position && (
-            <div>Lat: {map.marker.position.lat} || Lng: {map.marker.position.lng}</div>
-          )}
-        </div>
-      )
     )}
     <div className="Ta(end) small-2 columns">
       <button type="button" className="btn btn-primary" onClick={() => positionToAddress(TERSUS_POSITION)}>
