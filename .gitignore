@@ -16,4 +16,7 @@ npm-debug.log
 # github_rsa
 # dockerHandler.sh
 
-.idea/*
+.idea
+build.sh
+
+rethinkdb_data

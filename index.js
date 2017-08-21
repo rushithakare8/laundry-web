@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
-const opbeat = require('opbeat').start({
-  appId: 'a6e428e550',
-  organizationId: '2556f6e3f5c34d968c5a2e46f6c8eea5',
-  secretToken: 'c74d95c618e4ee667677b30971b97943cab78e03',
-});
+// const opbeat = require('opbeat').start({
+//   appId: 'a6e428e550',
+//   organizationId: '2556f6e3f5c34d968c5a2e46f6c8eea5',
+//   secretToken: 'c74d95c618e4ee667677b30971b97943cab78e03',
+// });
 const Path = require('path');
 const Jade = require('jade');
 const Bell = require('bell');

@@ -1,5 +1,5 @@
 # To build:
-# docker build -t interactivelabs/laundry-web -f Dockerfile .
+# docker build -t cesaregb/laundry-web -f Dockerfile .
 # docker push interactivelabs/laundry-web:v1
 #
 # To run:
