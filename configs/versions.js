@@ -24,9 +24,9 @@ const packages = [
 
 // default options
 const options = {
-  depth: 0,           // depth to traverse
-  dev: true,          // exclude all dev dependencies
-  extraneous: false,  // includes extraneous deps. Set to false to filter extraneous dependencies out.
+  depth: 0, // depth to traverse
+  dev: true, // exclude all dev dependencies
+  extraneous: false, // includes extraneous deps. Set to false to filter extraneous dependencies out.
 };
 
 module.exports = new Promise((res, rej) => installed(process.cwd(), options, (err, pkgs) => {
