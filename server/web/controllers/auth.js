@@ -57,7 +57,7 @@ export const login = {
     };
     return getUsersByEmail(profile.email).then(user => (
       user ? signin(request, reply, user, profile) : createUser(userPayload).then(newUser =>
-        signin(request, reply, newUser, profile)
+        signin(request, reply, newUser, profile),
       )
     )).catch(err => reply(boom.badImplementation('Internal Server Error', err)));
   },

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   checkout,
@@ -42,6 +43,10 @@ class NewOrderView extends React.Component {
     );
   }
 }
+
+NewOrderView.defaultProps = {
+  cart: {},
+};
 
 NewOrderView.propTypes = {
   cart: PropTypes.object,

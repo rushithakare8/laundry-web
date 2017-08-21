@@ -1,5 +1,4 @@
 /* global Stripe */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
@@ -18,7 +17,7 @@ const routes = makeRoutes(store);
 
 ReactDOM.render(
   <Root history={history} routes={routes} store={store} />,
-  document.getElementById('container')
+  document.getElementById('container'),
 );
 
 Stripe.setPublishableKey('pk_test_b8SZC99Ac6LFHWr18HmLKPB5');

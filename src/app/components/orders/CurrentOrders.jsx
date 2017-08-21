@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ProgressCard from './ProgressCard';
 
 const CurrentOrders = ({ orders, getOrders }) => (
@@ -9,6 +10,10 @@ const CurrentOrders = ({ orders, getOrders }) => (
     )) : null}
   </section>
 );
+
+CurrentOrders.defaultProps = {
+  orders: [],
+};
 
 CurrentOrders.propTypes = {
   orders: PropTypes.array,

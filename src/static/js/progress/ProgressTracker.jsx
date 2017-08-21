@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Chart from 'chart.js';
 import cx from 'classnames';
@@ -16,23 +17,21 @@ class ProgressTracker extends React.Component {
     this.getTasksHandler = this.getTasksHandler.bind(this);
     this.orderIdChangeHandler = this.orderIdChangeHandler.bind(this);
   }
-  componentDidMount() {
-    this.chart = new Chart(this.chartContainer, {
-      type: 'doughnut',
-      data: initialData,
-      options: {
-        title: {
-          display: true,
-          text: 'El progreso de tu orden:',
-        },
-        responsive: true,
-        maintainAspectRatio: false,
-      },
-    });
-  }
   componentWillReceiveProps(nextProps) {
     const { tasks } = nextProps;
     if (tasks && tasks.length) {
+      this.chart = new Chart(this.chartContainer, {
+        type: 'doughnut',
+        data: initialData,
+        options: {
+          title: {
+            display: true,
+            text: 'El progreso de tu orden:',
+          },
+          responsive: true,
+          maintainAspectRatio: false,
+        },
+      });
       const { labels, data, backgroundColor, completed } = tasks.reduce((agg, t) => Object.assign({}, agg, {
         labels: [...agg.labels, t.task.description.toUpperCase()],
         data: [...agg.data, (100 / tasks.length)],
@@ -42,11 +41,8 @@ class ProgressTracker extends React.Component {
       this.completed = Math.round((100 / tasks.length) * completed);
       this.chart.data.labels = labels;
       this.chart.data.datasets = [{ data, backgroundColor }];
-    } else {
-      this.chart.data.labels = initialData.labels;
-      this.chart.data.datasets = initialData.datasets;
+      this.chart.update();
     }
-    this.chart.update();
   }
   getTasksHandler() {
     const { idOrder } = this.state;

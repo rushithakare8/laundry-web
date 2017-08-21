@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const Header = ({ openMenu, title }) => (
   <header className="header row align-justify P(15px)">

@@ -13,9 +13,7 @@ block content
         div
           h1 Donde puedes encontrarnos?
     #about.about.big-text.menuWaypoint
-      .row(class='Py(40px)')
-        .columns.medium-8.medium-offset-2.small-12
-          div Routes
+      #map(class='Py(40px)')
     include home/footer
 block scripts
-  script(src='/public/js/routes#{minAssets}.js')
+  script(src=`/public/js/routes${minAssets}.js`)

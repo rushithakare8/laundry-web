@@ -11,6 +11,8 @@ heapdump*
 logs/
 configs/vault.json
 npm-debug.log
+yarn.lock
+yarn-error.log
 
 # git rm --cached github_rsa
 # github_rsa

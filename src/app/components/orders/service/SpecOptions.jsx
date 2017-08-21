@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import SpecOptionSelector from './SpecOptionSelector';
 
 const SpecOptions = ({ cart, spec, idServiceType, updateSpecOnCart, addSpecOnCart, removeSpecOnCart, price }) => {

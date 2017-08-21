@@ -1,16 +1,17 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Link } from 'react-router';
 
 const Menu = ({ user, opened, openMenu }) => (
   <div className={cx('sidebar', { active: opened })}>
-    <div className="sidebar-overlay" onClick={openMenu} role="button" />
+    <div className="sidebar-overlay" onClick={openMenu} tabIndex="-1" role="button" />
     <div className="sidebar-content">
       <div className="top-head">
         <div className="name">{user.name} {user.lastName}</div>
         <div className="email">{user.email}</div>
       </div>
-      <nav className="nav-left" onClick={openMenu} role="button">
+      <nav className="nav-left" onClick={openMenu}>
         <Link to="/main"><i className="fa fa-home" /><span>Inicio</span></Link>
         <Link to="/main/neworder"><i className="fa fa-cart-plus" /><span>Nueva Orden</span></Link>
         <Link to="/main/profile"><i className="fa fa-user" /><span>Perfil de Usuario</span></Link>

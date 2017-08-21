@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import SpecOptions from './SpecOptions';
 
 const ServiceOption = ({ cart, service, addServiceToCart, removeServiceFromCart, addSpecOnCart, updateSpecOnCart, removeSpecOnCart, isRoot }) => {
@@ -32,10 +33,16 @@ const ServiceOption = ({ cart, service, addServiceToCart, removeServiceFromCart,
               <div className="column">Precio</div>
               <div className="column">Cantidad</div>
             </div>
-            {service.specs.map((spec, idx) => (
+            {service.specs.map(spec => (
               <SpecOptions
-                key={idx} spec={spec} idServiceType={service.idServiceType} price={service.price} cart={cart}
-                addSpecOnCart={addSpecOnCart} updateSpecOnCart={updateSpecOnCart} removeSpecOnCart={removeSpecOnCart}
+                key={service.idServiceType}
+                spec={spec}
+                idServiceType={service.idServiceType}
+                price={service.price}
+                cart={cart}
+                addSpecOnCart={addSpecOnCart}
+                updateSpecOnCart={updateSpecOnCart}
+                removeSpecOnCart={removeSpecOnCart}
               />
             ))}
           </div>

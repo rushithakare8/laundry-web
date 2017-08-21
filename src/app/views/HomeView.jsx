@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getOrders } from '../data/actions/orders';
 import CurrentOrders from '../components/orders/CurrentOrders';
@@ -22,10 +23,14 @@ class HomeView extends React.Component {
   }
 }
 
+HomeView.defaultProps = {
+  orders: [],
+};
+
 HomeView.propTypes = {
   user: PropTypes.object.isRequired,
-  orders: PropTypes.arrayOf(PropTypes.object),
   getOrders: PropTypes.func.isRequired,
+  orders: PropTypes.arrayOf(PropTypes.object),
 };
 
 const mapStateToProps = state => ({

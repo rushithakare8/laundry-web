@@ -1,4 +1,4 @@
-require('babel-core/register');
+require('babel-register');
 
 const Glue = require('glue');
 const Manifest = require('./manifest');

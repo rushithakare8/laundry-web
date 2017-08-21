@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore } from 'redux';
 import ReduxThunk from 'redux-thunk';
-import createLogger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import rootReducer from './rootReducer';
 
 export default function configureStore(initialState = {}) {

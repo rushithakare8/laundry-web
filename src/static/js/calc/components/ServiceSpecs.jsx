@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import AmountSlider from './AmountSlider';
 
 const ServiceSpecs = ({ specs, cartSpecs, subtotal, onSpecChange, onAmountChange }) => {
@@ -10,6 +11,10 @@ const ServiceSpecs = ({ specs, cartSpecs, subtotal, onSpecChange, onAmountChange
       ))}
     </div>
   );
+};
+
+ServiceSpecs.defaultProps = {
+  cartSpecs: [],
 };
 
 ServiceSpecs.propTypes = {

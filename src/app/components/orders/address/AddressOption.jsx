@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const AddressOption = ({ address }) => (
   <div className="item" data-value={address.idAddress} >
@@ -12,7 +13,7 @@ const AddressOption = ({ address }) => (
 );
 
 AddressOption.propTypes = {
-  address: PropTypes.object,
+  address: PropTypes.object.isRequired,
 };
 
 export default AddressOption;
