@@ -19,32 +19,32 @@ const sassOptions = {
 module.exports = {
   styles() {
     return gulp.src(paths.css.src)
-    .pipe(changed(paths.css.src))
-    .pipe(sass(sassOptions))
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(minifyCss())
-    .pipe(header(banner))
-    .pipe(gulp.dest(paths.css.dest))
-    .pipe(filesize());
+      .pipe(changed(paths.css.src))
+      .pipe(sass(sassOptions))
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(minifyCss())
+      .pipe(header(banner))
+      .pipe(gulp.dest(paths.css.dest))
+      .pipe(filesize());
   },
   devstyles() {
     return gulp.src(paths.css.src)
-    .pipe(changed(paths.css.src))
-    .pipe(sass(sassOptions))
-    .pipe(gulp.dest(paths.css.dest));
+      .pipe(changed(paths.css.src))
+      .pipe(sass(sassOptions))
+      .pipe(gulp.dest(paths.css.dest));
   },
   atomic() {
     return gulp.src(paths.acss.src)
-    .pipe(atomicss())
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(minifyCss())
-    .pipe(header(banner))
-    .pipe(gulp.dest(paths.acss.dest))
-    .pipe(filesize());
+      .pipe(atomicss())
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(minifyCss())
+      .pipe(header(banner))
+      .pipe(gulp.dest(paths.acss.dest))
+      .pipe(filesize());
   },
   devatomic() {
     return gulp.src(paths.acss.src)
-    .pipe(atomicss())
-    .pipe(gulp.dest(paths.acss.dest));
+      .pipe(atomicss())
+      .pipe(gulp.dest(paths.acss.dest));
   },
 };

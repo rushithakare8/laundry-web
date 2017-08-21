@@ -24,7 +24,7 @@ const getState = request => new Promise((resolve, reject) => {
       resolve(state);
     });
   })
-  .catch(err => reject(err));
+    .catch(err => reject(err));
 });
 
 module.exports = {
