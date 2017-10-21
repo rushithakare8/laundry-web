@@ -65,8 +65,8 @@
   "devDependencies": {
     "babel-cli": "latest",
     "babel-loader": "latest",
-    "babel-plugin-transform-object-assign": "latest",
     "babel-plugin-es6-promise": "latest",
+    "babel-plugin-transform-object-assign": "latest",
     "babel-preset-es2015": "latest",
     "babel-preset-react": "latest",
     "code": "latest",
@@ -90,6 +90,7 @@
     "lab": "latest",
     "node-bourbon": "latest",
     "npm": "latest",
+    "webpack": "^2.1.0-beta.22",
     "webpack-stream": "latest"
   }
 }

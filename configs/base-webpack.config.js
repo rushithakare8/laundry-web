@@ -10,7 +10,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: 'babel-loader',
         query: {
           presets: ['es2015', 'react'],
         },
@@ -18,7 +18,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['', '.webpack.js', '.jsx', '.js', '.json'],
+    extensions: ['.webpack.js', '.jsx', '.js', '.json'],
   },
   externals: {
     d3: 'd3',
@@ -37,5 +37,4 @@ module.exports = {
     'react-router': 'ReactRouter',
     'react-router-redux': 'ReactRouterRedux',
   },
-  debug: true,
 };
