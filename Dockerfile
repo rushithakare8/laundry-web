@@ -1,10 +1,10 @@
 # To build:
-# docker build -t interactivelabs/laundry-web -f Dockerfile .
-# docker push interactivelabs/laundry-web:v1
+# docker build -t cesaregb/laundry-web -f Dockerfile .
+# docker push cesaregb/laundry-web:v1
 #
 # To run:
 # run docker mongo....
-# docker run -p 3000:3000 -it interactivelabs/laundry-web
+# docker run -p 3000:3000 -it cesaregb/laundry-web
 # docker run -p 3000:3000 -it --entrypoint bash interactivelabs/laundry-web
 FROM node:5.11
 MAINTAINER Cesar Gonzalez, cesareg.borjon@gmail.com
@@ -38,7 +38,7 @@ ADD . /app
 # COPY gulpfile.js app/gulpfile.js
 WORKDIR app
 RUN npm install --dev
-RUN npm run build
+#RUN npm run build
 
 #Current workingdir is app from dependencies image.
 # ADD . /app
